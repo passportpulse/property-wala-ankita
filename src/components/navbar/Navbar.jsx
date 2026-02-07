@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
+import { Sparkles } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -14,21 +15,29 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 transition-all duration-300 font-poppins ${
-        scrolled 
-        ? "bg-white/90 backdrop-blur-md shadow-lg py-2" 
-        : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
+        scrolled
+          ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
+          : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        
         {/* Logo Section */}
         <Link to="/" className="group flex items-center gap-1">
-          <span className={`text-2xl font-black tracking-tighter transition-colors ${scrolled ? "text-coral-red" : "text-white"}`}>
-            PROPERTY <span className={scrolled ? "text-soft-orange" : "text-warm-yellow"}>WALA</span>
+          <span
+            className={`text-2xl font-black tracking-tighter transition-colors ${scrolled ? "text-coral-red" : "text-white"}`}
+          >
+            PROPERTY{" "}
+            <span
+              className={scrolled ? "text-soft-orange" : "text-warm-yellow"}
+            >
+              WALA
+            </span>
           </span>
-          <span className={`text-sm font-light self-end mb-1 ${scrolled ? "text-slate-500" : "text-white/80"}`}>
+          <span
+            className={`text-sm font-light self-end mb-1 ${scrolled ? "text-slate-500" : "text-white/80"}`}
+          >
             Bhaiya
           </span>
         </Link>
@@ -53,32 +62,57 @@ export default function Navbar() {
         {/* Right Action Area */}
         <div className="flex items-center gap-4">
           <Link
-            to="/sell"
-            className={`hidden lg:block px-6 py-2.5 rounded-full font-bold text-sm uppercase tracking-wider transition-all shadow-md hover:shadow-xl active:scale-95 ${
-              scrolled 
-              ? "bg-linear-to-r from-coral-red to-soft-orange text-white" 
-              : "bg-white text-coral-red hover:bg-warm-yellow"
-            }`}
+            to="/property-wala-bhaiya"
+            className={`
+    hidden lg:flex items-center gap-3 px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-[0.25em] 
+    transition-all duration-500 shadow-lg hover:shadow-coral-red/20 active:scale-95 group relative
+   
+    bg-coral-red 
+   
+    text-white hover:bg-white hover:text-coral-red hover:border-coral-red
+  `}
           >
-            Post Property
-          </Link>
+            <div className="relative z-10 flex items-center gap-2">
+              <Sparkles
+                size={14}
+                /* Icons swap colors on hover to stay visible */
+                className={`transition-colors duration-500 ${scrolled ? "text-soft-orange" : "text-soft-orange group-hover:text-warm-yellow"}`}
+              />
+              <span className="flex items-center gap-1.5">
+                Join us as a{" "}
+                <span className="underline decoration-warm-yellow underline-offset-4 decoration-2">
+                  Property Wala Bhaiya
+                </span>{" "}
+              </span>
+            </div>
 
+            {/* Subtle Internal Glow using Soft Orange on Hover */}
+            <span className="absolute inset-0 bg-linear-to-r from-soft-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </Link>
           {/* Mobile Toggle */}
-          <button 
-            onClick={() => setOpen(!open)} 
+          <button
+            onClick={() => setOpen(!open)}
             className={`lg:hidden p-2 rounded-md transition-colors ${scrolled ? "text-slate-800" : "text-white"}`}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`h-0.5 w-full bg-current transform transition ${open ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`h-0.5 w-full bg-current transition ${open ? "opacity-0" : ""}`} />
-              <span className={`h-0.5 w-full bg-current transform transition ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+              <span
+                className={`h-0.5 w-full bg-current transform transition ${open ? "rotate-45 translate-y-2" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-full bg-current transition ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-full bg-current transform transition ${open ? "-rotate-45 -translate-y-2" : ""}`}
+              />
             </div>
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`lg:hidden absolute w-full transition-all duration-300 ease-in-out ${open ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
+      <div
+        className={`lg:hidden absolute w-full transition-all duration-300 ease-in-out ${open ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+      >
         <div className="bg-white border-t border-slate-100 p-6 space-y-4 shadow-2xl">
           {navigationLinks.map((link) => (
             <NavLink
@@ -91,11 +125,11 @@ export default function Navbar() {
             </NavLink>
           ))}
           <Link
-            to="/sell"
+            to="/property-wala-bhaiya"
             onClick={() => setOpen(false)}
             className="block w-full text-center bg-linear-to-r from-coral-red to-soft-orange text-white py-4 rounded-xl font-bold"
           >
-            Post Property
+            Join Us As Property Wala Bhaiya
           </Link>
         </div>
       </div>
