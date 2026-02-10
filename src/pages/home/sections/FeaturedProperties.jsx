@@ -7,7 +7,7 @@ const properties = [
     type: "Apartment",
     title: "Luxury 3BHK in City Center",
     location: "City Center, Durgapur",
-    price: "₹65,00,000",
+    price: "₹65 L",
     image: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?auto=format&fit=crop&w=600&q=80",
     beds: 3,
     baths: 2,
@@ -18,7 +18,7 @@ const properties = [
     type: "Commercial",
     title: "Prime Office Space",
     location: "Suhatta Complex, Durgapur",
-    price: "₹1,20,00,000",
+    price: "₹1.2 Cr",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
     beds: 0,
     baths: 1,
@@ -29,7 +29,7 @@ const properties = [
     type: "Land",
     title: "Residential Plot",
     location: "Bidhannagar, Durgapur",
-    price: "₹45,00,000",
+    price: "₹45 L",
     image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
     beds: 0,
     baths: 0,
@@ -39,14 +39,14 @@ const properties = [
 
 export default function FeaturedProperties() {
   return (
-    <section className="py-24 bg-white font-poppins">
+    <section className="pb-16 lg:pb-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* SLEEK PROFESSIONAL HEADER */}
         <div className="relative mb-16 border-l-4 border-coral-red pl-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
-              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
                 Curated Marketplace
               </span>
               <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter">

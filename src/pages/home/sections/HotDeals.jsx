@@ -6,7 +6,7 @@ const deals = [
     id: "01",
     title: "Riverfront Penthouse",
     location: "City Center, Durgapur",
-    price: "₹64,00,000",
+    price: "₹64 L",
     sqft: "3,200 sq.ft",
     type: "Residential",
     image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80"
@@ -15,7 +15,7 @@ const deals = [
     id: "02",
     title: "Muchipara Commercial",
     location: "Prime Business Belt",
-    price: "₹18,50,000",
+    price: "₹18.5 L",
     sqft: "1,500 sq.ft",
     type: "Commercial",
     image: "https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&w=1200&q=80"
@@ -24,7 +24,7 @@ const deals = [
     id: "03",
     title: "Bidhannagar Studio",
     location: "Residential Sector 2",
-    price: "₹15,00,000",
+    price: "₹15 L",
     sqft: "850 sq.ft",
     type: "Studio",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
@@ -35,7 +35,7 @@ export default function HotDeals() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-24 bg-white antialiased font-poppins">
+    <section className="pb-16 lg:pb-32 bg-white antialiased font-poppins">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* The Card Component - Exactly your layout structure */}

@@ -34,9 +34,9 @@ export default function Navbar() {
           />
 
           {/* 2. The Text Group */}
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 whitespace-nowrap">
             <span
-              className={`text-2xl font-black tracking-tighter transition-colors ${
+              className={`text-lg lg:text-2xl font-black tracking-tighter transition-colors ${
                 scrolled ? "text-coral-red" : "text-white"
               }`}
             >
@@ -92,7 +92,7 @@ export default function Navbar() {
               <Sparkles
                 size={14}
                 /* Icons swap colors on hover to stay visible */
-                className={`transition-colors duration-500 ${scrolled ? "text-soft-orange" : "text-soft-orange group-hover:text-warm-yellow"}`}
+                className={`transition-colors duration-500 ${scrolled ? "text-warm-yellow" : "text-warm-yellow group-hover:text-soft-orange"}`}
               />
               <span className="flex items-center gap-1.5">
                 Join us as a{" "}

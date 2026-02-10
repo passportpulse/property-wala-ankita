@@ -113,18 +113,33 @@ export default function Sell() {
 
             {/* Visual Trust Element */}
             <div className="hidden lg:block relative">
-              <div className="w-72 h-72 bg-slate-50 rounded-[3rem] border border-slate-100 flex flex-col items-center justify-center p-10 text-center relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4">
-                  <CheckCircle2 className="text-coral-red" size={24} />
-                </div>
-                <span className="text-5xl font-black text-slate-900 mb-2">
-                  2M+
-                </span>
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-tight">
-                  Trusted Property Owners
-                </span>
-              </div>
-            </div>
+  <div className="w-80 h-auto rounded-[3rem] border border-slate-100 overflow-hidden flex flex-col items-center justify-center p-10 text-center relative">
+    
+    {/* Background Image */}
+    <img
+      src="https://img.staticmb.com/mbcontent/images/crop/uploads/2025/7/trust-owned-property_0_1200.jpg.webp"
+      alt="background"
+      className="absolute inset-0 w-full h-full object-cover opacity-90"
+    />
+
+    {/* Optional linear overlay */}
+    <div className="absolute inset-0 bg-linear-to-t from-white/80 via-white/50 to-white/40"></div>
+
+    {/* Icon */}
+    <div className="absolute top-0 right-0 p-4">
+      <CheckCircle2 className="text-coral-red" size={24} />
+    </div>
+
+    {/* Text */}
+    <span className="text-5xl font-black text-slate-900 mb-2 relative z-10">
+      2M+
+    </span>
+    <span className="text-[10px] font-black uppercase tracking-widest text-slate-700 leading-tight relative z-10">
+      Trusted Property Owners
+    </span>
+  </div>
+</div>
+
           </div>
         </div>
       </section>
@@ -183,7 +198,7 @@ export default function Sell() {
                 Kindly find answers to some common doubts. We believe in 100%
                 transparency with our sellers.
               </p>
-              <div className="inline-flex items-center gap-4 p-6 bg-slate-50 rounded-[2rem] border border-slate-100">
+              <div className="inline-flex items-center gap-4 p-6 bg-slate-50 rounded-4xl border border-slate-100">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
                   <CheckCircle2 className="text-coral-red" size={20} />
                 </div>

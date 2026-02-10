@@ -1,5 +1,5 @@
 /* 1. Import the font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 /* 2. Import Tailwind */
 @import "tailwindcss";
@@ -11,12 +11,19 @@
 
 @theme {
   /* Warm Sunset Palette */
-  --color-coral-red: #FA5C5C;
-  --color-soft-orange: #FD8A6B;
-  --color-peach-glow: #FEC288;
-  --color-warm-yellow: #FBEF76;
+  --color-coral-red: #fa5c5c;
+  --color-soft-orange: #fd8a6b;
+  --color-peach-glow: #fec288;
+  --color-warm-yellow: #fbef76;
 }
 
 * {
   box-sizing: border-box;
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

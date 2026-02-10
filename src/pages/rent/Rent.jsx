@@ -26,7 +26,7 @@ export default function Rent() {
       {/* --- HERO SECTION --- */}
       <section className="relative pt-32 pb-24 px-6 overflow-hidden border-b border-slate-50">
         {/* Background Subtle Gradient */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-soft-orange/5 blur-[120px] rounded-full -z-10" />
+        <div className="absolute top-0 right-0 w-125 h-125 bg-soft-orange/5 blur-[120px] rounded-full -z-10" />
         
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
@@ -62,11 +62,11 @@ export default function Rent() {
 
             {/* RIGHT: PROFESSIONAL IMAGE */}
             <div className="lg:w-1/2 relative">
-              <div className="rounded-[4rem] overflow-hidden shadow-2xl border-[12px] border-white relative z-10">
+              <div className="rounded-[4rem] overflow-hidden shadow-2xl border-12 border-white relative z-10">
                 <img 
                   src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1200&q=80" 
                   alt="Modern Apartment Interior" 
-                  className="w-full h-[500px] object-cover"
+                  className="w-full h-125 object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 via-transparent to-transparent" />
               </div>

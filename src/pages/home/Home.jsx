@@ -5,16 +5,22 @@ import ServiceHub from "./sections/ServiceHub";
 import Trust from "./sections/Trust";
 import Categories from "./sections/Categories";
 import ContactCTA from "./sections/ContactCTA";
+import SellYourProperty from "./sections/SellYourProperty";
+import BestBuy from "./sections/BestBuy";
+import JoinUs from "../joinus/JoinUs";
 
 export default function Home() {
   return (
     <>
       <HomeHero />
       <Categories />
+      <SellYourProperty/>
       <FeaturedProperties />
-      <Trust />
       <HotDeals />
+      <BestBuy/>
+      <Trust />
       <ServiceHub />
+      <JoinUs/>
       <ContactCTA />
     </>
   );

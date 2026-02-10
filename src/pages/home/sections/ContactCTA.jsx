@@ -1,7 +1,7 @@
 /* sections/ContactCTA.js */
 export default function ContactCTA() {
   return (
-    <section className="py-20 bg-white font-poppins">
+    <section className="py-16 lg:py-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
         {/* DESIGN: Swapped loud background for a clean, bordered "Glass" look */}
         <div className="relative group rounded-[3rem] p-10 lg:p-20 text-center bg-slate-50 border border-slate-100 overflow-hidden">
