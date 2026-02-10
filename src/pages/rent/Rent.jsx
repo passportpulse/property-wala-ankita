@@ -40,7 +40,7 @@ export default function Rent() {
                 </span>
               </div>
               
-              <h1 className="text-6xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.85]">
+              <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.85]">
                 Rent with <br />
                 <span className="text-coral-red">Confidence.</span>
               </h1>
