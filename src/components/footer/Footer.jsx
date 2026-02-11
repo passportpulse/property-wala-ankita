@@ -138,7 +138,7 @@ export default function Footer() {
               }
               className="w-full mt-8 py-3 bg-linear-to-r from-coral-red to-soft-orange text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:shadow-lg hover:brightness-110 transition-all active:scale-95"
             >
-              Request Callback
+              Talk to Advisor
             </button>
           </div>
         </div>
