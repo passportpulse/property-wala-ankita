@@ -1,4 +1,5 @@
 import { ArrowRight, Home, IndianRupee, Users } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const features = [
   {
@@ -28,6 +29,8 @@ const features = [
 ];
 
 export default function SellYourProperty() {
+  const navigate = useNavigate();
+
   return (
     <section className="pb-16 lg:pb-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
@@ -56,6 +59,7 @@ export default function SellYourProperty() {
           {features.map((item, i) => (
             <div
               key={i}
+              onClick={() => navigate("/sell")}
               className="group relative p-6 lg:p-8 rounded-3xl lg:rounded-[2.5rem]
               bg-white border border-slate-100
               hover:border-peach-glow/30
@@ -110,9 +114,12 @@ export default function SellYourProperty() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTA BUTTON */}
         <div className="mt-16 text-center">
-          <button className="group inline-flex items-center gap-3 px-10 py-4 rounded-full bg-coral-red text-white font-semibold hover:bg-soft-orange transition">
+          <button 
+            onClick={() => navigate("/sell")} 
+            className="cursor-pointer group inline-flex items-center gap-3 px-10 py-4 rounded-full bg-coral-red text-white font-semibold hover:bg-slate-900 transition-all duration-300 shadow-lg shadow-coral-red/20"
+          >
             List Your Property
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>

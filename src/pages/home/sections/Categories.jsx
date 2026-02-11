@@ -1,24 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const categories = [
   {
     name: "Flats",
     count: "40+ Listings",
     tag: "Ready to Move",
-    image: "https://www.manglamgroup.com/wp-content/uploads/2024/01/swimmingpool-Corner-Night_cc.jpg",
+    image:
+      "https://www.manglamgroup.com/wp-content/uploads/2024/01/swimmingpool-Corner-Night_cc.jpg",
   },
   {
     name: "Plots",
     count: "15+ Locations",
     tag: "High Growth",
-    image: "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg?s=612x612&w=0&k=20&c=LuUFrl_Nf7Pj5P2yvjW-0N8lcWS2723IcjDOai8jKDo=",
+    image:
+      "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg?s=612x612&w=0&k=20&c=LuUFrl_Nf7Pj5P2yvjW-0N8lcWS2723IcjDOai8jKDo=",
   },
   {
     name: "House/Duplex",
     count: "25+ Homes",
     tag: "Family Choice",
-    image: "https://i.pinimg.com/1200x/ff/8e/ae/ff8eaee8da94da4342c043ab97ae32ad.jpg",
+    image:
+      "https://i.pinimg.com/1200x/ff/8e/ae/ff8eaee8da94da4342c043ab97ae32ad.jpg",
   },
   {
     name: "Commercial Space",
@@ -54,7 +58,8 @@ const categories = [
     name: "Hotels/Resort",
     count: "4+ Projects",
     tag: "Hospitality",
-    image: "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=",
+    image:
+      "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=",
   },
   {
     name: "Investment",
@@ -65,6 +70,7 @@ const categories = [
 ];
 
 export default function Categories() {
+  const navigate = useNavigate();
   const scrollRef = useRef(null);
   const [paused, setPaused] = useState(false);
 
@@ -94,6 +100,18 @@ export default function Categories() {
     setTimeout(() => setPaused(false), 2500);
   };
 
+  const handleClick = (name) => {
+    const sectionId = name.toLowerCase().replace(/\s+|\/+/g, "-");
+
+    navigate(`/buy#${sectionId}`);
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
     <section className="py-16 lg:py-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
@@ -108,7 +126,6 @@ export default function Categories() {
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 looking for ?
               </span>
-              
             </h2>
           </div>
 
@@ -117,13 +134,13 @@ export default function Categories() {
               onClick={() => scrollByAmount(-320)}
               className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition"
             >
-              <ChevronLeft />
+              <ChevronLeft size={20} />
             </button>
             <button
               onClick={() => scrollByAmount(320)}
               className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition"
             >
-              <ChevronRight />
+              <ChevronRight size={20} />
             </button>
           </div>
         </div>
@@ -138,6 +155,7 @@ export default function Categories() {
           {categories.map((item, i) => (
             <div
               key={i}
+              onClick={() => handleClick(item.name)}
               className="group relative min-w-65 lg:min-w-75 h-90 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
             >
               {/* IMAGE */}
@@ -163,9 +181,7 @@ export default function Categories() {
                     {item.name}
                   </h3>
 
-                  <p className="text-sm text-muted-slate mt-1">
-                    {item.count}
-                  </p>
+                  <p className="text-sm text-muted-slate mt-1">{item.count}</p>
 
                   <div className="flex items-center justify-between mt-4">
                     <span className="text-[11px] font-black uppercase tracking-widest text-dark-slate">

@@ -1,5 +1,5 @@
-import React from "react";
 import { Bed, Bath, Maximize, MapPin, ArrowUpRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const properties = [
   {
@@ -38,6 +38,7 @@ const properties = [
 ];
 
 export default function FeaturedProperties() {
+   const navigate = useNavigate();
   return (
     <section className="pb-16 lg:pb-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
@@ -57,7 +58,7 @@ export default function FeaturedProperties() {
               </p>
             </div>
             
-            <button className="flex items-center gap-2 group text-[11px] font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-100 pb-2 hover:border-coral-red transition-all">
+            <button onClick={() => navigate("/buy")}  className="cursor-pointer flex items-center gap-2 group text-[11px] font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-100 pb-2 hover:border-coral-red transition-all">
               Browse All Inventory
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
