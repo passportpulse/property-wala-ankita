@@ -10,11 +10,10 @@
 }
 
 @theme {
-  /* Warm Sunset Palette */
-  --color-coral-red: #fa5c5c;
-  --color-soft-orange: #fd8a6b;
-  --color-peach-glow: #fec288;
-  --color-warm-yellow: #fbef76;
+  --color-coral-red: #ec5139;
+  --color-soft-orange: #e75d2f;
+  --color-peach-glow: #FB9E3A;
+  --color-warm-yellow: #FCEF91;
 }
 
 * {

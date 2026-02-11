@@ -5,7 +5,6 @@ export default function ContactCTA() {
       <div className="max-w-7xl mx-auto px-6">
         {/* DESIGN: Swapped loud background for a clean, bordered "Glass" look */}
         <div className="relative group rounded-[3rem] p-10 lg:p-20 text-center bg-slate-50 border border-slate-100 overflow-hidden">
-          
           {/* Subtle Background Accents - Not loud, just premium */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-peach-glow/10 blur-[100px] rounded-full -mr-20 -mt-20" />
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-coral-red/5 blur-[100px] rounded-full -ml-20 -mb-20" />
@@ -29,8 +28,12 @@ export default function ContactCTA() {
             </h2>
 
             <p className="text-slate-500 max-w-lg mx-auto text-sm lg:text-base font-medium leading-relaxed">
-              Get a curated list of properties that aren't even on the market yet. 
-              Connect directly with <span className="text-slate-900 font-bold">Property Wala Bhaiya</span> today.
+              Get a curated list of properties that aren't even on the market
+              yet. Connect directly with{" "}
+              <span className="text-slate-900 font-bold">
+                Property Wala Bhaiya
+              </span>{" "}
+              today.
             </p>
 
             {/* Action Buttons - Refined & Balanced */}
@@ -38,10 +41,12 @@ export default function ContactCTA() {
               <button className="bg-slate-900 text-white px-10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-coral-red hover:shadow-2xl hover:shadow-coral-red/30 transition-all active:scale-95">
                 WhatsApp Now
               </button>
-              
-              <button className="bg-white text-slate-900 border-2 border-slate-100 px-10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:border-coral-red hover:text-coral-red transition-all active:scale-95">
-                Schedule a Visit
-              </button>
+              <a
+                href="tel:+91 76999 88876"
+                className="bg-white text-slate-900 border-2 border-slate-100 px-10 py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:border-coral-red hover:text-coral-red transition-all active:scale-95"
+              >
+                Speak With Expert
+              </a>
             </div>
           </div>
 

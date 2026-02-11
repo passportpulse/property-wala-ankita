@@ -6,6 +6,7 @@ import Sell from "../pages/sell/Sell";
 import Rent from "../pages/rent/Rent";
 import ContactPage from "../pages/contact/Contact";
 import JoinUs from "../pages/joinus/JoinUs";
+import Login from "../pages/login/Login";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
       { path: "/rent", element: <Rent /> },
       { path: "/contact", element: <ContactPage /> },
       { path: "/property-wala-bhaiya", element: <JoinUs /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);

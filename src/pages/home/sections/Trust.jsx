@@ -23,7 +23,6 @@ export default function Trust() {
     },
   ];
 
-  // demo images – replace later
   const dealAvatars = [
     "https://images.unsplash.com/photo-1607746882042-944635dfe10e",
     "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
@@ -33,7 +32,6 @@ export default function Trust() {
   return (
     <section className="pb-16 lg:pb-32 bg-white font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-
         {/* HEADER */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 lg:mb-16 gap-4">
           <div className="space-y-3">
@@ -51,7 +49,7 @@ export default function Trust() {
             </h2>
           </div>
 
-          {/* VERIFIED DEALS */}
+          {/* VERIFIED DEALS COUNTER */}
           <div className="flex items-center gap-4 bg-warm-yellow/10 px-5 py-2.5 rounded-2xl border border-warm-yellow/20">
             <div className="flex -space-x-2">
               {dealAvatars.map((img, i) => (
@@ -69,7 +67,7 @@ export default function Trust() {
           </div>
         </div>
 
-        {/* CARDS */}
+        {/* TRUST CARDS */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           {points.map((item, idx) => (
             <div
@@ -97,12 +95,13 @@ export default function Trust() {
                 </div>
               </div>
 
+              {/* ACCENT BAR */}
               <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-coral-red via-soft-orange to-peach-glow opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
           ))}
         </div>
 
-        {/* FOOTER */}
+        {/* FOOTER LINKS */}
         <div className="mt-12 pt-10 border-t border-slate-50 flex flex-wrap justify-center gap-x-12 gap-y-6">
           <div className="flex items-center gap-2">
             <Star className="w-3.5 h-3.5 fill-warm-yellow text-warm-yellow" />
@@ -111,9 +110,20 @@ export default function Trust() {
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-coral-red font-black text-[10px] uppercase tracking-[0.2em] hover:text-soft-orange transition-colors cursor-pointer group">
-            View Verified Certificates
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+          {/* UPDATED LINK NAME */}
+          <div
+            onClick={() =>
+              window.open(
+                "https://www.google.com/search?sca_esv=8ed7b9c9fed93e72&rlz=1C1CHBF_enIN918IN918&sxsrf=ANbL-n6AtBUSjy-QATJ79SR9s1GQwzMRiw:1770807670773&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOTmJmETvB6Rvt6U5w7Xsh7pEedBaWzwtQCYq2DxACl6RFhyuG3nWNExxHEwAn9B3FljFaTulZyeg1sOjb7PkABqmLf1PTNTEqH5UYx10360_8Sq-xA%3D%3D&q=PROPERTY+WALA+BHAIYA+Reviews&sa=X&ved=2ahUKEwj6-LnRpNGSAxUBTWwGHUSWJtkQ0bkNegQIKhAF&biw=1536&bih=730&dpr=1.25",
+                "_blank",
+              )
+            }
+            className="flex items-center gap-2 text-coral-red font-black text-[10px] uppercase tracking-[0.2em] hover:text-soft-orange transition-colors cursor-pointer group"
+          >
+            View Client Testimonials
+            <span className="group-hover:translate-x-1 transition-transform">
+              →
+            </span>
           </div>
         </div>
       </div>

@@ -118,17 +118,23 @@ const JoinUs = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
-          <button className="group inline-flex items-center gap-3 bg-coral-red text-white px-12 py-4 rounded-xl font-medium hover:bg-soft-orange transition-all active:scale-95 shadow-md">
-            Apply to Join
+        <div className="text-center flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://wa.me/917699988876"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-3 bg-coral-red text-white px-10 py-4 rounded-xl font-medium hover:bg-soft-orange transition-all active:scale-95 shadow-md"
+          >
+            Chat on WhatsApp
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
+          </a>
 
-        {/* Footer */}
-        <div className="mt-20 text-xs text-slate-400 border-t border-slate-200 pt-4 text-center">
-          © {new Date().getFullYear()} Property Wala Bhaiya. Building trust in
-          real estate.
+          <a
+            href="tel:+91 76999 88876"
+            className="inline-flex items-center gap-3 border border-coral-red text-coral-red px-10 py-4 rounded-xl font-medium hover:bg-coral-red hover:text-white transition-all"
+          >
+            Call Now
+          </a>
         </div>
       </div>
     </section>

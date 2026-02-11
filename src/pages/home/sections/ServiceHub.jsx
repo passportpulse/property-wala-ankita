@@ -1,5 +1,6 @@
 import React from "react";
 import { Lock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -7,7 +8,7 @@ const services = [
     desc: "Browse verified homes and commercial spaces across Durgapur with trusted local insights.",
     tag: "For Buyers & Tenants",
     icon: "🏠",
-    link: "/buy",
+    // Note: link is not used for navigation here, we use handleLogin for route params
     loginText: "Buyer Login",
     helper: "Login to view prices, owner details & schedule visits",
   },
@@ -16,40 +17,39 @@ const services = [
     desc: "List your property confidently and attract genuine buyers through our verified network.",
     tag: "For Property Owners",
     icon: "💰",
-    link: "/sell",
     loginText: "Seller Login",
     helper: "Login to manage listings, leads & negotiations",
   },
   {
-    title: "Brokers Zone",
+    title: "Partner Hub",
     desc: "Access verified inventory, collaborate on deals, and grow faster with Property Wala Bhaiya.",
-    tag: "For Brokers & Agents",
+    tag: "Property Wala Bhaiya's Network",
     icon: "🤝",
-    link: "/brokers",
-    loginText: "Broker Login",
+    loginText: "Partner Login",
     helper: "Login to access inventory & partner tools",
   },
+
   {
     title: "Developer Portal",
     desc: "Strategic sales and marketing support for residential and commercial developments.",
     tag: "For Developers & Builders",
     icon: "🏗️",
-    link: "/developers",
     loginText: "Developer Login",
     helper: "Login to manage projects & sales dashboards",
   },
 ];
 
 export default function ServiceHub() {
-  const handleLogin = (role) => {
-    console.log("Login clicked for:", role);
-    // later: open login modal or navigate(`/login?role=${role}`)
+  const navigate = useNavigate();
+
+  const handleLogin = (roleText) => {
+    // Navigates to /login?role=Buyer+Login
+    navigate(`/login?role=${encodeURIComponent(roleText)}`);
   };
 
   return (
     <section className="pb-16 lg:pb-32 bg-white font-poppins relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="flex items-center justify-center gap-2">
@@ -68,7 +68,8 @@ export default function ServiceHub() {
           </h2>
 
           <p className="text-slate-500 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto">
-            Built for buyers, sellers, brokers, and developers — all powered by local expertise in Durgapur.
+            Built for buyers, sellers, brokers, and developers — all powered by
+            local expertise in Durgapur.
           </p>
         </div>
 
@@ -108,7 +109,7 @@ export default function ServiceHub() {
 
                   <button
                     onClick={() => handleLogin(service.loginText)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 hover:border-coral-red hover:text-coral-red transition-all"
+                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 hover:border-coral-red hover:text-coral-red transition-all cursor-pointer"
                   >
                     <Lock className="w-4 h-4" />
                     {service.loginText}

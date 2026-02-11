@@ -1,4 +1,6 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, MapPin, X, Phone, MessageSquare } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const bestBuys = [
   {
@@ -6,36 +8,39 @@ const bestBuys = [
     type: "Ready to Move",
     location: "City Centre, Durgapur",
     price: "₹48 Lakh",
-    image:
-      "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    description: "Modern 2BHK located in the heart of Durgapur with modular kitchen, lift, and 24/7 power backup. Ideal for families.",
   },
   {
     title: "3 BHK Independent House",
     type: "New Construction",
     location: "Benachity, Durgapur",
     price: "₹72 Lakh",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    description: "Spacious independent house with a private terrace and garage. Located in a quiet, high-demand residential neighborhood.",
   },
   {
     title: "Residential Plot",
     type: "Clear Title",
     location: "Muchipara, Durgapur",
     price: "₹32 Lakh",
-    image:
-      "https://images.unsplash.com/photo-1501183638710-841dd1904471",
+    image: "https://images.unsplash.com/photo-1501183638710-841dd1904471",
+    description: "LDA approved plot with immediate registration. Perfect for investment or building your custom dream home.",
   },
   {
     title: "1 BHK Investment Flat",
     type: "Rental Demand Area",
     location: "Bidhannagar, Durgapur",
     price: "₹26 Lakh",
-    image:
-      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+    description: "Budget-friendly flat in a high rental yield area near the hospital and engineering colleges. High demand from students/doctors.",
   },
 ];
 
 export default function BestBuySection() {
+  const navigate = useNavigate();
+  const [selectedItem, setSelectedItem] = useState(null);
+
   return (
     <section className="pb-16 lg:pb-32 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
@@ -47,9 +52,9 @@ export default function BestBuySection() {
           </span>
           <h2 className="mt-2 text-3xl lg:text-5xl font-black text-dark-slate">
             <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                Best Buys 
-              </span>
-             {" "}in Durgapur
+              Best Buys
+            </span>
+            {" "}in Durgapur
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-muted-slate text-base lg:text-lg">
             Carefully selected properties across prime areas of Durgapur,
@@ -62,17 +67,16 @@ export default function BestBuySection() {
           {bestBuys.map((item, i) => (
             <div
               key={i}
-              className="group rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all duration-300"
+              onClick={() => setSelectedItem(item)}
+              className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-coral-red shadow-sm hover:shadow-md transition-all duration-300"
             >
               {/* IMAGE */}
               <div className="relative h-48">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                 />
-
-                
               </div>
 
               {/* CONTENT */}
@@ -104,15 +108,77 @@ export default function BestBuySection() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* VIEW ALL PROPERTIES BUTTON */}
         <div className="mt-14 text-center">
-          <button className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-coral-red text-white font-semibold hover:bg-soft-orange transition">
+          <button 
+            onClick={() => navigate("/buy")}
+            className="cursor-pointer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white font-semibold hover:bg-coral-red transition-all shadow-lg hover:shadow-coral-red/20"
+          >
             View All Properties in Durgapur
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
       </div>
+
+      {/* --- MODAL --- */}
+      {selectedItem && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setSelectedItem(null)}
+          />
+          
+          {/* Content Box */}
+          <div className="relative bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
+            <button 
+              onClick={() => setSelectedItem(null)}
+              className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur rounded-full hover:bg-coral-red hover:text-white transition"
+            >
+              <X size={18} />
+            </button>
+
+            <div className="h-56">
+              <img src={selectedItem.image} alt={selectedItem.title} className="w-full h-full object-cover" />
+            </div>
+
+            <div className="p-8">
+              <div className="flex justify-between items-start">
+                <div>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-coral-red">{selectedItem.type}</p>
+                  <h3 className="text-2xl font-black text-slate-900 mt-1">{selectedItem.title}</h3>
+                </div>
+                <p className="text-xl font-bold text-slate-900">{selectedItem.price}</p>
+              </div>
+
+              <div className="mt-4 flex items-center gap-2 text-sm text-slate-500 font-medium">
+                <MapPin className="w-4 h-4 text-soft-orange" />
+                {selectedItem.location}
+              </div>
+
+              <p className="mt-6 text-slate-600 text-sm leading-relaxed">
+                {selectedItem.description}
+              </p>
+
+              <div className="mt-8 grid grid-cols-2 gap-4">
+                <a 
+                  href="tel:+917699988876"
+                  className="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-coral-red transition"
+                >
+                  <Phone size={14} /> Call Agent
+                </a>
+                <a 
+                  href="https://wa.me/917699988876"
+                  className="flex items-center justify-center gap-2 py-4 bg-linear-to-r from-coral-red to-soft-orange text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition"
+                >
+                  <MessageSquare size={14} /> WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
