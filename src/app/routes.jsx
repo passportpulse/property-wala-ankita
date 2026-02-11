@@ -7,10 +7,17 @@ import Rent from "../pages/rent/Rent";
 import ContactPage from "../pages/contact/Contact";
 import JoinUs from "../pages/joinus/JoinUs";
 import Login from "../pages/login/Login";
+import Register from "../pages/signup/Register";
+import ScrollToTop from "../components/ScrollToTop"; 
 
 export const router = createBrowserRouter([
   {
-    element: <MainLayout />,
+    element: (
+        <>
+          <ScrollToTop /> 
+          <MainLayout />
+        </>
+    ),
     children: [
       { path: "/", element: <Home /> },
       { path: "/buy", element: <Buy /> },
@@ -19,6 +26,7 @@ export const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage /> },
       { path: "/property-wala-bhaiya", element: <JoinUs /> },
       { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
     ],
   },
 ]);
