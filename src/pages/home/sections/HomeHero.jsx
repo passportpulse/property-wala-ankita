@@ -28,7 +28,7 @@ export default function HomeHero() {
     "Investment",
   ];
 
-  const sellOptions = [...findOptions];
+  // const sellOptions = [...findOptions];
 
   const handleOptionClick = (option) => {
     console.log("CTA clicked with option:", option);

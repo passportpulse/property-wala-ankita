@@ -8,7 +8,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Add a scroll listener to make the header feel more dynamic
+  // Scroll listener for dynamic styling
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -19,20 +19,22 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 font-poppins ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-lg py-2"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
           : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/">
-          {/* 1. The Logo */}
           <img
             src={logo}
             alt="Property Wala Bhaiya Logo"
-            className="h-16 w-auto object-contain"
+            className={`h-16 w-auto object-contain transition-all duration-300 ${
+              scrolled 
+                ? "filter brightness-0" 
+                : "filter brightness-100"
+            }`}
           />
-
         </Link>
 
         {/* Desktop Navigation */}
@@ -57,46 +59,34 @@ export default function Navbar() {
           <Link
             to="/property-wala-bhaiya"
             className={`
-    hidden lg:flex items-center gap-3 px-8 py-3 rounded-full font-black text-[11px] uppercase tracking-[0.25em] 
-    transition-all duration-500 shadow-lg hover:shadow-coral-red/20 active:scale-95 group relative
-   
-    bg-coral-red 
-   
-    text-white hover:bg-white hover:text-coral-red hover:border-coral-red
-  `}
+              hidden lg:flex items-center gap-3 px-8 py-3 rounded-full font-black text-sm uppercase tracking-[0.25em] 
+              transition-all duration-500 shadow-lg hover:shadow-coral-red/20 active:scale-95 group relative
+              ${scrolled ? "bg-coral-red text-white" : "bg-white text-coral-red"}
+            `}
           >
             <div className="relative z-10 flex items-center gap-2">
               <Sparkles
                 size={14}
-                /* Icons swap colors on hover to stay visible */
-                className={`transition-colors duration-500 ${scrolled ? "text-warm-yellow" : "text-warm-yellow group-hover:text-soft-orange"}`}
+                className={scrolled ? "text-warm-yellow" : "text-coral-red"}
               />
               <span className="flex items-center gap-1.5">
                 Join us as a{" "}
-                <span className="underline decoration-warm-yellow underline-offset-4 decoration-2">
+                <span className={`underline underline-offset-4 decoration-2 ${scrolled ? "decoration-warm-yellow" : "decoration-soft-orange"}`}>
                   Property Wala Bhaiya
                 </span>{" "}
               </span>
             </div>
-
-            {/* Subtle Internal Glow using Soft Orange on Hover */}
-            <span className="absolute inset-0 bg-linear-to-r from-soft-orange/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           </Link>
+
           {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
             className={`lg:hidden p-2 rounded-md transition-colors ${scrolled ? "text-slate-800" : "text-white"}`}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span
-                className={`h-0.5 w-full bg-current transform transition ${open ? "rotate-45 translate-y-2" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-full bg-current transition ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`h-0.5 w-full bg-current transform transition ${open ? "-rotate-45 -translate-y-2" : ""}`}
-              />
+              <span className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`h-0.5 w-full bg-current transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+              <span className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
             </div>
           </button>
         </div>
@@ -104,15 +94,20 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`lg:hidden absolute w-full transition-all duration-300 ease-in-out ${open ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}
+        className={`lg:hidden absolute w-full transition-all duration-500 ease-in-out border-b border-slate-100 ${
+          open ? "max-h-screen opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-4 overflow-hidden"
+        }`}
       >
-        <div className="bg-white border-t border-slate-100 p-6 space-y-4 shadow-2xl">
+        <div className="bg-white p-6 space-y-4 shadow-2xl">
           {navigationLinks.map((link) => (
             <NavLink
               key={link.id}
               to={link.path}
               onClick={() => setOpen(false)}
-              className="block text-lg font-medium text-slate-800 hover:text-coral-red border-b border-slate-50 pb-2"
+              className={({ isActive }) => `
+                block text-lg font-bold uppercase tracking-wider pb-2 border-b border-slate-50 transition-colors
+                ${isActive ? "text-coral-red" : "text-slate-800"}
+              `}
             >
               {link.label}
             </NavLink>
@@ -120,8 +115,9 @@ export default function Navbar() {
           <Link
             to="/property-wala-bhaiya"
             onClick={() => setOpen(false)}
-            className="block w-full text-center bg-linear-to-r from-coral-red to-soft-orange text-white py-4 rounded-xl font-bold"
+            className="flex items-center justify-center gap-3 w-full bg-linear-to-r from-coral-red to-soft-orange text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
           >
+            <Sparkles size={16} className="text-warm-yellow" />
             Join Us As Property Wala Bhaiya
           </Link>
         </div>
