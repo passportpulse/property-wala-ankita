@@ -9,7 +9,7 @@ import {
   ArrowRight,
   Filter
 } from "lucide-react";
-import Cta from "../buy/sections/Cta";
+import Cta from "../../components/Cta";
 
 export default function Rent() {
   const [activeCategory, setActiveCategory] = useState("Flats");

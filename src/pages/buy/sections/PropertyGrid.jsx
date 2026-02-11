@@ -74,9 +74,23 @@ const PropertyDossier = ({ isOpen, onClose, property }) => {
             </div>
           </div>
 
-          <button className="w-full bg-coral-red text-white py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest flex justify-center gap-2">
+          <a
+            href={`https://wa.me/917699988876?text=${encodeURIComponent(
+              `Hi Property Wala Bhaiya,
+
+I'm interested in this property:
+
+• Price: ₹${property.price}
+• Type: ${property.tag}
+
+Please share more details.`,
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full bg-coral-red text-white py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest flex justify-center gap-2 hover:bg-soft-orange transition-all"
+          >
             <MessageSquare size={16} /> Get Details on WhatsApp
-          </button>
+          </a>
         </div>
       </div>
     </div>

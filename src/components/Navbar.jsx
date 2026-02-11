@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { navigationLinks } from "../../constants/navigation";
+import { navigationLinks } from "../constants/navigation";
 import { Sparkles } from "lucide-react";
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import FilterHeader from "./sections/FilterHeader";
 import PropertyGrid from "./sections/PropertyGrid"; 
-import Cta from "./sections/Cta";
+import Cta from "../../components/Cta";
 
 export default function Buy() {
   const tabsLabels = [
@@ -36,7 +36,7 @@ export default function Buy() {
 
     window.addEventListener("hashchange", handleHashChange);
     return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+  }, [tabsLabels]);
 
   return (
     <>

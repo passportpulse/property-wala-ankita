@@ -11,7 +11,7 @@ import {
   MapPin,
   Tag,
 } from "lucide-react";
-import Cta from "../buy/sections/Cta";
+import Cta from "../../components/Cta";
 
 // --- FAQ COMPONENT ---
 const FaqItem = ({ question, answer }) => {

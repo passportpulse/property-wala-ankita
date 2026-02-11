@@ -1,4 +1,6 @@
 import { ArrowUpRight, Phone, Landmark } from "lucide-react";
+import { FaWhatsapp, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+
 export default function Cta() {
   return (
     <>
@@ -34,25 +36,42 @@ export default function Cta() {
               </p>
             </div>
 
-            {/* Right Side: Sophisticated Input Group */}
+            {/* Right Side: Direct Contact Options */}
             <div className="w-full lg:w-auto">
-              <div className="bg-slate-50 p-3 rounded-[2.5rem] border border-slate-100 flex flex-col sm:flex-row items-center gap-3 shadow-inner">
-                <div className="flex items-center gap-3 px-5 py-2">
-                  <Phone size={18} className="text-coral-red" />
-                  <input
-                    type="tel"
-                    placeholder="Enter WhatsApp"
-                    className="bg-transparent border-none outline-none font-bold text-slate-700 placeholder:text-slate-300 w-full sm:w-48"
-                  />
-                </div>
-                <button className="w-full sm:w-auto bg-slate-900 text-white px-10 py-4 rounded-4xl font-black uppercase text-[10px] tracking-widest shadow-xl hover:bg-coral-red transition-all duration-500 flex items-center justify-center gap-2 active:scale-95">
-                  Book Site Visit <ArrowUpRight size={14} />
-                </button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                {/* WhatsApp */}
+                <a
+                  href="https://wa.me/917699988876"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-slate-900 text-white px-10 py-4 rounded-3xl font-black uppercase text-[10px] tracking-widest shadow-xl hover:bg-coral-red transition-all duration-500 flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <FaWhatsapp className="text-white text-lg" />
+                  WhatsApp Now
+                </a>
+
+                {/* Call */}
+                <a
+                  href="tel:+917699988876"
+                  className="bg-white border border-slate-200 text-slate-900 px-10 py-4 rounded-3xl font-black uppercase text-[10px] tracking-widest hover:border-coral-red hover:text-coral-red transition-all duration-500 flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <FaPhoneAlt className="text-slate-900 text-lg" />
+                  Call Now
+                </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:propertywalabhaiya@gmail.com"
+                  className="bg-white border border-slate-200 text-slate-900 px-10 py-4 rounded-3xl font-black uppercase text-[10px] tracking-widest hover:border-coral-red hover:text-coral-red transition-all duration-500 flex items-center justify-center gap-2 active:scale-95"
+                >
+                  <FaEnvelope className="text-slate-900 text-lg" />
+                  Email Us
+                </a>
               </div>
 
-              <p className="mt-4 text-[9px] text-center lg:text-left text-slate-400 font-bold uppercase tracking-widest ml-4">
+              <p className="mt-4 text-[9px] text-center lg:text-left text-slate-400 font-bold uppercase tracking-widest">
                 <span className="text-soft-orange">●</span> Property Wala Bhaiya
-                usually responds in 15 mins
+                usually responds within 15 minutes
               </p>
             </div>
           </div>
