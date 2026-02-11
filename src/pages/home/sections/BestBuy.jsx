@@ -72,8 +72,7 @@ export default function BestBuySection() {
                   className="w-full h-full object-cover"
                 />
 
-                {/* SOFT FADE */}
-                <div className="absolute inset-x-0 bottom-0 h-2 bg-linear-to-t from-white via-white/90 to-transparent" />
+                
               </div>
 
               {/* CONTENT */}

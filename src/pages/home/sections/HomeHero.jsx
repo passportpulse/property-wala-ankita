@@ -28,47 +28,36 @@ export default function HomeHero() {
     "Investment",
   ];
 
-  const sellOptions = [
-    "Flats",
-    "Plots",
-    "House/Duplex",
-    "Commercial Space",
-    "Factory",
-    "Industrial Plots",
-    "Ware House",
-    "Hospital",
-    "Hotels/Resort",
-    "Investment",
-  ];
+  const sellOptions = [...findOptions];
 
   const handleOptionClick = (option) => {
-    setSelected(option);
-    setIsOpen(false);
+    console.log("CTA clicked with option:", option);
+    const sectionId = option.toLowerCase().replace(/\s+|\/+/g, "-");
 
-    navigate(
-      mode === "find"
-        ? `/properties?type=${option.toLowerCase()}`
-        : `/sell?type=${option.toLowerCase()}`,
-    );
+    if (mode === "find") {
+      navigate(`/buy#${sectionId}`);
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    } else {
+      navigate(`/sell?type=${sectionId}`);
+    }
   };
 
   return (
     <section className="relative w-full min-h-[85vh] lg:min-h-screen flex items-center bg-white font-poppins">
       {/* Background Image */}
       <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full z-0">
-        {/* Desktop: subtle white fade from left */}
         <div className="absolute inset-0 bg-linear-to-r from-white via-white/60 to-transparent hidden lg:block z-10" />
-
-        {/* Mobile: stronger fade for readability */}
         <div className="absolute inset-0 bg-linear-to-b from-white via-white/95 to-white/40 lg:hidden z-10" />
-
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
           alt="Modern Real Estate"
           className="w-full h-full object-cover transition duration-700"
         />
-
-        {/* very soft brand tint */}
         <div className="absolute inset-0 bg-coral-red/5 mix-blend-multiply" />
       </div>
 
@@ -80,7 +69,9 @@ export default function HomeHero() {
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-7xl font-black leading-tight tracking-tighter text-dark-slate">
                 Property <br />
-                <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">Wala Bhaiya</span>
+                <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+                  Wala Bhaiya
+                </span>
               </h1>
 
               <h2 className="text-xl lg:text-2xl font-bold text-slate-800">
@@ -99,7 +90,7 @@ export default function HomeHero() {
               <div className="flex bg-white/80 lg:bg-slate-100 p-1 rounded-xl shadow mb-3">
                 <button
                   onClick={() => setMode("find")}
-                  className={`flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
+                  className={` cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
                     mode === "find"
                       ? "bg-slate-900 text-white"
                       : "text-slate-500 hover:text-dark-slate"
@@ -110,7 +101,7 @@ export default function HomeHero() {
 
                 <button
                   onClick={() => setMode("sell")}
-                  className={`flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
+                  className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
                     mode === "sell"
                       ? "bg-coral-red text-white"
                       : "text-slate-500 hover:text-dark-slate"
@@ -141,30 +132,42 @@ export default function HomeHero() {
                   </button>
 
                   {isOpen && (
-                    <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-2xl shadow-2xl py-3 z-9999 animate-in fade-in zoom-in-95">
-                      {(mode === "find" ? findOptions : sellOptions).map(
-                        (option) => (
-                          <button
-                            key={option}
-                            onClick={() => handleOptionClick(option)}
-                            className="w-full text-left px-6 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 hover:bg-slate-50 hover:text-coral-red"
-                          >
-                            {option}
-                          </button>
-                        ),
-                      )}
-                    </div>
+                    <>
+                      {/* Overlay */}
+                      <div
+                        className="fixed inset-0 z-30"
+                        onClick={() => setIsOpen(false)}
+                      />
+                      {/* Dropdown Options */}
+                      <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-2xl shadow-2xl py-3 z-40 animate-in fade-in zoom-in-95">
+                        {(mode === "find" ? findOptions : sellOptions).map(
+                          (option) => (
+                            <button
+                              key={option}
+                              onClick={() => {
+                                console.log("Dropdown option clicked:", option);
+                                setSelected(option); // update selected
+                                setIsOpen(false);
+                              }}
+                              className="w-full text-left px-6 py-3 text-[11px] font-black uppercase tracking-[0.2em] text-slate-500 hover:bg-slate-50 hover:text-coral-red"
+                            >
+                              {option}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    </>
                   )}
                 </div>
 
                 {/* CTA */}
                 <button
-                  onClick={() =>
-                    selected !== "What are you looking for?" &&
-                    handleOptionClick(selected)
-                  }
-                  className={`px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center gap-2 transition active:scale-95 ${
-                    mode === "find"
+                  onClick={() => handleOptionClick(selected)}
+                  disabled={selected === "What are you looking for?"}
+                  className={`cursor-pointer px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center gap-2 transition active:scale-95 ${
+                    selected === "What are you looking for?"
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : mode === "find"
                       ? "bg-slate-900 text-white hover:bg-coral-red"
                       : "bg-coral-red text-white hover:bg-slate-900"
                   }`}
@@ -173,13 +176,6 @@ export default function HomeHero() {
                   {mode === "find" ? "Find Property" : "Post Property"}
                 </button>
               </div>
-
-              {isOpen && (
-                <div
-                  className="fixed inset-0 z-40"
-                  onClick={() => setIsOpen(false)}
-                />
-              )}
             </div>
           </div>
 

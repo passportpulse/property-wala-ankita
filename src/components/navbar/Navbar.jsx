@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
 import { Sparkles } from "lucide-react";
-import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.png";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -25,37 +25,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo Section */}
-        <Link to="/" className="group flex items-center gap-3">
+        <Link to="/">
           {/* 1. The Logo */}
           <img
             src={logo}
             alt="Property Wala Bhaiya Logo"
-            className="h-10 w-auto object-contain"
+            className="h-16 w-auto object-contain"
           />
 
-          {/* 2. The Text Group */}
-          <div className="flex items-baseline gap-1 whitespace-nowrap">
-            <span
-              className={`text-lg lg:text-2xl font-black tracking-tighter transition-colors ${
-                scrolled ? "text-coral-red" : "text-white"
-              }`}
-            >
-              PROPERTY{" "}
-              <span
-                className={scrolled ? "text-soft-orange" : "text-warm-yellow"}
-              >
-                WALA
-              </span>
-            </span>
-
-            <span
-              className={`text-sm font-light ${
-                scrolled ? "text-slate-500" : "text-white/80"
-              }`}
-            >
-              Bhaiya
-            </span>
-          </div>
         </Link>
 
         {/* Desktop Navigation */}

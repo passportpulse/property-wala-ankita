@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ChevronRight, Maximize2, MapPin, ArrowRight } from "lucide-react";
 
 const deals = [
@@ -34,11 +34,18 @@ const deals = [
 export default function HotDeals() {
   const [active, setActive] = useState(0);
 
+  // Auto-animation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive(prev => (prev + 1) % deals.length);
+    }, 5000); // Change deal every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="pb-16 lg:pb-32 bg-white antialiased font-poppins">
       <div className="max-w-7xl mx-auto px-6">
-        
-        {/* The Card Component - Exactly your layout structure */}
         <div className="grid grid-cols-1 lg:grid-cols-12 bg-white shadow-[0_40px_100px_-20px_rgba(253,138,107,0.1)] rounded-[2.5rem] overflow-hidden border border-slate-100">
           
           {/* LEFT NAV: Editorial Index */}
@@ -91,7 +98,7 @@ export default function HotDeals() {
                 key={deals[active].image}
                 src={deals[active].image}
                 alt={deals[active].title}
-                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
               />
               
               {/* Elegant Info Overlay */}
