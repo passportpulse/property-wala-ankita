@@ -51,6 +51,17 @@ export default function HomeHero() {
     <section className="w-full mt-10 flex items-center justify-center bg-white font-poppins px-6">
       {/* Center Container */}
       <div className="max-w-3xl w-full text-center flex flex-col items-center justify-center">
+        {/* Heading */}
+        <div className="mb-8 mt-4">
+          <h1 className="text-md lg:text-lg font-black leading-tight tracking-wider text-dark-slate uppercase">
+            One Way Solution
+            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent tracking-wider">
+              {" "}
+              Listings to Living
+            </span>
+          </h1>
+        </div>
+
         {/* Search Card */}
         <div className="w-full max-w-xl relative z-50">
           {/* Mode Toggle */}
@@ -151,20 +162,6 @@ export default function HomeHero() {
               {mode === "find" ? "Find Property" : "Post Property"}
             </button>
           </div>
-        </div>
-        {/* Heading */}
-        <div className="mb-8 mt-4">
-          <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
-            One Way Solution <br />
-            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-              Listings to Living
-            </span>
-          </h1>
-
-          <p className="text-slate-600 text-lg max-w-xl mx-auto">
-            Buy, sell & rent luxury homes, premium lands and commercial spaces
-            with complete transparency.
-          </p>
         </div>
       </div>
     </section>
