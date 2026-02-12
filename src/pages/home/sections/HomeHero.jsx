@@ -29,7 +29,7 @@ export default function HomeHero() {
     "Investment",
   ];
 
-  const sellOptions = [...findOptions];
+  const rentOptions = [...findOptions];
 
   const handleOptionClick = (option) => {
     const sectionId = option.toLowerCase().replace(/\s+|\/+/g, "-");
@@ -49,7 +49,6 @@ export default function HomeHero() {
 
   return (
     <section className="w-full mt-10 flex items-center justify-center bg-white font-poppins px-6">
-      {/* Center Container */}
       <div className="max-w-3xl w-full text-center flex flex-col items-center justify-center">
         {/* Heading */}
         <div className="mb-8 mt-4">
@@ -64,11 +63,11 @@ export default function HomeHero() {
 
         {/* Search Card */}
         <div className="w-full max-w-xl relative z-50">
-          {/* Mode Toggle */}
+          {/* Toggle */}
           <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
             <button
               onClick={() => setMode("find")}
-              className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
+              className={`flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
                 mode === "find"
                   ? "bg-slate-900 text-white"
                   : "text-slate-500 hover:text-dark-slate"
@@ -78,9 +77,9 @@ export default function HomeHero() {
             </button>
 
             <button
-              onClick={() => setMode("sell")}
-              className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
-                mode === "sell"
+              onClick={() => setMode("rent")}
+              className={`flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
+                mode === "rent"
                   ? "bg-coral-red text-white"
                   : "text-slate-500 hover:text-dark-slate"
               }`}
@@ -89,9 +88,9 @@ export default function HomeHero() {
             </button>
           </div>
 
-          {/* Dropdown + CTA */}
+          {/* Dropdown */}
           <div className="flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-            {/* Dropdown */}
+            {/* Dropdown Button */}
             <div className="relative flex-1">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -117,7 +116,7 @@ export default function HomeHero() {
                   />
 
                   <div className="absolute top-full left-0 mt-2 w-full bg-white rounded-2xl shadow-2xl py-3 z-40">
-                    {(mode === "find" ? findOptions : sellOptions).map(
+                    {(mode === "find" ? findOptions : rentOptions).map(
                       (option) => (
                         <button
                           key={option}
@@ -140,7 +139,7 @@ export default function HomeHero() {
             <button
               onClick={() => handleOptionClick(selected)}
               disabled={selected === "What are you looking for?"}
-              className={`cursor-pointer px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 ${
+              className={`px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 ${
                 selected === "What are you looking for?"
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : mode === "find"
@@ -149,29 +148,52 @@ export default function HomeHero() {
               }`}
             >
               <Search size={16} />
-              {mode === "find" ? "Find Property" : "Find Property"}
+              Find Property
             </button>
           </div>
-          {/* STATIC SELL CTA */}
-          <div className="mt-4 flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-            {/* Static Text */}
-            <div className="flex-1 flex items-center px-6 py-4">
-              <span className="text-sm font-bold uppercase tracking-wider text-dark-slate">
-                Find Your Property{" "}
-                <span className="text-coral-red text-lg font-extrabold tracking-wider">
-                  FREE
+
+          {/* SELL CTA RESPONSIVE */}
+          <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+            {/* Desktop */}
+            <div className="hidden sm:flex">
+              <div className="flex-1 flex items-center px-6 py-4">
+                <span className="text-sm font-bold uppercase tracking-wider text-dark-slate">
+                  Find Your Property{" "}
+                  <span className="text-coral-red text-lg font-extrabold tracking-wider">
+                    FREE
+                  </span>
                 </span>
-              </span>
+              </div>
+
+              <button
+                onClick={() => navigate("/sell")}
+                className="px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 bg-coral-red text-white hover:bg-slate-900 transition"
+              >
+                <Search size={16} />
+                Sell Property
+              </button>
             </div>
 
-            {/* CTA Button */}
-            <button
-              onClick={() => navigate("/sell")}
-              className="cursor-pointer px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 bg-coral-red text-white hover:bg-slate-900"
-            >
-              <Search size={16} />
-              Post Property
-            </button>
+            {/* Mobile Split Button */}
+            <div className="flex sm:hidden w-full">
+              <button
+                onClick={() => navigate("/sell")}
+                className="w-1/3 py-4 rounded-l-xl font-black uppercase tracking-widest text-[10px] bg-slate-200 text-coral-red flex items-center justify-center"
+              >
+                Sell
+              </button>
+
+              {/* Post Property Free button */}
+              <button
+                onClick={() => navigate("/sell")}
+                className="w-2/3 py-4 rounded-r-xl font-black uppercase tracking-widest text-[10px]
+        bg-linear-to-r from-coral-red via-soft-orange to-peach-glow
+        text-white flex items-center justify-center gap-2"
+              >
+                <span>Post Your Property Free</span>
+                <Search size={16} strokeWidth={2.5} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
