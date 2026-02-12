@@ -62,7 +62,7 @@ export default function HomeHero() {
         </div>
 
         {/* Search Card */}
-        <div className="w-full max-w-xl relative z-50">
+        <div className="w-full max-w-xl relative z-10">
 
           {/* Toggle */}
           <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
