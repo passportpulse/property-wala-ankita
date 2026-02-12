@@ -29,7 +29,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Property Wala Bhaiya Logo"
-            className={`h-12 w-auto object-contain transition-all duration-300 ${
+            className={`h-10 w-auto object-contain transition-all duration-300 ${
               scrolled 
                 ? "filter brightness-0" 
                 : "filter brightness-100"
