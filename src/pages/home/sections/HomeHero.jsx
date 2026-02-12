@@ -51,14 +51,14 @@ export default function HomeHero() {
     <section className="relative w-full min-h-[85vh] lg:min-h-screen flex items-center bg-white font-poppins">
       {/* Background Image */}
       <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full z-0">
-        <div className="absolute inset-0 bg-linear-to-r from-white via-white/5 to-transparent hidden lg:block z-10" />
+        {/* <div className="absolute inset-0 bg-linear-to-r from-white via-white/5 to-transparent hidden lg:block z-10" />
         <div className="absolute inset-0 bg-linear-to-b from-white via-white/5 to-white/10 lg:hidden z-10" />
         <img
           src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
           alt="Modern Real Estate"
           className="w-full h-full object-cover transition duration-700"
         />
-        <div className="absolute inset-0 bg-coral-red/5 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-coral-red/5 mix-blend-multiply" /> */}
       </div>
 
       {/* Content */}
@@ -68,7 +68,7 @@ export default function HomeHero() {
           <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 py-12 lg:py-0">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
-                One Way Solution From <br />
+                One Way Solution <br />
                 <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                   Listings to Living
                 </span>
