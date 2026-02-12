@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ChevronDown, Search } from "lucide-react";
 
 const categories = [
   {
@@ -122,9 +123,8 @@ export default function Categories() {
               Browse by Intent
             </span>
             <h2 className="text-3xl lg:text-5xl font-black text-dark-slate tracking-tight">
-              What are you{" "}
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                looking for ?
+                Best Deals
               </span>
             </h2>
           </div>
@@ -144,7 +144,6 @@ export default function Categories() {
             </button>
           </div>
         </div>
-
         {/* SCROLLABLE ROW */}
         <div
           ref={scrollRef}

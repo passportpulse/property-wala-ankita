@@ -85,16 +85,6 @@ export default function HomeHero() {
                   : "text-slate-500 hover:text-dark-slate"
               }`}
             >
-              Sell
-            </button>
-            <button
-              onClick={() => setMode("sell")}
-              className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
-                mode === "sell"
-                  ? "bg-coral-red text-white"
-                  : "text-slate-500 hover:text-dark-slate"
-              }`}
-            >
               Rent
             </button>
           </div>
@@ -160,6 +150,27 @@ export default function HomeHero() {
             >
               <Search size={16} />
               {mode === "find" ? "Find Property" : "Post Property"}
+            </button>
+          </div>
+          {/* STATIC SELL CTA */}
+          <div className="mt-4 flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+            {/* Static Text */}
+            <div className="flex-1 flex items-center px-6 py-4">
+              <span className="text-sm font-bold uppercase tracking-wider text-dark-slate">
+                Post Your Property <span className="text-coral-red text-lg font-extrabold tracking-wider">
+  FREE
+</span>
+
+              </span>
+            </div>
+
+            {/* CTA Button */}
+            <button
+              onClick={() => navigate("/sell")}
+              className="cursor-pointer px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 bg-coral-red text-white hover:bg-slate-900"
+            >
+              <Search size={16} />
+              Post Property
             </button>
           </div>
         </div>
