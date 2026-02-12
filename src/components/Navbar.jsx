@@ -3,6 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { navigationLinks } from "../constants/navigation";
 import { Sparkles } from "lucide-react";
 import logo from "../assets/logo.png";
+import Container from "./layout/Container";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -23,16 +24,14 @@ export default function Navbar() {
           : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <Container className="flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/">
           <img
             src={logo}
             alt="Property Wala Bhaiya Logo"
-            className={`h-10 w-auto object-contain transition-all duration-300 ${
-              scrolled 
-                ? "filter brightness-0" 
-                : "filter brightness-100"
+            className={`h-16 w-auto object-contain transition-all duration-300 ${
+              scrolled ? "filter brightness-0" : "filter brightness-100"
             }`}
           />
         </Link>
@@ -71,7 +70,9 @@ export default function Navbar() {
               />
               <span className="flex items-center gap-1.5">
                 Join us as a{" "}
-                <span className={`underline underline-offset-4 decoration-2 ${scrolled ? "decoration-warm-yellow" : "decoration-soft-orange"}`}>
+                <span
+                  className={`underline underline-offset-4 decoration-2 ${scrolled ? "decoration-warm-yellow" : "decoration-soft-orange"}`}
+                >
                   Property Wala Bhaiya
                 </span>{" "}
               </span>
@@ -84,21 +85,29 @@ export default function Navbar() {
             className={`lg:hidden p-2 rounded-md transition-colors ${scrolled ? "text-slate-800" : "text-white"}`}
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
-              <span className={`h-0.5 w-full bg-current transition-all duration-300 ${open ? "opacity-0" : ""}`} />
-              <span className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
+              <span
+                className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-full bg-current transition-all duration-300 ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`h-0.5 w-full bg-current transform transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}
+              />
             </div>
           </button>
         </div>
-      </div>
+      </Container>
 
       {/* Mobile Menu Overlay */}
       <div
         className={`lg:hidden absolute w-full transition-all duration-500 ease-in-out border-b border-slate-100 ${
-          open ? "max-h-screen opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-4 overflow-hidden"
+          open
+            ? "max-h-screen opacity-100 translate-y-0"
+            : "max-h-0 opacity-0 -translate-y-4 overflow-hidden"
         }`}
       >
-        <div className="bg-white p-6 space-y-4 shadow-2xl">
+        <Container className="bg-white shadow-2xl py-6 space-y-4">
           {navigationLinks.map((link) => (
             <NavLink
               key={link.id}
@@ -120,7 +129,7 @@ export default function Navbar() {
             <Sparkles size={16} className="text-warm-yellow" />
             Join Us As Property Wala Bhaiya
           </Link>
-        </div>
+        </Container>
       </div>
     </header>
   );

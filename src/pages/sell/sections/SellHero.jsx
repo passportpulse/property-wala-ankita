@@ -1,9 +1,8 @@
 import { CheckCircle2 } from "lucide-react";
-import SectionContainer from "../../../components/SectionContainer";
 
 export default function SellHero({ setIsModalOpen }) {
   return (
-    <SectionContainer className="pt-32 pb-24 px-6">
+    <Section className="pt-32 pb-24 px-6">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
         <div className="text-center lg:text-left space-y-6">
           <p className="text-coral-red font-black text-[10px] uppercase tracking-[0.4em]">
@@ -52,6 +51,6 @@ export default function SellHero({ setIsModalOpen }) {
           </div>
         </div>
       </div>
-    </SectionContainer>
+    </Section>
   );
 }

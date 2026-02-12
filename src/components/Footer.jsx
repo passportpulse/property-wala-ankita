@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { navigationLinks } from "../constants/navigation";
+import Container from "./layout/Container";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-50 text-slate-600 mt-20 font-poppins border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <footer className="bg-slate-50 text-slate-600 font-poppins border-t border-slate-200">
+      <Container className="py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {/* Brand & Designation Column */}
           <div className="space-y-4">
             <Link to="/" className="flex flex-col">
@@ -142,11 +143,11 @@ export default function Footer() {
             </button>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Bottom Bar */}
       <div className="bg-white py-8 border-t border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+        <Container className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-xs font-medium text-slate-400">
             © {currentYear}{" "}
             <span className="text-slate-900 font-bold">
@@ -155,7 +156,7 @@ export default function Footer() {
             . All Rights Reserved.
           </p>
           <div className="flex gap-6">
-            {["facebook", "instagram", "linkedin"].map((social) => (
+            {["facebook", "instagram"].map((social) => (
               <span
                 key={social}
                 className="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-coral-red cursor-pointer transition-colors"
@@ -164,7 +165,7 @@ export default function Footer() {
               </span>
             ))}
           </div>
-        </div>
+        </Container>
       </div>
     </footer>
   );
