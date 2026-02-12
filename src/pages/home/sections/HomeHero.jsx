@@ -48,32 +48,13 @@ export default function HomeHero() {
   };
 
   return (
-    <section className="w-full min-h-[calc(100vh-80px)] flex items-center justify-center bg-white font-poppins px-6">
-      
+    <section className="w-full mt-10 flex items-center justify-center bg-white font-poppins px-6">
       {/* Center Container */}
       <div className="max-w-3xl w-full text-center flex flex-col items-center justify-center">
-        
-        {/* Heading */}
-        <div className="space-y-4 mb-8">
-          <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
-            One Way Solution <br />
-            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-              Listings to Living
-            </span>
-          </h1>
-
-          <p className="text-slate-600 text-lg max-w-xl mx-auto">
-            Buy, sell & rent luxury homes, premium lands and commercial
-            spaces with complete transparency.
-          </p>
-        </div>
-
         {/* Search Card */}
         <div className="w-full max-w-xl relative z-50">
-          
           {/* Mode Toggle */}
           <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
-            
             <button
               onClick={() => setMode("find")}
               className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
@@ -82,7 +63,7 @@ export default function HomeHero() {
                   : "text-slate-500 hover:text-dark-slate"
               }`}
             >
-              Find Property
+              Buy
             </button>
 
             <button
@@ -93,17 +74,24 @@ export default function HomeHero() {
                   : "text-slate-500 hover:text-dark-slate"
               }`}
             >
-              Sell Property
+              Sell
             </button>
-
+            <button
+              onClick={() => setMode("sell")}
+              className={`cursor-pointer flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
+                mode === "sell"
+                  ? "bg-coral-red text-white"
+                  : "text-slate-500 hover:text-dark-slate"
+              }`}
+            >
+              Rent
+            </button>
           </div>
 
           {/* Dropdown + CTA */}
           <div className="flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-
             {/* Dropdown */}
             <div className="relative flex-1">
-              
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="w-full flex items-center justify-between px-6 py-4"
@@ -122,7 +110,6 @@ export default function HomeHero() {
 
               {isOpen && (
                 <>
-                  
                   <div
                     className="fixed inset-0 z-30"
                     onClick={() => setIsOpen(false)}
@@ -141,10 +128,9 @@ export default function HomeHero() {
                         >
                           {option}
                         </button>
-                      )
+                      ),
                     )}
                   </div>
-
                 </>
               )}
             </div>
@@ -157,20 +143,30 @@ export default function HomeHero() {
                 selected === "What are you looking for?"
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                   : mode === "find"
-                  ? "bg-slate-900 text-white hover:bg-coral-red"
-                  : "bg-coral-red text-white hover:bg-slate-900"
+                    ? "bg-slate-900 text-white hover:bg-coral-red"
+                    : "bg-coral-red text-white hover:bg-slate-900"
               }`}
             >
               <Search size={16} />
               {mode === "find" ? "Find Property" : "Post Property"}
             </button>
-
           </div>
-
         </div>
+        {/* Heading */}
+        <div className="mb-8 mt-4">
+          <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
+            One Way Solution <br />
+            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+              Listings to Living
+            </span>
+          </h1>
 
+          <p className="text-slate-600 text-lg max-w-xl mx-auto">
+            Buy, sell & rent luxury homes, premium lands and commercial spaces
+            with complete transparency.
+          </p>
+        </div>
       </div>
-
     </section>
   );
 }
