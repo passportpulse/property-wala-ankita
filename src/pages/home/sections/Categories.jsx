@@ -163,11 +163,7 @@ export default function Categories() {
                 src={item.image}
                 alt={item.name}
                 className="
-                  absolute inset-0 w-full h-full object-cover
-                  opacity-75 brightness-[0.95]
-                  group-hover:opacity-90
-                  transition-all duration-500
-                "
+                  absolute inset-0 w-full h-full object-cover"
               />
 
               {/* CONTENT */}

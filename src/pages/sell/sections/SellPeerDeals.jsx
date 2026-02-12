@@ -18,7 +18,7 @@ export default function SellPeerDeals() {
   ];
 
   return (
-    <Section className="py-24 px-6 bg-linear-to-b from-slate-50 to-white">
+    <section className="py-24 px-6 bg-linear-to-b from-slate-50 to-white">
       <div className=" bg-white rounded-3xl overflow-hidden flex flex-col lg:flex-row shadow-xl border border-slate-100">
         <div className="lg:w-1/2 relative min-h-105">
           <img
@@ -66,6 +66,6 @@ export default function SellPeerDeals() {
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 }
