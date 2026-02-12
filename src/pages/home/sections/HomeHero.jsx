@@ -43,7 +43,7 @@ export default function HomeHero() {
         }
       }, 100);
     } else {
-      navigate(`/sell?type=${sectionId}`);
+      navigate(`/rent`);
     }
   };
 
@@ -149,7 +149,7 @@ export default function HomeHero() {
               }`}
             >
               <Search size={16} />
-              {mode === "find" ? "Find Property" : "Post Property"}
+              {mode === "find" ? "Find Property" : "Find Property"}
             </button>
           </div>
           {/* STATIC SELL CTA */}
@@ -157,10 +157,10 @@ export default function HomeHero() {
             {/* Static Text */}
             <div className="flex-1 flex items-center px-6 py-4">
               <span className="text-sm font-bold uppercase tracking-wider text-dark-slate">
-                Post Your Property <span className="text-coral-red text-lg font-extrabold tracking-wider">
-  FREE
-</span>
-
+                Find Your Property{" "}
+                <span className="text-coral-red text-lg font-extrabold tracking-wider">
+                  FREE
+                </span>
               </span>
             </div>
 
