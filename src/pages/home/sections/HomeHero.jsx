@@ -67,11 +67,12 @@ export default function HomeHero() {
           {/* Text */}
           <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 py-12 lg:py-0">
             <div className="space-y-4">
-
-              <h2 className="text-xl lg:text-2xl font-bold text-slate-800">
-                One way solution from listing to living
-              </h2>
-
+              <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
+                One way solution from  <br />
+                <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+                  listing to living
+                </span>
+              </h1>
               <p className="text-slate-600 max-w-md text-lg">
                 Buy, sell & rent luxury homes, premium lands and commercial
                 spaces with complete transparency.
