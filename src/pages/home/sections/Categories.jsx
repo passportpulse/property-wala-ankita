@@ -114,7 +114,7 @@ export default function Categories() {
   };
 
   return (
-    <section className="pb-16 lg:pb-32 lg:pt-10 bg-white font-poppins">
+    <section className="pb-16 lg:pb-32 pt-6 lg:pt-10 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
         <div className="flex items-center justify-between mb-10">
