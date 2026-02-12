@@ -68,9 +68,9 @@ export default function HomeHero() {
           <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000 py-12 lg:py-0">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-5xl font-black leading-tight tracking-tighter text-dark-slate">
-                One way solution from  <br />
+                One Way Solution From <br />
                 <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                  listing to living
+                  Listings to Living
                 </span>
               </h1>
               <p className="text-slate-600 max-w-md text-lg">
