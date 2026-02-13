@@ -31,7 +31,7 @@ export default function HomeHero() {
     { name: "Plots", icon: Map },
     { name: "Joint Ventures", icon: Handshake },
     { name: "House/Duplex", icon: Home },
-    { name: "Commercial Space", icon: Briefcase },
+    { name: "Office/Retail", icon: Briefcase },
     { name: "Factory", icon: Factory },
     { name: "Industrial Plots", icon: Map },
     { name: "Ware House", icon: Warehouse },
@@ -134,7 +134,7 @@ export default function HomeHero() {
                       handleOptionClick(item.name);
                     }}
                     className={`
-    min-w-[200px]
+    min-w-[160px]
     h-[85px]
 
     rounded-xl
