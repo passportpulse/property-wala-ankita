@@ -56,13 +56,13 @@ export default function HomeHero() {
   };
 
   return (
-    <Section size="default" className="bg-white font-poppins">
+    <Section size="small" className="bg-white font-poppins">
       <Container>
         <div className="text-center flex flex-col items-center justify-center">
           {/* Heading */}
           <div className="mb-2 mt-2 overflow-hidden">
-            <div className="whitespace-nowrap animate-marquee">
-              <h1 className="inline-block text-md lg:text-lg font-black tracking-wider uppercase">
+            <div className="whitespace-nowrap">
+              <h1 className="inline-block text-xs lg:text-sm font-black uppercase">
                 <span className="text-lime-700">One Stop Solution</span>
 
                 <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
@@ -119,9 +119,9 @@ export default function HomeHero() {
             </div>
 
             {/* Dropdown + Button */}
-            <div className="flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-              {/* Dropdown */}
-              <div className="relative flex-1">
+            {/* <div className="flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl"> */}
+              
+              {/* <div className="relative flex-1">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   className="w-full flex items-center justify-between px-6 py-4"
@@ -163,10 +163,10 @@ export default function HomeHero() {
                     </div>
                   </>
                 )}
-              </div>
+              </div> */}
 
               {/* Find Button */}
-              <button
+              {/* <button
                 onClick={() => handleOptionClick(selected)}
                 disabled={selected === "What are you looking for?"}
                 className={`px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 ${
@@ -177,8 +177,8 @@ export default function HomeHero() {
               >
                 <Search size={16} />
                 Find Property
-              </button>
-            </div>
+              </button> */}
+            {/* </div> */}
 
             {/* Sell Section */}
             <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
