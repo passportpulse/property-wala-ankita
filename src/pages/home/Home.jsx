@@ -9,7 +9,6 @@ import SellYourProperty from "./sections/SellYourProperty";
 import BestBuy from "./sections/BestBuy";
 import JoinUs from "../joinus/JoinUs";
 import HomeFilter from "./sections/HomeFilter";
-import ScheduleVisit from "../../components/ScheduleVisit";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
       <Trust />
       <ServiceHub />
       <JoinUs/>
-      <ScheduleVisit/>
       <ContactCTA />
     </>
   );
