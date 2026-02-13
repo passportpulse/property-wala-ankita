@@ -92,14 +92,14 @@ export default function HomeHero() {
     <Section size="small" className="bg-white font-poppins">
       <Container>
         <div className="text-center flex flex-col items-center">
-
           {/* HEADING */}
           <div className="mb-3 mt-2">
             <h1 className="text-xs lg:text-sm font-black uppercase">
               <span className="text-lime-700">One Stop Solution</span>
 
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                {" "}Listings to Aesthetic Living
+                {" "}
+                Listings to Aesthetic Living
               </span>
             </h1>
           </div>
@@ -134,45 +134,63 @@ export default function HomeHero() {
                       handleOptionClick(item.name);
                     }}
                     className={`
-                      min-w-[170px]
-                      h-[80px]
+    min-w-[170px]
+    h-[85px]
 
-                      bg-coral-red
-                      text-orange-50
+    rounded-xl
 
-                      text-[10px]
-                      font-black
-                      uppercase
-                      tracking-widest
+    bg-linear-to-br from-sky-700 via-sky-600 to-sky-700
+    text-white
 
-                      shadow-md
+    hover:from-sky-600 hover:via-sky-500 hover:to-sky-600
 
-                      hover:bg-orange-600
-                      hover:scale-105
+    text-sm
+    font-black
+    uppercase
+    tracking-widest
 
-                      active:scale-95
+    shadow-md
+    hover:shadow-xl
 
-                      transition-all duration-300
+    hover:-translate-y-0.5
+    hover:scale-[1.03]
 
-                      flex-shrink-0
+    active:scale-95
 
-                      flex flex-col
-                      items-center
-                      justify-center
-                      gap-2
+    transition-all duration-300 ease-out
 
-                      ${
-                        selected === item.name
-                          ? "bg-orange-600 scale-105"
-                          : ""
-                      }
-                    `}
+    flex-shrink-0
+    flex flex-col
+    items-center
+    justify-center
+    gap-2
+
+    border border-sky-400
+
+    ${
+      selected === item.name
+        ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
+        : ""
+    }
+  `}
                   >
                     {/* ICON */}
-                    <Icon size={22} strokeWidth={2.5} />
+                    <Icon
+                      size={24}
+                      strokeWidth={2.2}
+                      className={`${
+                        selected === item.name ? "text-white" : "text-sky-100"
+                      }`}
+                    />
 
                     {/* TEXT */}
-                    <span>{item.name}</span>
+                    <span
+                      className={`${
+                        selected === item.name ? "text-white" : "text-sky-50"
+                      }`}
+                    >
+                      {item.name}
+                    </span>
                   </button>
                 );
               })}
@@ -181,10 +199,8 @@ export default function HomeHero() {
 
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
-
             {/* TOGGLE */}
             <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
-
               <button
                 onClick={() => setMode("find")}
                 className={`
@@ -218,14 +234,11 @@ export default function HomeHero() {
               >
                 Rent
               </button>
-
             </div>
 
             {/* SELL */}
             <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-
               <div className="flex w-full">
-
                 <button
                   onClick={() => navigate("/sell")}
                   className="
@@ -258,17 +271,11 @@ export default function HomeHero() {
                   "
                 >
                   Post Your Property Free
-
                   <Search size={16} strokeWidth={2.5} />
-
                 </button>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
       </Container>
     </Section>
