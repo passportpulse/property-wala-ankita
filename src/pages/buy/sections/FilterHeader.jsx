@@ -46,7 +46,7 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
   };
 
   return (
-    <Section className="sticky top-4 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4">
+    <Section className="sticky top-20 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4">
       <Container>
 
         {/* Header */}

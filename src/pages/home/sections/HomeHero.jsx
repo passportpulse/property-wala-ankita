@@ -53,7 +53,7 @@ export default function HomeHero() {
 
         {/* Heading */}
         <div className="mb-8 mt-4">
-          <h1 className="text-md lg:text-lg font-black leading-tight tracking-wider text-dark-slate uppercase">
+          <h1 className="text-md lg:text-lg font-black text-lime-700 leading-tight tracking-wider text-dark-slate uppercase">
             One Way Solution
             <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent tracking-wider">
               {" "}Listings to Living
@@ -70,7 +70,7 @@ export default function HomeHero() {
               onClick={() => setMode("find")}
               className={`flex-1 py-3 rounded-lg text-[11px] font-black uppercase tracking-widest transition ${
                 mode === "find"
-                  ? "bg-slate-900 text-white"
+                  ? "bg-lime-700 text-white"
                   : "text-slate-500 hover:text-dark-slate"
               }`}
             >
@@ -144,7 +144,7 @@ export default function HomeHero() {
               className={`px-8 py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 transition active:scale-95 ${
                 selected === "What are you looking for?"
                   ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : "bg-slate-900 text-white hover:bg-coral-red"
+                  : "bg-lime-400 text-white hover:bg-coral-red"
               }`}
             >
               <Search size={16} />
