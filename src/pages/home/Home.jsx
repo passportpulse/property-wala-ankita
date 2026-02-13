@@ -8,11 +8,13 @@ import ContactCTA from "./sections/ContactCTA";
 import SellYourProperty from "./sections/SellYourProperty";
 import BestBuy from "./sections/BestBuy";
 import JoinUs from "../joinus/JoinUs";
+import HomeFilter from "./sections/HomeFilter";
 
 export default function Home() {
   return (
     <>
       <HomeHero />
+      <HomeFilter/>
       <Categories />
       <SellYourProperty/>
       <FeaturedProperties />

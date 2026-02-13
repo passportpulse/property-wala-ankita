@@ -6,7 +6,7 @@ export default function Section({
 }) {
   const sizes = {
     small: "py-2 lg:py-14",
-    default: "py-14 lg:py-20",
+    default: "py-8 lg:py-20",
     large: "py-28 lg:py-32",
   };
 
