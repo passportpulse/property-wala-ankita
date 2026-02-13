@@ -40,3 +40,16 @@
   min-width: 100%;
   animation: marquee 12s linear infinite;
 }
+@keyframes marquee-horizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-horizontal {
+  animation: marquee-horizontal 25s linear infinite;
+  width: max-content;
+}
