@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
+import { Phone, Mail, MessageSquare } from "lucide-react";
 import Container from "../../components/layout/Container";
 import Section from "../../components/layout/Section";
 
@@ -9,47 +9,66 @@ const Contact = () => {
       className="min-h-screen bg-slate-50 font-poppins text-slate-800 overflow-hidden"
     >
       <Container>
+
         {/* Header */}
         <div className="mb-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
           <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
             Get in Touch
           </span>
+
           <h1 className="text-lg lg:text-4xl font-bold mt-2 max-w-2xl mx-auto">
-            Connect with Property Wala Bhaiya 
+            Connect with Property Wala Bhaiya
           </h1>
+
           <p className="text-sm text-slate-500 mt-2">
-            Professional property consultation built on trust. Click any option
-            to reach out directly.
+            Professional property consultation built on trust.
           </p>
         </div>
 
+
+        {/* Main Grid */}
         <div className="grid lg:grid-cols-12 gap-10 items-stretch">
-          {/* Image Section */}
+
+          {/* LIVE GOOGLE MAP */}
           <div className="lg:col-span-5 animate-in fade-in slide-in-from-left-6 duration-700">
-            <div className="relative h-full min-h-80 rounded-2xl overflow-hidden shadow-lg">
-              <img
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80"
-                alt="Office"
-                className="w-full h-full object-cover"
+            
+            <div className="relative h-full min-h-[320px] rounded-2xl overflow-hidden shadow-lg">
+
+              <iframe
+                src="https://www.google.com/maps?q=23.5540771,87.3197634&z=17&output=embed"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                title="Property Wala Bhaiya Location"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
-              <div className="absolute bottom-5 left-5 text-white">
+
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-900/40 via-transparent to-transparent" />
+
+              {/* Label */}
+              <div className="absolute bottom-5 left-5 text-white pointer-events-none">
                 <p className="text-[11px] uppercase tracking-widest opacity-80">
                   Office Location
                 </p>
-                <p className="font-medium">Durgapur, West Bengal</p>
+                <p className="font-medium">
+                  Property Wala Bhaiya, Durgapur
+                </p>
               </div>
+
             </div>
+
           </div>
 
-          {/* Contact Info Section */}
+
+          {/* Contact Cards */}
           <div className="lg:col-span-7 bg-white border border-slate-100 rounded-2xl py-10 px-6 animate-in fade-in slide-in-from-right-6 duration-700 delay-100">
+
             <p className="mb-6 text-slate-600">
-              We’re available through call, WhatsApp, or email. Click on any
-              option to reach out directly.
+              We’re available through call, WhatsApp, or email.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
               <ContactCard
                 icon={<Phone size={24} />}
                 label="Call Us"
@@ -76,29 +95,44 @@ const Contact = () => {
                 bgColor="bg-blue-100"
                 textColor="text-blue-600"
               />
+
             </div>
+
           </div>
+
         </div>
+
       </Container>
     </Section>
   );
 };
 
-/* ----------------- Contact Card ----------------- */
-const ContactCard = ({ icon, label, value, link, bgColor, textColor }) => (
+
+
+/* Contact Card */
+const ContactCard = ({
+  icon,
+  label,
+  value,
+  link,
+  bgColor,
+  textColor,
+}) => (
   <a
     href={link}
     target="_blank"
     rel="noopener noreferrer"
-    className="flex flex-col items-center justify-center gap-2 p-4 rounded-2xl border border-slate-100 hover:shadow-lg transition bg-white hover:bg-opacity-100"
+    className="flex flex-col items-center justify-center gap-2 p-5 rounded-2xl border border-slate-100 hover:shadow-lg transition bg-white"
   >
-    <div
-      className={`p-4 rounded-full ${bgColor} flex items-center justify-center`}
-    >
+    <div className={`p-4 rounded-full ${bgColor}`}>
       {icon}
     </div>
-    <span className={`font-bold text-sm ${textColor}`}>{label}</span>
-    <span className="text-xs text-slate-500 text-center wrap-break-words">
+
+    <span className={`font-bold text-sm ${textColor}`}>
+      {label}
+    </span>
+
+    <span className="text-xs text-slate-500 text-center break-words">
       {value}
     </span>
   </a>
