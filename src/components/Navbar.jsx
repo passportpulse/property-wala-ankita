@@ -69,7 +69,7 @@ export default function Navbar() {
                 className={scrolled ? "text-warm-yellow" : "text-coral-red"}
               />
               <span className="flex items-center gap-1.5">
-                Join us
+                Join Our Network
               </span>
             </div>
           </Link>
@@ -122,7 +122,7 @@ export default function Navbar() {
             className="flex items-center justify-center gap-3 w-full bg-linear-to-r from-coral-red to-soft-orange text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
           >
             <Sparkles size={16} className="text-warm-yellow" />
-            Join Us
+            Join Our Network
           </Link>
         </Container>
       </div>
