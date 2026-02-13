@@ -26,20 +26,6 @@
     scrollbar-width: none;
   }
 }
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.animate-marquee {
-  display: inline-block;
-  min-width: 100%;
-  animation: marquee 12s linear infinite;
-}
 @keyframes marquee-horizontal {
   0% {
     transform: translateX(0%);
@@ -50,6 +36,16 @@
 }
 
 .animate-marquee-horizontal {
-  animation: marquee-horizontal 25s linear infinite;
+  animation: marquee-horizontal 30s linear infinite;
   width: max-content;
+}
+
+/* Hide scrollbar but allow manual scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
