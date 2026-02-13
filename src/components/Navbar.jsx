@@ -69,12 +69,7 @@ export default function Navbar() {
                 className={scrolled ? "text-warm-yellow" : "text-coral-red"}
               />
               <span className="flex items-center gap-1.5">
-                Join us as a{" "}
-                <span
-                  className={`underline underline-offset-4 decoration-2 ${scrolled ? "decoration-warm-yellow" : "decoration-soft-orange"}`}
-                >
-                  Property Wala Bhaiya
-                </span>{" "}
+                Join us
               </span>
             </div>
           </Link>
@@ -127,7 +122,7 @@ export default function Navbar() {
             className="flex items-center justify-center gap-3 w-full bg-linear-to-r from-coral-red to-soft-orange text-white py-4 rounded-xl font-black text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-transform"
           >
             <Sparkles size={16} className="text-warm-yellow" />
-            Join Us As Property Wala Bhaiya
+            Join Us
           </Link>
         </Container>
       </div>
