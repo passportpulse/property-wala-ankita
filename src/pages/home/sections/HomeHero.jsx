@@ -19,6 +19,7 @@ export default function HomeHero() {
   const findOptions = [
     "Flats",
     "Plots",
+    "Joint Ventures",
     "House/Duplex",
     "Commercial Space",
     "Factory",
