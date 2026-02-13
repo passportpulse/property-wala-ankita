@@ -25,7 +25,7 @@ const categories = [
       "https://i.pinimg.com/1200x/ff/8e/ae/ff8eaee8da94da4342c043ab97ae32ad.jpg",
   },
   {
-    name: "Commercial Space",
+    name: "Office/Retail",
     count: "10+ Spaces",
     tag: "Business Ready",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c",
@@ -61,6 +61,12 @@ const categories = [
     image:
       "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=",
   },
+  {
+  name: "Petrol Pump",
+  count: "15+ Deals",
+  tag: "High ROI",
+  image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/WaynePump-sm.jpg",
+},
   {
     name: "Investment",
     count: "20+ Deals",
@@ -130,7 +136,7 @@ export default function Categories() {
 
             <h2 className="text-3xl lg:text-5xl font-black text-dark-slate tracking-tight">
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                Best Deals
+                Our Best Deals
               </span>
             </h2>
           </div>

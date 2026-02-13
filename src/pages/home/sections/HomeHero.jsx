@@ -15,6 +15,7 @@ import {
   HeartPulse,
   Hotel,
   TrendingUp,
+  Fuel 
 } from "lucide-react";
 
 export default function HomeHero() {
@@ -37,6 +38,7 @@ export default function HomeHero() {
     { name: "Ware House", icon: Warehouse },
     { name: "Hospital", icon: HeartPulse },
     { name: "Hotels/Resort", icon: Hotel },
+    { name: "Petrol Pump", icon: Fuel },
     { name: "Investment", icon: TrendingUp },
   ];
 
@@ -245,7 +247,7 @@ export default function HomeHero() {
                     w-1/3 py-4
                     rounded-l-xl
                     font-black uppercase
-                    tracking-widest text-[10px]
+                    tracking-widest text-[11px]
                     bg-slate-200 text-coral-red
                   "
                 >
@@ -258,7 +260,7 @@ export default function HomeHero() {
                     w-2/3 py-4
                     rounded-r-xl
                     font-black uppercase
-                    tracking-widest text-[10px]
+                    tracking-widest text-[11px]
 
                     bg-linear-to-r
                     from-coral-red
