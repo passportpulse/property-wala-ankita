@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { ChevronDown, Search } from "lucide-react";
 
 const categories = [
   {
@@ -73,42 +72,48 @@ const categories = [
 export default function Categories() {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const [paused, setPaused] = useState(false);
 
-  /* 🔁 AUTO SCROLL */
-  useEffect(() => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const CARD_WIDTH = 300;
+
+  /* Manual arrow scroll */
+  const scrollByAmount = (amount) => {
+    scrollRef.current?.scrollBy({
+      left: amount,
+      behavior: "smooth",
+    });
+  };
+
+  /* Update dots based on scroll */
+  const handleScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
 
-    let direction = 1;
-    const speed = 1;
+    const index = Math.round(el.scrollLeft / CARD_WIDTH);
+    setCurrentIndex(index);
+  };
 
-    const interval = setInterval(() => {
-      if (paused) return;
-
-      if (el.scrollLeft + el.clientWidth >= el.scrollWidth - 5) direction = -1;
-      else if (el.scrollLeft <= 5) direction = 1;
-
-      el.scrollLeft += speed * direction;
-    }, 16);
-
-    return () => clearInterval(interval);
-  }, [paused]);
-
-  const scrollByAmount = (amount) => {
-    setPaused(true);
-    scrollRef.current?.scrollBy({ left: amount, behavior: "smooth" });
-    setTimeout(() => setPaused(false), 2500);
+  /* Dot click scroll */
+  const scrollToIndex = (index) => {
+    scrollRef.current?.scrollTo({
+      left: index * CARD_WIDTH,
+      behavior: "smooth",
+    });
   };
 
   const handleClick = (name) => {
     const sectionId = name.toLowerCase().replace(/\s+|\/+/g, "-");
 
     navigate(`/buy#${sectionId}`);
+
     setTimeout(() => {
       const element = document.getElementById(sectionId);
       if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       }
     }, 100);
   };
@@ -117,11 +122,12 @@ export default function Categories() {
     <section className="pb-16 lg:pb-32 pt-6 lg:pt-10 bg-white font-poppins">
       <div className="max-w-7xl mx-auto px-6">
         {/* HEADER */}
-        <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between mb-6">
           <div>
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
               Browse by Intent
             </span>
+
             <h2 className="text-3xl lg:text-5xl font-black text-dark-slate tracking-tight">
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 Best Deals
@@ -129,46 +135,72 @@ export default function Categories() {
             </h2>
           </div>
 
+          {/* ARROWS */}
           <div className="hidden md:flex gap-2">
             <button
-              onClick={() => scrollByAmount(-320)}
+              onClick={() => scrollByAmount(-CARD_WIDTH)}
               className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition"
             >
               <ChevronLeft size={20} />
             </button>
+
             <button
-              onClick={() => scrollByAmount(320)}
+              onClick={() => scrollByAmount(CARD_WIDTH)}
               className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition"
             >
               <ChevronRight size={20} />
             </button>
           </div>
         </div>
-        {/* SCROLLABLE ROW */}
+
+        {/* DRAG HINT */}
+        <div className="text-center text-xs text-slate-400 mb-3 md:hidden">
+          ← Swipe to explore →
+        </div>
+
+        {/* SCROLL AREA */}
         <div
           ref={scrollRef}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          className="flex gap-4 lg:gap-6 overflow-x-auto no-scrollbar pb-4"
+          onScroll={handleScroll}
+          className="
+            flex gap-4 lg:gap-6
+            overflow-x-auto
+            no-scrollbar
+            pb-4
+            scroll-smooth
+            cursor-grab
+            active:cursor-grabbing
+          "
         >
           {categories.map((item, i) => (
             <div
               key={i}
               onClick={() => handleClick(item.name)}
-              className="group relative min-w-65 lg:min-w-75 h-90 rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
+              className="
+                group
+                relative
+                min-w-[280px]
+                lg:min-w-[300px]
+                h-[360px]
+                rounded-3xl
+                overflow-hidden
+                cursor-pointer
+                shadow-md
+                hover:shadow-xl
+                transition
+              "
             >
               {/* IMAGE */}
               <img
                 src={item.image}
                 alt={item.name}
-                className="
-                  absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover"
               />
 
               {/* CONTENT */}
               <div className="relative z-10 h-full p-6 flex flex-col justify-end">
-                <div className="bg-white/75 backdrop-blur-md rounded-2xl p-4 shadow-lg">
-                  <span className="block text-[10px] font-black uppercase tracking-widest text-coral-red">
+                <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-lg">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-coral-red">
                     {item.tag}
                   </span>
 
@@ -179,14 +211,40 @@ export default function Categories() {
                   <p className="text-sm text-muted-slate mt-1">{item.count}</p>
 
                   <div className="flex items-center justify-between mt-4">
-                    <span className="text-[11px] font-black uppercase tracking-widest text-dark-slate">
+                    <span className="text-[11px] font-black uppercase tracking-widest">
                       Explore
                     </span>
-                    <span className="w-10 h-0.5 bg-linear-to-r from-coral-red to-warm-yellow scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
+
+                    <span
+                      className="
+                      w-10 h-0.5
+                      bg-linear-to-r from-coral-red to-warm-yellow
+                      scale-x-0 group-hover:scale-x-100
+                      origin-left transition-transform
+                    "
+                    />
                   </div>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* DOT INDICATORS */}
+        <div className="flex justify-center gap-2 mt-4">
+          {categories.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToIndex(i)}
+              className={`
+                transition-all duration-300
+                ${
+                  currentIndex === i
+                    ? "w-6 h-2 bg-coral-red rounded-full"
+                    : "w-2 h-2 bg-slate-300 rounded-full hover:bg-slate-400"
+                }
+              `}
+            />
           ))}
         </div>
       </div>
