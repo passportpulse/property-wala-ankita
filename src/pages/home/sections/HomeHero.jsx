@@ -95,7 +95,7 @@ export default function HomeHero() {
           {/* HEADING */}
           <div className="mb-3 mt-2">
             <h1 className="text-xs lg:text-sm font-black uppercase">
-              <span className="text-lime-700">One Stop Solution</span>
+              <span className="text-sky-700">One Stop Solution</span>
 
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 {" "}
@@ -134,7 +134,7 @@ export default function HomeHero() {
                       handleOptionClick(item.name);
                     }}
                     className={`
-    min-w-[170px]
+    min-w-[200px]
     h-[85px]
 
     rounded-xl
@@ -210,7 +210,7 @@ export default function HomeHero() {
                   transition
                   ${
                     mode === "find"
-                      ? "bg-lime-700 text-white"
+                      ? "bg-sky-700 text-white"
                       : "text-slate-500"
                   }
                 `}
