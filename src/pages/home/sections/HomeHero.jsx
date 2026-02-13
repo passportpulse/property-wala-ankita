@@ -48,22 +48,24 @@ export default function HomeHero() {
   };
 
   return (
-    <section className="w-full mt-10 flex items-center justify-center bg-white font-poppins px-6">
+    <section className="w-full mt-2 flex items-center justify-center bg-white font-poppins px-6">
       <div className="max-w-3xl w-full text-center flex flex-col items-center justify-center">
-
         {/* Heading */}
-        <div className="mb-8 mt-4">
-          <h1 className="text-md lg:text-lg font-black text-lime-700 leading-tight tracking-wider text-dark-slate uppercase">
-            One Way Solution
-            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent tracking-wider">
-              {" "}Listings to Living
-            </span>
-          </h1>
+        <div className="mb-4 mt-2 overflow-hidden">
+          <div className="whitespace-nowrap animate-marquee">
+            <h1 className="inline-block text-md lg:text-lg font-black tracking-wider uppercase">
+              <span className="text-lime-700">One Stop Solution</span>
+
+              <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+                {" "}
+                Listings to Living
+              </span>
+            </h1>
+          </div>
         </div>
 
         {/* Search Card */}
         <div className="w-full max-w-xl relative z-10">
-
           {/* Toggle */}
           <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
             <button
@@ -91,7 +93,6 @@ export default function HomeHero() {
 
           {/* Dropdown + CTA */}
           <div className="flex flex-col sm:flex-row bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-
             {/* Dropdown */}
             <div className="relative flex-1">
               <button
@@ -150,14 +151,11 @@ export default function HomeHero() {
               <Search size={16} />
               Find Property
             </button>
-
           </div>
 
           {/* SELL SECTION — SAME DESIGN FOR DESKTOP + MOBILE */}
           <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-
             <div className="flex w-full">
-
               {/* Sell */}
               <button
                 onClick={() => navigate("/sell")}
@@ -179,11 +177,8 @@ export default function HomeHero() {
                 <span>Post Your Property Free</span>
                 <Search size={16} strokeWidth={2.5} />
               </button>
-
             </div>
-
           </div>
-
         </div>
       </div>
     </section>
