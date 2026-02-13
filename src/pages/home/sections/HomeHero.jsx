@@ -15,7 +15,8 @@ import {
   HeartPulse,
   Hotel,
   TrendingUp,
-  Fuel 
+  Fuel,
+  GraduationCap
 } from "lucide-react";
 
 export default function HomeHero() {
@@ -39,6 +40,7 @@ export default function HomeHero() {
     { name: "Hospital", icon: HeartPulse },
     { name: "Hotels/Resort", icon: Hotel },
     { name: "Petrol Pump", icon: Fuel },
+    { name: "Institutes", icon: GraduationCap },
     { name: "Investment", icon: TrendingUp },
   ];
 
@@ -201,41 +203,90 @@ export default function HomeHero() {
 
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
-            {/* TOGGLE */}
-            <div className="flex bg-slate-100 p-1 rounded-xl shadow mb-3">
-              <button
-                onClick={() => setMode("find")}
-                className={`
-                  flex-1 py-3 rounded-lg
-                  text-[11px]
-                  font-black uppercase tracking-widest
-                  transition
-                  ${
-                    mode === "find"
-                      ? "bg-sky-700 text-white"
-                      : "text-slate-500"
-                  }
-                `}
-              >
-                Buy
-              </button>
+            <div className="mt-4 flex gap-3">
+              {/* LOGIN | BUY */}
+              <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+                <div className="flex w-full">
+                  {/* LOGIN - LEFT (1/3) */}
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="
+          w-2/3 py-4
+          rounded-l-xl
+          font-black uppercase
+          tracking-widest text-[11px]
+          bg-slate-200
+          text-sky-700
+          hover:bg-slate-300
+          transition
+        "
+                  >
+                    Login to
+                  </button>
 
-              <button
-                onClick={() => setMode("rent")}
-                className={`
-                  flex-1 py-3 rounded-lg
-                  text-[11px]
-                  font-black uppercase tracking-widest
-                  transition
-                  ${
-                    mode === "rent"
-                      ? "bg-coral-red text-white"
-                      : "text-slate-500"
-                  }
-                `}
-              >
-                Rent
-              </button>
+                  {/* BUY - RIGHT (2/3) */}
+                  <button
+                    onClick={() => navigate("/buy")}
+                    className="
+          w-1/3 py-4
+          rounded-r-xl
+          font-black uppercase
+          tracking-widest text-[11px]
+
+          bg-sky-700
+          text-white
+
+          flex items-center justify-center gap-2
+          hover:bg-sky-800
+          transition
+        "
+                  >
+                    Buy
+                  </button>
+                </div>
+              </div>
+
+              {/* LOGIN | RENT */}
+              <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+                <div className="flex w-full">
+                  {/* LOGIN - LEFT (1/3) */}
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="
+          w-2/3 py-4
+          rounded-l-xl
+          font-black uppercase
+          tracking-widest text-[11px]
+          bg-slate-200
+          text-sky-700
+          hover:bg-slate-300
+          transition
+        "
+                  >
+                    Login to
+                  </button>
+
+                  {/* RENT - RIGHT (2/3) */}
+                  <button
+                    onClick={() => navigate("/rent")}
+                    className="
+          w-1/3 py-4
+          rounded-r-xl
+          font-black uppercase
+          tracking-widest text-[11px]
+
+          bg-sky-700
+          text-white
+
+          flex items-center justify-center gap-2
+          hover:opacity-90
+          transition
+        "
+                  >
+                    Rent
+                  </button>
+                </div>
+              </div>
             </div>
 
             {/* SELL */}
@@ -260,7 +311,7 @@ export default function HomeHero() {
                     w-2/3 py-4
                     rounded-r-xl
                     font-black uppercase
-                    tracking-widest text-[11px]
+                    tracking-widest text-[10px]
 
                     bg-linear-to-r
                     from-coral-red

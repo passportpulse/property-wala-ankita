@@ -62,11 +62,19 @@ const categories = [
       "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=",
   },
   {
-  name: "Petrol Pump",
-  count: "15+ Deals",
-  tag: "High ROI",
-  image: "https://upload.wikimedia.org/wikipedia/commons/3/3f/WaynePump-sm.jpg",
-},
+    name: "Petrol Pump",
+    count: "15+ Deals",
+    tag: "High ROI",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/3/3f/WaynePump-sm.jpg",
+  },
+  {
+    name: "Institutes",
+    count: "12+ Properties",
+    tag: "Education Ready",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScK_NJHyOxk953m504vQgBbNKiziUIS6FVdQ&s",
+  },
+
   {
     name: "Investment",
     count: "20+ Deals",
