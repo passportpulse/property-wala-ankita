@@ -33,10 +33,8 @@ export default function HomeFilter() {
   const [maxBudget, setMaxBudget] = useState(MAX_LIMIT);
 
   const formatPrice = (value) => {
-    if (value >= 10000000)
-      return (value / 10000000).toFixed(1) + " Cr";
-    if (value >= 100000)
-      return (value / 100000).toFixed(0) + " L";
+    if (value >= 10000000) return (value / 10000000).toFixed(1) + " Cr";
+    if (value >= 100000) return (value / 100000).toFixed(0) + " L";
     return value;
   };
 
@@ -47,70 +45,43 @@ export default function HomeFilter() {
   return (
     <Section size="default" className="bg-white">
       <Container>
-
         <div className="max-w-5xl mx-auto">
 
           {/* HEADING */}
           <div className="text-center mb-6">
             <h2 className="text-sm lg:text-base font-black uppercase">
               Find Property by{" "}
-              <span className="text-sky-700">
-                City & Budget
-              </span>
+              <span className="text-sky-700">City & Budget</span>
             </h2>
           </div>
 
           {/* FILTER CARD */}
           <div className="bg-slate-100 p-4 shadow-xl">
 
-            {/* ===== LAPTOP DESIGN ===== */}
+            {/* ===== DESKTOP ===== */}
             <div className="hidden lg:block space-y-3">
 
-              {/* LINE 1: CITY + SEARCH */}
-              <div className="flex gap-3">
+              {/* CITY */}
+              <div className="flex items-center bg-white px-3 py-3">
+                <MapPin size={18} className="text-sky-700 mr-2" />
 
-                {/* CITY */}
-                <div className="flex-1 flex items-center bg-white px-3 py-3">
-                  <MapPin size={18} className="text-sky-700 mr-2" />
-
-                  <select
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="w-full outline-none text-sm font-semibold bg-white"
-                  >
-                    <option value="">Select City</option>
-
-                    {cities.map((c) => (
-                      <option key={c} value={c}>
-                        {c}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* SEARCH */}
-                <button
-                  onClick={handleSearch}
-                  className="
-                    w-[160px]
-                    bg-sky-700
-                    text-white
-                    font-black uppercase tracking-widest
-                    text-xs
-                    flex items-center justify-center gap-2
-                    hover:bg-sky-800
-                    transition
-                  "
+                <select
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="w-full outline-none text-sm font-semibold bg-white"
                 >
-                  <Search size={18} />
-                  Search
-                </button>
+                  <option value="">Select City</option>
 
+                  {cities.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))}
+                </select>
               </div>
 
-              {/* LINE 2: MIN */}
+              {/* MIN */}
               <div className="flex items-center bg-white px-3 py-3">
-
                 <span className="text-xs font-black uppercase text-slate-500 mr-3">
                   Min
                 </span>
@@ -127,12 +98,10 @@ export default function HomeFilter() {
                   }
                   className="w-full outline-none text-sm font-semibold"
                 />
-
               </div>
 
-              {/* LINE 3: MAX */}
+              {/* MAX */}
               <div className="flex items-center bg-white px-3 py-3">
-
                 <span className="text-xs font-black uppercase text-slate-500 mr-3">
                   Max
                 </span>
@@ -149,12 +118,11 @@ export default function HomeFilter() {
                   }
                   className="w-full outline-none text-sm font-semibold"
                 />
-
               </div>
 
             </div>
 
-            {/* ===== MOBILE DESIGN (UNCHANGED) ===== */}
+            {/* ===== MOBILE ===== */}
             <div className="grid grid-cols-1 gap-3 lg:hidden">
 
               {/* CITY */}
@@ -216,27 +184,10 @@ export default function HomeFilter() {
                 />
               </div>
 
-              {/* SEARCH */}
-              <button
-                onClick={handleSearch}
-                className="
-                  bg-sky-700
-                  text-white
-                  font-black uppercase tracking-widest
-                  text-xs
-                  flex items-center justify-center gap-2
-                  py-3
-                "
-              >
-                <Search size={18} />
-                Search
-              </button>
-
             </div>
 
             {/* SLIDER */}
             <div className="mt-6">
-
               <div className="flex justify-between text-xs font-bold text-slate-600 mb-2">
                 <span>₹ {formatPrice(minBudget)}</span>
                 <span>₹ {formatPrice(maxBudget)}</span>
@@ -265,13 +216,31 @@ export default function HomeFilter() {
                 }
                 className="w-full accent-sky-700"
               />
-
             </div>
+
+            {/* SEARCH BUTTON — ALWAYS LAST */}
+            <button
+              onClick={handleSearch}
+              className="
+                w-full
+                bg-sky-700
+                text-white
+                font-black uppercase tracking-widest
+                text-xs
+                flex items-center justify-center gap-2
+                py-3
+                mt-4
+                hover:bg-sky-800
+                transition
+              "
+            >
+              <Search size={18} />
+              Search
+            </button>
 
           </div>
 
         </div>
-
       </Container>
     </Section>
   );
