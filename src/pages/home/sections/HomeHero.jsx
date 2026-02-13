@@ -16,7 +16,7 @@ import {
   Hotel,
   TrendingUp,
   Fuel,
-  GraduationCap
+  GraduationCap,
 } from "lucide-react";
 
 export default function HomeHero() {
@@ -201,134 +201,130 @@ export default function HomeHero() {
             </div>
           </div>
 
-          {/* SEARCH CARD */}
-          <div className="w-full max-w-xl relative z-10">
-            <div className="mt-4 flex gap-3">
-              {/* LOGIN | BUY */}
-              <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-                <div className="flex w-full">
-                  {/* LOGIN - LEFT (1/3) */}
-                  <button
-                    onClick={() => navigate("/login")}
-                    className="
-          w-2/3 py-4
+       {/* SEARCH CARD */}
+<div className="w-full max-w-xl relative z-10">
+
+  {/* BUY + RENT ROW */}
+  <div className="mt-4 flex gap-3">
+
+    {/* BUY */}
+    <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+      <div className="flex w-full">
+
+        {/* Login - takes remaining space */}
+        <button
+          onClick={() => navigate("/login")}
+          className="
+            flex-1
+            py-4
+            rounded-l-xl
+            font-black uppercase tracking-widest text-[11px]
+            bg-slate-200 text-sky-700
+            hover:bg-slate-300 transition
+          "
+        >
+          Login
+        </button>
+
+        {/* Buy - fixed 70px */}
+        <button
+          onClick={() => navigate("/buy")}
+          className="
+            w-[70px] flex-shrink-0
+            py-4
+            rounded-r-xl
+            font-black uppercase tracking-widest text-[11px]
+            bg-sky-700 text-white
+            hover:bg-sky-800 transition
+          "
+        >
+          Buy
+        </button>
+
+      </div>
+    </div>
+
+    {/* RENT */}
+    <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+      <div className="flex w-full">
+
+        {/* Login - takes remaining space */}
+        <button
+          onClick={() => navigate("/login")}
+          className="
+            flex-1
+            py-4
+            rounded-l-xl
+            font-black uppercase tracking-widest text-[11px]
+            bg-slate-200 text-sky-700
+            hover:bg-slate-300 transition
+          "
+        >
+          Login
+        </button>
+
+        {/* Rent - fixed 70px */}
+        <button
+          onClick={() => navigate("/rent")}
+          className="
+            w-[70px] flex-shrink-0
+            py-4
+            rounded-r-xl
+            font-black uppercase tracking-widest text-[11px]
+            bg-sky-700 text-white
+            hover:bg-sky-800 transition
+          "
+        >
+          Rent
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  {/* SELL */}
+  <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
+    <div className="flex w-full">
+
+      {/* Sell - fixed 70px */}
+      <button
+        onClick={() => navigate("/sell")}
+        className="
+          w-[70px] flex-shrink-0
+          py-4
           rounded-l-xl
-          font-black uppercase
-          tracking-widest text-[11px]
-          bg-slate-200
-          text-sky-700
-          hover:bg-slate-300
-          transition
+          font-black uppercase tracking-widest text-[11px]
+          bg-sky-700 text-white
+          hover:bg-sky-800 transition
         "
-                  >
-                    Login to
-                  </button>
+      >
+        Sell
+      </button>
 
-                  {/* BUY - RIGHT (2/3) */}
-                  <button
-                    onClick={() => navigate("/buy")}
-                    className="
-          w-1/3 py-4
+      {/* Post Property - takes remaining space */}
+      <button
+        onClick={() => navigate("/sell")}
+        className="
+          flex-1
+          py-4
           rounded-r-xl
-          font-black uppercase
-          tracking-widest text-[11px]
-
-          bg-sky-700
-          text-white
-
+          font-black uppercase tracking-widest text-[11px]
+          bg-slate-200 text-sky-700
           flex items-center justify-center gap-2
-          hover:bg-sky-800
-          transition
+          hover:bg-slate-300 transition
         "
-                  >
-                    Buy
-                  </button>
-                </div>
-              </div>
+      >
+        Post Your Property
+        <span className="text-[15px] font-extrabold">FREE</span>
+        <Search size={16} strokeWidth={2.5} />
+      </button>
 
-              {/* LOGIN | RENT */}
-              <div className="flex-1 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-                <div className="flex w-full">
-                  {/* LOGIN - LEFT (1/3) */}
-                  <button
-                    onClick={() => navigate("/login")}
-                    className="
-          w-2/3 py-4
-          rounded-l-xl
-          font-black uppercase
-          tracking-widest text-[11px]
-          bg-slate-200
-          text-sky-700
-          hover:bg-slate-300
-          transition
-        "
-                  >
-                    Login to
-                  </button>
+    </div>
+  </div>
 
-                  {/* RENT - RIGHT (2/3) */}
-                  <button
-                    onClick={() => navigate("/rent")}
-                    className="
-          w-1/3 py-4
-          rounded-r-xl
-          font-black uppercase
-          tracking-widest text-[11px]
+</div>
 
-          bg-sky-700
-          text-white
-
-          flex items-center justify-center gap-2
-          hover:opacity-90
-          transition
-        "
-                  >
-                    Rent
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* SELL */}
-            <div className="mt-4 bg-slate-100 p-1.5 rounded-2xl shadow-xl">
-              <div className="flex w-full">
-                <button
-                  onClick={() => navigate("/sell")}
-                  className="
-                    w-1/3 py-4
-                    rounded-l-xl
-                    font-black uppercase
-                    tracking-widest text-[11px]
-                    bg-slate-200 text-coral-red
-                  "
-                >
-                  Sell
-                </button>
-
-                <button
-                  onClick={() => navigate("/sell")}
-                  className="
-                    w-2/3 py-4
-                    rounded-r-xl
-                    font-black uppercase
-                    tracking-widest text-[10px]
-
-                    bg-linear-to-r
-                    from-coral-red
-                    via-soft-orange
-                    to-peach-glow
-
-                    text-white
-
-                    flex items-center justify-center gap-2
-                  "
-                >
-                  Post Your Property Free
-                  <Search size={16} strokeWidth={2.5} />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </Container>
     </Section>
