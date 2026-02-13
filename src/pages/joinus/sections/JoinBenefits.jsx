@@ -1,4 +1,6 @@
 import { IndianRupee, Users, Briefcase } from "lucide-react";
+import Container from "../../../components/layout/Container";
+import Section from "../../../components/layout/Section";
 
 const BenefitCard = ({ icon, title, desc }) => (
   <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
@@ -10,9 +12,9 @@ const BenefitCard = ({ icon, title, desc }) => (
 
 const JoinBenefits = () => {
   return (
-    <section className="px-6 pb-20 bg-gradient-to-b from-[#FFF5EC] to-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="bg-gradient-to-r from-[#FFF1E6] to-[#FFF7F1] rounded-3xl p-12 border border-peach-glow/40">
+    <Section className="pb-20 bg-linear-to-b from-[#FFF5EC] to-white">
+      <Container>
+        <div className="bg-linear-to-r from-[#FFF1E6] to-[#FFF7F1] rounded-3xl p-12 border border-peach-glow/40">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <BenefitCard
               icon={<IndianRupee />}
@@ -36,8 +38,8 @@ const JoinBenefits = () => {
             />
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

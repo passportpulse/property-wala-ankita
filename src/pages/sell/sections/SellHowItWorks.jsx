@@ -1,16 +1,34 @@
 import { FileCheck, Camera, Megaphone, Handshake } from "lucide-react";
+import Container from "../../../components/layout/Container";
+import Section from "../../../components/layout/Section";
 
 export default function SellHowItWorks() {
   const steps = [
-    { icon: <FileCheck />, title: "List Property", desc: "Share basic details and legal status." },
-    { icon: <Camera />, title: "Site Audit", desc: "Professional photography & verification." },
-    { icon: <Megaphone />, title: "Premium Blast", desc: "Promote to verified investors." },
-    { icon: <Handshake />, title: "Close Deal", desc: "Direct buyer interaction." },
+    {
+      icon: <FileCheck />,
+      title: "List Property",
+      desc: "Share basic details and legal status.",
+    },
+    {
+      icon: <Camera />,
+      title: "Site Audit",
+      desc: "Professional photography & verification.",
+    },
+    {
+      icon: <Megaphone />,
+      title: "Premium Blast",
+      desc: "Promote to verified investors.",
+    },
+    {
+      icon: <Handshake />,
+      title: "Close Deal",
+      desc: "Direct buyer interaction.",
+    },
   ];
 
   return (
-    <section className="py-24 bg-slate-50/50">
-      <div className="max-w-7xl mx-auto px-6">
+    <Section className="bg-slate-50/50">
+      <Container>
         <h2 className="text-3xl font-black uppercase mb-16">How it works</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -33,7 +51,7 @@ export default function SellHowItWorks() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

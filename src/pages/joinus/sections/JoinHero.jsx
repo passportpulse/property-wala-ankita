@@ -1,10 +1,14 @@
 import { CheckCircle } from "lucide-react";
+import Container from "../../../components/layout/Container";
+import Section from "../../../components/layout/Section";
 
 const JoinHero = () => {
   return (
-    <section className="bg-gradient-to-b from-[#FFF9F2] via-white to-[#FFF5EC] font-poppins text-slate-900 px-6 py-20">
-      <div className="max-w-6xl mx-auto">
-        
+    <Section
+      size="default"
+      className="bg-linear-to-b from-[#FFF9F2] via-white to-[#FFF5EC] font-poppins text-slate-900"
+    >
+      <Container>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs uppercase tracking-widest font-semibold text-coral-red">
@@ -22,7 +26,6 @@ const JoinHero = () => {
 
         {/* Image + Why Section */}
         <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
-          
           {/* Image */}
           <div className="lg:col-span-6 text-center">
             <div className="relative inline-block overflow-hidden rounded-3xl shadow-lg bg-white">
@@ -31,7 +34,7 @@ const JoinHero = () => {
                 alt="Real estate professionals"
                 className="h-65 w-auto object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-900/25 via-transparent to-transparent" />
               <div className="absolute bottom-5 left-5 text-white text-left">
                 <p className="text-[11px] uppercase tracking-widest opacity-80">
                   Trusted Network
@@ -87,9 +90,8 @@ const JoinHero = () => {
             ))}
           </div>
         </div>
-
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

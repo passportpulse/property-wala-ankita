@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
 
+import Section from "../../../components/layout/Section";
+import Container from "../../../components/layout/Container";
+
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -58,10 +61,10 @@ export default function SellFaq() {
   ];
 
   return (
-    <section className="py-32">
-      <div className="max-w-7xl mx-auto px-6">
+    <Section className="py-32">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
-          
+
           {/* LEFT SIDE */}
           <div className="lg:col-span-5">
             <h2 className="text-4xl font-black tracking-tighter uppercase mb-6">
@@ -102,7 +105,7 @@ export default function SellFaq() {
           </div>
 
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

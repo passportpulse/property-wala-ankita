@@ -1,17 +1,21 @@
-import React from "react";
 import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
+import Container from "../../components/layout/Container";
+import Section from "../../components/layout/Section";
 
 const Contact = () => {
   return (
-    <section className="min-h-screen bg-slate-50 font-poppins text-slate-900 px-6 py-16 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <Section
+      size="default"
+      className="min-h-screen bg-slate-50 font-poppins text-slate-800 overflow-hidden"
+    >
+      <Container>
         {/* Header */}
         <div className="mb-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
           <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
             Get in Touch
           </span>
-          <h1 className="text-3xl lg:text-4xl font-bold mt-2 max-w-2xl mx-auto">
-            Connect with Property Wala Bhaiya – Call, WhatsApp, or Mail
+          <h1 className="text-lg lg:text-4xl font-bold mt-2 max-w-2xl mx-auto">
+            Connect with Property Wala Bhaiya 
           </h1>
           <p className="text-sm text-slate-500 mt-2">
             Professional property consultation built on trust. Click any option
@@ -22,13 +26,13 @@ const Contact = () => {
         <div className="grid lg:grid-cols-12 gap-10 items-stretch">
           {/* Image Section */}
           <div className="lg:col-span-5 animate-in fade-in slide-in-from-left-6 duration-700">
-            <div className="relative h-full min-h-[320px] rounded-2xl overflow-hidden shadow-lg">
+            <div className="relative h-full min-h-80 rounded-2xl overflow-hidden shadow-lg">
               <img
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80"
                 alt="Office"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-slate-900/60 via-slate-900/10 to-transparent" />
               <div className="absolute bottom-5 left-5 text-white">
                 <p className="text-[11px] uppercase tracking-widest opacity-80">
                   Office Location
@@ -75,13 +79,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <div className="mt-12 text-xs text-slate-400 border-t border-slate-200 pt-4 text-center">
-          © {new Date().getFullYear()} Property Wala Bhaiya
-        </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 
@@ -99,10 +98,9 @@ const ContactCard = ({ icon, label, value, link, bgColor, textColor }) => (
       {icon}
     </div>
     <span className={`font-bold text-sm ${textColor}`}>{label}</span>
-   <span className="text-xs text-slate-500 text-center wrap-break-words">
-  {value}
-</span>
-
+    <span className="text-xs text-slate-500 text-center wrap-break-words">
+      {value}
+    </span>
   </a>
 );
 

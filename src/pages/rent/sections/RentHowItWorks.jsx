@@ -1,17 +1,35 @@
 import React from "react";
 import { Search, ShieldCheck, Clock, Key } from "lucide-react";
+import Container from "../../../components/layout/Container";
+import Section from "../../../components/layout/Section";
 
 export default function RentHowItWorks() {
   const rentSteps = [
-    { icon: <Search />, title: "Browse Listings", desc: "Explore verified flats and commercial spaces in Durgapur." },
-    { icon: <ShieldCheck />, title: "Verify Dossier", desc: "Access legal documents and owner details via WhatsApp." },
-    { icon: <Clock />, title: "Book Visit", desc: "Schedule a physical walkthrough at your convenience." },
-    { icon: <Key />, title: "Move In", desc: "Standardized rent agreements and hassle-free onboarding." },
+    {
+      icon: <Search />,
+      title: "Browse Listings",
+      desc: "Explore verified flats and commercial spaces in Durgapur.",
+    },
+    {
+      icon: <ShieldCheck />,
+      title: "Verify Dossier",
+      desc: "Access legal documents and owner details via WhatsApp.",
+    },
+    {
+      icon: <Clock />,
+      title: "Book Visit",
+      desc: "Schedule a physical walkthrough at your convenience.",
+    },
+    {
+      icon: <Key />,
+      title: "Move In",
+      desc: "Standardized rent agreements and hassle-free onboarding.",
+    },
   ];
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <Section size="default" className="bg-white">
+      <Container>
         <div className="mb-16">
           <h2 className="text-coral-red font-black text-[10px] uppercase tracking-[0.4em] mb-4">
             Tenant Guide
@@ -42,7 +60,7 @@ export default function RentHowItWorks() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
