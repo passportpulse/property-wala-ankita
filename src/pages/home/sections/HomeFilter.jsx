@@ -55,7 +55,7 @@ export default function HomeFilter() {
 
   const handleSearch = () => {
     navigate(
-      `/buy?state=${selectedState}&city=${selectedCity}&place=${selectedPlace}&min=${minBudget}&max=${maxBudget}`
+      `/buy?state=${selectedState}&city=${selectedCity}&place=${selectedPlace}&min=${minBudget}&max=${maxBudget}`,
     );
   };
 
@@ -63,16 +63,15 @@ export default function HomeFilter() {
     <Section size="default" className="bg-white">
       <Container>
         <div className="max-w-5xl mx-auto space-y-3">
-          {/* HEADING */}
-          <div className="text-center mb-6">
-            <h2 className="text-xs lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-              Search Property by{" "}
-              <span className="text-sky-700">State, City & Budget</span>
-            </h2>
-          </div>
-
           {/* FILTER CARD */}
           <div className="bg-slate-300 p-4 shadow-xl space-y-3">
+            {/* HEADING */}
+            <div className="text-center mb-6">
+              <h2 className="text-xs lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+                Search Property by{" "}
+                <span className="text-sky-700">State, City & Budget</span>
+              </h2>
+            </div>
             {/* STATE DROPDOWN */}
             <div className="relative" ref={stateRef}>
               <div
