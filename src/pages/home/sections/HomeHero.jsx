@@ -321,17 +321,27 @@ export default function HomeHero() {
                 <button
                   onClick={() => navigate("/sell")}
                   className="
-                    flex-1
-                    py-4
-                    font-black uppercase tracking-widest text-[11px]
-                    bg-slate-200 text-sky-700
-                    flex items-center justify-center gap-2
-                    hover:bg-slate-300 transition
-                  "
+    flex-1
+    h-20
+    font-black uppercase tracking-widest text-[11px]
+    bg-slate-200 text-sky-700
+    flex flex-col justify-between items-center
+    hover:bg-slate-300 transition
+    relative
+    px-4
+  "
                 >
-                  Post Your Property
-                  <span className="text-[15px] font-extrabold">FREE</span>
-                  <Search size={16} strokeWidth={2.5} />
+                  {/* Main middle content */}
+                  <div className="flex items-center gap-2 mt-auto mb-auto">
+                    Post Your Property
+                    <span className="text-[15px] font-extrabold text-coral-red">FREE</span>
+                    <Search size={16} strokeWidth={2.5} />
+                  </div>
+
+                  {/* Bottom line */}
+                  <span className="text-[8px] font-semibold text-coral-red mb-1">
+                    Get unlimited enquiries
+                  </span>
                 </button>
               </div>
             </div>
