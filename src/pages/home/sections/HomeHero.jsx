@@ -136,13 +136,10 @@ export default function HomeHero() {
     <Section size="small" className="bg-white font-poppins">
       <Container>
         <div className="text-center flex flex-col items-center">
-
           {/* HEADING */}
           <div className="mb-3 mt-2">
-            <h1 className="text-xs lg:text-sm font-black uppercase">
-              <span className="text-sky-700">
-                One Stop Solution
-              </span>
+            <h1 className="text-[10px] lg:text-sm font-black uppercase">
+              <span className="text-sky-700">One Stop Solution</span>
 
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 {" "}
@@ -177,59 +174,66 @@ export default function HomeHero() {
                 const Icon = item.icon;
 
                 return (
-                   <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
-                  <button
-                    key={index}
-                    onClick={() => {
-                      setSelected(item.name);
-                      handleOptionClick(item.name);
-                    }}
-                    className={`
-                      min-w-[160px]
-                      h-[85px]
+                 <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
+  <button
+    key={index}
+    onClick={() => {
+      setSelected(item.name);
+      handleOptionClick(item.name);
+    }}
+    className={`
+      min-w-[160px]
+      h-[100px]
 
-                      bg-linear-to-br from-sky-700 via-sky-600 to-sky-700
-                      text-white cursor-pointer
+      bg-linear-to-br from-sky-700 via-sky-600 to-sky-700
+      text-white cursor-pointer
 
-                      hover:from-sky-600 hover:via-sky-500 hover:to-sky-600
+      hover:from-sky-600 hover:via-sky-500 hover:to-sky-600
 
-                      text-sm
-                      font-black
-                      uppercase
-                      tracking-widest
+      text-sm
+      font-black
+      uppercase
+      tracking-widest
 
-                      hover:-translate-y-0.5
-                      hover:scale-[1.03]
+      hover:-translate-y-0.5
+      hover:scale-[1.03]
 
-                      active:scale-95
+      active:scale-95
 
-                      transition-all duration-300 ease-out
+      transition-all duration-300 ease-out
 
-                      flex-shrink-0
-                      flex flex-col
-                      items-center
-                      justify-center
-                      gap-2
+      flex-shrink-0
+      flex flex-col
+      items-center
+      justify-center
+      gap-2
 
-                      border border-sky-400
+      border border-sky-400
 
-                      ${
-                        selected === item.name
-                          ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
-                          : ""
-                      }
-                    `}
-                  >
-                    <Icon
-                      size={24}
-                      strokeWidth={2.2}
-                      className="text-sky-100"
-                    />
+      ${selected === item.name
+        ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
+        : ""
+      }
+    `}
+  >
+    {/* Original Icon */}
+    <Icon
+      size={24}
+      strokeWidth={2.2}
+      className="text-sky-100"
+    />
 
-                    <span>{item.name}</span>
+    {/* PNG Image */}
+    <img
+      src="https://img.favpng.com/25/3/21/click-png-favpng-Cv7Rq7G6rV5AS6Ys8p98z9EkE.jpg"
+      alt="click icon"
+      className="w-6 h-6 object-contain"
+    />
 
-                  </button>
-                  </div>
+    <span>{item.name}</span>
+  </button>
+</div>
+
                 );
               })}
             </div>
@@ -237,14 +241,11 @@ export default function HomeHero() {
 
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
-
             {/* BUY + RENT */}
             <div className="mt-4 flex gap-3">
-
               {/* BUY */}
               <div className="flex-1 bg-slate-100 p-1.5 shadow-xl">
                 <div className="flex w-full">
-
                   <button
                     onClick={() => navigate("/login")}
                     className="
@@ -271,14 +272,12 @@ export default function HomeHero() {
                   >
                     Buy
                   </button>
-
                 </div>
               </div>
 
               {/* RENT */}
               <div className="flex-1 bg-slate-100 p-1.5 shadow-xl">
                 <div className="flex w-full">
-
                   <button
                     onClick={() => navigate("/login")}
                     className="
@@ -305,16 +304,13 @@ export default function HomeHero() {
                   >
                     Rent
                   </button>
-
                 </div>
               </div>
-
             </div>
 
             {/* SELL */}
             <div className="mt-4 bg-slate-100 p-1.5 shadow-xl">
               <div className="flex w-full">
-
                 <button
                   onClick={() => navigate("/sell")}
                   className="
@@ -344,12 +340,9 @@ export default function HomeHero() {
                   <span className="text-[15px] font-extrabold">FREE</span>
                   <Search size={16} strokeWidth={2.5} />
                 </button>
-
               </div>
             </div>
-
           </div>
-
         </div>
       </Container>
     </Section>
