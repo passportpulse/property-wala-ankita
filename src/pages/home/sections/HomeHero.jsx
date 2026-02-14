@@ -174,14 +174,14 @@ export default function HomeHero() {
                 const Icon = item.icon;
 
                 return (
-                 <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
-  <button
-    key={index}
-    onClick={() => {
-      setSelected(item.name);
-      handleOptionClick(item.name);
-    }}
-    className={`
+                  <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setSelected(item.name);
+                        handleOptionClick(item.name);
+                      }}
+                      className={`
       min-w-[160px]
       h-[100px]
 
@@ -210,30 +210,26 @@ export default function HomeHero() {
 
       border border-sky-400
 
-      ${selected === item.name
-        ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
-        : ""
+      ${
+        selected === item.name
+          ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
+          : ""
       }
     `}
-  >
-    {/* Original Icon */}
-    <Icon
-      size={24}
-      strokeWidth={2.2}
-      className="text-sky-100"
-    />
+                    >
+                      {/* Original Icon */}
+                      <Icon
+                        size={24}
+                        strokeWidth={2.2}
+                        className="text-sky-100"
+                      />
 
-    {/* PNG Image */}
-    <img
-      src="https://img.favpng.com/25/3/21/click-png-favpng-Cv7Rq7G6rV5AS6Ys8p98z9EkE.jpg"
-      alt="click icon"
-      className="w-6 h-6 object-contain"
-    />
+                      {/* PNG Image */}
+                      
 
-    <span>{item.name}</span>
-  </button>
-</div>
-
+                      <span>{item.name}</span>
+                    </button>
+                  </div>
                 );
               })}
             </div>
