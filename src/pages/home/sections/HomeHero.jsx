@@ -2,7 +2,6 @@ import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { TbHandClick } from "react-icons/tb";
 
 import {
   Search,
@@ -225,10 +224,7 @@ export default function HomeHero() {
                         className="text-sky-100"
                       />
 
-                      
-
                       <span>{item.name}</span>
-                       <TbHandClick />
                     </button>
                   </div>
                 );
