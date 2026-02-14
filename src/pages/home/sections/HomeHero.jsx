@@ -146,7 +146,7 @@ export default function HomeHero() {
 
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 {" "}
-                Listings to Aesthetic Living
+                Investment to Aesthetic Living
               </span>
             </h1>
           </div>
@@ -177,6 +177,7 @@ export default function HomeHero() {
                 const Icon = item.icon;
 
                 return (
+                   <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
                   <button
                     key={index}
                     onClick={() => {
@@ -196,9 +197,6 @@ export default function HomeHero() {
                       font-black
                       uppercase
                       tracking-widest
-
-                      shadow-md
-                      hover:shadow-xl
 
                       hover:-translate-y-0.5
                       hover:scale-[1.03]
@@ -231,6 +229,7 @@ export default function HomeHero() {
                     <span>{item.name}</span>
 
                   </button>
+                  </div>
                 );
               })}
             </div>

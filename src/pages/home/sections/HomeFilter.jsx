@@ -46,21 +46,18 @@ export default function HomeFilter() {
     <Section size="default" className="bg-white">
       <Container>
         <div className="max-w-5xl mx-auto">
-
           {/* HEADING */}
           <div className="text-center mb-6">
-            <h2 className="text-sm lg:text-base font-black uppercase">
-              Find Property by{" "}
+            <h2 className="text-sm lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+              Search Property by{" "}
               <span className="text-sky-700">City & Budget</span>
             </h2>
           </div>
 
           {/* FILTER CARD */}
           <div className="bg-slate-100 p-4 shadow-xl">
-
             {/* ===== DESKTOP ===== */}
             <div className="hidden lg:block space-y-3">
-
               {/* CITY */}
               <div className="flex items-center bg-white px-3 py-3">
                 <MapPin size={18} className="text-sky-700 mr-2" />
@@ -93,9 +90,7 @@ export default function HomeFilter() {
                   value={minBudget}
                   min={MIN_LIMIT}
                   max={maxBudget}
-                  onChange={(e) =>
-                    setMinBudget(Number(e.target.value))
-                  }
+                  onChange={(e) => setMinBudget(Number(e.target.value))}
                   className="w-full outline-none text-sm font-semibold"
                 />
               </div>
@@ -113,18 +108,14 @@ export default function HomeFilter() {
                   value={maxBudget}
                   min={minBudget}
                   max={MAX_LIMIT}
-                  onChange={(e) =>
-                    setMaxBudget(Number(e.target.value))
-                  }
+                  onChange={(e) => setMaxBudget(Number(e.target.value))}
                   className="w-full outline-none text-sm font-semibold"
                 />
               </div>
-
             </div>
 
             {/* ===== MOBILE ===== */}
             <div className="grid grid-cols-1 gap-3 lg:hidden">
-
               {/* CITY */}
               <div className="flex items-center bg-white px-3 py-3">
                 <MapPin size={18} className="text-sky-700 mr-2" />
@@ -157,9 +148,7 @@ export default function HomeFilter() {
                   value={minBudget}
                   min={MIN_LIMIT}
                   max={maxBudget}
-                  onChange={(e) =>
-                    setMinBudget(Number(e.target.value))
-                  }
+                  onChange={(e) => setMinBudget(Number(e.target.value))}
                   className="w-full outline-none text-sm font-semibold"
                 />
               </div>
@@ -177,13 +166,10 @@ export default function HomeFilter() {
                   value={maxBudget}
                   min={minBudget}
                   max={MAX_LIMIT}
-                  onChange={(e) =>
-                    setMaxBudget(Number(e.target.value))
-                  }
+                  onChange={(e) => setMaxBudget(Number(e.target.value))}
                   className="w-full outline-none text-sm font-semibold"
                 />
               </div>
-
             </div>
 
             {/* SLIDER */}
@@ -199,9 +185,7 @@ export default function HomeFilter() {
                 max={MAX_LIMIT}
                 step="100000"
                 value={minBudget}
-                onChange={(e) =>
-                  setMinBudget(Number(e.target.value))
-                }
+                onChange={(e) => setMinBudget(Number(e.target.value))}
                 className="w-full accent-sky-700 mb-2"
               />
 
@@ -211,9 +195,7 @@ export default function HomeFilter() {
                 max={MAX_LIMIT}
                 step="100000"
                 value={maxBudget}
-                onChange={(e) =>
-                  setMaxBudget(Number(e.target.value))
-                }
+                onChange={(e) => setMaxBudget(Number(e.target.value))}
                 className="w-full accent-sky-700"
               />
             </div>
@@ -237,9 +219,7 @@ export default function HomeFilter() {
               <Search size={18} />
               Search
             </button>
-
           </div>
-
         </div>
       </Container>
     </Section>
