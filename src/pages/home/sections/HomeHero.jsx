@@ -149,7 +149,7 @@ export default function HomeHero() {
           </div>
 
           {/* MARQUEE */}
-          <div className="w-full mb-6">
+          <div className="w-full">
             <div
               ref={marqueeRef}
               className="
