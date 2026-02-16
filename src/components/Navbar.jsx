@@ -27,12 +27,12 @@ export default function Navbar() {
     >
       <Container className="flex items-center justify-between">
         {/* Logo Section */}
-        <Link to="/" className="flex items-end gap-3">
+        <Link to="/" className="flex items-end gap-1">
           {/* Image Logo */}
           <img
             src={logo1}
             alt="Property Wala Bhaiya Logo"
-            className={`h-12 w-auto object-contain transition-all duration-300 ${
+            className={`h-16 w-auto object-contain transition-all duration-300 ${
               scrolled ? "filter brightness-0" : "filter brightness-100"
             }`}
           />
