@@ -236,54 +236,52 @@ export default function HomeHero() {
           <div className="w-full max-w-xl relative z-10">
             {/* BUY + RENT */}
             <div className="flex w-full h-14 bg-slate-100 p-1 shadow-xl">
-
-  {/* Login To Label */}
-  <div
-    className="
+              {/* Login To Label */}
+              <div
+                className="
       flex-1
       flex items-center justify-center
       font-black uppercase tracking-widest text-[11px]
       bg-slate-200 text-sky-700
     "
-  >
-    Login To
-  </div>
+              >
+                <span className="font-extrabold text-coral-red mr-1">
+                  Login
+                </span>
+                To Start
+              </div>
 
-  {/* Buy + Rent wrapper with gap */}
-  <div className="flex gap-1">
-    
-    {/* Buy */}
-    <button
-      onClick={() => navigate("/login")}
-      className="
-        w-[80px]
+              {/* Buy + Rent wrapper with gap */}
+              <div className="flex gap-1">
+                {/* Buy */}
+                <button
+                  onClick={() => navigate("/login")}
+                  className="
+         w-[70px]
         h-full
         font-black uppercase tracking-widest text-[11px]
         bg-sky-700 text-white
         hover:bg-sky-800 transition
       "
-    >
-      Buy
-    </button>
+                >
+                  Buy
+                </button>
 
-    {/* Rent */}
-    <button
-      onClick={() => navigate("/login")}
-      className="
-        w-[80px]
+                {/* Rent */}
+                <button
+                  onClick={() => navigate("/login")}
+                  className="
+        w-[70px]
         h-full
         font-black uppercase tracking-widest text-[11px]
         bg-sky-700 text-white
         hover:bg-sky-800 transition
       "
-    >
-      Rent
-    </button>
-
-  </div>
-
-</div>
-
+                >
+                  Rent
+                </button>
+              </div>
+            </div>
 
             {/* SELL */}
             <div className="mt-4 bg-slate-100 p-1 shadow-xl">
