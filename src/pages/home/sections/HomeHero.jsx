@@ -149,88 +149,82 @@ export default function HomeHero() {
           </div>
 
           {/* MARQUEE */}
-          <div className="w-full">
-            <div
-              ref={marqueeRef}
-              className="
-                flex gap-4
-                overflow-x-auto
-                no-scrollbar
-                scroll-smooth
-                whitespace-nowrap
-                py-2
-                cursor-grab
-                select-none
-              "
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onTouchStart={() => setIsPaused(true)}
-              onTouchEnd={() => setIsPaused(false)}
-              onMouseEnter={() => setIsPaused(true)}
-            >
-              {propertyTypes.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <div className="flex-1 bg-slate-100 p-1.5 shadow-lg">
-                    <button
-                      key={index}
-                      onClick={() => {
-                        setSelected(item.name);
-                        handleOptionClick(item.name);
-                      }}
-                      className={`
-      min-w-[160px]
-      h-[100px]
-
-      bg-linear-to-br from-sky-700 via-sky-600 to-sky-700
-      text-white cursor-pointer
-
-      hover:from-sky-600 hover:via-sky-500 hover:to-sky-600
-
-      text-sm
-      font-black
-      uppercase
-      tracking-widest
-
-      hover:-translate-y-0.5
-      hover:scale-[1.03]
-
-      active:scale-95
-
-      transition-all duration-300 ease-out
-
-      flex-shrink-0
-      flex flex-col
+{/* MARQUEE - 99acres Style */}
+<div className="w-full mt-4">
+  <div
+    ref={marqueeRef}
+    className="
+      flex gap-8
+      overflow-x-auto no-scrollbar
+      scroll-smooth
+      py-3
       items-center
-      justify-center
-      gap-2
+    "
+    onMouseDown={handleMouseDown}
+    onMouseLeave={handleMouseLeave}
+    onMouseUp={handleMouseUp}
+    onMouseMove={handleMouseMove}
+    onTouchStart={() => setIsPaused(true)}
+    onTouchEnd={() => setIsPaused(false)}
+  >
+    {propertyTypes.map((item, index) => {
+      const Icon = item.icon;
+      const isActive = selected === item.name;
 
-      border border-sky-400
+      return (
+        <button
+          key={index}
+          onClick={() => {
+            setSelected(item.name);
+            handleOptionClick(item.name);
+          }}
+          className="
+            flex-shrink-0
+            flex flex-col items-center
+            gap-2
+            min-w-[70px]
+            transition-all duration-200
+          "
+        >
+          {/* Blue Icon */}
+          <Icon
+            size={26}
+            strokeWidth={2.2}
+            className={`
+              transition-all duration-200
+              ${
+                isActive
+                  ? "text-sky-700 scale-110"
+                  : "text-sky-600"
+              }
+            `}
+          />
 
-      ${
-        selected === item.name
-          ? "bg-gradient-to-br from-sky-800 via-sky-700 to-sky-800 border-sky-800 shadow-lg scale-[1.05]"
-          : ""
-      }
-    `}
-                    >
-                      {/* Original Icon */}
-                      <Icon
-                        size={24}
-                        strokeWidth={2.2}
-                        className="text-sky-100"
-                      />
+          {/* Text Below */}
+          <span
+            className={`
+              text-[11px]
+              font-medium
+              text-center
+              leading-tight
+              ${
+                isActive
+                  ? "text-sky-700 font-semibold"
+                  : "text-slate-600"
+              }
+            `}
+          >
+            {item.name}
+          </span>
+        </button>
+      );
+    })}
+  </div>
+</div>
 
-                      <span>{item.name}</span>
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+
+
+
 
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
