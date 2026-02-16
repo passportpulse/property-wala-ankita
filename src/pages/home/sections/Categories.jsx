@@ -1,6 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Section from "../../../components/layout/Section";
+import Container from "../../../components/layout/Container";
 
 const categories = [
   {
@@ -15,7 +17,7 @@ const categories = [
     count: "15+ Locations",
     tag: "High Growth",
     image:
-      "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg?s=612x612&w=0&k=20&c=LuUFrl_Nf7Pj5P2yvjW-0N8lcWS2723IcjDOai8jKDo=",
+      "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg",
   },
   {
     name: "House/Duplex",
@@ -59,7 +61,7 @@ const categories = [
     count: "4+ Projects",
     tag: "Hospitality",
     image:
-      "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg?s=612x612&w=0&k=20&c=9QtwJC2boq3GFHaeDsKytF4-CavYKQuy1jBD2IRfYKc=",
+      "https://media.istockphoto.com/id/119926339/photo/resort-swimming-pool.jpg",
   },
   {
     name: "Petrol Pump",
@@ -72,26 +74,25 @@ const categories = [
     name: "Institutes",
     count: "12+ Properties",
     tag: "Education Ready",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScK_NJHyOxk953m504vQgBbNKiziUIS6FVdQ&s",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScK_NJHyOxk953m504vQgBbNKiziUIS6FVdQ&s",
   },
-
   {
     name: "Investment",
     count: "20+ Deals",
     tag: "High ROI",
-    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
   },
 ];
 
 export default function Categories() {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const CARD_WIDTH = 300;
 
-  /* Manual arrow scroll */
   const scrollByAmount = (amount) => {
     scrollRef.current?.scrollBy({
       left: amount,
@@ -99,16 +100,13 @@ export default function Categories() {
     });
   };
 
-  /* Update dots based on scroll */
   const handleScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
-
     const index = Math.round(el.scrollLeft / CARD_WIDTH);
     setCurrentIndex(index);
   };
 
-  /* Dot click scroll */
   const scrollToIndex = (index) => {
     scrollRef.current?.scrollTo({
       left: index * CARD_WIDTH,
@@ -133,8 +131,8 @@ export default function Categories() {
   };
 
   return (
-    <section className="pb-16 lg:pb-32 pt-6 lg:pt-10 bg-white font-poppins">
-      <div className="max-w-7xl mx-auto px-6">
+    <Section className="pb-16 lg:pb-32 pt-6 lg:pt-10 bg-white font-poppins">
+      <Container>
         {/* HEADER */}
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -143,7 +141,7 @@ export default function Categories() {
             </span>
 
             <h2 className="text-3xl lg:text-5xl font-black text-dark-slate tracking-tight">
-              <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 Our Best Deals
               </span>
             </h2>
@@ -176,42 +174,20 @@ export default function Categories() {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="
-            flex gap-4 lg:gap-6
-            overflow-x-auto
-            no-scrollbar
-            pb-4
-            scroll-smooth
-            cursor-grab
-            active:cursor-grabbing
-          "
+          className="flex gap-4 lg:gap-6 overflow-x-auto no-scrollbar pb-4 scroll-smooth cursor-grab active:cursor-grabbing"
         >
           {categories.map((item, i) => (
             <div
               key={i}
               onClick={() => handleClick(item.name)}
-              className="
-                group
-                relative
-                min-w-[280px]
-                lg:min-w-[300px]
-                h-[360px]
-                rounded-3xl
-                overflow-hidden
-                cursor-pointer
-                shadow-md
-                hover:shadow-xl
-                transition
-              "
+              className="group relative min-w-[280px] lg:min-w-[300px] h-[360px] rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
             >
-              {/* IMAGE */}
               <img
                 src={item.image}
                 alt={item.name}
                 className="absolute inset-0 w-full h-full object-cover"
               />
 
-              {/* CONTENT */}
               <div className="relative z-10 h-full p-6 flex flex-col justify-end">
                 <div className="bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-lg">
                   <span className="text-[10px] font-black uppercase tracking-widest text-coral-red">
@@ -222,21 +198,16 @@ export default function Categories() {
                     {item.name}
                   </h3>
 
-                  <p className="text-sm text-muted-slate mt-1">{item.count}</p>
+                  <p className="text-sm text-muted-slate mt-1">
+                    {item.count}
+                  </p>
 
                   <div className="flex items-center justify-between mt-4">
                     <span className="text-[11px] font-black uppercase tracking-widest">
                       Explore
                     </span>
 
-                    <span
-                      className="
-                      w-10 h-0.5
-                      bg-linear-to-r from-coral-red to-warm-yellow
-                      scale-x-0 group-hover:scale-x-100
-                      origin-left transition-transform
-                    "
-                    />
+                    <span className="w-10 h-0.5 bg-gradient-to-r from-coral-red to-warm-yellow scale-x-0 group-hover:scale-x-100 origin-left transition-transform" />
                   </div>
                 </div>
               </div>
@@ -244,24 +215,21 @@ export default function Categories() {
           ))}
         </div>
 
-        {/* DOT INDICATORS */}
+        {/* DOTS */}
         <div className="flex justify-center gap-2 mt-4">
           {categories.map((_, i) => (
             <button
               key={i}
               onClick={() => scrollToIndex(i)}
-              className={`
-                transition-all duration-300
-                ${
-                  currentIndex === i
-                    ? "w-6 h-2 bg-coral-red rounded-full"
-                    : "w-2 h-2 bg-slate-300 rounded-full hover:bg-slate-400"
-                }
-              `}
+              className={`transition-all duration-300 ${
+                currentIndex === i
+                  ? "w-6 h-2 bg-coral-red rounded-full"
+                  : "w-2 h-2 bg-slate-300 rounded-full hover:bg-slate-400"
+              }`}
             />
           ))}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

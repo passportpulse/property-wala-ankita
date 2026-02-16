@@ -1,6 +1,8 @@
 import React from "react";
 import { Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Section from "../../../components/layout/Section";
+import Container from "../../../components/layout/Container";
 
 const services = [
   {
@@ -8,7 +10,6 @@ const services = [
     desc: "Browse verified homes and commercial spaces across Durgapur with trusted local insights.",
     tag: "For Buyers & Tenants",
     icon: "🏠",
-    // Note: link is not used for navigation here, we use handleLogin for route params
     loginText: "Buyer Login",
     helper: "Login to view prices, owner details & schedule visits",
   },
@@ -28,7 +29,6 @@ const services = [
     loginText: "Partner Login",
     helper: "Login to access inventory & partner tools",
   },
-
   {
     title: "Developer Portal",
     desc: "Strategic sales and marketing support for residential and commercial developments.",
@@ -43,86 +43,145 @@ export default function ServiceHub() {
   const navigate = useNavigate();
 
   const handleLogin = (roleText) => {
-    // Navigates to /login?role=Buyer+Login
     navigate(`/login?role=${encodeURIComponent(roleText)}`);
   };
 
   return (
-    <section className="pb-16 lg:pb-32 bg-white font-poppins relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <Section className="bg-white font-poppins">
+      <Container>
+
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="flex items-center justify-center gap-2">
+        <div className="max-w-3xl mb-12 lg:mb-16">
+
+          <div className="flex items-center gap-2 mb-3">
             <span className="w-8 h-[1.5px] bg-coral-red" />
             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
               Our Services
             </span>
-            <span className="w-8 h-[1.5px] bg-coral-red" />
           </div>
 
           <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
-            A Complete <br />
+            A Complete{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-coral-red to-soft-orange">
               Real Estate Ecosystem
             </span>
           </h2>
 
-          <p className="text-slate-500 text-sm lg:text-base leading-relaxed max-w-2xl mx-auto">
-            Built for buyers, sellers, brokers, and developers — all powered by
-            local expertise in Durgapur.
+          <p className="mt-4 text-slate-500 text-sm lg:text-base leading-relaxed max-w-2xl">
+            Built for buyers, sellers, partners, and developers — powered by
+            trusted local expertise and verified property networks.
           </p>
+
         </div>
+
 
         {/* SERVICES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+
           {services.map((service, index) => (
             <div
               key={index}
-              className="group relative p-8 rounded-3xl border border-slate-100 bg-slate-50 hover:bg-white hover:shadow-xl hover:shadow-peach-glow/10 transition-all duration-500 overflow-hidden flex flex-col"
+              className="
+                group relative 
+                p-8 lg:p-10
+                rounded-3xl lg:rounded-[2.5rem]
+                bg-white border border-slate-100
+                hover:border-peach-glow/30
+                hover:shadow-xl hover:shadow-peach-glow/10
+                transition-all duration-500
+                overflow-hidden flex flex-col
+              "
             >
+
               {/* Background Icon */}
-              <div className="absolute -right-4 -top-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity rotate-12">
+              <div className="absolute -right-6 -top-6 text-7xl opacity-5 group-hover:opacity-10 transition-opacity rotate-12">
                 {service.icon}
               </div>
 
+
               <div className="relative z-10 flex flex-col h-full justify-between">
+
+                {/* TOP */}
                 <div className="space-y-6">
-                  <span className="inline-block px-3 py-1 rounded-lg bg-white text-[9px] font-black uppercase tracking-[0.15em] text-coral-red border border-slate-100">
+
+                  <span className="
+                    inline-block px-3 py-1.5 
+                    rounded-lg 
+                    bg-warm-yellow/20
+                    text-[9px] font-black uppercase tracking-[0.2em]
+                    text-slate-900
+                  ">
                     {service.tag}
                   </span>
 
+
                   <div className="space-y-3">
-                    <h3 className="text-xl font-black text-slate-900 group-hover:text-coral-red transition-colors tracking-tight">
+
+                    <h3 className="
+                      text-xl lg:text-2xl font-black 
+                      text-slate-900 
+                      tracking-tight
+                      group-hover:text-coral-red 
+                      transition-colors
+                    ">
                       {service.title}
                     </h3>
-                    <p className="text-sm text-slate-500 leading-relaxed font-medium">
+
+                    <p className="text-slate-500 text-sm lg:text-base leading-relaxed">
                       {service.desc}
                     </p>
+
                   </div>
+
                 </div>
 
+
                 {/* ACTION AREA */}
-                <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
-                  <p className="text-[11px] text-slate-400 leading-snug">
+                <div className="mt-8 pt-6 border-t border-slate-50 space-y-4">
+
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
                     {service.helper}
                   </p>
 
+
                   <button
                     onClick={() => handleLogin(service.loginText)}
-                    className="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 hover:border-coral-red hover:text-coral-red transition-all cursor-pointer"
+                    className="
+                      w-full 
+                      flex items-center justify-center gap-2
+                      px-4 py-3
+                      rounded-xl
+                      bg-slate-900 text-white
+                      text-[10px] font-black uppercase tracking-[0.2em]
+                      hover:bg-coral-red
+                      transition-all duration-300
+                      cursor-pointer
+                      shadow-lg hover:shadow-coral-red/20
+                    "
                   >
                     <Lock className="w-4 h-4" />
                     {service.loginText}
                   </button>
+
                 </div>
+
               </div>
 
-              {/* Bottom Accent */}
-              <div className="absolute bottom-0 inset-x-0 h-1 bg-linear-to-r from-coral-red to-soft-orange opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              {/* Accent Bar */}
+              <div className="
+                absolute bottom-0 inset-x-0 h-1.5
+                bg-linear-to-r from-coral-red via-soft-orange to-peach-glow
+                opacity-0 group-hover:opacity-100
+                transition-opacity
+              "/>
+
             </div>
           ))}
+
         </div>
-      </div>
-    </section>
+
+      </Container>
+    </Section>
   );
 }
