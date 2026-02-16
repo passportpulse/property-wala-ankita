@@ -341,7 +341,7 @@ export default function HomeHero() {
                   </div>
 
                   {/* Bottom Content */}
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[4px] font-semibold text-coral-red">
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[6px] font-semibold text-coral-red">
                     Get unlimited enquiries
                   </span>
                 </button>
