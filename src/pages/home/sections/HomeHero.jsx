@@ -79,7 +79,7 @@ export default function HomeHero() {
     if (!container) return;
 
     let animationFrame;
-    const speed = 0.6;
+    const speed = 3000;
 
     const scroll = () => {
       if (!isPaused && !isDragging.current) {
