@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { navigationLinks } from "../constants/navigation";
 import { Sparkles } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo1 from "../assets/logo_img.png";
+import logo2 from "../assets/logo_text.png";
 import Container from "./layout/Container";
 
 export default function Navbar() {
@@ -26,11 +27,21 @@ export default function Navbar() {
     >
       <Container className="flex items-center justify-between">
         {/* Logo Section */}
-        <Link to="/">
+        <Link to="/" className="flex items-end gap-3">
+          {/* Image Logo */}
           <img
-            src={logo}
+            src={logo1}
             alt="Property Wala Bhaiya Logo"
-            className={`h-16 w-auto object-contain transition-all duration-300 ${
+            className={`h-12 w-auto object-contain transition-all duration-300 ${
+              scrolled ? "filter brightness-0" : "filter brightness-100"
+            }`}
+          />
+
+          {/* Text Logo */}
+          <img
+            src={logo2}
+            alt="Property Wala Bhaiya Logo"
+            className={`h-10 w-auto object-contain transition-all duration-300 ${
               scrolled ? "filter brightness-0" : "filter brightness-100"
             }`}
           />
