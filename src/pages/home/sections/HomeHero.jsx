@@ -139,7 +139,7 @@ export default function HomeHero() {
           {/* HEADING */}
           <div className="mb-3 mt-2">
             <h1 className="text-[10px] lg:text-sm font-black uppercase">
-              <span className="text-sky-700">One Stop Solution</span>
+              <span className="text-teal-700">One Stop Solution</span>
 
               <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 {" "}
@@ -149,82 +149,70 @@ export default function HomeHero() {
           </div>
 
           {/* MARQUEE */}
-{/* MARQUEE - 99acres Style */}
-<div className="w-full mt-4">
-  <div
-    ref={marqueeRef}
-    className="
+          {/* MARQUEE - 99acres Style */}
+          <div className="w-full mt-4">
+            <div
+              ref={marqueeRef}
+              className="
       flex gap-8
       overflow-x-auto no-scrollbar
       scroll-smooth
       py-3
       items-center
     "
-    onMouseDown={handleMouseDown}
-    onMouseLeave={handleMouseLeave}
-    onMouseUp={handleMouseUp}
-    onMouseMove={handleMouseMove}
-    onTouchStart={() => setIsPaused(true)}
-    onTouchEnd={() => setIsPaused(false)}
-  >
-    {propertyTypes.map((item, index) => {
-      const Icon = item.icon;
-      const isActive = selected === item.name;
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onTouchStart={() => setIsPaused(true)}
+              onTouchEnd={() => setIsPaused(false)}
+            >
+              {propertyTypes.map((item, index) => {
+                const Icon = item.icon;
+                const isActive = selected === item.name;
 
-      return (
-        <button
-          key={index}
-          onClick={() => {
-            setSelected(item.name);
-            handleOptionClick(item.name);
-          }}
-          className="
+                return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setSelected(item.name);
+                      handleOptionClick(item.name);
+                    }}
+                    className="
             flex-shrink-0
             flex flex-col items-center
             gap-2
             min-w-[70px]
             transition-all duration-200
           "
-        >
-          {/* Blue Icon */}
-          <Icon
-            size={26}
-            strokeWidth={2.2}
-            className={`
+                  >
+                    {/* Blue Icon */}
+                    <Icon
+                      size={26}
+                      strokeWidth={2.2}
+                      className={`
               transition-all duration-200
-              ${
-                isActive
-                  ? "text-sky-700 scale-110"
-                  : "text-sky-600"
-              }
+              ${isActive ? "text-teal-700 scale-110" : "text-teal-600"}
             `}
-          />
+                    />
 
-          {/* Text Below */}
-          <span
-            className={`
+                    {/* Text Below */}
+                    <span
+                      className={`
               text-[11px]
               font-medium
               text-center
               leading-tight
-              ${
-                isActive
-                  ? "text-sky-700 font-semibold"
-                  : "text-slate-600"
-              }
+              ${isActive ? "text-teal-700 font-semibold" : "text-slate-600"}
             `}
-          >
-            {item.name}
-          </span>
-        </button>
-      );
-    })}
-  </div>
-</div>
-
-
-
-
+                    >
+                      {item.name}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
 
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
@@ -236,7 +224,7 @@ export default function HomeHero() {
       flex-1
       flex items-center justify-center
       font-black uppercase tracking-widest text-[11px]
-      bg-slate-200 text-sky-700
+      bg-slate-200 text-teal-700
     "
               >
                 <span className="font-extrabold text-coral-red mr-1">
@@ -254,8 +242,8 @@ export default function HomeHero() {
          w-[70px]
         h-full
         font-black uppercase tracking-widest text-[11px]
-        bg-sky-700 text-white
-        hover:bg-sky-800 transition
+        bg-teal-700 text-white
+        hover:bg-teal-800 transition
       "
                 >
                   Buy
@@ -268,8 +256,8 @@ export default function HomeHero() {
         w-[70px]
         h-full
         font-black uppercase tracking-widest text-[11px]
-        bg-sky-700 text-white
-        hover:bg-sky-800 transition
+        bg-teal-700 text-white
+        hover:bg-teal-800 transition
       "
                 >
                   Rent
@@ -288,8 +276,8 @@ export default function HomeHero() {
           h-full
           flex-shrink-0
           font-black uppercase tracking-widest text-[11px]
-          bg-sky-700 text-white
-          hover:bg-sky-800 transition
+          bg-teal-700 text-white
+          hover:bg-teal-800 transition
         "
                 >
                   Sell
@@ -301,7 +289,7 @@ export default function HomeHero() {
                   className="
           flex-1
           h-full
-          bg-slate-200 text-sky-700
+          bg-slate-200 text-teal-700
           hover:bg-slate-300 transition
           relative
           font-black uppercase tracking-widest text-[11px]
