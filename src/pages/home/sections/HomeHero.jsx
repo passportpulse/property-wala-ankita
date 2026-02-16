@@ -235,33 +235,33 @@ export default function HomeHero() {
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
             {/* BUY + RENT */}
-            <div className="mt-4 flex gap-3">
+            <div className="mt-2 flex gap-3">
               {/* BUY */}
-              <div className="flex-1 bg-slate-100 p-1.5 shadow-xl">
-                <div className="flex w-full">
+              <div className="flex-1 bg-slate-100 p-1 shadow-xl">
+                <div className="flex w-full h-14">
                   <button
                     onClick={() => navigate("/login")}
                     className="
-                      flex-1
-                      py-4
-                      font-black uppercase tracking-widest text-[11px]
-                      bg-slate-200 text-sky-700
-                      hover:bg-slate-300 transition
-                    "
+            flex-1
+            h-full
+            font-black uppercase tracking-widest text-[11px]
+            bg-slate-200 text-sky-700
+            hover:bg-slate-300 transition
+          "
                   >
-                    Login
+                    Login To
                   </button>
 
                   <button
                     onClick={() => navigate("/buy")}
                     className="
-                      w-[70px]
-                      flex-shrink-0
-                      py-4
-                      font-black uppercase tracking-widest text-[11px]
-                      bg-sky-700 text-white
-                      hover:bg-sky-800 transition
-                    "
+            w-[70px]
+            h-full
+            flex-shrink-0
+            font-black uppercase tracking-widest text-[11px]
+            bg-sky-700 text-white
+            hover:bg-sky-800 transition
+          "
                   >
                     Buy
                   </button>
@@ -269,31 +269,31 @@ export default function HomeHero() {
               </div>
 
               {/* RENT */}
-              <div className="flex-1 bg-slate-100 p-1.5 shadow-xl">
-                <div className="flex w-full">
+              <div className="flex-1 bg-slate-100 p-1 shadow-xl">
+                <div className="flex w-full h-14">
                   <button
                     onClick={() => navigate("/login")}
                     className="
-                      flex-1
-                      py-4
-                      font-black uppercase tracking-widest text-[11px]
-                      bg-slate-200 text-sky-700
-                      hover:bg-slate-300 transition
-                    "
+            flex-1
+            h-full
+            font-black uppercase tracking-widest text-[11px]
+            bg-slate-200 text-sky-700
+            hover:bg-slate-300 transition
+          "
                   >
-                    Login
+                    Login To
                   </button>
 
                   <button
                     onClick={() => navigate("/rent")}
                     className="
-                      w-[70px]
-                      flex-shrink-0
-                      py-4
-                      font-black uppercase tracking-widest text-[11px]
-                      bg-sky-700 text-white
-                      hover:bg-sky-800 transition
-                    "
+            w-[70px]
+            h-full
+            flex-shrink-0
+            font-black uppercase tracking-widest text-[11px]
+            bg-sky-700 text-white
+            hover:bg-sky-800 transition
+          "
                   >
                     Rent
                   </button>
@@ -302,44 +302,46 @@ export default function HomeHero() {
             </div>
 
             {/* SELL */}
-            <div className="mt-4 bg-slate-100 p-1.5 shadow-xl">
-              <div className="flex w-full">
+            <div className="mt-4 bg-slate-100 p-1 shadow-xl">
+              <div className="flex w-full h-14">
+                {/* Sell label */}
                 <button
                   onClick={() => navigate("/sell")}
                   className="
-                    w-[70px]
-                    flex-shrink-0
-                    py-4
-                    font-black uppercase tracking-widest text-[11px]
-                    bg-sky-700 text-white
-                    hover:bg-sky-800 transition
-                  "
+          w-[70px]
+          h-full
+          flex-shrink-0
+          font-black uppercase tracking-widest text-[11px]
+          bg-sky-700 text-white
+          hover:bg-sky-800 transition
+        "
                 >
                   Sell
                 </button>
 
+                {/* Main Sell Button */}
                 <button
                   onClick={() => navigate("/sell")}
                   className="
-    flex-1
-    h-20
-    font-black uppercase tracking-widest text-[11px]
-    bg-slate-200 text-sky-700
-    flex flex-col justify-between items-center
-    hover:bg-slate-300 transition
-    relative
-    px-4
-  "
+          flex-1
+          h-full
+          bg-slate-200 text-sky-700
+          hover:bg-slate-300 transition
+          relative
+          font-black uppercase tracking-widest text-[11px]
+        "
                 >
-                  {/* Main middle content */}
-                  <div className="flex items-center gap-2 mt-auto mb-auto">
+                  {/* Perfect Center Content */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-2">
                     Post Your Property
-                    <span className="text-[15px] font-extrabold text-coral-red">FREE</span>
+                    <span className="text-[15px] font-extrabold text-coral-red">
+                      FREE
+                    </span>
                     <Search size={16} strokeWidth={2.5} />
                   </div>
 
-                  {/* Bottom line */}
-                  <span className="text-[8px] font-semibold text-coral-red mb-1">
+                  {/* Bottom Content */}
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[8px] font-semibold text-coral-red">
                     Get unlimited enquiries
                   </span>
                 </button>
