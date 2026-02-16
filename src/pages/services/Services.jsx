@@ -15,28 +15,27 @@ import Section from "../../components/layout/Section";
 
 const Services = () => {
   return (
-    <Section className="bg-slate-50 font-poppins text-slate-800">
+    <Section className="bg-slate-50 font-poppins text-slate-800" size="small">
       <Container>
         {/* HERO */}
-        <div className="py-14 lg:py-20 max-w-4xl">
-          <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
-            Our Services
-          </span>
 
-          <h1 className="text-lg lg:text-5xl font-bold mt-3 leading-tight">
-            Comprehensive Legal & Property
-            <span className="block">Consultancy Infrastructure</span>
-          </h1>
+        <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+          Our Services
+        </span>
 
-          <p className="text-sm lg:text-base text-slate-600 mt-6 leading-relaxed">
-            Property Wala Bhaiya provides complete regulatory, legal, and
-            operational support across the entire property lifecycle — ensuring
-            security, compliance, and professional execution.
-          </p>
-        </div>
+        <h1 className="text-lg lg:text-4xl font-bold mt-3 leading-tight">
+          Comprehensive Legal & Property
+          <span className="block">Consultancy Infrastructure</span>
+        </h1>
+
+        <p className="text-sm lg:text-base text-slate-600 mt-6 leading-relaxed">
+          Property Wala Bhaiya provides complete regulatory, legal, and
+          operational support across the entire property lifecycle — ensuring
+          security, compliance, and professional execution.
+        </p>
 
         {/* FEATURED SERVICE */}
-        <div className="mb-16 border border-slate-200 rounded-3xl p-8 lg:p-12 bg-white">
+        <div className="my-12 border border-slate-200 rounded-3xl p-8 lg:p-12 bg-white">
           <span className="text-xs font-semibold uppercase tracking-widest text-coral-red">
             Core Offering
           </span>
@@ -121,7 +120,7 @@ const ServiceItem = ({ icon, title }) => {
       <div>
         <h3 className="text-sm lg:text-base font-semibold">{title}</h3>
 
-        <div className="w-0 group-hover:w-full h-[2px] bg-coral-red transition-all duration-300 mt-1" />
+        <div className="w-0 group-hover:w-full h-0.5 bg-coral-red transition-all duration-300 mt-1" />
       </div>
     </div>
   );

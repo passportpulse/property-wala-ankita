@@ -7,33 +7,31 @@ const About = () => {
     <Section className="bg-white font-poppins text-slate-800">
       <Container>
         {/* HERO — LARGE LEFT ALIGNED */}
-        <div className="py-4 lg:py-20 max-w-5xl">
-          <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
-            Property Wala Bhaiya Network
-          </span>
 
-          <h1 className="text-lg lg:text-6xl font-bold mt-4 leading-[1.1]">
-            Transforming Local Brokers Into
-            <span className="block">Structured Real Estate Professionals</span>
-          </h1>
+        <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+          Property Wala Bhaiya Network
+        </span>
 
-          <p className="text-base text-slate-600 mt-8 leading-relaxed max-w-3xl">
-            The ' Property Wala Bhaiya ' network is designed to offer a systemic
-            and professional solution, transforming the local market from one
-            defined by insecure, high-hustle competition to one characterized by
-            unified operational excellence. This transformation is achieved by
-            deploying a shared, technologically advanced platform that
-            guarantees inventory certainty and provides comprehensive legal
-            security.
-          </p>
+        <h1 className="text-lg lg:text-6xl font-bold mt-4 leading-[1.1]">
+          Transforming Local Brokers Into
+          <span className="block">Structured Real Estate Professionals</span>
+        </h1>
 
-          <p className="text-base text-slate-600 mt-6 leading-relaxed max-w-3xl">
-            The core value promise to Durgapur's independent agents is the
-            transition from an unstable, manual business model to a secure,
-            professional consultancy model, guaranteeing a demonstrably higher
-            Net Effective Earning Rate ( NEER) and predictable income stream.
-          </p>
-        </div>
+        <p className="text-base text-slate-600 mt-8 leading-relaxed max-w-3xl">
+          The ' Property Wala Bhaiya ' network is designed to offer a systemic
+          and professional solution, transforming the local market from one
+          defined by insecure, high-hustle competition to one characterized by
+          unified operational excellence. This transformation is achieved by
+          deploying a shared, technologically advanced platform that guarantees
+          inventory certainty and provides comprehensive legal security.
+        </p>
+
+        <p className="text-base text-slate-600 mt-6 leading-relaxed max-w-3xl">
+          The core value promise to Durgapur's independent agents is the
+          transition from an unstable, manual business model to a secure,
+          professional consultancy model, guaranteeing a demonstrably higher Net
+          Effective Earning Rate ( NEER) and predictable income stream.
+        </p>
 
         {/* SOLUTION — VERTICAL STRUCTURED LIST (NO CARDS) */}
         <div className="py-4">
