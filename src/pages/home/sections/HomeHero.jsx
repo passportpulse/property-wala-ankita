@@ -235,71 +235,55 @@ export default function HomeHero() {
           {/* SEARCH CARD */}
           <div className="w-full max-w-xl relative z-10">
             {/* BUY + RENT */}
-            <div className="mt-2 flex gap-3">
-              {/* BUY */}
-              <div className="flex-1 bg-slate-100 p-1 shadow-xl">
-                <div className="flex w-full h-14">
-                  <button
-                    onClick={() => navigate("/login")}
-                    className="
-            flex-1
-            h-full
-            font-black uppercase tracking-widest text-[11px]
-            bg-slate-200 text-sky-700
-            hover:bg-slate-300 transition
-          "
-                  >
-                    Login To
-                  </button>
+            <div className="flex w-full h-14 bg-slate-100 p-1 shadow-xl">
 
-                  <button
-                    onClick={() => navigate("/buy")}
-                    className="
-            w-[70px]
-            h-full
-            flex-shrink-0
-            font-black uppercase tracking-widest text-[11px]
-            bg-sky-700 text-white
-            hover:bg-sky-800 transition
-          "
-                  >
-                    Buy
-                  </button>
-                </div>
-              </div>
+  {/* Login To Label */}
+  <div
+    className="
+      flex-1
+      flex items-center justify-center
+      font-black uppercase tracking-widest text-[11px]
+      bg-slate-200 text-sky-700
+    "
+  >
+    Login To
+  </div>
 
-              {/* RENT */}
-              <div className="flex-1 bg-slate-100 p-1 shadow-xl">
-                <div className="flex w-full h-14">
-                  <button
-                    onClick={() => navigate("/login")}
-                    className="
-            flex-1
-            h-full
-            font-black uppercase tracking-widest text-[11px]
-            bg-slate-200 text-sky-700
-            hover:bg-slate-300 transition
-          "
-                  >
-                    Login To
-                  </button>
+  {/* Buy + Rent wrapper with gap */}
+  <div className="flex gap-1">
+    
+    {/* Buy */}
+    <button
+      onClick={() => navigate("/login")}
+      className="
+        w-[80px]
+        h-full
+        font-black uppercase tracking-widest text-[11px]
+        bg-sky-700 text-white
+        hover:bg-sky-800 transition
+      "
+    >
+      Buy
+    </button>
 
-                  <button
-                    onClick={() => navigate("/rent")}
-                    className="
-            w-[70px]
-            h-full
-            flex-shrink-0
-            font-black uppercase tracking-widest text-[11px]
-            bg-sky-700 text-white
-            hover:bg-sky-800 transition
-          "
-                  >
-                    Rent
-                  </button>
-                </div>
-              </div>
-            </div>
+    {/* Rent */}
+    <button
+      onClick={() => navigate("/login")}
+      className="
+        w-[80px]
+        h-full
+        font-black uppercase tracking-widest text-[11px]
+        bg-sky-700 text-white
+        hover:bg-sky-800 transition
+      "
+    >
+      Rent
+    </button>
+
+  </div>
+
+</div>
+
 
             {/* SELL */}
             <div className="mt-4 bg-slate-100 p-1 shadow-xl">
