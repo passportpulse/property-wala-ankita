@@ -17,7 +17,7 @@ const categories = [
     count: "15+ Locations",
     tag: "High Growth",
     image:
-      "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg",
+      "https://media.istockphoto.com/id/1320071761/photo/land-plot-in-aerial-view-for-development-or-investment.jpg?s=612x612&w=0&k=20&c=LuUFrl_Nf7Pj5P2yvjW-0N8lcWS2723IcjDOai8jKDo=",
   },
   {
     name: "House/Duplex",
@@ -180,7 +180,7 @@ export default function Categories() {
             <div
               key={i}
               onClick={() => handleClick(item.name)}
-              className="group relative min-w-[280px] lg:min-w-[300px] h-[360px] rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
+              className="group relative min-w-[200px] lg:min-w-[300px] h-auto rounded-lg overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition"
             >
               <img
                 src={item.image}
