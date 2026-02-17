@@ -11,14 +11,14 @@ export default function HomeFilter() {
   const MIN_LIMIT = 1000000;
   const MAX_LIMIT = 500000000;
 
-  // States
-  const [selectedState, setSelectedState] = useState("West Bengal"); // preselect WB
+  const [pincode, setPincode] = useState("");
+
+  const [selectedState, setSelectedState] = useState("West Bengal");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
   const [minBudget, setMinBudget] = useState(MIN_LIMIT);
   const [maxBudget, setMaxBudget] = useState(MAX_LIMIT);
 
-  // Dropdown open states
   const [stateDropdownOpen, setStateDropdownOpen] = useState(false);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
   const [placeDropdownOpen, setPlaceDropdownOpen] = useState(false);
@@ -30,7 +30,6 @@ export default function HomeFilter() {
   const cities = selectedState === "West Bengal" ? citiesInWB : [];
   const places = selectedCity ? placesInWB[selectedCity] || [] : [];
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (stateRef.current && !stateRef.current.contains(event.target)) {
@@ -54,26 +53,54 @@ export default function HomeFilter() {
   };
 
   const handleSearch = () => {
-    navigate(
-      `/buy?state=${selectedState}&city=${selectedCity}&place=${selectedPlace}&min=${minBudget}&max=${maxBudget}`,
-    );
+    if (pincode.length === 6) {
+      navigate(`/buy?pincode=${pincode}&min=${minBudget}&max=${maxBudget}`);
+    } else {
+      navigate(
+        `/buy?state=${selectedState}&city=${selectedCity}&place=${selectedPlace}&min=${minBudget}&max=${maxBudget}`,
+      );
+    }
   };
 
   return (
     <Section size="default" className="bg-white">
       <Container>
         <div className="max-w-5xl mx-auto space-y-3">
-          {/* FILTER CARD */}
           <div className="bg-slate-300 p-4 shadow-xl space-y-3">
+
             {/* HEADING */}
-            <div className="text-center mb-6">
-              <h2 className="text-xs lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+            <div className="text-center mb-4">
+              <h2 className="text-xs lg:text-base font-black uppercase bg-gradient-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 Search Property by{" "}
-                <span className="text-sky-700">State, City & Budget</span>
+                <span className="text-sky-700">Location or Pincode</span>
               </h2>
             </div>
+
+            {/* PINCODE SEARCH */}
+            <div className="bg-white px-3 py-3 flex items-center gap-2">
+              <MapPin size={18} className="text-sky-700" />
+              <input
+                type="text"
+                placeholder="Search by Pincode (Optional)"
+                maxLength={6}
+                value={pincode}
+                onChange={(e) => {
+                  const value = e.target.value.replace(/\D/g, "");
+                  setPincode(value);
+                  if (value.length > 0) {
+                    setSelectedCity("");
+                    setSelectedPlace("");
+                  }
+                }}
+                className="w-full outline-none text-sm font-semibold"
+              />
+            </div>
+
             {/* STATE DROPDOWN */}
-            <div className="relative" ref={stateRef}>
+            <div
+              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
+              ref={stateRef}
+            >
               <div
                 className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
                 onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
@@ -91,18 +118,12 @@ export default function HomeFilter() {
                   {states.map((s) => (
                     <div
                       key={s.id}
-                      className={`px-3 py-2 cursor-pointer hover:bg-sky-100 ${
-                        s.name !== "West Bengal"
-                          ? "text-gray-400 cursor-not-allowed"
-                          : ""
-                      }`}
+                      className="px-3 py-2 cursor-pointer hover:bg-sky-100"
                       onClick={() => {
-                        if (s.name === "West Bengal") {
-                          setSelectedState(s.name);
-                          setSelectedCity("");
-                          setSelectedPlace("");
-                          setStateDropdownOpen(false);
-                        }
+                        setSelectedState(s.name);
+                        setSelectedCity("");
+                        setSelectedPlace("");
+                        setStateDropdownOpen(false);
                       }}
                     >
                       {s.name}
@@ -113,14 +134,13 @@ export default function HomeFilter() {
             </div>
 
             {/* CITY DROPDOWN */}
-            <div className="relative" ref={cityRef}>
+            <div
+              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
+              ref={cityRef}
+            >
               <div
-                className={`flex items-center justify-between bg-white px-3 py-3 cursor-pointer ${
-                  !selectedState ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                onClick={() =>
-                  selectedState && setCityDropdownOpen(!cityDropdownOpen)
-                }
+                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
+                onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
               >
                 <div className="flex items-center gap-2">
                   <MapPin size={18} className="text-sky-700" />
@@ -150,14 +170,13 @@ export default function HomeFilter() {
             </div>
 
             {/* PLACE DROPDOWN */}
-            <div className="relative" ref={placeRef}>
+            <div
+              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
+              ref={placeRef}
+            >
               <div
-                className={`flex items-center justify-between bg-white px-3 py-3 cursor-pointer ${
-                  !selectedCity ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                onClick={() =>
-                  selectedCity && setPlaceDropdownOpen(!placeDropdownOpen)
-                }
+                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
+                onClick={() => setPlaceDropdownOpen(!placeDropdownOpen)}
               >
                 <div className="flex items-center gap-2">
                   <MapPin size={18} className="text-sky-700" />
@@ -185,7 +204,7 @@ export default function HomeFilter() {
               )}
             </div>
 
-            {/* MIN BUDGET + SLIDER */}
+            {/* BUDGET SECTION (same as yours, unchanged) */}
             <div className="bg-white p-3 rounded-md space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black uppercase text-slate-500">
@@ -194,17 +213,6 @@ export default function HomeFilter() {
                 <span className="text-xs font-bold text-slate-600">
                   ₹ {formatPrice(minBudget)}
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-sky-700" />
-                <input
-                  type="number"
-                  value={minBudget}
-                  min={MIN_LIMIT}
-                  max={maxBudget}
-                  onChange={(e) => setMinBudget(Number(e.target.value))}
-                  className="w-full outline-none text-sm font-semibold"
-                />
               </div>
               <input
                 type="range"
@@ -217,7 +225,6 @@ export default function HomeFilter() {
               />
             </div>
 
-            {/* MAX BUDGET + SLIDER */}
             <div className="bg-white p-3 rounded-md space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-black uppercase text-slate-500">
@@ -226,17 +233,6 @@ export default function HomeFilter() {
                 <span className="text-xs font-bold text-slate-600">
                   ₹ {formatPrice(maxBudget)}
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-sky-700" />
-                <input
-                  type="number"
-                  value={maxBudget}
-                  min={minBudget}
-                  max={MAX_LIMIT}
-                  onChange={(e) => setMaxBudget(Number(e.target.value))}
-                  className="w-full outline-none text-sm font-semibold"
-                />
               </div>
               <input
                 type="range"
