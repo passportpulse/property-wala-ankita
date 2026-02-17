@@ -161,23 +161,34 @@ export default function Footer() {
               Talk to Advisor
             </button>
 
-            {/* Social Icons (Official Colors) */}
-            <div className="flex justify-center gap-6 mt-6">
-              {socials.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition-transform duration-200"
-                  >
-                    <Icon size={22} color={social.color} />
-                  </a>
-                );
-              })}
-            </div>
+            {/* Social Icons Section */}
+<div className="flex flex-col items-center mt-6">
+  
+  {/* Follow Us Text */}
+  <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
+    Follow Us On
+  </p>
+
+  {/* Icons */}
+  <div className="flex justify-center gap-6">
+    {socials.map((social) => {
+      const Icon = social.icon;
+      return (
+        <a
+          key={social.name}
+          href={social.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-110 transition-transform duration-200"
+        >
+          <Icon size={22} color={social.color} />
+        </a>
+      );
+    })}
+  </div>
+
+</div>
+
 
           </div>
         </div>
