@@ -1,9 +1,24 @@
 import { Link } from "react-router-dom";
 import { navigationLinks } from "../constants/navigation";
 import Container from "./layout/Container";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Twitter, 
+} from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  
+const socials = [
+  { name: "Facebook", icon: Facebook, link: "#" },
+  { name: "Instagram", icon: Instagram, link: "#" },
+  { name: "LinkedIn", icon: Linkedin, link: "#" },
+  { name: "YouTube", icon: Youtube, link: "#" },
+  { name: "X", icon: Twitter, link: "#" },
+];
 
   return (
     <footer className="bg-slate-50 text-slate-600 font-poppins border-t border-slate-200">
@@ -155,16 +170,23 @@ export default function Footer() {
             </span>
             . All Rights Reserved.
           </p>
-          <div className="flex gap-6">
-            {["facebook", "instagram"].map((social) => (
-              <span
-                key={social}
-                className="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-coral-red cursor-pointer transition-colors"
-              >
-                {social}
-              </span>
-            ))}
-          </div>
+          <div className="flex items-center gap-3">
+  {socials.map((social) => {
+    const Icon = social.icon;
+    return (
+      <a
+        key={social.name}
+        href={social.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-slate-400 hover:text-coral-red transition-colors"
+        aria-label={social.name}
+      >
+        <Icon size={16} strokeWidth={2.2} />
+      </a>
+    );
+  })}
+</div>
         </Container>
       </div>
     </footer>
