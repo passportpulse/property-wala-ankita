@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <HomeHero />
-      <HomeFilter/>
+      {/* <HomeFilter/>
       <Categories />
       <SellYourProperty/>
       <FeaturedProperties />
@@ -25,7 +25,7 @@ export default function Home() {
       <Testimonials/>
       <ServiceHub />
       <JoinUs/>
-      <ContactCTA />
+      <ContactCTA /> */}
     </>
   );
 }

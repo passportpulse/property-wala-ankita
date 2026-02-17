@@ -34,7 +34,7 @@ export default function AppPromoBar({ show, onClose }) {
 
         {/* Right */}
         <div className="flex items-center gap-1">
-          <button className="bg-coral-red text-white text-[10px] font-semibold px-2 py-1 rounded-lg whitespace-nowrap">
+          <button className="bg-coral-red text-white text-[10px] font-semibold px-2 py-1 rounded-md whitespace-nowrap">
             Open App
           </button>
           <button onClick={onClose}>
