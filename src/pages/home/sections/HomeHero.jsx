@@ -308,9 +308,20 @@ export default function HomeHero() {
 
                     Post Your Property
 
-                    <span className="text-coral-red text-[15px] font-extrabold">
-                      FREE
-                    </span>
+                  <span
+  className="
+    text-[15px]
+    font-extrabold
+    bg-gradient-to-r from-green-700 via-green-600 to-green-500
+    bg-[length:200%_100%]
+    bg-clip-text
+    text-transparent
+    animate-[shine_2s_linear_infinite]
+  "
+>
+  FREE
+</span>
+
 
                     <Search size={16} strokeWidth={2.5} />
 
