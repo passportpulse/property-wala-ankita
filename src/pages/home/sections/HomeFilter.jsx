@@ -1,35 +1,39 @@
 import React, { useState, useRef, useEffect } from "react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
-import { Search, MapPin, IndianRupee, ChevronDown } from "lucide-react";
+import { Search, MapPin, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { states, citiesInWB, placesInWB } from "../../../data/locations";
 
 export default function HomeFilter() {
   const navigate = useNavigate();
+
+  const API_KEY = import.meta.env.VITE_CSC_API_KEY;
 
   const MIN_LIMIT = 1000000;
   const MAX_LIMIT = 500000000;
 
   const [pincode, setPincode] = useState("");
 
-  const [selectedState, setSelectedState] = useState("West Bengal");
+  // API DATA STATES
+  const [states, setStates] = useState([]);
+  const [cities, setCities] = useState([]);
+
+  // SELECTED STATES
+  const [selectedState, setSelectedState] = useState(null);
   const [selectedCity, setSelectedCity] = useState("");
-  const [selectedPlace, setSelectedPlace] = useState("");
+
+  // Budget
   const [minBudget, setMinBudget] = useState(MIN_LIMIT);
   const [maxBudget, setMaxBudget] = useState(MAX_LIMIT);
 
+  // Dropdown states
   const [stateDropdownOpen, setStateDropdownOpen] = useState(false);
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
-  const [placeDropdownOpen, setPlaceDropdownOpen] = useState(false);
 
   const stateRef = useRef(null);
   const cityRef = useRef(null);
-  const placeRef = useRef(null);
 
-  const cities = selectedState === "West Bengal" ? citiesInWB : [];
-  const places = selectedCity ? placesInWB[selectedCity] || [] : [];
-
+  // CLOSE DROPDOWN ON OUTSIDE CLICK
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (stateRef.current && !stateRef.current.contains(event.target)) {
@@ -38,13 +42,60 @@ export default function HomeFilter() {
       if (cityRef.current && !cityRef.current.contains(event.target)) {
         setCityDropdownOpen(false);
       }
-      if (placeRef.current && !placeRef.current.contains(event.target)) {
-        setPlaceDropdownOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // FETCH STATES (INDIA)
+  useEffect(() => {
+    const fetchStates = async () => {
+      try {
+        const res = await fetch(
+          "https://api.countrystatecity.in/v1/countries/IN/states",
+          {
+            headers: {
+              "X-CSCAPI-KEY": API_KEY,
+            },
+          }
+        );
+
+        const data = await res.json();
+        setStates(data);
+      } catch (err) {
+        console.error("State fetch error:", err);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    fetchStates();
   }, []);
+
+  // FETCH CITIES WHEN STATE SELECTED
+  useEffect(() => {
+    if (!selectedState) return;
+
+    const fetchCities = async () => {
+      try {
+        const res = await fetch(
+          `https://api.countrystatecity.in/v1/countries/IN/states/${selectedState.iso2}/cities`,
+          {
+            headers: {
+              "X-CSCAPI-KEY": API_KEY,
+            },
+          }
+        );
+
+        const data = await res.json();
+        setCities(data);
+      } catch (err) {
+        console.error("City fetch error:", err);
+      }
+    };
+
+    fetchCities();
+  }, [selectedState]);
 
   const formatPrice = (value) => {
     if (value >= 10000000) return (value / 10000000).toFixed(1) + " Cr";
@@ -57,7 +108,7 @@ export default function HomeFilter() {
       navigate(`/buy?pincode=${pincode}&min=${minBudget}&max=${maxBudget}`);
     } else {
       navigate(
-        `/buy?state=${selectedState}&city=${selectedCity}&place=${selectedPlace}&min=${minBudget}&max=${maxBudget}`,
+        `/buy?state=${selectedState?.name}&city=${selectedCity}&min=${minBudget}&max=${maxBudget}`
       );
     }
   };
@@ -66,154 +117,104 @@ export default function HomeFilter() {
     <Section size="default" className="bg-white">
       <Container>
         <div className="max-w-5xl mx-auto space-y-3">
+
           <div className="bg-slate-300 p-4 shadow-xl space-y-3">
 
-            {/* HEADING */}
-            <div className="text-center mb-4">
-              <h2 className="text-xs lg:text-base font-black uppercase bg-gradient-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                Search Property by{" "}
-                <span className="text-sky-700">Location or Pincode</span>
-              </h2>
-            </div>
-
-            {/* PINCODE SEARCH */}
+            {/* PINCODE */}
             <div className="bg-white px-3 py-3 flex items-center gap-2">
               <MapPin size={18} className="text-sky-700" />
+
               <input
                 type="text"
-                placeholder="Search by Pincode (Optional)"
+                placeholder="Search by Pincode"
                 maxLength={6}
                 value={pincode}
                 onChange={(e) => {
                   const value = e.target.value.replace(/\D/g, "");
                   setPincode(value);
-                  if (value.length > 0) {
-                    setSelectedCity("");
-                    setSelectedPlace("");
-                  }
+                  setSelectedCity("");
                 }}
                 className="w-full outline-none text-sm font-semibold"
               />
             </div>
 
-            {/* STATE DROPDOWN */}
-            <div
-              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
-              ref={stateRef}
-            >
+            {/* STATE */}
+            <div ref={stateRef} className="relative">
+
               <div
-                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
+                className="flex justify-between bg-white px-3 py-3 cursor-pointer"
                 onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
               >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedState || "Select State"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-sky-700" />
+                <span className="text-sm font-semibold">
+                  {selectedState?.name || "Select State"}
+                </span>
+
+                <ChevronDown size={18} />
               </div>
+
               {stateDropdownOpen && (
-                <div className="absolute z-10 w-full max-h-60 overflow-y-auto bg-white border mt-1 rounded shadow">
-                  {states.map((s) => (
+                <div className="absolute w-full bg-white border shadow max-h-60 overflow-y-auto z-50">
+
+                  {states.map((state) => (
                     <div
-                      key={s.id}
-                      className="px-3 py-2 cursor-pointer hover:bg-sky-100"
+                      key={state.iso2}
+                      className="px-3 py-2 hover:bg-sky-100 cursor-pointer"
                       onClick={() => {
-                        setSelectedState(s.name);
+                        setSelectedState(state);
                         setSelectedCity("");
-                        setSelectedPlace("");
                         setStateDropdownOpen(false);
                       }}
                     >
-                      {s.name}
+                      {state.name}
                     </div>
                   ))}
+
                 </div>
               )}
             </div>
 
-            {/* CITY DROPDOWN */}
-            <div
-              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
-              ref={cityRef}
-            >
+            {/* CITY */}
+            <div ref={cityRef} className="relative">
+
               <div
-                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
+                className="flex justify-between bg-white px-3 py-3 cursor-pointer"
                 onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
               >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedCity || "Select City"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-sky-700" />
+                <span className="text-sm font-semibold">
+                  {selectedCity || "Select City"}
+                </span>
+
+                <ChevronDown size={18} />
               </div>
+
               {cityDropdownOpen && (
-                <div className="absolute z-10 w-full max-h-60 overflow-y-auto bg-white border mt-1 rounded shadow">
-                  {cities.map((c, idx) => (
+                <div className="absolute w-full bg-white border shadow max-h-60 overflow-y-auto">
+
+                  {cities.map((city) => (
                     <div
-                      key={idx}
-                      className="px-3 py-2 cursor-pointer hover:bg-sky-100"
+                      key={city.id}
+                      className="px-3 py-2 hover:bg-sky-100 cursor-pointer"
                       onClick={() => {
-                        setSelectedCity(c);
-                        setSelectedPlace("");
+                        setSelectedCity(city.name);
                         setCityDropdownOpen(false);
                       }}
                     >
-                      {c}
+                      {city.name}
                     </div>
                   ))}
+
                 </div>
               )}
             </div>
 
-            {/* PLACE DROPDOWN */}
-            <div
-              className={`relative ${pincode ? "opacity-50 pointer-events-none" : ""}`}
-              ref={placeRef}
-            >
-              <div
-                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
-                onClick={() => setPlaceDropdownOpen(!placeDropdownOpen)}
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedPlace || "Select Place"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-sky-700" />
-              </div>
-              {placeDropdownOpen && (
-                <div className="absolute z-10 w-full max-h-60 overflow-y-auto bg-white border mt-1 rounded shadow">
-                  {places.map((p, idx) => (
-                    <div
-                      key={idx}
-                      className="px-3 py-2 cursor-pointer hover:bg-sky-100"
-                      onClick={() => {
-                        setSelectedPlace(p);
-                        setPlaceDropdownOpen(false);
-                      }}
-                    >
-                      {p}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* MIN */}
+            <div className="bg-white p-3">
 
-            {/* BUDGET SECTION (same as yours, unchanged) */}
-            <div className="bg-white p-3 rounded-md space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black uppercase text-slate-500">
-                  Min
-                </span>
-                <span className="text-xs font-bold text-slate-600">
-                  ₹ {formatPrice(minBudget)}
-                </span>
+              <div className="flex justify-between text-xs">
+                <span>Min</span>
+                <span>₹ {formatPrice(minBudget)}</span>
               </div>
+
               <input
                 type="range"
                 min={MIN_LIMIT}
@@ -225,15 +226,14 @@ export default function HomeFilter() {
               />
             </div>
 
-            <div className="bg-white p-3 rounded-md space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black uppercase text-slate-500">
-                  Max
-                </span>
-                <span className="text-xs font-bold text-slate-600">
-                  ₹ {formatPrice(maxBudget)}
-                </span>
+            {/* MAX */}
+            <div className="bg-white p-3">
+
+              <div className="flex justify-between text-xs">
+                <span>Max</span>
+                <span>₹ {formatPrice(maxBudget)}</span>
               </div>
+
               <input
                 type="range"
                 min={MIN_LIMIT}
@@ -245,13 +245,14 @@ export default function HomeFilter() {
               />
             </div>
 
-            {/* SEARCH BUTTON */}
+            {/* SEARCH */}
             <button
               onClick={handleSearch}
-              className="w-full bg-sky-700 text-white font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 py-3 mt-4 hover:bg-sky-800 transition"
+              className="w-full bg-sky-700 text-white py-3 text-xs font-bold"
             >
-              <Search size={18} /> Search
+              Search
             </button>
+
           </div>
         </div>
       </Container>
