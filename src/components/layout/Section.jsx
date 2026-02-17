@@ -5,16 +5,13 @@ export default function Section({
   size = "default", // small | default | large
 }) {
   const sizes = {
-    small: "py-2 lg:py-14",
-    default: "py-8 lg:py-20",
-    large: "py-28 lg:py-32",
+    small: "py-4 lg:py-12",
+    default: "py-6 lg:py-20",
+    large: "py-8 lg:py-28",
   };
 
   return (
-    <section
-      id={id}
-      className={`${sizes[size]} ${className}`}
-    >
+    <section id={id} className={`${sizes[size]} ${className}`}>
       {children}
     </section>
   );

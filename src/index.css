@@ -8,12 +8,11 @@
 @theme {
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
-
 @theme {
-  --color-coral-red: #ec5139;
-  --color-soft-orange: #e75d2f;
-  --color-peach-glow: #FB9E3A;
-  --color-warm-yellow: #FCEF91;
+  --color-coral-red: #e04b1e;      /* deep vibrant orange */
+  --color-soft-orange: #ff7f50;    /* lighter orange / coral */
+  --color-peach-glow: #ffb347;     /* warm peach / mid orange */
+  --color-warm-yellow: #ffe066;    /* bright sun yellow */
 }
 
 * {

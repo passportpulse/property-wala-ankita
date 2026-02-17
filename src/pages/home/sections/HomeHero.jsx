@@ -1,6 +1,6 @@
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -22,18 +22,24 @@ import {
 export default function HomeHero() {
   const navigate = useNavigate();
 
-  /* MARQUEE REFS */
-  const marqueeRef = useRef(null);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeft = useRef(0);
+  /* =========================
+     MARQUEE STATE + REFS
+  ========================= */
 
-  const [selected, setSelected] = useState("");
-  const [mode, setMode] = useState("find");
+  const marqueeRef = useRef(null);
+  const dragState = useRef({
+    isDragging: false,
+    startX: 0,
+    scrollLeft: 0,
+  });
+
   const [isPaused, setIsPaused] = useState(false);
 
-  /* PROPERTY TYPES */
-  const findOptions = [
+  /* =========================
+     PROPERTY TYPES
+  ========================= */
+
+  const propertyTypes = [
     { name: "Flats", icon: Building2 },
     { name: "Plots", icon: Map },
     { name: "Joint Ventures", icon: Handshake },
@@ -49,39 +55,40 @@ export default function HomeHero() {
     { name: "Investment", icon: TrendingUp },
   ];
 
-  const propertyTypes = [...findOptions, ...findOptions];
+  // duplicate for infinite scroll
+  const marqueeItems = [...propertyTypes, ...propertyTypes];
 
-  /* CLICK NAVIGATION */
-  const handleOptionClick = (option) => {
-    const sectionId = option.toLowerCase().replace(/\s+|\/+/g, "-");
+  /* =========================
+     NAVIGATION
+  ========================= */
 
-    if (mode === "find") {
-      navigate(`/buy#${sectionId}`);
+  const handlePropertyClick = useCallback(
+    (name) => {
+      const id = name.toLowerCase().replace(/\s+|\/+/g, "-");
+
+      navigate(`/buy#${id}`);
 
       setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
       }, 100);
-    } else {
-      navigate(`/rent`);
-    }
-  };
+    },
+    [navigate],
+  );
 
-  /* AUTO SCROLL */
+  /* =========================
+     AUTO SCROLL
+  ========================= */
+
   useEffect(() => {
     const container = marqueeRef.current;
     if (!container) return;
 
-    let animationFrame;
-    const speed = 1;
+    let frame;
+    const speed = 0.7;
 
-    const scroll = () => {
-      if (!isPaused && !isDragging.current) {
+    const animate = () => {
+      if (!isPaused && !dragState.current.isDragging) {
         container.scrollLeft += speed;
 
         if (container.scrollLeft >= container.scrollWidth / 2) {
@@ -89,264 +96,191 @@ export default function HomeHero() {
         }
       }
 
-      animationFrame = requestAnimationFrame(scroll);
+      frame = requestAnimationFrame(animate);
     };
 
-    scroll();
-    return () => cancelAnimationFrame(animationFrame);
+    frame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frame);
   }, [isPaused]);
 
-  /* DRAG SUPPORT */
+  /* =========================
+     DRAG SUPPORT
+  ========================= */
+
   const handleMouseDown = (e) => {
-    isDragging.current = true;
-    marqueeRef.current.classList.add("cursor-grabbing");
+    const container = marqueeRef.current;
 
-    startX.current = e.pageX - marqueeRef.current.offsetLeft;
-    scrollLeft.current = marqueeRef.current.scrollLeft;
+    dragState.current = {
+      isDragging: true,
+      startX: e.pageX - container.offsetLeft,
+      scrollLeft: container.scrollLeft,
+    };
 
+    container.classList.add("cursor-grabbing");
     setIsPaused(true);
   };
 
-  const handleMouseLeave = () => {
-    isDragging.current = false;
-    marqueeRef.current.classList.remove("cursor-grabbing");
-    setIsPaused(false);
-  };
-
-  const handleMouseUp = () => {
-    isDragging.current = false;
-    marqueeRef.current.classList.remove("cursor-grabbing");
-    setIsPaused(false);
-  };
-
   const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
+    if (!dragState.current.isDragging) return;
 
     e.preventDefault();
 
-    const x = e.pageX - marqueeRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.2;
+    const container = marqueeRef.current;
 
-    marqueeRef.current.scrollLeft = scrollLeft.current - walk;
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - dragState.current.startX) * 1.2;
+
+    container.scrollLeft = dragState.current.scrollLeft - walk;
   };
 
+  const stopDragging = () => {
+    dragState.current.isDragging = false;
+    marqueeRef.current.classList.remove("cursor-grabbing");
+    setIsPaused(false);
+  };
+
+  /* =========================
+     COMPONENT
+  ========================= */
+
   return (
-    <Section size="small" className="bg-white font-poppins">
-
+    <Section className="bg-white font-poppins">
       <Container>
-
-        <div className="flex flex-col items-center w-full">
-
+        <div className="flex flex-col items-center">
           {/* HEADING */}
-          <div className="text-center mb-3 mt-2">
-            <h1 className="text-[10px] lg:text-sm font-black uppercase">
+          <h1 className="text-[10px] lg:text-sm font-black uppercase mt-2 mb-3 text-center">
+            <span className="text-orange-700">One Stop Solution</span>
 
-              <span className="text-orange-700">
-                One Stop Solution
-              </span>
-
-              <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                {" "}
-                Investment to Aesthetic Living
-              </span>
-
-            </h1>
-          </div>
-
+            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+              {" "}
+              Investment to Aesthetic Living
+            </span>
+          </h1>
 
           {/* MARQUEE */}
           <div className="w-full max-w-5xl">
-
             <div
               ref={marqueeRef}
-              className="
-                flex gap-10
-                overflow-x-auto no-scrollbar
-                py-4
-                cursor-grab
-              "
+              className="flex gap-10 overflow-x-auto no-scrollbar py-4 cursor-grab"
               onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
               onMouseMove={handleMouseMove}
+              onMouseUp={stopDragging}
+              onMouseLeave={stopDragging}
               onTouchStart={() => setIsPaused(true)}
               onTouchEnd={() => setIsPaused(false)}
             >
-              {propertyTypes.map((item, index) => {
-                const Icon = item.icon;
-                const isActive = selected === item.name;
+              {marqueeItems.map((item, index) => {
+                const IconComponent = item.icon;
 
                 return (
                   <button
-                    key={index}
-                    onClick={() => {
-                      setSelected(item.name);
-                      handleOptionClick(item.name);
-                    }}
-                    className="
-                      flex-shrink-0
-                      flex flex-col items-center
-                      gap-2
-                      min-w-[80px]
-                      transition-all duration-200
-                    "
+                    key={`${item.name}-${index}`}
+                    onClick={() => handlePropertyClick(item.name)}
+                    className="flex-shrink-0 flex flex-col items-center gap-2 min-w-[80px] group"
                   >
-                    <Icon
+                    <IconComponent
                       size={26}
                       strokeWidth={2.2}
-                      className={`
-                        transition-all duration-200
-                        ${
-                          isActive
-                            ? "text-orange-700 scale-110"
-                            : "text-orange-600"
-                        }
-                      `}
+                      className="
+          text-orange-600
+          group-hover:text-orange-700
+          group-hover:scale-110
+          transition-all duration-200
+        "
                     />
 
                     <span
-                      className={`
-                        text-[11px]
-                        text-center
-                        leading-tight
-                        ${
-                          isActive
-                            ? "text-orange-700 font-semibold"
-                            : "text-slate-600"
-                        }
-                      `}
+                      className="
+        text-[11px]
+        text-slate-600
+        text-center
+        leading-tight
+        group-hover:text-orange-700
+        font-medium
+      "
                     >
                       {item.name}
                     </span>
-
                   </button>
                 );
               })}
             </div>
-
           </div>
 
-
           {/* SEARCH CARD */}
-          <div className="w-full max-w-xl mt-4 relative z-10">
-
+          <div className="w-full max-w-xl mt-4">
             {/* BUY RENT */}
-            <div className="flex w-full h-14 bg-slate-100 p-1 shadow-xl">
-
-              <div className="
-                flex-1 flex items-center justify-center
-                font-black uppercase tracking-widest text-[11px]
-                bg-slate-200 text-orange-700
-              ">
+            <div className="flex h-14 bg-slate-100 p-1 shadow-xl">
+              <div className="flex-1 flex items-center justify-center font-black uppercase text-[11px] bg-slate-200 text-orange-700">
                 <span className="text-coral-red mr-1">Login</span>
                 To Start
               </div>
 
               <div className="flex gap-1">
-
-                <button
-                  onClick={() => navigate("/login")}
-                  className="
-                    w-[80px]
-                    h-full
-                    font-black uppercase tracking-widest text-[11px]
-                    bg-orange-700 text-white
-                    hover:bg-orange-800 transition
-                  "
-                >
-                  Buy
-                </button>
-
-                <button
-                  onClick={() => navigate("/login")}
-                  className="
-                    w-[80px]
-                    h-full
-                    font-black uppercase tracking-widest text-[11px]
-                    bg-orange-700 text-white
-                    hover:bg-orange-800 transition
-                  "
-                >
-                  Rent
-                </button>
-
+                {["Buy", "Rent"].map((type) => (
+                  <button
+                    key={type}
+                    onClick={() => navigate("/login")}
+                    className="
+                      w-[80px]
+                      font-black uppercase text-[11px]
+                      bg-orange-700 text-white
+                      hover:bg-orange-800 transition
+                    "
+                  >
+                    {type}
+                  </button>
+                ))}
               </div>
-
             </div>
-
 
             {/* SELL */}
             <div className="mt-4 bg-slate-100 p-1 shadow-xl">
-
-              <div className="flex w-full h-14">
-
+              <div className="flex h-14">
                 <button
                   onClick={() => navigate("/sell")}
-                  className="
-                    w-[80px]
-                    font-black uppercase tracking-widest text-[11px]
-                    bg-orange-700 text-white
-                    hover:bg-orange-800 transition
-                  "
+                  className="w-[80px] font-black uppercase text-[11px] bg-orange-700 text-white hover:bg-orange-800"
                 >
                   Sell
                 </button>
 
-
                 <button
                   onClick={() => navigate("/sell")}
-                  className="
-                    flex-1
-                    relative
-                    bg-slate-200 text-orange-700
-                    hover:bg-slate-300 transition
-                    font-black uppercase tracking-widest text-[11px]
-                  "
+                  className="flex-1 relative bg-slate-200 hover:bg-slate-300 font-black uppercase text-[11px]"
                 >
-
-                  <div className="absolute inset-0 flex items-center justify-center gap-2">
-
+                  <div className="absolute inset-0 flex items-center justify-center gap-2 text-orange-700">
                     Post Your Property
-
-                  <span
-  className="
-    text-[15px]
-    font-extrabold
-    bg-gradient-to-r from-green-700 via-green-600 to-green-500
-    bg-[length:200%_100%]
-    bg-clip-text
-    text-transparent
-    animate-[shine_2s_linear_infinite]
-  "
->
-  FREE
-</span>
-
-
+                    <span
+                      className="
+                      text-[15px]
+                      font-extrabold
+                      bg-gradient-to-r from-green-700 via-green-600 to-green-500
+                      bg-[length:200%_100%]
+                      bg-clip-text
+                      text-transparent
+                      animate-[shine_2s_linear_infinite]
+                    "
+                    >
+                      FREE
+                    </span>
                     <Search size={16} strokeWidth={2.5} />
-
                   </div>
 
-
-                  <span className="
+                  <span
+                    className="
                     absolute bottom-1 left-1/2 -translate-x-1/2
                     text-[7px] font-semibold text-coral-red
-                  ">
+                  "
+                  >
                     Get unlimited enquiries
                   </span>
-
                 </button>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </Container>
-
     </Section>
   );
 }

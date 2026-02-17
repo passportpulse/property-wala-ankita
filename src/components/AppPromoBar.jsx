@@ -6,8 +6,8 @@ export default function AppPromoBar({ show, onClose }) {
   if (!show) return null; // when closed, nothing renders
 
   return (
-    <div className="fixed top-0 left-0 w-full z-[1000] md:hidden animate-slideDown">
-      <div className="flex items-center justify-between bg-white shadow-md px-3 py-2 border-b">
+    <div className="fixed top-0 left-0 w-full z-1000 md:hidden animate-slideDown">
+      <div className="flex items-center justify-between bg-white shadow-md px-3 py-2 border-b border-slate-50">
         {/* Logo */}
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-coral-red flex items-center justify-center rounded-sm p-1">
@@ -20,11 +20,11 @@ export default function AppPromoBar({ show, onClose }) {
 
           {/* Info */}
           <div className="flex flex-col justify-center leading-tight">
-            <p className="text-[10px] font-semibold text-slate-800 whitespace-nowrap">
+            <p className="text-[10px] font-semibold text-slate-700 whitespace-nowrap">
               Property Wala Bhaiya
             </p>
             <div className="flex items-center gap-1 text-[9px] text-slate-500">
-              <Star size={10} className="text-orange-500 fill-orange-500" />
+              <Star size={10} className="text-warm-yellow fill-warm-yellow" />
               <span>4.8</span>
               <span>|</span>
               <span>1Cr+ Downloads</span>
@@ -34,7 +34,7 @@ export default function AppPromoBar({ show, onClose }) {
 
         {/* Right */}
         <div className="flex items-center gap-1">
-          <button className="bg-coral-red text-white text-[10px] font-semibold px-2 py-1 rounded-full whitespace-nowrap">
+          <button className="bg-coral-red text-white text-[10px] font-semibold px-2 py-1 rounded-lg whitespace-nowrap">
             Open App
           </button>
           <button onClick={onClose}>
