@@ -24,7 +24,7 @@ export default function AppPromoBar({ show, onClose }) {
               Property Wala Bhaiya
             </p>
             <div className="flex items-center gap-1 text-[9px] text-slate-500">
-              <Star size={10} className="text-yellow-500 fill-yellow-500" />
+              <Star size={10} className="text-orange-500 fill-orange-500" />
               <span>4.8</span>
               <span>|</span>
               <span>1Cr+ Downloads</span>

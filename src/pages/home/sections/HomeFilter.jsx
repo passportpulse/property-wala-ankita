@@ -79,7 +79,7 @@ export default function HomeFilter() {
             <div className="text-center mb-6">
               <h2 className="text-xs lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
                 Search Property by{" "}
-                <span className="text-sky-700">State, City & Budget</span>
+                <span className="text-orange-700">State, City & Budget</span>
               </h2>
             </div>
             {/* STATE DROPDOWN */}
@@ -89,19 +89,19 @@ export default function HomeFilter() {
                 onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
               >
                 <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
+                  <MapPin size={18} className="text-orange-700" />
                   <span className="text-sm font-semibold">
                     {selectedState || "Select State"}
                   </span>
                 </div>
-                <ChevronDown size={18} className="text-sky-700" />
+                <ChevronDown size={18} className="text-orange-700" />
               </div>
               {stateDropdownOpen && (
                 <div className="absolute z-10 w-full max-h-60 overflow-y-auto bg-white border mt-1 rounded shadow">
                   {states.map((s) => (
                     <div
                       key={s.id}
-                      className={`px-3 py-2 cursor-pointer hover:bg-sky-100 ${
+                      className={`px-3 py-2 cursor-pointer hover:bg-orange-100 ${
                         s.name !== "West Bengal"
                           ? "text-gray-400 cursor-not-allowed"
                           : ""
@@ -133,12 +133,12 @@ export default function HomeFilter() {
                 }
               >
                 <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
+                  <MapPin size={18} className="text-orange-700" />
                   <span className="text-sm font-semibold">
                     {selectedCity || "Select City"}
                   </span>
                 </div>
-                <ChevronDown size={18} className="text-sky-700" />
+                <ChevronDown size={18} className="text-orange-700" />
               </div>
 
               {cityDropdownOpen && (
@@ -158,7 +158,7 @@ export default function HomeFilter() {
                       filteredCities.map((c, idx) => (
                         <div
                           key={idx}
-                          className="px-3 py-2 cursor-pointer hover:bg-sky-100"
+                          className="px-3 py-2 cursor-pointer hover:bg-orange-100"
                           onClick={() => {
                             setSelectedCity(c);
                             setCitySearch("");
@@ -189,12 +189,12 @@ export default function HomeFilter() {
                 }
               >
                 <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-sky-700" />
+                  <MapPin size={18} className="text-orange-700" />
                   <span className="text-sm font-semibold">
                     {selectedPlace || "Select Place"}
                   </span>
                 </div>
-                <ChevronDown size={18} className="text-sky-700" />
+                <ChevronDown size={18} className="text-orange-700" />
               </div>
 
               {placeDropdownOpen && (
@@ -214,7 +214,7 @@ export default function HomeFilter() {
                       filteredPlaces.map((p, idx) => (
                         <div
                           key={idx}
-                          className="px-3 py-2 cursor-pointer hover:bg-sky-100"
+                          className="px-3 py-2 cursor-pointer hover:bg-orange-100"
                           onClick={() => {
                             setSelectedPlace(p);
                             setPlaceSearch("");
@@ -245,7 +245,7 @@ export default function HomeFilter() {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-sky-700" />
+                <IndianRupee size={18} className="text-orange-700" />
                 <input
                   type="number"
                   value={minBudget}
@@ -262,7 +262,7 @@ export default function HomeFilter() {
                 step="100000"
                 value={minBudget}
                 onChange={(e) => setMinBudget(Number(e.target.value))}
-                className="w-full accent-sky-700"
+                className="w-full accent-orange-700"
               />
             </div>
 
@@ -277,7 +277,7 @@ export default function HomeFilter() {
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-sky-700" />
+                <IndianRupee size={18} className="text-orange-700" />
                 <input
                   type="number"
                   value={maxBudget}
@@ -294,14 +294,14 @@ export default function HomeFilter() {
                 step="100000"
                 value={maxBudget}
                 onChange={(e) => setMaxBudget(Number(e.target.value))}
-                className="w-full accent-sky-700"
+                className="w-full accent-orange-700"
               />
             </div>
 
             {/* SEARCH BUTTON */}
             <button
               onClick={handleSearch}
-              className="w-full bg-sky-700 text-white font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 py-3 mt-4 hover:bg-sky-800 transition"
+              className="w-full bg-orange-700 text-white font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 py-3 mt-4 hover:bg-orange-800 transition"
             >
               <Search size={18} /> Search
             </button>

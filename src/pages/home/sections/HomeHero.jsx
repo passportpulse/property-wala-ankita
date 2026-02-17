@@ -141,7 +141,7 @@ export default function HomeHero() {
           <div className="text-center mb-3 mt-2">
             <h1 className="text-[10px] lg:text-sm font-black uppercase">
 
-              <span className="text-sky-700">
+              <span className="text-orange-700">
                 One Stop Solution
               </span>
 
@@ -198,8 +198,8 @@ export default function HomeHero() {
                         transition-all duration-200
                         ${
                           isActive
-                            ? "text-sky-700 scale-110"
-                            : "text-sky-600"
+                            ? "text-orange-700 scale-110"
+                            : "text-orange-600"
                         }
                       `}
                     />
@@ -211,7 +211,7 @@ export default function HomeHero() {
                         leading-tight
                         ${
                           isActive
-                            ? "text-sky-700 font-semibold"
+                            ? "text-orange-700 font-semibold"
                             : "text-slate-600"
                         }
                       `}
@@ -236,7 +236,7 @@ export default function HomeHero() {
               <div className="
                 flex-1 flex items-center justify-center
                 font-black uppercase tracking-widest text-[11px]
-                bg-slate-200 text-sky-700
+                bg-slate-200 text-orange-700
               ">
                 <span className="text-coral-red mr-1">Login</span>
                 To Start
@@ -250,8 +250,8 @@ export default function HomeHero() {
                     w-[80px]
                     h-full
                     font-black uppercase tracking-widest text-[11px]
-                    bg-sky-700 text-white
-                    hover:bg-sky-800 transition
+                    bg-orange-700 text-white
+                    hover:bg-orange-800 transition
                   "
                 >
                   Buy
@@ -263,8 +263,8 @@ export default function HomeHero() {
                     w-[80px]
                     h-full
                     font-black uppercase tracking-widest text-[11px]
-                    bg-sky-700 text-white
-                    hover:bg-sky-800 transition
+                    bg-orange-700 text-white
+                    hover:bg-orange-800 transition
                   "
                 >
                   Rent
@@ -285,8 +285,8 @@ export default function HomeHero() {
                   className="
                     w-[80px]
                     font-black uppercase tracking-widest text-[11px]
-                    bg-sky-700 text-white
-                    hover:bg-sky-800 transition
+                    bg-orange-700 text-white
+                    hover:bg-orange-800 transition
                   "
                 >
                   Sell
@@ -298,7 +298,7 @@ export default function HomeHero() {
                   className="
                     flex-1
                     relative
-                    bg-slate-200 text-sky-700
+                    bg-slate-200 text-orange-700
                     hover:bg-slate-300 transition
                     font-black uppercase tracking-widest text-[11px]
                   "
