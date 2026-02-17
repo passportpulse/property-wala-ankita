@@ -6,7 +6,7 @@ import logo1 from "../assets/logo_img.png";
 import logo2 from "../assets/logo_text.png";
 import Container from "./layout/Container";
 
-export default function Navbar() {
+export default function Navbar({ promoVisible }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,11 +19,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 font-poppins ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
-          : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
-      }`}
+      className={`sticky z-40 transition-all duration-300 font-poppins
+    ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-2" : "bg-gradient-to-r from-coral-red via-soft-orange to-warm-yellow py-4"}
+    ${promoVisible ? "md:top-0 top-[40px]" : "top-0"}
+  `}
     >
       <Container className="flex items-center justify-between">
         {/* Logo Section */}

@@ -49,3 +49,17 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* FOR APP PROMO BAR  */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
