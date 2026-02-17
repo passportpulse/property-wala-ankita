@@ -2,12 +2,7 @@ import { Link } from "react-router-dom";
 import { navigationLinks } from "../constants/navigation";
 import Container from "./layout/Container";
 
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -51,7 +46,6 @@ export default function Footer() {
     <footer className="bg-slate-50 text-slate-600 font-poppins border-t border-slate-200">
       <Container className="py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex flex-col">
@@ -68,15 +62,15 @@ export default function Footer() {
             </h5>
 
             <p className="text-xs text-slate-500 max-w-xs">
-              Simplifying the property journey with verified listings and
-              expert guidance. Your dream space is just a click away.
+              Simplifying the property journey with verified listings and expert
+              guidance. Your dream space is just a click away.
             </p>
 
             <div className="flex gap-3 text-xs pt-2">
               <span className="text-coral-red text-lg">📍</span>
               <p className="text-slate-500">
-                5th Floor, Suhatta Commercial Complex, City Center,
-                Durgapur, West Bengal 713216
+                5th Floor, Suhatta Commercial Complex, City Center, Durgapur,
+                West Bengal 713216
               </p>
             </div>
           </div>
@@ -117,15 +111,12 @@ export default function Footer() {
               <li className="hover:text-coral-red cursor-pointer">
                 Terms & Conditions
               </li>
-              <li className="hover:text-coral-red cursor-pointer">
-                Sitemap
-              </li>
+              <li className="hover:text-coral-red cursor-pointer">Sitemap</li>
             </ul>
           </div>
 
           {/* Contact Card */}
           <div className="bg-white p-6 rounded-2xl shadow-sm border flex flex-col justify-between">
-            
             <div>
               <h4 className="text-slate-900 font-bold uppercase text-xs mb-4">
                 Connect Us
@@ -151,10 +142,7 @@ export default function Footer() {
             {/* Talk Button */}
             <button
               onClick={() =>
-                window.open(
-                  "https://wa.me/917699988876",
-                  "_blank"
-                )
+                window.open("https://wa.me/917699988876", "_blank")
               }
               className="w-full mt-6 py-3 bg-gradient-to-r from-coral-red to-soft-orange text-white rounded-xl font-bold text-xs uppercase tracking-widest hover:scale-105 transition"
             >
@@ -162,34 +150,30 @@ export default function Footer() {
             </button>
 
             {/* Social Icons Section */}
-<div className="flex flex-col items-center mt-6">
-  
-  {/* Follow Us Text */}
-  <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
-    Follow Us On
-  </p>
+            <div className="flex flex-col items-center mt-6">
+              {/* Follow Us Text */}
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3">
+                Follow Us On
+              </p>
 
-  {/* Icons */}
-  <div className="flex justify-center gap-6">
-    {socials.map((social) => {
-      const Icon = social.icon;
-      return (
-        <a
-          key={social.name}
-          href={social.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:scale-110 transition-transform duration-200"
-        >
-          <Icon size={22} color={social.color} />
-        </a>
-      );
-    })}
-  </div>
-
-</div>
-
-
+              {/* Icons */}
+              <div className="flex justify-center gap-6">
+                {socials.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:scale-110 transition-transform duration-200"
+                    >
+                      <Icon size={22} color={social.color} />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </Container>
