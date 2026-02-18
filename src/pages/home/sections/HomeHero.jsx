@@ -128,12 +128,12 @@ export default function HomeHero() {
                   Login to unlock full property access
                 </span>
               </div>
-              <div className="flex">
+              <div className="flex gap-[2px]">
                 {["Buy", "Rent"].map((type) => (
                   <button
                     key={type}
                     onClick={() => navigate("/login")}
-                    className="flex-1 py-3 font-bold text-xs lg:text-sm uppercase bg-linear-to-r from-dark-orange to-warm-yellow text-white active:scale-95 transition cursor-pointer"
+                    className="flex-1 py-3 font-bold text-xs lg:text-sm uppercase bg-linear-to-r from-dark-orange to-soft-orange text-white active:scale-95 transition cursor-pointer"
                   >
                     {type}
                   </button>
