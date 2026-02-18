@@ -170,7 +170,7 @@ export default function Navbar({ promoVisible }) {
     scrolled
       ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
       : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
-  } ${promoVisible ? "md:top-0 top-10 mb-8" : "top-0"}`;
+  } ${promoVisible ? "md:top-0 top-10 mb-8 lg:mb-0" : "top-0"}`;
 
   return (
     <header className={headerStyle}>
