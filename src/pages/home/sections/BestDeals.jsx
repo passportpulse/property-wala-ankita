@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
@@ -91,12 +91,10 @@ export default function BestDeals() {
   const scrollRef = useRef(null);
   const [activeDot, setActiveDot] = useState(0);
 
-  // Calculate which dot is active based on scroll position
   useEffect(() => {
     const handleScroll = () => {
       const el = scrollRef.current;
       if (el) {
-        // Calculate which item is currently centered/most visible
         const scrollPos = el.scrollLeft;
         const cardWidth = el.scrollWidth / categories.length;
         const index = Math.round(scrollPos / cardWidth);
@@ -138,36 +136,45 @@ export default function BestDeals() {
   };
 
   return (
-    <Section>
+    <Section className="bg-orange-400 text-white">
       <Container>
-        {/* ENHANCED HEADING DESIGN */}
+
+        {/* HEADING */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 lg:gap-6 mb-2 md:mb-10">
-          <div className="relative">
-            <div className="absolute -top-4 -left-2 w-12 h-12 bg-orange-100 rounded-full blur-xl opacity-60 animate-pulse"></div>
-            <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-              <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                Our Best Deals
-              </span>
+
+          <div className="flex items-center gap-3">
+
+            {/* SHINING ICON */}
+            <Sparkles
+              size={22}
+              className="text-white animate-[shine_2.5s_ease-in-out_infinite]"
+            />
+
+            <h2 className="text-2xl lg:text-4xl font-black tracking-tight leading-none text-white">
+              Our Best Deals
             </h2>
+
           </div>
 
           <div className="flex items-center gap-3 self-end md:self-center">
             <button
               onClick={() => scroll("left")}
-              className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors"
+              className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
             >
-              <ChevronLeft size={20} className="text-slate-600" />
+              <ChevronLeft size={20} />
             </button>
+
             <button
               onClick={() => scroll("right")}
-              className="p-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors"
+              className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
             >
-              <ChevronRight size={20} className="text-slate-600" />
+              <ChevronRight size={20} />
             </button>
           </div>
+
         </div>
 
-        {/* COMPACT SWIPE AREA */}
+        {/* CARDS */}
         <div
           ref={scrollRef}
           className="flex gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4"
@@ -176,68 +183,70 @@ export default function BestDeals() {
             <div
               key={i}
               onClick={() => handleClick(item.name)}
-              className="group relative min-w-45 md:min-w-60 aspect-3/4 rounded-2xl overflow-hidden cursor-pointer snap-start bg-slate-100 border border-slate-50"
+              className="group relative min-w-45 md:min-w-60 aspect-3/4 rounded-2xl overflow-hidden cursor-pointer snap-start border border-white/10"
             >
-              {/* Image with subtle zoom */}
+
               <img
                 src={item.image}
                 alt={item.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              {/* Deal Info Pill (Floating on Image) */}
               <div className="absolute top-3 left-3 z-20">
-                <div className="bg-white/90 backdrop-blur px-2 py-1 rounded-lg shadow-sm">
-                  <p className="text-[10px] font-black text-dark-orange tracking-tight">
+                <div className="bg-black/50 backdrop-blur px-2 py-1 rounded-lg">
+                  <p className="text-[10px] font-black text-orange-300">
                     {item.count}
                   </p>
                 </div>
               </div>
 
-              {/* Glassmorphism Bottom Content */}
               <div className="absolute inset-x-2 bottom-2 z-20">
-                <div className="bg-white/20 backdrop-blur-xl border border-white/30 rounded-xl p-3 transform transition-transform duration-300 group-hover:-translate-y-1">
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-3 group-hover:-translate-y-1 transition">
+
                   <div className="flex justify-between items-start">
+
                     <div>
-                      <p className="text-[8px] font-black uppercase tracking-widest text-white/80 mb-0.5">
+                      <p className="text-[8px] font-black uppercase text-orange-200">
                         {item.tag}
                       </p>
-                      <h3 className="text-sm md:text-base font-black text-white leading-tight">
+
+                      <h3 className="text-sm md:text-base font-black">
                         {item.name}
                       </h3>
                     </div>
-                    <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                      <ArrowRight
-                        size={14}
-                        className="text-dark-orange"
-                        strokeWidth={3}
-                      />
+
+                    <div className="bg-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
+
+                      <ArrowRight size={14} className="text-orange-500" />
+
                     </div>
+
                   </div>
+
                 </div>
               </div>
 
-              {/* Darker Bottom Gradient for legibility */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
             </div>
           ))}
         </div>
 
-        {/* DOT INDICATORS */}
-        <div className="mt-6 flex items-center justify-center gap-2">
+        {/* DOTS */}
+        <div className="mt-6 flex justify-center gap-2">
           {categories.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollToItem(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all ${
                 activeDot === index
-                  ? "w-6 bg-dark-orange"
-                  : "w-2 bg-slate-200 hover:bg-slate-300"
+                  ? "w-6 bg-white"
+                  : "w-2 bg-white/50"
               }`}
-              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
+
       </Container>
     </Section>
   );
