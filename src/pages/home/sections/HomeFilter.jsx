@@ -77,10 +77,10 @@ export default function HomeFilter() {
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-16 items-center">
           {/* LEFT SIDE: Content (Desktop Only) */}
           <div className="hidden lg:block lg:col-span-5">
-            <p className="text-xs font-black uppercase tracking-[0.4em] text-coral-red mb-4">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-coral-red mb-4">
               Premium Listings
             </p>
-            <h2 className="text-3xl font-black leading-[1.1] text-slate-800">
+            <h2 className="text-4xl font-black leading-[1.1] text-slate-800">
               Find Your <br />
               <span className="bg-linear-to-r from-coral-red to-orange-600 bg-clip-text text-transparent">
                 Perfect Property
@@ -102,8 +102,8 @@ export default function HomeFilter() {
           <div className="lg:col-span-7">
             {/* MOBILE HEADER */}
             <div className="text-center mb-4 lg:hidden">
-              <h2 className="text-base font-black uppercase tracking-tight text-slate-800">
-                Find Your <span className="text-coral-red">Perfect Property</span>
+              <h2 className="text-lg font-black uppercase tracking-tight text-slate-800">
+                Find Your <span className="text-coral-red">Own Property</span>
               </h2>
               <div className="w-12 h-1 bg-linear-to-r from-coral-red via-soft-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>

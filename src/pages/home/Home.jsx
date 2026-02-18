@@ -3,7 +3,7 @@ import FeaturedProperties from "./sections/FeaturedProperties";
 import HomeHero from "./sections/HomeHero";
 import ServiceHub from "./sections/ServiceHub";
 import Trust from "./sections/Trust";
-import Categories from "./sections/Categories";
+import BestDeals from "./sections/BestDeals";
 import ContactCTA from "./sections/ContactCTA";
 import SellYourProperty from "./sections/SellYourProperty";
 import BestBuy from "./sections/BestBuy";
@@ -16,7 +16,7 @@ export default function Home() {
     <>
       <HomeHero />
       <HomeFilter/>
-      <Categories />
+      <BestDeals />
       <SellYourProperty/>
       <FeaturedProperties />
       <HotDeals />

@@ -112,10 +112,7 @@ export default function HomeHero() {
         <div className="flex flex-col items-center">
           {/* HEADING */}
           <div className="text-center px-2">
-            <p className="text-[10px] lg:text-sm font-bold uppercase tracking-widest text-coral-red">
-              One Stop Solution
-            </p>
-            <h1 className="text-lg lg:text-3xl font-black leading-tight mt-1 lg:mt-4">
+            <h1 className="text-xl lg:text-3xl font-black leading-tight mt-1 lg:mt-4">
               <span className="text-slate-800">Investment to </span>
               <span className="bg-linear-to-r from-coral-red via-soft-orange-500 to-warm-yellow bg-clip-text text-transparent">
                 Aesthetic Living
@@ -124,7 +121,7 @@ export default function HomeHero() {
           </div>
 
           {/* SEARCH CARD */}
-          <div className="w-full lg:w-1/2 mt-4">
+          <div className="w-full sm:w-1/2 mt-4">
             <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
               <div className="px-4 py-3 border-b border-slate-100 text-center">
                 <span className="text-xs lg:text-sm font-semibold text-slate-600">
