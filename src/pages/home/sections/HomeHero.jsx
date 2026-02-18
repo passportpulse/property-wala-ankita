@@ -113,7 +113,7 @@ export default function HomeHero() {
           {/* HEADING */}
           <div className="text-center px-2">
             <h1 className="text-xl lg:text-3xl font-black leading-tight mt-1 lg:mt-4">
-              <span className="text-slate-800">Investment to </span>
+              <span className="text-green-800">Investment to </span>
               <span className="bg-linear-to-r text-dark-orange">
                 Aesthetic Living
               </span>
