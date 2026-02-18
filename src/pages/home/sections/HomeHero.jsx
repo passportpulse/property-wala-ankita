@@ -94,7 +94,7 @@ export default function HomeHero() {
   }, [isPaused]);
 
   return (
-    <Section className="pt-8 lg:mt-0 relative bg-linear-to-b from-orange-50 via-white to-orange-50 overflow-hidden">
+    <Section className="pt-6 lg:mt-0 relative bg-linear-to-b from-orange-50 via-white to-orange-50 overflow-hidden">
       {/* =========================
           PROFESSIONAL DOT GRID (Top Area Only)
       ========================= */}
@@ -112,7 +112,7 @@ export default function HomeHero() {
         <div className="flex flex-col items-center">
           {/* HEADING */}
           <div className="text-center px-2">
-            <h1 className="text-xl lg:text-3xl font-black leading-tight mt-1 lg:mt-4 font-medium">
+            <h1 className="text-xl lg:text-3xl leading-tight mt-1 lg:mt-4 font-medium">
               <span className="text-green-800">Investment to </span>
               <span className="bg-linear-to-r text-dark-orange">
                 Aesthetic Living
@@ -183,8 +183,8 @@ export default function HomeHero() {
       {/* =========================
           MARQUEE SECTION (No BG)
       ========================= */}
-      <div className="relative w-full lg:mt-10 py-6">
-        <p className="relative z-10 text-xs lg:text-sm font-semibold text-slate-700 mb-4 lg:mb-8 text-center">
+      <div className="relative w-full mt-4 lg:mt-10">
+        <p className="relative z-10 text-xs lg:text-sm font-semibold text-slate-700 mb-2 lg:mb-8 text-center">
           Browse by Property Type
         </p>
 
