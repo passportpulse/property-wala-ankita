@@ -12,12 +12,11 @@ export default function HomeFilter() {
   const MAX_LIMIT = 500000000;
 
   // States
-  const [selectedState, setSelectedState] = useState("West Bengal"); // preselect WB
+  const [selectedState, setSelectedState] = useState("West Bengal");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
   const [citySearch, setCitySearch] = useState("");
   const [placeSearch, setPlaceSearch] = useState("");
-
   const [minBudget, setMinBudget] = useState(MIN_LIMIT);
   const [maxBudget, setMaxBudget] = useState(MAX_LIMIT);
 
@@ -33,18 +32,14 @@ export default function HomeFilter() {
   const cities = selectedState === "West Bengal" ? citiesInWB : [];
   const places = selectedCity ? placesInWB[selectedCity] || [] : [];
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (stateRef.current && !stateRef.current.contains(event.target)) {
+      if (stateRef.current && !stateRef.current.contains(event.target))
         setStateDropdownOpen(false);
-      }
-      if (cityRef.current && !cityRef.current.contains(event.target)) {
+      if (cityRef.current && !cityRef.current.contains(event.target))
         setCityDropdownOpen(false);
-      }
-      if (placeRef.current && !placeRef.current.contains(event.target)) {
+      if (placeRef.current && !placeRef.current.contains(event.target))
         setPlaceDropdownOpen(false);
-      }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
@@ -65,246 +60,256 @@ export default function HomeFilter() {
   const filteredCities = cities.filter((city) =>
     city.toLowerCase().includes(citySearch.toLowerCase()),
   );
+
   const filteredPlaces = places.filter((place) =>
     place.toLowerCase().includes(placeSearch.toLowerCase()),
   );
 
   return (
-    <Section size="default" className="bg-white">
+    <Section className="relative overflow-hidden py-4">
+      {/* Background accents */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-5%] w-150 h-150 bg-orange-200/20 blur-[130px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-5%] w-125 h-125 bg-coral-red/10 blur-[120px] rounded-full"></div>
+      </div>
+
       <Container>
-        <div className="max-w-5xl mx-auto space-y-3">
-          {/* FILTER CARD */}
-          <div className="bg-slate-300 p-4 shadow-xl space-y-3">
-            {/* HEADING */}
-            <div className="text-center mb-6">
-              <h2 className="text-xs lg:text-base font-black uppercase bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
-                Search Property by{" "}
-                <span className="text-orange-700">State, City & Budget</span>
+        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-16 items-center">
+          {/* LEFT SIDE: Content (Desktop Only) */}
+          <div className="hidden lg:block lg:col-span-5">
+            <p className="text-xs font-black uppercase tracking-[0.4em] text-coral-red mb-4">
+              Premium Listings
+            </p>
+            <h2 className="text-3xl font-black leading-[1.1] text-slate-800">
+              Find Your <br />
+              <span className="bg-linear-to-r from-coral-red to-orange-600 bg-clip-text text-transparent">
+                Perfect Property
+              </span>
+            </h2>
+            <p className="mt-6 text-base text-slate-500 font-medium leading-relaxed max-w-sm">
+              Tailor your search by state, city, and budget. Our verified
+              listings make finding your next home or investment seamless.
+            </p>
+            <div className="mt-10 flex items-center gap-4">
+              <div className="w-12 h-0.5 bg-coral-red"></div>
+              <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
+                Scroll to explore
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE: Filter Card */}
+          <div className="lg:col-span-7">
+            {/* MOBILE HEADER */}
+            <div className="text-center mb-4 lg:hidden">
+              <h2 className="text-base font-black uppercase tracking-tight text-slate-800">
+                Find Your <span className="text-coral-red">Perfect Property</span>
               </h2>
+              <div className="w-12 h-1 bg-linear-to-r from-coral-red via-soft-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>
-            {/* STATE DROPDOWN */}
-            <div className="relative" ref={stateRef}>
-              <div
-                className="flex items-center justify-between bg-white px-3 py-3 cursor-pointer"
-                onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-orange-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedState || "Select State"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-orange-700" />
-              </div>
-              {stateDropdownOpen && (
-                <div className="absolute z-10 w-full max-h-60 overflow-y-auto bg-white border mt-1 rounded shadow">
-                  {states.map((s) => (
-                    <div
-                      key={s.id}
-                      className={`px-3 py-2 cursor-pointer hover:bg-orange-100 ${
-                        s.name !== "West Bengal"
-                          ? "text-gray-400 cursor-not-allowed"
-                          : ""
-                      }`}
-                      onClick={() => {
-                        if (s.name === "West Bengal") {
-                          setSelectedState(s.name);
-                          setSelectedCity("");
-                          setSelectedPlace("");
-                          setStateDropdownOpen(false);
-                        }
-                      }}
+
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
+              <div className="space-y-4 lg:space-y-6">
+                
+                {/* GRID FOR DROPDOWNS */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  
+                  {/* STATE - Fixed Dropdown */}
+                  <div className="relative" ref={stateRef}>
+                    <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-1 block lg:mb-2">
+                      State
+                    </label>
+                    <button
+                      onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
+                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all group"
                     >
-                      {s.name}
+                      <div className="flex items-center gap-2 lg:gap-3">
+                        <MapPin size={16} className="text-coral-red lg:group-hover:scale-110 transition-transform" />
+                        <span className="text-xs lg:text-sm font-bold text-slate-700">
+                          {selectedState}
+                        </span>
+                      </div>
+                      <ChevronDown size={14} className={`text-slate-400 transition-transform duration-300 ${stateDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    
+                    {stateDropdownOpen && (
+                      <div className="absolute z-100 w-full mt-1 lg:mt-2 bg-white rounded-2xl shadow-2xl border border-slate-50 animate-in fade-in zoom-in-95">
+                        <div className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200">
+                          {states.map((s) => (
+                            <div
+                              key={s.id}
+                              onClick={() => {
+                                if (s.name === "West Bengal") {
+                                  setSelectedState(s.name);
+                                  setSelectedCity("");
+                                  setSelectedPlace("");
+                                  setStateDropdownOpen(false);
+                                }
+                              }}
+                              className={`px-4 py-2 lg:py-3 text-xs lg:text-sm font-semibold transition-colors cursor-pointer ${s.name === "West Bengal" ? "hover:bg-orange-50 text-slate-700" : "text-slate-300 bg-slate-50/50"}`}
+                            >
+                              {s.name} {s.name !== "West Bengal" && "(Soon)"}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CITY */}
+                  <div className="relative" ref={cityRef}>
+                    <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-1 block lg:mb-2">
+                      City
+                    </label>
+                    <button
+                      onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
+                      disabled={!selectedState}
+                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
+                    >
+                      <div className="flex items-center gap-2 lg:gap-3">
+                        <MapPin size={16} className="text-coral-red" />
+                        <span className="text-xs lg:text-sm font-bold text-slate-700 truncate">
+                          {selectedCity || "Select City"}
+                        </span>
+                      </div>
+                      <ChevronDown size={14} className="text-slate-400" />
+                    </button>
+                    {cityDropdownOpen && (
+                      <div className="absolute z-100 w-full mt-1 lg:mt-2 bg-white rounded-2xl shadow-2xl border border-slate-50 animate-in fade-in zoom-in-95">
+                        <input
+                          placeholder="Search city..."
+                          value={citySearch}
+                          onChange={(e) => setCitySearch(e.target.value)}
+                          className="w-full px-4 py-2 lg:py-3 border-b outline-none text-xs lg:text-sm font-medium bg-slate-50/50 focus:bg-white"
+                        />
+                        <div className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200">
+                          {filteredCities.map((c, idx) => (
+                            <div
+                              key={idx}
+                              onClick={() => {
+                                setSelectedCity(c);
+                                setCityDropdownOpen(false);
+                              }}
+                              className="px-4 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-slate-600 hover:bg-orange-50 cursor-pointer"
+                            >
+                              {c}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* LOCALITY */}
+                  <div className="relative" ref={placeRef}>
+                    <label className="text-[9px] font-black text-slate-400 uppercase tracking-widest ml-1 mb-1 block lg:mb-2">
+                      Locality
+                    </label>
+                    <button
+                      onClick={() => setPlaceDropdownOpen(!placeDropdownOpen)}
+                      disabled={!selectedCity}
+                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
+                    >
+                      <div className="flex items-center gap-2 lg:gap-3">
+                        <MapPin size={16} className="text-coral-red" />
+                        <span className="text-xs lg:text-sm font-bold text-slate-700 truncate">
+                          {selectedPlace || "All Localities"}
+                        </span>
+                      </div>
+                      <ChevronDown size={14} className="text-slate-400" />
+                    </button>
+                    {placeDropdownOpen && (
+                      <div className="absolute z-100 w-full mt-1 lg:mt-2 bg-white rounded-2xl shadow-2xl border border-slate-50 animate-in fade-in zoom-in-95">
+                        <input
+                          placeholder="Search locality..."
+                          value={placeSearch}
+                          onChange={(e) => setPlaceSearch(e.target.value)}
+                          className="w-full px-4 py-2 lg:py-3 border-b outline-none text-xs lg:text-sm font-medium bg-slate-50/50 focus:bg-white"
+                        />
+                        <div className="max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-slate-200">
+                          {filteredPlaces.map((p, idx) => (
+                            <div
+                              key={idx}
+                              onClick={() => {
+                                setSelectedPlace(p);
+                                setPlaceDropdownOpen(false);
+                              }}
+                              className="px-4 py-2 lg:py-3 text-xs lg:text-sm font-semibold text-slate-600 hover:bg-orange-50 cursor-pointer"
+                            >
+                              {p}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* BUDGET SECTION */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6">
+                  <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                    <div className="flex justify-between items-center mb-1 lg:mb-4">
+                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Min Budget</span>
+                      <span className="text-xs lg:text-sm font-black text-coral-red">₹ {formatPrice(minBudget)}</span>
                     </div>
-                  ))}
-                </div>
-              )}
-            </div>
+                    <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
+                      <IndianRupee size={14} className="text-slate-400" />
+                      <input
+                        type="number"
+                        value={minBudget}
+                        onChange={(e) => setMinBudget(Number(e.target.value))}
+                        className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
+                      />
+                    </div>
+                    <input
+                      type="range"
+                      min={MIN_LIMIT}
+                      max={MAX_LIMIT}
+                      step="100000"
+                      value={minBudget}
+                      onChange={(e) => setMinBudget(Number(e.target.value))}
+                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-coral-red"
+                    />
+                  </div>
 
-            {/* CITY DROPDOWN */}
-            <div className="relative" ref={cityRef}>
-              <div
-                className={`flex items-center justify-between bg-white px-3 py-3 cursor-pointer ${
-                  !selectedState ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                onClick={() =>
-                  selectedState && setCityDropdownOpen(!cityDropdownOpen)
-                }
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-orange-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedCity || "Select City"}
-                  </span>
-                </div>
-                <ChevronDown size={18} className="text-orange-700" />
-              </div>
-
-              {cityDropdownOpen && (
-                <div className="absolute z-10 w-full bg-white border mt-1 rounded shadow">
-                  {/* SEARCH INPUT */}
-                  <input
-                    type="text"
-                    placeholder="Type city name..."
-                    value={citySearch}
-                    onChange={(e) => setCitySearch(e.target.value)}
-                    className="w-full px-3 py-2 border-b outline-none text-sm"
-                  />
-
-                  {/* CITY LIST */}
-                  <div className="max-h-60 overflow-y-auto">
-                    {filteredCities.length > 0 ? (
-                      filteredCities.map((c, idx) => (
-                        <div
-                          key={idx}
-                          className="px-3 py-2 cursor-pointer hover:bg-orange-100"
-                          onClick={() => {
-                            setSelectedCity(c);
-                            setCitySearch("");
-                            setCityDropdownOpen(false);
-                          }}
-                        >
-                          {c}
-                        </div>
-                      ))
-                    ) : (
-                      <div className="px-3 py-2 text-gray-400 text-sm">
-                        No city found
-                      </div>
-                    )}
+                  <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                    <div className="flex justify-between items-center mb-1 lg:mb-4">
+                      <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Max Budget</span>
+                      <span className="text-xs lg:text-sm font-black text-coral-red">₹ {formatPrice(maxBudget)}</span>
+                    </div>
+                    <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
+                      <IndianRupee size={14} className="text-slate-400" />
+                      <input
+                        type="number"
+                        value={maxBudget}
+                        onChange={(e) => setMaxBudget(Number(e.target.value))}
+                        className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
+                      />
+                    </div>
+                    <input
+                      type="range"
+                      min={MIN_LIMIT}
+                      max={MAX_LIMIT}
+                      step="100000"
+                      value={maxBudget}
+                      onChange={(e) => setMaxBudget(Number(e.target.value))}
+                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-coral-red"
+                    />
                   </div>
                 </div>
-              )}
-            </div>
 
-            {/* PLACE DROPDOWN */}
-            <div className="relative" ref={placeRef}>
-              <div
-                className={`flex items-center justify-between bg-white px-3 py-3 cursor-pointer ${
-                  !selectedCity ? "opacity-50 cursor-not-allowed" : ""
-                }`}
-                onClick={() =>
-                  selectedCity && setPlaceDropdownOpen(!placeDropdownOpen)
-                }
-              >
-                <div className="flex items-center gap-2">
-                  <MapPin size={18} className="text-orange-700" />
-                  <span className="text-sm font-semibold">
-                    {selectedPlace || "Select Place"}
-                  </span>
+                {/* SEARCH BUTTON */}
+                <div className="pt-1 flex justify-center lg:justify-end">
+                  <button
+                    onClick={handleSearch}
+                    className="w-auto min-w-50 bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow text-white font-black uppercase text-xs tracking-[0.15em] py-3 lg:py-4 px-4 lg:px-6 rounded-full shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
+                  >
+                    <Search size={18} strokeWidth={3} className="group-hover:rotate-12 transition-transform" />
+                    Search
+                  </button>
                 </div>
-                <ChevronDown size={18} className="text-orange-700" />
               </div>
-
-              {placeDropdownOpen && (
-                <div className="absolute z-10 w-full bg-white border mt-1 rounded shadow">
-                  {/* SEARCH INPUT */}
-                  <input
-                    type="text"
-                    placeholder="Type place name..."
-                    value={placeSearch}
-                    onChange={(e) => setPlaceSearch(e.target.value)}
-                    className="w-full px-3 py-2 border-b outline-none text-sm"
-                  />
-
-                  {/* PLACE LIST */}
-                  <div className="max-h-60 overflow-y-auto">
-                    {filteredPlaces.length > 0 ? (
-                      filteredPlaces.map((p, idx) => (
-                        <div
-                          key={idx}
-                          className="px-3 py-2 cursor-pointer hover:bg-orange-100"
-                          onClick={() => {
-                            setSelectedPlace(p);
-                            setPlaceSearch("");
-                            setPlaceDropdownOpen(false);
-                          }}
-                        >
-                          {p}
-                        </div>
-                      ))
-                    ) : (
-                      <div className="px-3 py-2 text-gray-400 text-sm">
-                        No place found
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
             </div>
-
-            {/* MIN BUDGET + SLIDER */}
-            <div className="bg-white p-3 rounded-md space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black uppercase text-slate-500">
-                  Min
-                </span>
-                <span className="text-xs font-bold text-slate-600">
-                  ₹ {formatPrice(minBudget)}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-orange-700" />
-                <input
-                  type="number"
-                  value={minBudget}
-                  min={MIN_LIMIT}
-                  max={maxBudget}
-                  onChange={(e) => setMinBudget(Number(e.target.value))}
-                  className="w-full outline-none text-sm font-semibold"
-                />
-              </div>
-              <input
-                type="range"
-                min={MIN_LIMIT}
-                max={MAX_LIMIT}
-                step="100000"
-                value={minBudget}
-                onChange={(e) => setMinBudget(Number(e.target.value))}
-                className="w-full accent-orange-700"
-              />
-            </div>
-
-            {/* MAX BUDGET + SLIDER */}
-            <div className="bg-white p-3 rounded-md space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black uppercase text-slate-500">
-                  Max
-                </span>
-                <span className="text-xs font-bold text-slate-600">
-                  ₹ {formatPrice(maxBudget)}
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <IndianRupee size={18} className="text-orange-700" />
-                <input
-                  type="number"
-                  value={maxBudget}
-                  min={minBudget}
-                  max={MAX_LIMIT}
-                  onChange={(e) => setMaxBudget(Number(e.target.value))}
-                  className="w-full outline-none text-sm font-semibold"
-                />
-              </div>
-              <input
-                type="range"
-                min={MIN_LIMIT}
-                max={MAX_LIMIT}
-                step="100000"
-                value={maxBudget}
-                onChange={(e) => setMaxBudget(Number(e.target.value))}
-                className="w-full accent-orange-700"
-              />
-            </div>
-
-            {/* SEARCH BUTTON */}
-            <button
-              onClick={handleSearch}
-              className="w-full bg-orange-700 text-white font-black uppercase tracking-widest text-xs flex items-center justify-center gap-2 py-3 mt-4 hover:bg-orange-800 transition"
-            >
-              <Search size={18} /> Search
-            </button>
           </div>
         </div>
       </Container>

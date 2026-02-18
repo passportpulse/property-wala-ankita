@@ -94,7 +94,7 @@ export default function HomeHero() {
   }, [isPaused]);
 
   return (
-    <Section className="relative bg-linear-to-b from-orange-50 via-white to-white font-poppins overflow-hidden">
+    <Section className="pt-8 relative bg-linear-to-b from-orange-50 via-white to-white font-poppins overflow-hidden">
       {/* =========================
           PROFESSIONAL DOT GRID (Top Area Only)
       ========================= */}
