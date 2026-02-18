@@ -59,27 +59,6 @@ function DesktopNav({ scrolled }) {
   );
 }
 
-/* =========================
-   JOIN BUTTON
-========================= */
-function JoinButton({ scrolled }) {
-  return (
-    <Link
-      to="/property-wala-bhaiya"
-      className={`hidden lg:flex items-center gap-2 px-8 py-3 rounded-full font-black text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-lg active:scale-95 ${
-        scrolled
-          ? "bg-linear-to-r from-dark-orange via-lighter-orange) to-warm-yellow text-white"
-          : "bg-white text-dark-orange"
-      }`}
-    >
-      <Sparkles
-        size={14}
-        className={scrolled ? "text-warm-yellow" : "text-soft-orange"}
-      />
-      Join Our Network
-    </Link>
-  );
-}
 
 /* =========================
    HAMBURGER BUTTON
@@ -139,15 +118,6 @@ function MobileMenu({ open, setOpen }) {
             {link.label}
           </NavLink>
         ))}
-
-        <Link
-          to="/property-wala-bhaiya"
-          onClick={() => setOpen(false)}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-linear-to-r from-dark-orange via-lighter-orange) to-warm-yellow text-white rounded-full font-bold text-[12px] uppercase tracking-wider shadow-md hover:shadow-lg active:scale-95 transition-all duration-200"
-        >
-          <Sparkles size={14} className="text-warm-yellow" />
-          Join Our Network
-        </Link>
       </div>
     </div>
   );
@@ -178,7 +148,6 @@ export default function Navbar({ promoVisible }) {
         <NavbarLogo scrolled={scrolled} />
         <DesktopNav scrolled={scrolled} />
         <div className="flex items-end gap-4">
-          <JoinButton scrolled={scrolled} />
           <Hamburger open={open} setOpen={setOpen} scrolled={scrolled} />
         </div>
       </Container>

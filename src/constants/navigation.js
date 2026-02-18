@@ -5,5 +5,6 @@ export const navigationLinks = [
   { id: 4, label: "Buy", path: "/buy" },
   { id: 5, label: "Sell", path: "/sell" },
   { id: 6, label: "Rent", path: "/rent" },
+  { id: 7, label: "Join Our Network", path: "/join-us" },
   { id: 7, label: "Contact", path: "/contact" },
 ];
