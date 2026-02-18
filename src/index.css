@@ -9,10 +9,10 @@
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 @theme {
-  --color-coral-red: #e04b1e;      /* deep vibrant orange */
-  --color-soft-orange: #ff7f50;    /* lighter orange / coral */
-  --color-peach-glow: #ffb347;     /* warm peach / mid orange */
-  --color-warm-yellow: #ffe066;    /* bright sun yellow */
+  --color-dark-orange: #FF6A00;     
+  --color-lighter-orange: #FF8C00;   
+  --color-soft-orange: #FFA500;    
+  --color-warm-yellow: #FFD200;   
 }
 
 * {
@@ -25,6 +25,7 @@
     scrollbar-width: none;
   }
 }
+/* HOME MARQUEE */
 @keyframes marquee-horizontal {
   0% {
     transform: translateX(0%);

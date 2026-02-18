@@ -80,7 +80,7 @@ const Services = () => {
     <Section className="bg-slate-50 font-poppins text-slate-800" size="small">
       <Container>
         {/* HERO (UNCHANGED AS PROVIDED) */}
-        <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+        <span className="text-xs font-semibold tracking-widest uppercase text-dark-orange">
           Our Services
         </span>
 
@@ -102,7 +102,7 @@ const Services = () => {
             className="w-full flex justify-between items-center p-6 lg:p-8 text-left"
           >
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-coral-red">
+              <span className="text-xs font-semibold uppercase tracking-widest text-dark-orange">
                 Core Offering
               </span>
 
@@ -114,7 +114,7 @@ const Services = () => {
             <ChevronDown
               size={20}
               className={`transition-transform duration-300 ${
-                coreOpen ? "rotate-180 text-coral-red" : "text-slate-400"
+                coreOpen ? "rotate-180 text-dark-orange" : "text-slate-400"
               }`}
             />
           </button>
@@ -132,7 +132,7 @@ const Services = () => {
 
             <a
               href="tel:+917699988876"
-              className="inline-flex items-center mt-6 px-6 py-3 bg-coral-red text-white text-sm font-semibold rounded-xl hover:opacity-90 transition"
+              className="inline-flex items-center mt-6 px-6 py-3 bg-dark-orange text-white text-sm font-semibold rounded-xl hover:opacity-90 transition"
             >
               Contact our Experts
             </a>
@@ -152,7 +152,7 @@ const Services = () => {
                   className="w-full flex justify-between items-center py-5 text-left group"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="p-2 rounded-lg bg-coral-red/10 text-coral-red">
+                    <div className="p-2 rounded-lg bg-dark-orange/10 text-dark-orange">
                       {service.icon}
                     </div>
 
@@ -164,7 +164,7 @@ const Services = () => {
                   <ChevronDown
                     size={18}
                     className={`transition-transform duration-300 ${
-                      isOpen ? "rotate-180 text-coral-red" : "text-slate-400"
+                      isOpen ? "rotate-180 text-dark-orange" : "text-slate-400"
                     }`}
                   />
                 </button>

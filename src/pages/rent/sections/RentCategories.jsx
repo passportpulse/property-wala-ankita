@@ -26,7 +26,7 @@ export default function RentCategories() {
                   View Listings
                 </span>
 
-                <div className="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-coral-red group-hover:text-white transition-all">
+                <div className="w-10 h-10 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-dark-orange group-hover:text-white transition-all">
                   <ArrowRight size={16} />
                 </div>
               </div>

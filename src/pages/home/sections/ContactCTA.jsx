@@ -21,27 +21,27 @@ export default function ContactCTA() {
         ">
 
           {/* Subtle Background Accents */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-peach-glow/10 blur-[100px] rounded-full -mr-20 -mt-20" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-coral-red/5 blur-[100px] rounded-full -ml-20 -mb-20" />
+          <div className="absolute top-0 right-0 w-96 h-96 bg-soft-orange/10 blur-[100px] rounded-full -mr-20 -mt-20" />
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-dark-orange/5 blur-[100px] rounded-full -ml-20 -mb-20" />
 
 
           <div className="relative z-10 space-y-8">
 
             {/* Label */}
             <div className="flex items-center justify-center gap-2">
-              <span className="w-8 h-[1.5px] bg-coral-red"></span>
+              <span className="w-8 h-[1.5px] bg-dark-orange"></span>
 
               <span className="
                 text-[10px]
                 font-black
                 uppercase
                 tracking-[0.2em]
-                text-coral-red
+                text-dark-orange
               ">
                 Get Started
               </span>
 
-              <span className="w-8 h-[1.5px] bg-coral-red"></span>
+              <span className="w-8 h-[1.5px] bg-dark-orange"></span>
             </div>
 
 
@@ -59,7 +59,7 @@ export default function ContactCTA() {
                 text-transparent
                 bg-clip-text
                 bg-linear-to-r
-                from-coral-red via-soft-orange to-peach-glow
+                from-dark-orange via-lighter-orange to-soft-orange
               ">
                 place in Durgapur?
               </span>
@@ -106,8 +106,8 @@ export default function ContactCTA() {
                   text-[10px]
                   uppercase
                   tracking-[0.2em]
-                  hover:bg-coral-red
-                  hover:shadow-xl hover:shadow-coral-red/30
+                  hover:bg-dark-orange
+                  hover:shadow-xl hover:shadow-dark-orange/30
                   transition-all duration-300
                   active:scale-95
                 "
@@ -130,8 +130,8 @@ export default function ContactCTA() {
                   text-[10px]
                   uppercase
                   tracking-[0.2em]
-                  hover:border-coral-red
-                  hover:text-coral-red
+                  hover:border-dark-orange
+                  hover:text-dark-orange
                   hover:shadow-lg
                   transition-all duration-300
                   active:scale-95
@@ -150,7 +150,7 @@ export default function ContactCTA() {
             absolute bottom-0 inset-x-0
             h-1.5
             bg-linear-to-r
-            from-coral-red via-soft-orange to-peach-glow
+            from-dark-orange via-lighter-orange to-soft-orange
           " />
 
         </div>

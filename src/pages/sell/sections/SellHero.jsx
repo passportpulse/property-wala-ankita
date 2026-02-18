@@ -8,7 +8,7 @@ export default function SellHero({ setIsModalOpen }) {
       <Container>
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="text-center lg:text-left space-y-6">
-            <p className="text-coral-red font-black text-[10px] uppercase tracking-[0.4em]">
+            <p className="text-dark-orange font-black text-[10px] uppercase tracking-[0.4em]">
               Direct-to-Buyer Marketplace
             </p>
 
@@ -20,7 +20,7 @@ export default function SellHero({ setIsModalOpen }) {
             <div className="flex flex-col sm:flex-row items-center gap-6 pt-4">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-coral-red text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl shadow-coral-red/20 hover:bg-slate-900 transition-all"
+                className="bg-dark-orange text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] shadow-xl shadow-dark-orange/20 hover:bg-slate-900 transition-all"
               >
                 Post Property Free
               </button>
@@ -41,7 +41,7 @@ export default function SellHero({ setIsModalOpen }) {
               <div className="absolute inset-0 bg-linear-to-t from-white/50 via-white/30 to-transparent"></div>
 
               <div className="absolute top-0 right-0 p-4">
-                <CheckCircle2 className="text-coral-red" size={24} />
+                <CheckCircle2 className="text-dark-orange" size={24} />
               </div>
 
               <span className="text-5xl font-black text-slate-900 mb-2 relative z-10">

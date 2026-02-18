@@ -7,11 +7,10 @@ import {
   Maximize,
   MapPin,
   ArrowUpRight,
-  X,
-  Phone,
-  Calendar,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+import FeaturedPropertyModal from "../../../components/modals/FeaturedPropertyModal";
 
 const properties = [
   {
@@ -63,144 +62,128 @@ export default function FeaturedProperties() {
   const [selectedProperty, setSelectedProperty] = useState(null);
 
   useEffect(() => {
-    if (selectedProperty) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = selectedProperty ? "hidden" : "unset";
   }, [selectedProperty]);
 
   return (
-    <Section size="large" className="bg-white font-poppins">
-
+    <Section>
       <Container>
 
-        {/* HEADER */}
-        <div className="relative mb-16 border-l-4 border-coral-red pl-8">
+        {/* COMPACT HEADER */}
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-
-            <div className="space-y-2">
-
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
+            <div className="space-y-1 lg:space-y-2">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
                 Curated Marketplace
               </span>
 
-              <h2 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter">
-                Featured <span className="text-coral-red">Listings</span>
+              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                Featured{" "}
+                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
+                  Listings
+                </span>
               </h2>
 
-              <p className="text-slate-500 max-w-md text-sm lg:text-base leading-relaxed font-medium">
-                Verified high-yield properties handpicked for quality and direct deal transparency.
+              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+                Handpicked properties with direct deal transparency.
               </p>
-
             </div>
-
 
             <button
               onClick={() => navigate("/buy")}
-              className="cursor-pointer flex items-center gap-2 group text-[11px] font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-100 pb-2 hover:border-coral-red transition-all"
+              className="cursor-pointer flex items-center gap-2 group text-[10px] lg:text-[11px] font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-100 pb-1 lg:pb-2 hover:border-dark-orange transition-all w-fit"
             >
-
-              Browse All Inventory
-
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-
+              Browse All
+              <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
 
           </div>
-
         </div>
 
 
-        {/* PROPERTY GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* PROPERTY GRID / MOBILE SWIPER */}
+        <div className="flex lg:grid lg:grid-cols-3 gap-4 lg:gap-8 overflow-x-auto no-scrollbar pb-6 px-1 lg:px-0 snap-x snap-mandatory">
 
           {properties.map((item) => (
-
             <div
               key={item.id}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 border border-slate-100 transition-all duration-500"
+              className="
+                snap-center shrink-0 
+                w-70 lg:w-auto
+                group bg-white rounded-3xl overflow-hidden 
+                shadow-sm hover:shadow-2xl hover:shadow-slate-200/50 
+                border border-slate-100 transition-all duration-500
+              "
             >
 
               {/* Image */}
-              <div className="relative h-64 overflow-hidden">
-
+              <div className="relative h-48 lg:h-64 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
 
-                <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3 py-1 rounded-lg shadow-sm">
-
-                  <span className="text-[10px] font-black uppercase tracking-widest text-coral-red">
+                <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-2 lg:px-3 py-1 rounded-lg shadow-sm">
+                  <span className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-dark-orange">
                     {item.type}
                   </span>
-
                 </div>
-
               </div>
 
 
               {/* Content */}
-              <div className="p-6 space-y-5">
+              <div className="p-4 lg:p-6 space-y-4 lg:space-y-5">
 
                 <div className="space-y-1">
-
-                  <p className="text-2xl font-black text-slate-900 tracking-tight">
+                  <p className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
                     {item.price}
                   </p>
 
-                  <h3 className="text-lg font-bold text-slate-700 leading-tight">
+                  <h3 className="text-sm lg:text-lg font-bold text-slate-700 leading-tight line-clamp-1">
                     {item.title}
                   </h3>
 
-                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-
-                    <MapPin className="w-3.5 h-3.5 text-soft-orange" />
-
+                  <p className="text-[9px] lg:text-[11px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-lighter-orange" />
                     {item.location}
-
                   </p>
+                </div>
+
+
+                {/* Details Bar */}
+                <div className="flex items-center justify-between py-3 border-y border-slate-50 text-slate-500 text-[9px] lg:text-[10px] font-black uppercase tracking-widest">
+
+                  <div className="flex items-center gap-1">
+                    <Bed className="w-3.5 h-3.5 text-dark-orange/60" />
+                    {item.beds > 0 ? `${item.beds} B` : "N/A"}
+                  </div>
+
+                  <div className="flex items-center gap-1 border-x border-slate-50 px-3">
+                    <Bath className="w-3.5 h-3.5 text-dark-orange/60" />
+                    {item.baths > 0 ? `${item.baths} B` : "N/A"}
+                  </div>
+
+                  <div className="flex items-center gap-1">
+                    <Maximize className="w-3.5 h-3.5 text-dark-orange/60" />
+                    {item.sqft} ft
+                  </div>
 
                 </div>
 
 
-                {/* Details */}
-                <div className="flex items-center justify-between py-4 border-t border-slate-50 text-slate-500 text-[10px] font-black uppercase tracking-widest">
-
-                  <div className="flex items-center gap-1.5">
-                    <Bed className="w-4 h-4 text-coral-red/60" />
-                    {item.beds > 0 ? `${item.beds} Bed` : "N/A"}
-                  </div>
-
-                  <div className="flex items-center gap-1.5 border-x border-slate-50 px-4">
-                    <Bath className="w-4 h-4 text-coral-red/60" />
-                    {item.baths > 0 ? `${item.baths} Bath` : "N/A"}
-                  </div>
-
-                  <div className="flex items-center gap-1.5">
-                    <Maximize className="w-4 h-4 text-coral-red/60" />
-                    {item.sqft} sqft
-                  </div>
-
-                </div>
-
-
+                {/* View Button */}
                 <button
                   onClick={() => setSelectedProperty(item)}
-                  className="w-full cursor-pointer py-4 bg-slate-50 group-hover:bg-linear-to-r group-hover:from-coral-red group-hover:to-soft-orange text-slate-900 group-hover:text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300"
+                  className="w-full cursor-pointer py-3.5 bg-slate-200 group-hover:bg-linear-to-r group-hover:from-dark-orange group-hover:to-lighter-orange text-slate-900 group-hover:text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
                 >
-
                   View Details
-
                 </button>
 
               </div>
 
             </div>
-
           ))}
 
         </div>
@@ -208,32 +191,11 @@ export default function FeaturedProperties() {
       </Container>
 
 
-      {/* MODAL OUTSIDE CONTAINER FOR FULLSCREEN */}
-      {selectedProperty && (
-
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-
-          <div
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-            onClick={() => setSelectedProperty(null)}
-          />
-
-          <div className="relative bg-white w-full max-w-2xl rounded-[2.5rem] overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
-
-            <button
-              onClick={() => setSelectedProperty(null)}
-              className="absolute top-6 right-6 z-10 p-2 bg-white/80 backdrop-blur-md rounded-full hover:bg-coral-red hover:text-white transition-colors"
-            >
-              <X size={20} />
-            </button>
-
-            {/* Modal content remains same */}
-
-          </div>
-
-        </div>
-
-      )}
+      {/* MODAL */}
+      <FeaturedPropertyModal
+        property={selectedProperty}
+        onClose={() => setSelectedProperty(null)}
+      />
 
     </Section>
   );

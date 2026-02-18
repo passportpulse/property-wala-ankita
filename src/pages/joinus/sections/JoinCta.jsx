@@ -9,7 +9,7 @@ const JoinCta = () => {
           href="https://wa.me/917699988876"
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 bg-coral-red text-white px-10 py-4 rounded-xl font-medium hover:bg-soft-orange transition-all active:scale-95 shadow-md"
+          className="group inline-flex items-center gap-3 bg-dark-orange text-white px-10 py-4 rounded-xl font-medium hover:bg-lighter-orange transition-all active:scale-95 shadow-md"
         >
           Chat on WhatsApp
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -17,7 +17,7 @@ const JoinCta = () => {
 
         <a
           href="tel:+91 76999 88876"
-          className="inline-flex items-center gap-3 border border-coral-red text-coral-red px-10 py-4 rounded-xl font-medium hover:bg-coral-red hover:text-white transition-all"
+          className="inline-flex items-center gap-3 border border-dark-orange text-dark-orange px-10 py-4 rounded-xl font-medium hover:bg-dark-orange hover:text-white transition-all"
         >
           Call Now
         </a>

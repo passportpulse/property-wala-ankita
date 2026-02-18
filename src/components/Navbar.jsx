@@ -43,7 +43,7 @@ function DesktopNav({ scrolled }) {
           className={({ isActive }) =>
             `relative text-sm font-semibold uppercase tracking-wide transition-all duration-200 ${
               scrolled
-                ? "text-slate-600 hover:text-coral-red"
+                ? "text-slate-600 hover:text-dark-orange"
                 : "text-white hover:text-warm-yellow"
             } ${
               isActive
@@ -68,13 +68,13 @@ function JoinButton({ scrolled }) {
       to="/property-wala-bhaiya"
       className={`hidden lg:flex items-center gap-2 px-8 py-3 rounded-full font-black text-sm uppercase tracking-[0.25em] transition-all duration-300 shadow-lg active:scale-95 ${
         scrolled
-          ? "bg-linear-to-r from-coral-red via-soft-orange) to-warm-yellow text-white"
-          : "bg-white text-coral-red"
+          ? "bg-linear-to-r from-dark-orange via-lighter-orange) to-warm-yellow text-white"
+          : "bg-white text-dark-orange"
       }`}
     >
       <Sparkles
         size={14}
-        className={scrolled ? "text-warm-yellow" : "text-peach-glow"}
+        className={scrolled ? "text-warm-yellow" : "text-soft-orange"}
       />
       Join Our Network
     </Link>
@@ -89,7 +89,7 @@ function Hamburger({ open, setOpen, scrolled }) {
     <button
       onClick={() => setOpen(!open)}
       className={`lg:hidden flex items-end h-full pb-1 transition-colors ${
-        scrolled ? "text-slate-800" : "text-white"
+        scrolled ? "text-slate-800" : "text-orange-700"
       }`}
     >
       <div className="w-8 h-6 relative flex items-center justify-center">
@@ -131,8 +131,8 @@ function MobileMenu({ open, setOpen }) {
             to={link.path}
             onClick={() => setOpen(false)}
             className={({ isActive }) =>
-              `text-gray-900 text-base uppercase tracking-wide transition-colors duration-200 hover:text-coral-red ${
-                isActive ? "text-coral-red" : ""
+              `text-gray-900 text-base uppercase tracking-wide transition-colors duration-200 hover:text-dark-orange ${
+                isActive ? "text-dark-orange" : ""
               }`
             }
           >
@@ -143,7 +143,7 @@ function MobileMenu({ open, setOpen }) {
         <Link
           to="/property-wala-bhaiya"
           onClick={() => setOpen(false)}
-          className="inline-flex items-center gap-2 px-6 py-2.5 bg-linear-to-r from-coral-red via-soft-orange) to-warm-yellow text-white rounded-full font-bold text-[12px] uppercase tracking-wider shadow-md hover:shadow-lg active:scale-95 transition-all duration-200"
+          className="inline-flex items-center gap-2 px-6 py-2.5 bg-linear-to-r from-dark-orange via-lighter-orange) to-warm-yellow text-white rounded-full font-bold text-[12px] uppercase tracking-wider shadow-md hover:shadow-lg active:scale-95 transition-all duration-200"
         >
           <Sparkles size={14} className="text-warm-yellow" />
           Join Our Network
@@ -169,7 +169,7 @@ export default function Navbar({ promoVisible }) {
   const headerStyle = `sticky z-50 transition-all duration-300 font-poppins ${
     scrolled
       ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
-      : "bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow py-4"
+      : "bg-linear-to-r from-dark-orange via-lighter-orange to-warm-yellow py-4"
   } ${promoVisible ? "md:top-0 top-10 mb-8 lg:mb-0" : "top-0"}`;
 
   return (

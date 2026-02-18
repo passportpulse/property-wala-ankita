@@ -8,7 +8,7 @@ const About = () => {
       <Container>
         {/* HERO — LARGE LEFT ALIGNED */}
 
-        <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+        <span className="text-xs font-semibold tracking-widest uppercase text-dark-orange">
           Property Wala Bhaiya Network
         </span>
 
@@ -36,7 +36,7 @@ const About = () => {
         {/* SOLUTION — VERTICAL STRUCTURED LIST (NO CARDS) */}
         <div className="py-4">
           <div className="mb-12">
-            <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+            <span className="text-xs font-semibold tracking-widest uppercase text-dark-orange">
               Our Solution
             </span>
 
@@ -90,8 +90,8 @@ const InfraRow = ({ icon, number, title, text }) => {
       </div>
 
       {/* Content Column */}
-      <div className="md:col-span-10 border-l-2 border-coral-red pl-6">
-        <div className="flex items-center gap-3 text-coral-red mb-3">
+      <div className="md:col-span-10 border-l-2 border-dark-orange pl-6">
+        <div className="flex items-center gap-3 text-dark-orange mb-3">
           {icon}
         </div>
 

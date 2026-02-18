@@ -23,7 +23,7 @@ const PropertyDossier = ({ isOpen, onClose, property }) => {
       <div className="relative bg-white w-full max-w-5xl rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row max-h-[90vh]">
         <button
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-coral-red"
+          className="absolute top-6 right-6 z-10 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:text-dark-orange"
         >
           <X size={20} />
         </button>
@@ -56,7 +56,7 @@ const PropertyDossier = ({ isOpen, onClose, property }) => {
               <p className="text-[9px] font-black uppercase text-slate-400">
                 Price
               </p>
-              <p className="text-2xl font-black text-coral-red">
+              <p className="text-2xl font-black text-dark-orange">
                 ₹{property.price}
               </p>
             </div>
@@ -83,7 +83,7 @@ Please share more details.`
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full bg-coral-red text-white py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest flex justify-center gap-2 hover:bg-soft-orange transition-all"
+            className="w-full bg-dark-orange text-white py-5 rounded-2xl font-black uppercase text-[11px] tracking-widest flex justify-center gap-2 hover:bg-lighter-orange transition-all"
           >
             <MessageSquare size={16} /> Get Details on WhatsApp
           </a>
@@ -112,7 +112,7 @@ export default function PropertyGrid({ activeTab }) {
       <Section className="py-20">
         <Container>
           {/* HEADER */}
-          <div className="flex items-center gap-2 text-coral-red mb-12">
+          <div className="flex items-center gap-2 text-dark-orange mb-12">
             <Sparkles size={16} />
             <span className="text-[10px] font-black uppercase tracking-widest">
               Curated {activeTab} Inventory
@@ -172,16 +172,16 @@ const PropertyCard = ({ item, onClick }) => (
     </div>
 
     <div className="p-8">
-      <p className="text-[10px] uppercase font-black text-soft-orange mb-1">
+      <p className="text-[10px] uppercase font-black text-lighter-orange mb-1">
         {item.area}
       </p>
-      <h3 className="text-xl font-black mb-6 group-hover:text-coral-red transition-colors">
+      <h3 className="text-xl font-black mb-6 group-hover:text-dark-orange transition-colors">
         {item.title}
       </h3>
 
       <button
         onClick={onClick}
-        className="w-full flex items-center justify-center gap-2 text-coral-red py-2.5 text-[11px] font-semibold uppercase tracking-wide border border-coral-red/50 rounded-xl hover:bg-coral-red hover:text-white transition-all duration-300 whitespace-nowrap"
+        className="w-full flex items-center justify-center gap-2 text-dark-orange py-2.5 text-[11px] font-semibold uppercase tracking-wide border border-dark-orange/50 rounded-xl hover:bg-dark-orange hover:text-white transition-all duration-300 whitespace-nowrap"
       >
         View Details <ArrowUpRight size={14} />
       </button>

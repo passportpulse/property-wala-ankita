@@ -152,7 +152,7 @@ export default function PostPropertyModal({ isOpen, onClose }) {
           {/* submit */}
           <button
             type="submit"
-            className="w-full bg-coral-red text-white py-3 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-900 transition-all"
+            className="w-full bg-dark-orange text-white py-3 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-900 transition-all"
           >
             Submit Property
           </button>

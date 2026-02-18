@@ -24,7 +24,7 @@ export default function ScheduleVisit() {
         <div className="relative bg-white border border-slate-100 rounded-[3rem] p-8 lg:p-16 overflow-hidden group shadow-sm">
 
           {/* Soft Background Accent */}
-          <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-soft-orange/5 to-transparent pointer-events-none" />
+          <div className="absolute top-0 right-0 w-1/3 h-full bg-linear-to-l from-lighter-orange/5 to-transparent pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
 
@@ -32,15 +32,15 @@ export default function ScheduleVisit() {
             <div className="max-w-xl space-y-6">
 
               <div className="flex items-center gap-3">
-                <span className="w-8 h-px bg-coral-red"></span>
-                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-coral-red">
+                <span className="w-8 h-px bg-dark-orange"></span>
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-dark-orange">
                   Private Visit
                 </span>
               </div>
 
               <h3 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-none uppercase">
                 Schedule Your{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-coral-red to-soft-orange">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange to-lighter-orange">
                   Walkthrough
                 </span>
               </h3>
@@ -50,7 +50,7 @@ export default function ScheduleVisit() {
                 Experience the home before making your decision.
               </p>
 
-              <p className="text-[10px] uppercase tracking-widest font-bold text-soft-orange">
+              <p className="text-[10px] uppercase tracking-widest font-bold text-lighter-orange">
                 Fast Confirmation • Trusted Support
               </p>
             </div>
@@ -61,7 +61,7 @@ export default function ScheduleVisit() {
 
                 {/* Name */}
                 <div className="flex items-center border-b pb-2">
-                  <User size={16} className="text-soft-orange mr-2" />
+                  <User size={16} className="text-lighter-orange mr-2" />
                   <input
                     type="text"
                     name="name"
@@ -74,7 +74,7 @@ export default function ScheduleVisit() {
 
                 {/* Phone */}
                 <div className="flex items-center border-b pb-2">
-                  <Phone size={16} className="text-soft-orange mr-2" />
+                  <Phone size={16} className="text-lighter-orange mr-2" />
                   <input
                     type="tel"
                     name="phone"
@@ -87,7 +87,7 @@ export default function ScheduleVisit() {
 
                 {/* Date */}
                 <div className="flex items-center border-b pb-2">
-                  <Calendar size={16} className="text-soft-orange mr-2" />
+                  <Calendar size={16} className="text-lighter-orange mr-2" />
                   <input
                     type="date"
                     name="date"
@@ -99,7 +99,7 @@ export default function ScheduleVisit() {
 
                 {/* Time */}
                 <div className="flex items-center border-b pb-2">
-                  <Clock size={16} className="text-soft-orange mr-2" />
+                  <Clock size={16} className="text-lighter-orange mr-2" />
                   <input
                     type="time"
                     name="time"
@@ -115,8 +115,8 @@ export default function ScheduleVisit() {
                   className="
                     w-full
                     mt-4
-                    bg-coral-red
-                    hover:bg-soft-orange
+                    bg-dark-orange
+                    hover:bg-lighter-orange
                     text-white
                     font-black
                     uppercase
@@ -139,7 +139,7 @@ export default function ScheduleVisit() {
           {/* Elegant Watermark Icon */}
           <Home
             size={140}
-            className="absolute -bottom-8 -right-8 text-slate-100 rotate-12 group-hover:text-soft-orange/5 transition-colors duration-700"
+            className="absolute -bottom-8 -right-8 text-slate-100 rotate-12 group-hover:text-lighter-orange/5 transition-colors duration-700"
           />
 
         </div>

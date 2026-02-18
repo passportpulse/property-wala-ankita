@@ -4,7 +4,7 @@ import Section from "../../../components/layout/Section";
 
 const BenefitCard = ({ icon, title, desc }) => (
   <div className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm">
-    <div className="text-coral-red mb-3">{icon}</div>
+    <div className="text-dark-orange mb-3">{icon}</div>
     <p className="font-medium mb-1">{title}</p>
     <p className="text-sm text-slate-600">{desc}</p>
   </div>
@@ -14,7 +14,7 @@ const JoinBenefits = () => {
   return (
     <Section className="pb-20 bg-linear-to-b from-[#FFF5EC] to-white">
       <Container>
-        <div className="bg-linear-to-r from-[#FFF1E6] to-[#FFF7F1] rounded-3xl p-12 border border-peach-glow/40">
+        <div className="bg-linear-to-r from-[#FFF1E6] to-[#FFF7F1] rounded-3xl p-12 border border-soft-orange/40">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <BenefitCard
               icon={<IndianRupee />}

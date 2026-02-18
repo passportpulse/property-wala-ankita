@@ -54,7 +54,7 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
 
           <div>
             <h1 className="text-lg font-black uppercase tracking-tight">
-              Durgapur <span className="text-coral-red">Inventory</span>
+              Durgapur <span className="text-dark-orange">Inventory</span>
             </h1>
 
             <p className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
@@ -71,7 +71,7 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
 
             <input
               placeholder="Search area..."
-              className="w-full pl-9 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-coral-red/10"
+              className="w-full pl-9 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-dark-orange/10"
             />
           </div>
 
@@ -83,7 +83,7 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
           <select
             value={activeTab}
             onChange={(e) => handleFilterClick(e.target.value)}
-            className="w-full appearance-none bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-widest outline-none focus:ring-2 focus:ring-coral-red/10"
+            className="w-full appearance-none bg-slate-50 border border-slate-200 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-widest outline-none focus:ring-2 focus:ring-dark-orange/10"
           >
             {tabs.map((tab) => (
               <option key={tab.label} value={tab.label}>
@@ -108,7 +108,7 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
               onClick={() => handleFilterClick(label)}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border ${
                 activeTab === label
-                  ? "bg-coral-red text-white border-coral-red"
+                  ? "bg-dark-orange text-white border-dark-orange"
                   : "bg-slate-50 text-slate-600 border-slate-100 hover:bg-white"
               }`}
             >

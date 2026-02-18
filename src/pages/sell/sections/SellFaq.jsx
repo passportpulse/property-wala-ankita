@@ -16,15 +16,15 @@ const FaqItem = ({ question, answer }) => {
         <span
           className={`font-bold text-sm uppercase tracking-wider transition-colors ${
             isOpen
-              ? "text-coral-red"
-              : "text-slate-700 group-hover:text-coral-red"
+              ? "text-dark-orange"
+              : "text-slate-700 group-hover:text-dark-orange"
           }`}
         >
           {question}
         </span>
 
         {isOpen ? (
-          <ChevronUp size={18} className="text-coral-red" />
+          <ChevronUp size={18} className="text-dark-orange" />
         ) : (
           <ChevronDown size={18} className="text-slate-300" />
         )}
@@ -80,7 +80,7 @@ export default function SellFaq() {
             {/* Trust Card */}
             <div className="inline-flex items-center gap-4 p-6 bg-slate-50 rounded-3xl border border-slate-100">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                <CheckCircle2 className="text-coral-red" size={20} />
+                <CheckCircle2 className="text-dark-orange" size={20} />
               </div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">

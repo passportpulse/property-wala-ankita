@@ -10,7 +10,7 @@ export default function AppPromoBar({ show, onClose }) {
       <div className="flex items-center justify-between bg-white shadow-md px-3 py-2 border-b border-slate-50">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-coral-red flex items-center justify-center rounded-sm p-1">
+          <div className="w-8 h-8 bg-dark-orange flex items-center justify-center rounded-sm p-1">
             <img
               src={logo}
               alt="Property Wala Bhaiya"
@@ -34,7 +34,7 @@ export default function AppPromoBar({ show, onClose }) {
 
         {/* Right */}
         <div className="flex items-center gap-1">
-          <button className="bg-coral-red text-white text-[10px] font-semibold px-2 py-1 rounded-md whitespace-nowrap">
+          <button className="bg-dark-orange text-white text-[10px] font-semibold px-2 py-1 rounded-md whitespace-nowrap">
             Open App
           </button>
           <button onClick={onClose}>

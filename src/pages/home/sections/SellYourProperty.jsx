@@ -5,28 +5,25 @@ import { useNavigate } from "react-router-dom";
 
 const features = [
   {
-    name: "List Without Brokerage",
-    count: "Zero Commission",
-    icon: <Home className="w-6 h-6 lg:w-7 lg:h-7" />,
-    color: "from-coral-red to-soft-orange",
-    desc:
-      "Create your listing in minutes and reach verified buyers without paying heavy brokerage fees.",
+    name: "Zero Brokerage",
+    count: "Direct Listing",
+    icon: <Home className="w-5 h-5 lg:w-7 lg:h-7" />,
+    color: "from-dark-orange to-lighter-orange",
+    desc: "Create your listing in minutes and reach verified buyers without paying heavy commission.",
   },
   {
-    name: "Verified Buyer Leads",
-    count: "Genuine Enquiries",
-    icon: <Users className="w-6 h-6 lg:w-7 lg:h-7" />,
-    color: "from-soft-orange to-peach-glow",
-    desc:
-      "Get direct inquiries from serious buyers looking in your locality and budget range.",
+    name: "Verified Leads",
+    count: "Genuine Buyers",
+    icon: <Users className="w-5 h-5 lg:w-7 lg:h-7" />,
+    color: "from-lighter-orange to-soft-orange",
+    desc: "Get direct inquiries from serious buyers looking in your locality and budget range.",
   },
   {
-    name: "Best Market Value",
+    name: "Market Value",
     count: "Smart Pricing",
-    icon: <IndianRupee className="w-6 h-6 lg:w-7 lg:h-7" />,
-    color: "from-peach-glow to-warm-yellow",
-    desc:
-      "Our pricing insights and demand analytics help you close deals faster at the right price.",
+    icon: <IndianRupee className="w-5 h-5 lg:w-7 lg:h-7" />,
+    color: "from-soft-orange to-warm-yellow",
+    desc: "Our demand analytics help you close deals faster at the right market price.",
   },
 ];
 
@@ -34,175 +31,102 @@ export default function SellYourProperty() {
   const navigate = useNavigate();
 
   return (
-    <Section size="large" className="bg-white font-poppins">
-
+    <Section>
       <Container>
-
-        {/* HEADER */}
-        <div className="mb-14 text-center">
-
-          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-coral-red">
+        {/* HEADER - More compact margins */}
+        <div className="mb-8 lg:mb-14 text-center px-4">
+          <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange mb-4 relative bg-orange-50 px-3 py-1 rounded-full">
             For Property Owners
           </span>
-
-          <h2 className="mt-3 text-3xl lg:text-5xl font-black text-dark-slate tracking-tight">
-
+          <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
             Sell Your{" "}
-
-            <span className="bg-linear-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
               Own Property
             </span>
-
           </h2>
-
-          <p className="mt-5 max-w-2xl mx-auto text-muted-slate text-base lg:text-lg">
-            List your property with Property Wala Bhaiya and connect with genuine buyers.
-            We handle visibility, leads, and negotiations — handled end-to-end by us.
+          <p className="mt-3 max-w-2xl mx-auto text-slate-500 text-sm lg:text-lg leading-relaxed">
+            List with Property Wala Bhaiya. We handle visibility and leads
+            end-to-end.
           </p>
-
         </div>
 
-
-        {/* CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-
+        {/* CARDS - Swiper on mobile, Grid on Desktop */}
+        <div className="flex lg:grid lg:grid-cols-3 gap-4 lg:gap-8 overflow-x-auto no-scrollbar pb-6 px-4 lg:px-0 snap-x snap-mandatory">
           {features.map((item, i) => (
-
             <div
               key={i}
               onClick={() => navigate("/sell")}
               className="
+                snap-center shrink-0
+                w-70 lg:w-auto
                 group relative p-6 lg:p-8
-                rounded-3xl lg:rounded-[2.5rem]
-                bg-white border border-slate-100
-                hover:border-peach-glow/30
-                transition-all duration-500
-                cursor-pointer
-                shadow-sm hover:shadow-xl hover:shadow-peach-glow/10
-                overflow-hidden
+                rounded-4xl lg:rounded-[2.5rem]
+                bg-slate-50/50 border border-slate-100
+                hover:bg-white transition-all duration-500
+                cursor-pointer overflow-hidden
               "
             >
-
               <div className="relative z-10">
-
-                {/* ICON */}
+                {/* ICON - Smaller on mobile */}
                 <div
                   className={`
-                    w-12 h-12 lg:w-14 lg:h-14
-                    rounded-xl lg:rounded-2xl mb-6
-                    flex items-center justify-center
-                    bg-linear-to-br ${item.color}
-                    text-white shadow-md
-                    transition-all duration-500
-                    group-hover:scale-110 group-hover:rotate-3
-                  `}
+                  w-10 h-10 lg:w-14 lg:h-14
+                  rounded-xl lg:rounded-2xl mb-4 lg:mb-6
+                  flex items-center justify-center
+                  bg-linear-to-br ${item.color}
+                  text-white shadow-sm
+                  group-hover:scale-110 transition-transform
+                `}
                 >
                   {item.icon}
                 </div>
 
-
-                {/* TEXT */}
                 <div className="space-y-1">
-
-                  <h4 className="
-                    font-bold text-slate-900
-                    text-lg lg:text-xl
-                    tracking-tight
-                    group-hover:text-coral-red transition-colors
-                  ">
+                  <h4 className="font-bold text-slate-900 text-base lg:text-xl tracking-tight">
                     {item.name}
                   </h4>
-
-                  <p className="
-                    text-[10px] lg:text-[11px]
-                    font-black text-slate-400
-                    uppercase tracking-widest
-                  ">
+                  <p className="text-[9px] lg:text-[11px] font-black text-dark-orange uppercase tracking-widest">
                     {item.count}
                   </p>
-
-                  <p className="mt-3 text-sm text-muted-slate leading-relaxed">
+                  <p className="mt-2 text-xs lg:text-sm text-slate-500 leading-relaxed line-clamp-3">
                     {item.desc}
                   </p>
-
                 </div>
 
-
-                {/* HOVER CTA */}
-                <div className="
-                  mt-6 flex items-center justify-between
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity duration-500
-                ">
-
-                  <span className="
-                    text-[10px]
-                    font-black uppercase tracking-widest
-                    text-slate-900
-                  ">
-                    Learn More
-                  </span>
-
-                  <ArrowRight className="
-                    w-4 h-4 text-coral-red
-                    -translate-x-2 group-hover:translate-x-0
-                    transition-transform
-                  "/>
-
+                <div className="mt-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-dark-orange transition-colors">
+                  <span>List Now</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </div>
-
               </div>
 
-
-              {/* BOTTOM ACCENT BAR */}
               <div
-                className={`
-                  absolute bottom-0 inset-x-0 h-1.5
-                  bg-linear-to-r ${item.color}
-                  opacity-0 group-hover:opacity-100
-                  transition-opacity
-                `}
+                className={`absolute bottom-0 inset-x-0 h-1 bg-linear-to-r ${item.color} opacity-0 group-hover:opacity-100 transition-opacity`}
               />
-
             </div>
-
           ))}
-
         </div>
 
-
-        {/* CTA BUTTON */}
-        <div className="mt-16 text-center">
-
+        {/* CTA BUTTON - Smaller padding for mobile */}
+        <div className="mt-4 lg:mt-16 text-center">
           <button
             onClick={() => navigate("/sell")}
             className="
               cursor-pointer group
-              inline-flex items-center gap-3
-              px-10 py-4
+              inline-flex items-center gap-2
+              px-8 py-3 lg:px-10 lg:py-4
               rounded-full
-              bg-coral-red text-white
-              font-semibold
-              hover:bg-slate-900
+              bg-linear-to-r from-dark-orange to-lighter-orange text-white
+              text-sm lg:text-base font-bold
+              hover:bg-dark-orange
               transition-all duration-300
-              shadow-lg shadow-coral-red/20
+              shadow-xl shadow-slate-200
             "
           >
-
             List Your Property
-
-            <ArrowRight className="
-              w-4 h-4
-              group-hover:translate-x-1
-              transition-transform
-            "/>
-
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
-
         </div>
-
       </Container>
-
     </Section>
   );
 }

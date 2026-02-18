@@ -32,15 +32,15 @@ export default function Testimonials() {
         <div className="max-w-3xl mb-12 lg:mb-16">
           
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-8 h-[1.5px] bg-coral-red" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
+            <span className="w-8 h-[1.5px] bg-dark-orange" />
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
               Testimonials
             </span>
           </div>
 
           <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
             What Our Clients{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-coral-red to-soft-orange">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange to-lighter-orange">
               Say.
             </span>
           </h2>
@@ -59,8 +59,8 @@ export default function Testimonials() {
                 bg-white border border-slate-100
                 p-8 lg:p-10 
                 rounded-3xl lg:rounded-[2.5rem]
-                hover:border-peach-glow/30
-                hover:shadow-xl hover:shadow-peach-glow/10
+                hover:border-soft-orange/30
+                hover:shadow-xl hover:shadow-soft-orange/10
                 transition-all duration-500
                 overflow-hidden
               "
@@ -69,7 +69,7 @@ export default function Testimonials() {
               {/* Quote Icon */}
               <Quote
                 size={42}
-                className="absolute top-6 right-6 text-coral-red/10 group-hover:text-coral-red/20 transition-colors"
+                className="absolute top-6 right-6 text-dark-orange/10 group-hover:text-dark-orange/20 transition-colors"
               />
 
 
@@ -106,7 +106,7 @@ export default function Testimonials() {
 
 
               {/* Accent Bar */}
-              <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-coral-red via-soft-orange to-peach-glow opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-dark-orange via-lighter-orange to-soft-orange opacity-0 group-hover:opacity-100 transition-opacity" />
 
             </div>
           ))}

@@ -37,7 +37,7 @@ export default function SellHowItWorks() {
               key={i}
               className="group p-10 bg-white border border-slate-100 rounded-[2.5rem] hover:shadow-2xl transition-all duration-500"
             >
-              <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 text-coral-red">
+              <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 text-dark-orange">
                 {step.icon}
               </div>
 

@@ -53,12 +53,12 @@ export default function BestBuySection() {
         <Container>
           {/* HEADER */}
           <div className="mb-12 text-center">
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
+            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
               Durgapur Properties
             </span>
 
             <h2 className="mt-2 text-3xl lg:text-5xl font-black text-dark-slate">
-              <span className="bg-gradient-to-r from-coral-red via-soft-orange to-peach-glow bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-dark-orange via-lighter-orange to-soft-orange bg-clip-text text-transparent">
                 Best Buys
               </span>{" "}
               in Durgapur
@@ -76,7 +76,7 @@ export default function BestBuySection() {
               <div
                 key={i}
                 onClick={() => setSelectedItem(item)}
-                className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-coral-red shadow-sm hover:shadow-md transition-all duration-300"
+                className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-dark-orange shadow-sm hover:shadow-md transition-all duration-300"
               >
                 {/* IMAGE */}
                 <div className="relative h-48">
@@ -106,7 +106,7 @@ export default function BestBuySection() {
                     {item.price}
                   </div>
 
-                  <div className="mt-5 flex items-center justify-between text-sm font-semibold text-slate-600 group-hover:text-coral-red transition-colors">
+                  <div className="mt-5 flex items-center justify-between text-sm font-semibold text-slate-600 group-hover:text-dark-orange transition-colors">
                     <span>View Details</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </div>
@@ -119,7 +119,7 @@ export default function BestBuySection() {
           <div className="mt-14 text-center">
             <button
               onClick={() => navigate("/buy")}
-              className="cursor-pointer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white font-semibold hover:bg-coral-red transition-all shadow-lg hover:shadow-coral-red/20"
+              className="cursor-pointer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white font-semibold hover:bg-dark-orange transition-all shadow-lg hover:shadow-dark-orange/20"
             >
               View All Properties in Durgapur
               <ArrowRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ export default function BestBuySection() {
           <div className="relative bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur rounded-full hover:bg-coral-red hover:text-white transition"
+              className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur rounded-full hover:bg-dark-orange hover:text-white transition"
             >
               <X size={18} />
             </button>
@@ -155,7 +155,7 @@ export default function BestBuySection() {
             <div className="p-8">
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-coral-red">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
                     {selectedItem.type}
                   </p>
                   <h3 className="text-2xl font-black text-slate-900 mt-1">
@@ -168,7 +168,7 @@ export default function BestBuySection() {
               </div>
 
               <div className="mt-4 flex items-center gap-2 text-sm text-slate-500 font-medium">
-                <MapPin className="w-4 h-4 text-soft-orange" />
+                <MapPin className="w-4 h-4 text-lighter-orange" />
                 {selectedItem.location}
               </div>
 
@@ -179,14 +179,14 @@ export default function BestBuySection() {
               <div className="mt-8 grid grid-cols-2 gap-4">
                 <a
                   href="tel:+917699988876"
-                  className="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-coral-red transition"
+                  className="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-dark-orange transition"
                 >
                   <Phone size={14} /> Call Agent
                 </a>
 
                 <a
                   href="https://wa.me/917699988876"
-                  className="flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-coral-red to-soft-orange text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition"
+                  className="flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-dark-orange to-lighter-orange text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition"
                 >
                   <MessageSquare size={14} /> WhatsApp
                 </a>

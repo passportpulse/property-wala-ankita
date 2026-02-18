@@ -36,12 +36,12 @@ export default function OurSolution() {
 
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest font-semibold text-coral-red">
+            <span className="text-xs uppercase tracking-widest font-semibold text-dark-orange">
               Our Solution
             </span>
 
             <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight mt-3">
-              Complete <span className="text-coral-red">Business Infrastructure</span>
+              Complete <span className="text-dark-orange">Business Infrastructure</span>
             </h2>
 
             <p className="text-slate-600 mt-4">
@@ -66,7 +66,7 @@ export default function OurSolution() {
                     p-8
                     shadow-sm
                     hover:shadow-lg
-                    hover:border-coral-red/20
+                    hover:border-dark-orange/20
                     transition-all
                     duration-500
                   "
@@ -75,12 +75,12 @@ export default function OurSolution() {
                   <div
                     className="
                       w-14 h-14
-                      bg-coral-red/10
-                      text-coral-red
+                      bg-dark-orange/10
+                      text-dark-orange
                       flex items-center justify-center
                       rounded-2xl
                       mb-6
-                      group-hover:bg-coral-red
+                      group-hover:bg-dark-orange
                       group-hover:text-white
                       transition-all
                       duration-300

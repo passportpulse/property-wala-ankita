@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="flex flex-col items-center lg:items-start space-y-3 sm:space-y-4">
             <Link to="/" className="flex flex-col items-center lg:items-start">
               <span className="text-xl font-black tracking-tighter text-slate-900 leading-none">
-                PROPERTY <span className="text-coral-red">WALA</span>{" "}
+                PROPERTY <span className="text-dark-orange">WALA</span>{" "}
                 <span className="text-slate-500 font-medium text-lg">
                   Bhaiya
                 </span>
@@ -37,7 +37,7 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-col lg:flex-row gap-1 lg:gap-2 text-xs sm:text-sm items-center lg:items-start justify-center lg:justify-start">
-              <span className="text-coral-red text-lg">📍</span>
+              <span className="text-dark-orange text-lg">📍</span>
               <p className="text-slate-500 leading-tight max-w-45 sm:max-w-xs">
                 5th Floor, Suhatta Commercial Complex, City Center, Durgapur, WB
                 713216
@@ -47,7 +47,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div className="sm:mt-0 mt-4 flex flex-col items-center lg:items-start">
-            <h4 className="text-coral-red font-bold uppercase text-xs mb-4 sm:mb-6">
+            <h4 className="text-dark-orange font-bold uppercase text-xs mb-4 sm:mb-6">
               Navigation
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-sm">
@@ -55,7 +55,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     to={link.path}
-                    className="hover:text-soft-orange transition-colors"
+                    className="hover:text-lighter-orange transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -66,37 +66,37 @@ export default function Footer() {
 
           {/* Resources */}
           <div className="sm:mt-0 mt-4 flex flex-col items-center lg:items-start">
-            <h4 className="text-coral-red font-bold uppercase text-xs mb-4 sm:mb-6">
+            <h4 className="text-dark-orange font-bold uppercase text-xs mb-4 sm:mb-6">
               Resources
             </h4>
             <ul className="space-y-2 sm:space-y-3 text-sm">
-              <li className="hover:text-soft-orange cursor-pointer">
+              <li className="hover:text-lighter-orange cursor-pointer">
                 Market Trends
               </li>
-              <li className="hover:text-soft-orange cursor-pointer">
+              <li className="hover:text-lighter-orange cursor-pointer">
                 Privacy Policy
               </li>
-              <li className="hover:text-soft-orange cursor-pointer">
+              <li className="hover:text-lighter-orange cursor-pointer">
                 Terms & Conditions
               </li>
-              <li className="hover:text-soft-orange cursor-pointer">Sitemap</li>
+              <li className="hover:text-lighter-orange cursor-pointer">Sitemap</li>
             </ul>
           </div>
 
           {/* Connect Us + Social */}
           <div className="sm:mt-0 mt-4 flex flex-col items-center lg:items-start gap-2">
-            <h4 className="text-coral-red font-bold uppercase text-xs mb-2 sm:mb-4">
+            <h4 className="text-dark-orange font-bold uppercase text-xs mb-2 sm:mb-4">
               Connect Us
             </h4>
             <a
               href="mailto:propertywalabhaiya@gmail.com"
-              className="block text-sm hover:text-soft-orange transition-colors"
+              className="block text-sm hover:text-lighter-orange transition-colors"
             >
               propertywalabhaiya@gmail.com
             </a>
             <a
               href="tel:+917699988876"
-              className="block text-sm hover:text-soft-orange transition-colors"
+              className="block text-sm hover:text-lighter-orange transition-colors"
             >
               +91 76999 88876
             </a>
@@ -106,7 +106,7 @@ export default function Footer() {
               onClick={() =>
                 window.open("https://wa.me/917699988876", "_blank")
               }
-              className="mt-2 py-2 px-4 bg-linear-to-r from-coral-red to-warm-yellow text-white rounded-full font-bold text-xs uppercase tracking-wider hover:scale-105 transition"
+              className="mt-2 py-2 px-4 bg-linear-to-r from-dark-orange to-warm-yellow text-white rounded-full font-bold text-xs uppercase tracking-wider hover:scale-105 transition"
             >
               Talk to Advisor
             </button>

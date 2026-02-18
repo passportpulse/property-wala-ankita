@@ -11,7 +11,7 @@ const Contact = () => {
       <Container>
         {/* Header */}
         <div className="mb-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <span className="text-xs font-semibold tracking-widest uppercase text-coral-red">
+          <span className="text-xs font-semibold tracking-widest uppercase text-dark-orange">
             Get in Touch
           </span>
 
@@ -70,8 +70,8 @@ const Contact = () => {
                 label="Call Us"
                 value="+91 76999 88876"
                 link="tel:+917699988876"
-                bgColor="bg-coral-red/10"
-                textColor="text-coral-red"
+                bgColor="bg-dark-orange/10"
+                textColor="text-dark-orange"
               />
 
               <ContactCard

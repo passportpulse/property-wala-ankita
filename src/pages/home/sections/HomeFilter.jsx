@@ -66,23 +66,23 @@ export default function HomeFilter() {
   );
 
   return (
-    <Section className="relative overflow-hidden py-4">
+    <Section>
       {/* Background accents */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="hidden lg:block absolute inset-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-5%] w-150 h-150 bg-orange-200/20 blur-[130px] rounded-full"></div>
-        <div className="absolute bottom-[-10%] right-[-5%] w-125 h-125 bg-coral-red/10 blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-[-10%] right-[-5%] w-125 h-125 bg-dark-orange/10 blur-[120px] rounded-full"></div>
       </div>
 
       <Container>
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-16 items-center">
           {/* LEFT SIDE: Content (Desktop Only) */}
           <div className="hidden lg:block lg:col-span-5">
-            <p className="text-xs font-black uppercase tracking-[0.3em] text-coral-red mb-4">
+            <p className="text-xs font-black uppercase tracking-[0.3em] text-dark-orange mb-4">
               Premium Listings
             </p>
             <h2 className="text-4xl font-black leading-[1.1] text-slate-800">
               Find Your <br />
-              <span className="bg-linear-to-r from-coral-red to-orange-600 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-dark-orange to-orange-600 bg-clip-text text-transparent">
                 Perfect Property
               </span>
             </h2>
@@ -91,7 +91,7 @@ export default function HomeFilter() {
               listings make finding your next home or investment seamless.
             </p>
             <div className="mt-10 flex items-center gap-4">
-              <div className="w-12 h-0.5 bg-coral-red"></div>
+              <div className="w-12 h-0.5 bg-dark-orange"></div>
               <span className="text-xs font-bold uppercase tracking-widest text-slate-400">
                 Scroll to explore
               </span>
@@ -103,9 +103,9 @@ export default function HomeFilter() {
             {/* MOBILE HEADER */}
             <div className="text-center mb-4 lg:hidden">
               <h2 className="text-lg font-black uppercase tracking-tight text-slate-800">
-                Find Your <span className="text-coral-red">Own Property</span>
+                Find Your <span className="text-dark-orange">Own Property</span>
               </h2>
-              <div className="w-12 h-1 bg-linear-to-r from-coral-red via-soft-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
+              <div className="w-12 h-1 bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>
 
             <div className="bg-white/90 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
@@ -124,7 +124,7 @@ export default function HomeFilter() {
                       className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all group"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
-                        <MapPin size={16} className="text-coral-red lg:group-hover:scale-110 transition-transform" />
+                        <MapPin size={16} className="text-dark-orange lg:group-hover:scale-110 transition-transform" />
                         <span className="text-xs lg:text-sm font-bold text-slate-700">
                           {selectedState}
                         </span>
@@ -167,7 +167,7 @@ export default function HomeFilter() {
                       className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
-                        <MapPin size={16} className="text-coral-red" />
+                        <MapPin size={16} className="text-dark-orange" />
                         <span className="text-xs lg:text-sm font-bold text-slate-700 truncate">
                           {selectedCity || "Select City"}
                         </span>
@@ -211,7 +211,7 @@ export default function HomeFilter() {
                       className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
-                        <MapPin size={16} className="text-coral-red" />
+                        <MapPin size={16} className="text-dark-orange" />
                         <span className="text-xs lg:text-sm font-bold text-slate-700 truncate">
                           {selectedPlace || "All Localities"}
                         </span>
@@ -250,7 +250,7 @@ export default function HomeFilter() {
                   <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
                     <div className="flex justify-between items-center mb-1 lg:mb-4">
                       <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Min Budget</span>
-                      <span className="text-xs lg:text-sm font-black text-coral-red">₹ {formatPrice(minBudget)}</span>
+                      <span className="text-xs lg:text-sm font-black text-dark-orange">₹ {formatPrice(minBudget)}</span>
                     </div>
                     <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                       <IndianRupee size={14} className="text-slate-400" />
@@ -268,14 +268,14 @@ export default function HomeFilter() {
                       step="100000"
                       value={minBudget}
                       onChange={(e) => setMinBudget(Number(e.target.value))}
-                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-coral-red"
+                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-dark-orange"
                     />
                   </div>
 
                   <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
                     <div className="flex justify-between items-center mb-1 lg:mb-4">
                       <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Max Budget</span>
-                      <span className="text-xs lg:text-sm font-black text-coral-red">₹ {formatPrice(maxBudget)}</span>
+                      <span className="text-xs lg:text-sm font-black text-dark-orange">₹ {formatPrice(maxBudget)}</span>
                     </div>
                     <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
                       <IndianRupee size={14} className="text-slate-400" />
@@ -293,7 +293,7 @@ export default function HomeFilter() {
                       step="100000"
                       value={maxBudget}
                       onChange={(e) => setMaxBudget(Number(e.target.value))}
-                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-coral-red"
+                      className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-dark-orange"
                     />
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export default function HomeFilter() {
                 <div className="pt-1 flex justify-center lg:justify-end">
                   <button
                     onClick={handleSearch}
-                    className="w-auto min-w-50 bg-linear-to-r from-coral-red via-soft-orange to-warm-yellow text-white font-black uppercase text-xs tracking-[0.15em] py-3 lg:py-4 px-4 lg:px-6 rounded-full shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
+                    className="w-auto min-w-50 bg-linear-to-r from-dark-orange via-lighter-orange to-warm-yellow text-white font-black uppercase text-xs tracking-[0.15em] py-3 lg:py-4 px-4 lg:px-6 rounded-full shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
                   >
                     <Search size={18} strokeWidth={3} className="group-hover:rotate-12 transition-transform" />
                     Search

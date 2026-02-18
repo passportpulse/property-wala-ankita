@@ -11,12 +11,12 @@ const JoinHero = () => {
       <Container>
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest font-semibold text-coral-red">
+          <span className="text-xs uppercase tracking-widest font-semibold text-dark-orange">
             Partner With Us
           </span>
           <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight mt-3">
             Become a{" "}
-            <span className="text-coral-red">Property Wala Bhaiya</span>
+            <span className="text-dark-orange">Property Wala Bhaiya</span>
           </h1>
           <p className="text-slate-600 mt-4">
             Join a trusted real estate network designed for independent brokers
@@ -59,7 +59,7 @@ const JoinHero = () => {
                   "Ideal for brokers focused on long-term growth",
                 ].map((item, index) => (
                   <li key={index} className="flex gap-3">
-                    <CheckCircle className="w-5 h-5 text-coral-red mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-dark-orange mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -84,7 +84,7 @@ const JoinHero = () => {
               "Looking for stable, long-term growth",
             ].map((point, index) => (
               <div key={index} className="flex gap-3">
-                <CheckCircle className="w-5 h-5 text-coral-red mt-0.5" />
+                <CheckCircle className="w-5 h-5 text-dark-orange mt-0.5" />
                 <p className="text-slate-600 text-sm">{point}</p>
               </div>
             ))}

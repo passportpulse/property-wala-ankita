@@ -138,18 +138,18 @@ export default function BestDeals() {
   };
 
   return (
-    <Section className="py-8 lg:py-20 bg-white">
+    <Section>
       <Container>
         {/* ENHANCED HEADING DESIGN */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 lg:gap-6 mb-2 md:mb-10">
           <div className="relative">
             <div className="absolute -top-4 -left-2 w-12 h-12 bg-orange-100 rounded-full blur-xl opacity-60 animate-pulse"></div>
-            <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-coral-red mb-4 relative z-10 bg-orange-50 px-3 py-1 rounded-full">
+            <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange mb-4 relative z-10 bg-orange-50 px-3 py-1 rounded-full">
               Explore Intent
             </span>
             <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
               Our{" "}
-              <span className="relative inline-block text-coral-red">
+              <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
                 Best Deals
               </span>
             </h2>
@@ -192,7 +192,7 @@ export default function BestDeals() {
               {/* Deal Info Pill (Floating on Image) */}
               <div className="absolute top-3 left-3 z-20">
                 <div className="bg-white/90 backdrop-blur px-2 py-1 rounded-lg shadow-sm">
-                  <p className="text-[10px] font-black text-coral-red tracking-tight">
+                  <p className="text-[10px] font-black text-dark-orange tracking-tight">
                     {item.count}
                   </p>
                 </div>
@@ -213,7 +213,7 @@ export default function BestDeals() {
                     <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
                       <ArrowRight
                         size={14}
-                        className="text-coral-red"
+                        className="text-dark-orange"
                         strokeWidth={3}
                       />
                     </div>
@@ -235,7 +235,7 @@ export default function BestDeals() {
               onClick={() => scrollToItem(index)}
               className={`h-2 rounded-full transition-all duration-300 ${
                 activeDot === index
-                  ? "w-6 bg-coral-red"
+                  ? "w-6 bg-dark-orange"
                   : "w-2 bg-slate-200 hover:bg-slate-300"
               }`}
               aria-label={`Go to slide ${index + 1}`}

@@ -31,7 +31,7 @@ export default function RentHowItWorks() {
     <Section size="default" className="bg-white">
       <Container>
         <div className="mb-16">
-          <h2 className="text-coral-red font-black text-[10px] uppercase tracking-[0.4em] mb-4">
+          <h2 className="text-dark-orange font-black text-[10px] uppercase tracking-[0.4em] mb-4">
             Tenant Guide
           </h2>
           <p className="text-4xl font-black tracking-tighter uppercase text-slate-900">
@@ -42,11 +42,11 @@ export default function RentHowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {rentSteps.map((step, i) => (
             <div key={i} className="group space-y-6">
-              <div className="text-6xl font-black text-slate-100 group-hover:text-coral-red/10 leading-none">
+              <div className="text-6xl font-black text-slate-100 group-hover:text-dark-orange/10 leading-none">
                 0{i + 1}
               </div>
 
-              <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-coral-red group-hover:bg-coral-red group-hover:text-white transition-all">
+              <div className="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-dark-orange group-hover:bg-dark-orange group-hover:text-white transition-all">
                 {React.cloneElement(step.icon, { size: 18 })}
               </div>
 

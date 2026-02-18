@@ -94,7 +94,7 @@ export default function HomeHero() {
   }, [isPaused]);
 
   return (
-    <Section className="pt-8 relative bg-linear-to-b from-orange-50 via-white to-white font-poppins overflow-hidden">
+    <Section className="pt-8 lg:mt-0 relative bg-linear-to-b from-orange-50 via-white to-orange-50 overflow-hidden">
       {/* =========================
           PROFESSIONAL DOT GRID (Top Area Only)
       ========================= */}
@@ -114,7 +114,7 @@ export default function HomeHero() {
           <div className="text-center px-2">
             <h1 className="text-xl lg:text-3xl font-black leading-tight mt-1 lg:mt-4">
               <span className="text-slate-800">Investment to </span>
-              <span className="bg-linear-to-r from-coral-red via-soft-orange-500 to-warm-yellow bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow bg-clip-text text-transparent">
                 Aesthetic Living
               </span>
             </h1>
@@ -133,7 +133,7 @@ export default function HomeHero() {
                   <button
                     key={type}
                     onClick={() => navigate("/login")}
-                    className="flex-1 py-3 font-bold text-xs lg:text-sm uppercase bg-linear-to-r from-coral-red to-soft-orange text-white active:scale-95 transition cursor-pointer"
+                    className="flex-1 py-3 font-bold text-xs lg:text-sm uppercase bg-linear-to-r from-dark-orange to-warm-yellow text-white active:scale-95 transition cursor-pointer"
                   >
                     {type}
                   </button>
@@ -238,10 +238,10 @@ export default function HomeHero() {
                 onClick={() => handlePropertyClick(item.name)}
                 className="shrink-0 flex flex-col items-center gap-1 w-17.5 group cursor-pointer"
               >
-                <div className="w-12 lg:w-14 h-12 lg:h-14 shadow-sm rounded-xl bg-orange-50 flex items-center justify-center border border-orange-100 group-hover:border-coral-red transition-colors relative z-20">
+                <div className="w-12 lg:w-14 h-12 lg:h-14 shadow-sm rounded-xl bg-white flex items-center justify-center border border-orange-50 group-hover:border-dark-orange transition-colors relative z-20">
                   <IconComponent
                     size={22}
-                    className="text-coral-red opacity-90"
+                    className="text-dark-orange opacity-90"
                     strokeWidth={2.3}
                   />
                 </div>

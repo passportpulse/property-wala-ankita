@@ -39,15 +39,15 @@ export default function Trust() {
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 lg:mb-16 gap-4">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="w-8 h-[1.5px] bg-coral-red" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-coral-red">
+              <span className="w-8 h-[1.5px] bg-dark-orange" />
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
                 Our Promise
               </span>
             </div>
 
             <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
               Built on{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-coral-red to-soft-orange">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange to-lighter-orange">
                 Pure Trust.
               </span>
             </h2>
@@ -78,12 +78,12 @@ export default function Trust() {
           {points.map((item, idx) => (
             <div
               key={idx}
-              className="group relative p-8 lg:p-10 rounded-3xl lg:rounded-[2.5rem] bg-white border border-slate-100 hover:border-peach-glow/30 hover:shadow-xl hover:shadow-peach-glow/10 transition-all duration-500 overflow-hidden"
+              className="group relative p-8 lg:p-10 rounded-3xl lg:rounded-[2.5rem] bg-white border border-slate-100 hover:border-soft-orange/30 hover:shadow-xl hover:shadow-soft-orange/10 transition-all duration-500 overflow-hidden"
             >
               <div className="relative z-10">
 
                 <div className="flex items-center justify-between mb-8">
-                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-warm-yellow/20 to-peach-glow/30 flex items-center justify-center text-coral-red group-hover:from-coral-red group-hover:to-soft-orange group-hover:text-white transition-all duration-500 shadow-sm">
+                  <div className="w-12 h-12 rounded-xl bg-linear-to-br from-warm-yellow/20 to-soft-orange/30 flex items-center justify-center text-dark-orange group-hover:from-dark-orange group-hover:to-lighter-orange group-hover:text-white transition-all duration-500 shadow-sm">
                     {item.icon}
                   </div>
 
@@ -93,7 +93,7 @@ export default function Trust() {
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 group-hover:text-coral-red transition-colors">
+                  <h4 className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight flex items-center gap-2 group-hover:text-dark-orange transition-colors">
                     {item.title}
 
                     <ArrowUpRight className="w-5 h-5 text-slate-200 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
@@ -107,7 +107,7 @@ export default function Trust() {
               </div>
 
               {/* ACCENT BAR */}
-              <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-coral-red via-soft-orange to-peach-glow opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute bottom-0 inset-x-0 h-1.5 bg-linear-to-r from-dark-orange via-lighter-orange to-soft-orange opacity-0 group-hover:opacity-100 transition-opacity" />
 
             </div>
           ))}
@@ -133,7 +133,7 @@ export default function Trust() {
                 "_blank"
               )
             }
-            className="flex items-center gap-2 text-coral-red font-black text-[10px] uppercase tracking-[0.2em] hover:text-soft-orange transition-colors cursor-pointer group"
+            className="flex items-center gap-2 text-dark-orange font-black text-[10px] uppercase tracking-[0.2em] hover:text-lighter-orange transition-colors cursor-pointer group"
           >
             View Client Testimonials
 
