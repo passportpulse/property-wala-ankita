@@ -114,7 +114,7 @@ export default function HomeHero() {
           <div className="text-center px-2">
             <h1 className="text-xl lg:text-3xl font-black leading-tight mt-1 lg:mt-4">
               <span className="text-slate-800">Investment to </span>
-              <span className="bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow bg-clip-text text-transparent">
+              <span className="bg-linear-to-r text-dark-orange">
                 Aesthetic Living
               </span>
             </h1>
