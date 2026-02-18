@@ -122,7 +122,7 @@ export default function HomeHero() {
 
           {/* SEARCH CARD */}
           <div className="w-full sm:w-1/2 mt-4">
-            <div className="bg-white rounded-2xl shadow-lg border border-orange-100 overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-lg border border-dark-orange overflow-hidden">
               <div className="px-4 py-3 border-b border-slate-100 text-center">
                 <span className="text-xs lg:text-sm font-semibold text-slate-600">
                   Login to unlock full property access
@@ -151,7 +151,7 @@ export default function HomeHero() {
                   <span className="text-sm lg:text-base font-bold text-slate-800">
                     Post Your Property
                   </span>
-                  <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-slate-500">
+                  <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-green-700">
                     Get unlimited enquiries
                   </span>
                 </div>
@@ -238,9 +238,9 @@ export default function HomeHero() {
                 onClick={() => handlePropertyClick(item.name)}
                 className="shrink-0 flex flex-col items-center gap-1 w-17.5 group cursor-pointer"
               >
-                <div className="w-12 lg:w-14 h-12 lg:h-14 shadow-sm rounded-xl bg-white flex items-center justify-center border border-orange-50 group-hover:border-dark-orange transition-colors relative z-20">
+                <div className="w-16 lg:w-18 h-16 lg:h-18 shadow-sm rounded-xl bg-white flex items-center justify-center border border-orange-50 group-hover:border-dark-orange transition-colors relative z-20">
                   <IconComponent
-                    size={22}
+                    size={28}
                     className="text-dark-orange opacity-90"
                     strokeWidth={2.3}
                   />

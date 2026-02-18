@@ -119,7 +119,7 @@ function MobileMenu({ open, setOpen }) {
       <div
         className={`
           bg-gray-50 shadow-lg border border-gray-200 rounded-b-4xl
-          flex flex-col items-center gap-5
+          flex flex-col items-start pl-4 gap-5
           overflow-hidden
           transition-all duration-500 ease-in-out
           ${open ? "max-h-125 py-6 opacity-100" : "max-h-0 py-0 opacity-0"}
