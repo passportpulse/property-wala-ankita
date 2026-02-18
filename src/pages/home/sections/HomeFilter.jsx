@@ -108,7 +108,7 @@ export default function HomeFilter() {
               <div className="w-12 h-1 bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
+            <div className="bg-orange-50 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
               <div className="space-y-4 lg:space-y-6">
                 
                 {/* GRID FOR DROPDOWNS */}
@@ -121,7 +121,7 @@ export default function HomeFilter() {
                     </label>
                     <button
                       onClick={() => setStateDropdownOpen(!stateDropdownOpen)}
-                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all group"
+                      className="w-full flex items-center justify-between bg-white border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all group"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
                         <MapPin size={16} className="text-dark-orange lg:group-hover:scale-110 transition-transform" />
@@ -164,7 +164,7 @@ export default function HomeFilter() {
                     <button
                       onClick={() => setCityDropdownOpen(!cityDropdownOpen)}
                       disabled={!selectedState}
-                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
+                      className="w-full flex items-center justify-between bg-white border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
                         <MapPin size={16} className="text-dark-orange" />
@@ -208,7 +208,7 @@ export default function HomeFilter() {
                     <button
                       onClick={() => setPlaceDropdownOpen(!placeDropdownOpen)}
                       disabled={!selectedCity}
-                      className="w-full flex items-center justify-between bg-slate-50 border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
+                      className="w-full flex items-center justify-between bg-white border border-slate-100 rounded-xl lg:rounded-2xl px-3 py-2.5 lg:px-4 lg:py-3.5 hover:border-orange-300 transition-all disabled:opacity-50"
                     >
                       <div className="flex items-center gap-2 lg:gap-3">
                         <MapPin size={16} className="text-dark-orange" />
@@ -247,7 +247,7 @@ export default function HomeFilter() {
 
                 {/* BUDGET SECTION */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6">
-                  <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                  <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
                     <div className="flex justify-between items-center mb-1 lg:mb-4">
                       <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Min Budget</span>
                       <span className="text-xs lg:text-sm font-black text-dark-orange">₹ {formatPrice(minBudget)}</span>
@@ -272,7 +272,7 @@ export default function HomeFilter() {
                     />
                   </div>
 
-                  <div className="bg-slate-50 rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                  <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
                     <div className="flex justify-between items-center mb-1 lg:mb-4">
                       <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">Max Budget</span>
                       <span className="text-xs lg:text-sm font-black text-dark-orange">₹ {formatPrice(maxBudget)}</span>
