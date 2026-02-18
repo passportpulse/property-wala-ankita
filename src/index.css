@@ -9,10 +9,10 @@
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 @theme {
-  --color-dark-orange: #DD571C;     
-  --color-lighter-orange: #FC6A03;   
-  --color-soft-orange: #FFA500;    
-  --color-warm-yellow: #FFD200;   
+  --color-dark-orange: #dd571c;
+  --color-lighter-orange: #fc6a03;
+  --color-soft-orange: #ffa500;
+  --color-warm-yellow: #ffd200;
 }
 
 * {
@@ -65,6 +65,23 @@
 }
 /* FREE BUTTON ATTRACTIVE */
 @keyframes shine {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* SHINE IN BEST DEALS */
+@keyframes yellow-glow-shine {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px #fff176) drop-shadow(0 0 10px #ffd600);
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px #fff176) drop-shadow(0 0 20px #ffea00);
+    transform: scale(1.15);
+  }
 }

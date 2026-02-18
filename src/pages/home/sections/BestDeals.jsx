@@ -138,22 +138,20 @@ export default function BestDeals() {
   return (
     <Section className="bg-orange-400 text-white">
       <Container>
-
-        {/* HEADING */}
+        {/* HEADING WITH ANIMATED ICON */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 lg:gap-6 mb-2 md:mb-10">
+          <div className="flex items-center gap-4">
+            {/* SHINING YELLOW ICON */}
+            <div className="bg-white/10 p-3 rounded-full backdrop-blur-sm border border-white/20">
+                <Sparkles
+                size={28}
+                className="text-yellow-300 animate-[yellow-glow-shine_3s_ease-in-out_infinite] fill-yellow-300/30"
+                />
+            </div>
 
-          <div className="flex items-center gap-3">
-
-            {/* SHINING ICON */}
-            <Sparkles
-              size={22}
-              className="text-white animate-[shine_2.5s_ease-in-out_infinite]"
-            />
-
-            <h2 className="text-2xl lg:text-4xl font-black tracking-tight leading-none text-white">
+            <h2 className="text-2xl lg:text-5xl uppercase text-white">
               Our Best Deals
             </h2>
-
           </div>
 
           <div className="flex items-center gap-3 self-end md:self-center">
@@ -161,20 +159,18 @@ export default function BestDeals() {
               onClick={() => scroll("left")}
               className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={20} className="text-white" />
             </button>
-
             <button
               onClick={() => scroll("right")}
               className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={20} className="text-white" />
             </button>
           </div>
-
         </div>
 
-        {/* CARDS */}
+        {/* SWIPE AREA */}
         <div
           ref={scrollRef}
           className="flex gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4"
@@ -185,7 +181,6 @@ export default function BestDeals() {
               onClick={() => handleClick(item.name)}
               className="group relative min-w-45 md:min-w-60 aspect-3/4 rounded-2xl overflow-hidden cursor-pointer snap-start border border-white/10"
             >
-
               <img
                 src={item.image}
                 alt={item.name}
@@ -193,60 +188,55 @@ export default function BestDeals() {
               />
 
               <div className="absolute top-3 left-3 z-20">
-                <div className="bg-black/50 backdrop-blur px-2 py-1 rounded-lg">
-                  <p className="text-[10px] font-black text-orange-300">
+                <div className="bg-black/50 backdrop-blur px-2 py-1 rounded-lg shadow-sm">
+                  <p className="text-[10px] font-black text-orange-300 tracking-tight">
                     {item.count}
                   </p>
                 </div>
               </div>
 
               <div className="absolute inset-x-2 bottom-2 z-20">
-                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-3 group-hover:-translate-y-1 transition">
-
+                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-3 transform transition-transform duration-300 group-hover:-translate-y-1">
                   <div className="flex justify-between items-start">
-
                     <div>
-                      <p className="text-[8px] font-black uppercase text-orange-200">
+                      <p className="text-[8px] font-black uppercase tracking-widest text-orange-200 mb-0.5">
                         {item.tag}
                       </p>
-
-                      <h3 className="text-sm md:text-base font-black">
+                      <h3 className="text-sm md:text-base font-black text-white leading-tight">
                         {item.name}
                       </h3>
                     </div>
-
-                    <div className="bg-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition">
-
-                      <ArrowRight size={14} className="text-orange-500" />
-
+                    <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                      <ArrowRight
+                        size={14}
+                        className="text-dark-orange"
+                        strokeWidth={3}
+                      />
                     </div>
-
                   </div>
-
                 </div>
               </div>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
             </div>
           ))}
         </div>
 
         {/* DOTS */}
-        <div className="mt-6 flex justify-center gap-2">
+        <div className="mt-6 flex items-center justify-center gap-2">
           {categories.map((_, index) => (
             <button
               key={index}
               onClick={() => scrollToItem(index)}
-              className={`h-2 rounded-full transition-all ${
+              className={`h-2 rounded-full transition-all duration-300 ${
                 activeDot === index
                   ? "w-6 bg-white"
-                  : "w-2 bg-white/50"
+                  : "w-2 bg-white/90 hover:bg-white/50"
               }`}
+              aria-label={`Go to slide ${index + 1}`}
             />
           ))}
         </div>
-
       </Container>
     </Section>
   );
