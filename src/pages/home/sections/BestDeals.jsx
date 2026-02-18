@@ -144,13 +144,9 @@ export default function BestDeals() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 lg:gap-6 mb-2 md:mb-10">
           <div className="relative">
             <div className="absolute -top-4 -left-2 w-12 h-12 bg-orange-100 rounded-full blur-xl opacity-60 animate-pulse"></div>
-            <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange mb-4 relative z-10 bg-orange-50 px-3 py-1 rounded-full">
-              Explore Intent
-            </span>
             <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-              Our{" "}
               <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                Best Deals
+                Our Best Deals
               </span>
             </h2>
           </div>
