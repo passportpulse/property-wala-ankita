@@ -118,7 +118,8 @@ export default function BestDeals() {
   const scroll = (direction) => {
     const el = scrollRef.current;
     if (el) {
-      const scrollAmount = direction === "left" ? -el.offsetWidth : el.offsetWidth;
+      const scrollAmount =
+        direction === "left" ? -el.offsetWidth : el.offsetWidth;
       el.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -127,12 +128,28 @@ export default function BestDeals() {
     const sectionId = name.toLowerCase().replace(/\s+|\/+/g, "-");
     navigate(`/buy#${sectionId}`);
     setTimeout(() => {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 150);
   };
 
   return (
-    <Section className="bg-orange-500 text-white overflow-hidden">
+    <Section className="
+bg-linear-to-br 
+from-orange-500 
+via-amber-400 
+to-orange-500
+text-white
+
+lg:bg-linear-to-br
+lg:from-slate-900
+lg:via-slate-800
+lg:to-slate-900
+
+transition-all duration-500
+">
+
       <Container>
         {/* HEADING AREA */}
         <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
@@ -198,7 +215,11 @@ export default function BestDeals() {
                       </h3>
                     </div>
                     <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                      <ArrowRight size={14} className="text-orange-500" strokeWidth={3} />
+                      <ArrowRight
+                        size={14}
+                        className="text-orange-500"
+                        strokeWidth={3}
+                      />
                     </div>
                   </div>
                 </div>
@@ -211,18 +232,20 @@ export default function BestDeals() {
         {/* NEW PROGRESS & COUNTER UI */}
         <div className="mt-4 flex flex-col items-center gap-3">
           {/* Progress Bar Track */}
-          <div className="w-32 md:w-48 h-[2px] bg-white/20 rounded-full overflow-hidden">
-            <div 
+          <div className="w-32 md:w-48 h-0.5 bg-white/20 rounded-full overflow-hidden">
+            <div
               className="h-full bg-white transition-all duration-200 ease-out"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>
-          
+
           {/* Fractional Counter */}
           <div className="flex items-center gap-2 font-black text-[10px] tracking-[0.2em] uppercase text-white/80">
-            <span className="text-white">{currentIndex.toString().padStart(2, '0')}</span>
-            <span className="w-4 h-[1px] bg-white/30" />
-            <span>{categories.length.toString().padStart(2, '0')}</span>
+            <span className="text-white">
+              {currentIndex.toString().padStart(2, "0")}
+            </span>
+            <span className="w-4 h-px bg-white/30" />
+            <span>{categories.length.toString().padStart(2, "0")}</span>
           </div>
         </div>
       </Container>

@@ -118,7 +118,7 @@ export default function BestBuySection() {
                 key={i}
                 onClick={() => setSelectedItem(item)}
                 className="
-                  min-w-[280px] sm:min-w-[320px] snap-center mr-4 last:mr-0
+                  min-w-70 sm:min-w-[320px] snap-center mr-4 last:mr-0
                   md:min-w-0 md:mr-0 group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300
                 "
               >
