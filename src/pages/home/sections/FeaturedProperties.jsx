@@ -90,13 +90,27 @@ export default function FeaturedProperties() {
               </p>
             </div>
 
-            <button
-              onClick={() => navigate("/buy")}
-              className="cursor-pointer flex items-center gap-2 group text-[10px] lg:text-[11px] font-black uppercase tracking-widest text-slate-900 border-b-2 border-slate-100 pb-1 lg:pb-2 hover:border-dark-orange transition-all w-fit"
-            >
-              Browse All
-              <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </button>
+           <button
+  onClick={() => navigate("/buy")}
+  className="
+    cursor-pointer
+    bg-dark-orange text-white
+    flex items-center gap-2 group
+    text-[10px] lg:text-[11px]
+    font-black uppercase tracking-widest
+    px-4 py-2 lg:px-5 lg:py-2.5
+    border-2 border-white
+    rounded-md
+    hover:bg-white hover:text-orange-600 hover:border-orange-600
+    transition-all duration-300
+    shadow-sm hover:shadow-md
+    w-fit
+  "
+>
+  Browse All
+  <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+</button>
+
 
           </div>
         </div>
@@ -176,7 +190,7 @@ export default function FeaturedProperties() {
                 {/* View Button */}
                 <button
                   onClick={() => setSelectedProperty(item)}
-                  className="w-full cursor-pointer py-3.5 bg-slate-200 group-hover:bg-linear-to-r group-hover:from-dark-orange group-hover:to-lighter-orange text-slate-900 group-hover:text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
+                  className="w-full cursor-pointer py-3.5 bg-orange-50 border border-dark-orange group-hover:bg-linear-to-r group-hover:from-dark-orange group-hover:to-lighter-orange text-slate-900 group-hover:text-white rounded-xl font-black text-[10px] uppercase tracking-[0.2em] transition-all duration-300 active:scale-95"
                 >
                   View Details
                 </button>

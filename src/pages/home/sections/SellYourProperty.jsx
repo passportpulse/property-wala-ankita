@@ -54,87 +54,88 @@ export default function SellYourProperty() {
           </p>
         </div>
 
-        {/* CARDS - Swipe on mobile, Grid on Desktop */}
-        <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto no-scrollbar pb-6 px-4 lg:px-0 snap-x snap-mandatory">
-          {features.map((item, i) => (
-            <div
-              key={i}
-              onClick={() => navigate("/sell")}
-              className="
-    snap-center shrink-0 w-70 lg:w-auto
-    group relative overflow-hidden
-    rounded-3xl lg:rounded-4xl
-    bg-orange-50 border border-slate-200
-    shadow-sm hover:shadow-xl
-    hover:-translate-y-2
-    transition-all duration-500
-    cursor-pointer
-
-    flex flex-col   /* IMPORTANT */
-  "
-            >
-              {/* Gradient Glow Background */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
-                <div
-                  className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-5`}
-                />
-              </div>
-
-              {/* Top Strip */}
-              <div className={`h-1 w-full bg-linear-to-r ${item.color}`} />
-
-              {/* CONTENT */}
-              <div className="relative z-10 p-6 lg:p-8 flex flex-col grow">
-                {/* ICON */}
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl flex items-center justify-center bg-linear-to-br from-white to-slate-100 border border-slate-200 shadow-sm mb-5 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+        {/* WRAPPER: Full width on mobile, normal width on desktop */}
+        <div className="relative w-screen lg:w-full left-1/2 lg:left-0 right-1/2 lg:right-0 -ml-[50vw] lg:ml-0 -mr-[50vw] lg:mr-0">
+          {/* CARDS - Swipe on mobile, Grid on Desktop */}
+          <div className="flex lg:grid lg:grid-cols-3 gap-5 lg:gap-8 overflow-x-auto no-scrollbar pb-6 px-4 lg:px-0 snap-x snap-mandatory">
+            {features.map((item, i) => (
+              <div
+                key={i}
+                onClick={() => navigate("/sell")}
+                className="
+          snap-center shrink-0 w-[80%] sm:w-[65%] lg:w-full
+          group relative overflow-hidden
+          rounded-3xl lg:rounded-4xl
+          bg-orange-50 border border-slate-200
+          shadow-sm hover:shadow-xl
+          hover:-translate-y-2
+          transition-all duration-500
+          cursor-pointer
+          flex flex-col
+        "
+              >
+                {/* Gradient Glow Background */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
                   <div
-                    className={`text-white p-2 rounded-lg bg-linear-to-br ${item.color}`}
-                  >
-                    {item.icon}
-                  </div>
+                    className={`absolute inset-0 bg-linear-to-br ${item.color} opacity-5`}
+                  />
                 </div>
 
-                {/* TEXT */}
-                <h4 className="font-bold text-slate-900 text-lg lg:text-xl tracking-tight">
-                  {item.name}
-                </h4>
+                {/* Top Strip */}
+                <div className={`h-1 w-full bg-linear-to-r ${item.color}`} />
 
-                <p className="text-[10px] lg:text-xs font-bold text-dark-orange uppercase tracking-widest mt-1">
-                  {item.count}
-                </p>
+                {/* CONTENT */}
+                <div className="relative z-10 p-6 lg:p-8 flex flex-col grow">
+                  {/* ICON */}
+                  <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl flex items-center justify-center bg-linear-to-br from-white to-slate-100 border border-slate-200 shadow-sm mb-5 group-hover:scale-110 group-hover:shadow-md transition-all duration-300">
+                    <div
+                      className={`text-white p-2 rounded-lg bg-linear-to-br ${item.color}`}
+                    >
+                      {item.icon}
+                    </div>
+                  </div>
 
-                <p className="mt-3 text-sm text-slate-500 leading-relaxed line-clamp-3">
-                  {item.desc}
-                </p>
+                  {/* TEXT */}
+                  <h4 className="font-bold text-slate-900 text-lg lg:text-xl tracking-tight">
+                    {item.name}
+                  </h4>
 
-                {/* CTA — pushed to bottom */}
-                <div className="mt-auto pt-6">
-                  <div
-                    className="
-        relative flex items-center justify-between
-        px-3 py-2
-        rounded-xl
-        bg-linear-to-r from-dark-orange to-orange-400
-        text-white
-        font-bold text-xs uppercase tracking-wider
-        shadow-md hover:shadow-lg
-        hover:scale-[1.03]
-        transition-all duration-300
-        overflow-hidden
-      "
-                  >
-                    <span className="relative z-10">
-                      List Your Property Now
-                    </span>
+                  <p className="text-[10px] lg:text-xs font-bold text-dark-orange uppercase tracking-widest mt-1">
+                    {item.count}
+                  </p>
 
-                    <div className="relative z-10 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white transition-all duration-300">
-                      <ArrowRight className="w-4 h-4 text-white group-hover:text-dark-orange group-hover:translate-x-1 transition-all duration-300" />
+                  <p className="mt-3 text-sm text-slate-500 leading-relaxed line-clamp-3">
+                    {item.desc}
+                  </p>
+
+                  {/* CTA — pushed to bottom */}
+                  <div className="mt-auto pt-6">
+                    <div
+                      className="
+              relative flex items-center justify-between
+              px-3 py-2
+              rounded-xl
+              bg-linear-to-r from-dark-orange to-orange-400
+              text-white
+              font-bold text-xs uppercase tracking-wider
+              shadow-md hover:shadow-lg
+              hover:scale-[1.03]
+              transition-all duration-300
+              overflow-hidden
+            "
+                    >
+                      <span className="relative z-10">
+                        List Your Property Now
+                      </span>
+                      <div className="relative z-10 w-8 h-8 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 text-white group-hover:text-dark-orange group-hover:translate-x-1 transition-all duration-300" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </Container>
     </Section>
