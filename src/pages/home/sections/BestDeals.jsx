@@ -136,18 +136,18 @@ export default function BestDeals() {
   };
 
   return (
-    <Section className="bg-orange-400 text-white">
+    <Section className="bg-orange-500 text-white">
       <Container>
         {/* HEADING WITH ANIMATED ICON */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 lg:gap-6 mb-2 md:mb-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
           <div className="flex items-center gap-4">
             {/* SHINING YELLOW ICON */}
-            <div className="bg-white/10 p-3 rounded-full backdrop-blur-sm border border-white/20">
-                <Sparkles
-                size={28}
-                className="text-yellow-300 animate-[yellow-glow-shine_3s_ease-in-out_infinite] fill-yellow-300/30"
-                />
-            </div>
+
+            <Sparkles
+              size={28}
+              // Changed 3s to 1s for a faster animation
+              className="text-yellow-300 animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
+            />
 
             <h2 className="text-2xl lg:text-5xl uppercase text-white">
               Our Best Deals
@@ -157,13 +157,13 @@ export default function BestDeals() {
           <div className="flex items-center gap-3 self-end md:self-center">
             <button
               onClick={() => scroll("left")}
-              className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
+              className="p-2 rounded-xl border border-white hover:bg-white/10 transition-colors"
             >
               <ChevronLeft size={20} className="text-white" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="p-2 rounded-xl border border-white/20 hover:bg-white/10 transition-colors"
+              className="p-2 rounded-xl border border-white hover:bg-white/10 transition-colors"
             >
               <ChevronRight size={20} className="text-white" />
             </button>
