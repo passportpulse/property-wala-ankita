@@ -59,26 +59,27 @@ export default function HotDeals() {
       <Container>
         {/* MOBILE ONLY HEADER */}
         <div className="lg:hidden relative mb-6 border-l-4 border-dark-orange pl-4">
-          <div className="flex items-end justify-between gap-4">
-            {/* LEFT CONTENT */}
+          <div className="flex flex-col items-start gap-3">
+            {/* TEXT CONTENT */}
             <div className="space-y-1">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-dark-orange">
                 Hot Deals
               </span>
 
-              <h2 className="text-xl font-black text-slate-800 tracking-tight leading-none">
+              {/* Single line heading */}
+              <h2 className="text-xl font-black text-slate-800 tracking-tight leading-none whitespace-nowrap">
                 High-Value{" "}
                 <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
                   Opportunities
                 </span>
               </h2>
 
-              <p className="text-slate-500 text-xs leading-relaxed font-medium max-w-55">
-                High-value property opportunities with exclusive pricing.
+              <p className="text-slate-500 text-xs leading-relaxed font-medium max-w-xs">
+                Exclusive high-value property deals.
               </p>
             </div>
 
-            {/* RIGHT BUTTON */}
+            {/* BUTTON LEFT SIDE */}
             <button
               onClick={() => navigate("/buy")}
               className="
@@ -93,10 +94,9 @@ export default function HotDeals() {
         hover:bg-white hover:text-dark-orange
         transition-all duration-300
         shadow-sm
-        w-fit
       "
             >
-              Browse All
+              Explore Now
               <ArrowUpRight className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </button>
           </div>
