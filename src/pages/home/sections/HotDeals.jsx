@@ -103,10 +103,10 @@ export default function HotDeals() {
         {/* THE OUTER FRAME (The container that holds everything) */}
         <div
           className="
-  p-6
+  p-3
   bg-white 
   border border-slate-100 
-shadow-[0_10px_20px_rgba(0,0,0,0.15),_0_20px_40px_rgba(0,0,0,0.2),_0_15px_30px_rgba(0,0,0,0.1)]"
+shadow-[0_10px_20px_rgba(0,0,0,0.15),0_20px_40px_rgba(0,0,0,0.2),0_15px_30px_rgba(0,0,0,0.1)]"
         >
           {/* MAIN WRAPPER: Inner Content Grid */}
           <div className="lg:grid lg:grid-cols-12 bg-white overflow-hidden">
