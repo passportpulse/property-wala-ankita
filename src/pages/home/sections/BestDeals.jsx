@@ -89,22 +89,28 @@ const categories = [
 export default function BestDeals() {
   const navigate = useNavigate();
   const scrollRef = useRef(null);
-  const [activeDot, setActiveDot] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
       const el = scrollRef.current;
       if (el) {
-        const scrollPos = el.scrollLeft;
+        // Calculate progress percentage for the bar
+        const maxScroll = el.scrollWidth - el.clientWidth;
+        const progress = (el.scrollLeft / maxScroll) * 100;
+        setScrollProgress(progress);
+
+        // Calculate current "page" or item index for the counter
         const cardWidth = el.scrollWidth / categories.length;
-        const index = Math.round(scrollPos / cardWidth);
-        setActiveDot(index);
+        const index = Math.round(el.scrollLeft / cardWidth) + 1;
+        setCurrentIndex(index);
       }
     };
 
     const el = scrollRef.current;
     if (el) {
-      el.addEventListener("scroll", handleScroll);
+      el.addEventListener("scroll", handleScroll, { passive: true });
       return () => el.removeEventListener("scroll", handleScroll);
     }
   }, []);
@@ -112,16 +118,8 @@ export default function BestDeals() {
   const scroll = (direction) => {
     const el = scrollRef.current;
     if (el) {
-      const scrollAmount = direction === "left" ? -260 : 260;
+      const scrollAmount = direction === "left" ? -el.offsetWidth : el.offsetWidth;
       el.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
-
-  const scrollToItem = (index) => {
-    const el = scrollRef.current;
-    if (el) {
-      const cardWidth = el.scrollWidth / categories.length;
-      el.scrollTo({ left: index * cardWidth, behavior: "smooth" });
     }
   };
 
@@ -129,32 +127,27 @@ export default function BestDeals() {
     const sectionId = name.toLowerCase().replace(/\s+|\/+/g, "-");
     navigate(`/buy#${sectionId}`);
     setTimeout(() => {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 150);
   };
 
   return (
-    <Section className="bg-orange-500 text-white">
+    <Section className="bg-orange-500 text-white overflow-hidden">
       <Container>
-        {/* HEADING WITH ANIMATED ICON */}
+        {/* HEADING AREA */}
         <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl lg:text-5xl uppercase text-white">
+          <div className="flex items-center gap-4">
+            <h2 className="text-2xl lg:text-5xl uppercase text-white font-black">
               Our Best Deals
             </h2>
-            {/* SHINING YELLOW ICON */}
-
             <Sparkles
               size={28}
               strokeWidth={1}
-              // Changed 3s to 1s for a faster animation
               className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
             />
           </div>
 
-          <div className="flex items-center gap-3 self-end md:self-center">
+          <div className="flex items-center gap-3 self-end md:self-center mt-4 md:mt-0">
             <button
               onClick={() => scroll("left")}
               className="p-2 rounded-xl border border-white hover:bg-white/10 transition-colors"
@@ -173,7 +166,7 @@ export default function BestDeals() {
         {/* SWIPE AREA */}
         <div
           ref={scrollRef}
-          className="flex gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4"
+          className="flex gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-6"
         >
           {categories.map((item, i) => (
             <div
@@ -186,7 +179,6 @@ export default function BestDeals() {
                 alt={item.name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-
               <div className="absolute top-3 left-3 z-20">
                 <div className="bg-black/50 backdrop-blur px-2 py-1 rounded-lg shadow-sm">
                   <p className="text-[10px] font-black text-orange-300 tracking-tight">
@@ -194,7 +186,6 @@ export default function BestDeals() {
                   </p>
                 </div>
               </div>
-
               <div className="absolute inset-x-2 bottom-2 z-20">
                 <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-3 transform transition-transform duration-300 group-hover:-translate-y-1">
                   <div className="flex justify-between items-start">
@@ -207,35 +198,32 @@ export default function BestDeals() {
                       </h3>
                     </div>
                     <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                      <ArrowRight
-                        size={14}
-                        className="text-dark-orange"
-                        strokeWidth={3}
-                      />
+                      <ArrowRight size={14} className="text-orange-500" strokeWidth={3} />
                     </div>
                   </div>
                 </div>
               </div>
-
               <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
             </div>
           ))}
         </div>
 
-        {/* DOTS */}
-        <div className="mt-6 flex items-center justify-center gap-2">
-          {categories.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollToItem(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                activeDot === index
-                  ? "w-6 bg-white"
-                  : "w-2 bg-white/90 hover:bg-white/50"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
+        {/* NEW PROGRESS & COUNTER UI */}
+        <div className="mt-4 flex flex-col items-center gap-3">
+          {/* Progress Bar Track */}
+          <div className="w-32 md:w-48 h-[2px] bg-white/20 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-white transition-all duration-200 ease-out"
+              style={{ width: `${scrollProgress}%` }}
             />
-          ))}
+          </div>
+          
+          {/* Fractional Counter */}
+          <div className="flex items-center gap-2 font-black text-[10px] tracking-[0.2em] uppercase text-white/80">
+            <span className="text-white">{currentIndex.toString().padStart(2, '0')}</span>
+            <span className="w-4 h-[1px] bg-white/30" />
+            <span>{categories.length.toString().padStart(2, '0')}</span>
+          </div>
         </div>
       </Container>
     </Section>
