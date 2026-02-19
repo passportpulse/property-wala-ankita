@@ -1,9 +1,16 @@
 import { useState } from "react";
-import { ArrowRight, MapPin, X, Phone, MessageSquare } from "lucide-react";
+import {
+  ArrowRight,
+  MapPin,
+  X,
+  Phone,
+  MessageSquare,
+  ArrowUpRight,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
-import { ArrowUpRight } from "lucide-react";
+import BestBuyModal from "../../../components/modals/BestBuyModal";
 
 const bestBuys = [
   {
@@ -11,34 +18,38 @@ const bestBuys = [
     type: "Ready to Move",
     location: "City Centre, Durgapur",
     price: "₹48 Lakh",
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80",
     description:
       "Modern 2BHK located in the heart of Durgapur with modular kitchen, lift, and 24/7 power backup. Ideal for families.",
   },
   {
-    title: "3 BHK Independent House",
+    title: "3 BHK House",
     type: "New Construction",
     location: "Benachity, Durgapur",
     price: "₹72 Lakh",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
     description:
-      "Spacious independent house with a private terrace and garage. Located in a quiet, high-demand residential neighborhood.",
+      "Spacious independent house with a private terrace and garage. Located in a quiet residential neighborhood.",
   },
   {
     title: "Residential Plot",
     type: "Clear Title",
     location: "Muchipara, Durgapur",
     price: "₹32 Lakh",
-    image: "https://images.unsplash.com/photo-1501183638710-841dd1904471",
+    image:
+      "https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=800&q=80",
     description:
       "LDA approved plot with immediate registration. Perfect for investment or building your custom dream home.",
   },
   {
-    title: "1 BHK Investment Flat",
-    type: "Rental Demand Area",
+    title: "1 BHK Flat",
+    type: "High Demand",
     location: "Bidhannagar, Durgapur",
     price: "₹26 Lakh",
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+    image:
+      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=800&q=80",
     description:
       "Budget-friendly flat in a high rental yield area near the hospital and engineering colleges.",
   },
@@ -50,7 +61,7 @@ export default function BestBuySection() {
 
   return (
     <>
-      <Section className="pb-16 lg:pb-32 bg-white font-poppins">
+      <Section>
         <Container>
           {/* HEADER */}
           <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
@@ -61,7 +72,7 @@ export default function BestBuySection() {
                 </span>
 
                 <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                  Best Buys in {" "}
+                  Best Buys in{" "}
                   <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
                     Durgapur
                   </span>
@@ -95,131 +106,79 @@ export default function BestBuySection() {
             </div>
           </div>
 
-          {/* GRID */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* GRID: Horizontal Scroll on Mobile, Grid on Desktop */}
+          <div
+            className="
+            flex overflow-x-auto pb-6 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar
+            md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 md:pb-0 md:mx-0 md:px-0
+          "
+          >
             {bestBuys.map((item, i) => (
               <div
                 key={i}
                 onClick={() => setSelectedItem(item)}
-                className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200 hover:border-dark-orange shadow-sm hover:shadow-md transition-all duration-300"
+                className="
+                  min-w-[280px] sm:min-w-[320px] snap-center mr-4 last:mr-0
+                  md:min-w-0 md:mr-0 group cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300
+                "
               >
-                {/* IMAGE */}
-                <div className="relative h-48">
+                {/* COMPACT IMAGE */}
+                <div className="relative h-40 lg:h-48 overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                   />
+                  {/* SHINING TYPE BADGE */}
+                  <div className="absolute top-3 left-3 bg-green-600 text-white backdrop-blur px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-widest overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                    {item.type}
+                    <span
+                      className="absolute inset-0 w-full h-full"
+                      style={{
+                        background:
+                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
+                        backgroundSize: "200% 100%",
+                        animation: "shine 2s linear infinite",
+                      }}
+                    />
+                  </div>
                 </div>
 
-                {/* CONTENT */}
-                <div className="p-6">
-                  <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-                    {item.type}
-                  </p>
-
-                  <h3 className="mt-1 text-lg font-bold text-dark-slate">
+                {/* COMPACT CONTENT */}
+                <div className="p-4 lg:p-6">
+                  <h3 className="text-base lg:text-lg font-bold text-slate-900 leading-tight">
                     {item.title}
                   </h3>
 
-                  <div className="mt-2 flex items-center gap-2 text-sm text-muted-slate">
-                    <MapPin className="w-4 h-4" />
-                    {item.location}
+                  <div className="mt-2 flex items-center gap-1.5 text-xs text-slate-500">
+                    <MapPin size={12} className="text-dark-orange" />
+                    <span className="truncate">{item.location}</span>
                   </div>
 
-                  <div className="mt-4 text-lg font-bold text-dark-slate">
-                    {item.price}
-                  </div>
-
-                  <div className="mt-5 flex items-center justify-between text-sm font-semibold text-slate-600 group-hover:text-dark-orange transition-colors">
-                    <span>View Details</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-lg font-black text-slate-900">
+                      {item.price}
+                    </span>
+                    <div className="flex items-center gap-1 text-xs font-bold text-dark-orange transition-all duration-300 group-hover:gap-2">
+                      View Details
+                      <ArrowRight
+                        size={14}
+                        className="transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
-          {/* BUTTON */}
-          <div className="mt-14 text-center">
-            <button
-              onClick={() => navigate("/buy")}
-              className="cursor-pointer inline-flex items-center gap-3 px-8 py-4 rounded-full bg-slate-900 text-white font-semibold hover:bg-dark-orange transition-all shadow-lg hover:shadow-dark-orange/20"
-            >
-              View All Properties in Durgapur
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </Container>
       </Section>
 
-      {/* --- MODAL (Outside Container for full-screen overlay) --- */}
-      {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          <div
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
-            onClick={() => setSelectedItem(null)}
-          />
-
-          <div className="relative bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl animate-in zoom-in-95 duration-300">
-            <button
-              onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur rounded-full hover:bg-dark-orange hover:text-white transition"
-            >
-              <X size={18} />
-            </button>
-
-            <div className="h-56">
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="p-8">
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
-                    {selectedItem.type}
-                  </p>
-                  <h3 className="text-2xl font-black text-slate-900 mt-1">
-                    {selectedItem.title}
-                  </h3>
-                </div>
-                <p className="text-xl font-bold text-slate-900">
-                  {selectedItem.price}
-                </p>
-              </div>
-
-              <div className="mt-4 flex items-center gap-2 text-sm text-slate-500 font-medium">
-                <MapPin className="w-4 h-4 text-lighter-orange" />
-                {selectedItem.location}
-              </div>
-
-              <p className="mt-6 text-slate-600 text-sm leading-relaxed">
-                {selectedItem.description}
-              </p>
-
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <a
-                  href="tel:+917699988876"
-                  className="flex items-center justify-center gap-2 py-4 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-dark-orange transition"
-                >
-                  <Phone size={14} /> Call Agent
-                </a>
-
-                <a
-                  href="https://wa.me/917699988876"
-                  className="flex items-center justify-center gap-2 py-4 bg-gradient-to-r from-dark-orange to-lighter-orange text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition"
-                >
-                  <MessageSquare size={14} /> WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* MODAL*/}
+      <BestBuyModal 
+        item={selectedItem} 
+        onClose={() => setSelectedItem(null)} 
+      />
     </>
   );
 }
