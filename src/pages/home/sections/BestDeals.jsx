@@ -137,7 +137,7 @@ export default function BestDeals() {
         {/* HEADING AREA */}
         <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
           <div className="flex items-center gap-4">
-            <h2 className="text-2xl lg:text-5xl uppercase text-white font-black">
+            <h2 className="text-2xl lg:text-5xl uppercase text-white">
               Our Best Deals
             </h2>
             <Sparkles
