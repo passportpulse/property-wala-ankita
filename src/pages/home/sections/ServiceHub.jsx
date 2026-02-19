@@ -7,35 +7,35 @@ import Container from "../../../components/layout/Container";
 const services = [
   {
     title: "Buying & Renting",
-    desc: "Browse verified homes and commercial spaces across Durgapur with trusted local insights.",
-    tag: "For Buyers & Tenants",
+    desc: "Browse verified homes across Durgapur.",
+    tag: "Buyers",
     icon: "🏠",
     loginText: "Buyer Login",
-    helper: "Login to view prices, owner details & schedule visits",
+    helper: "View prices & owner details",
   },
   {
     title: "Selling & Listing",
-    desc: "List your property confidently and attract genuine buyers through our verified network.",
-    tag: "For Property Owners",
+    desc: "List your property to genuine buyers.",
+    tag: "Owners",
     icon: "💰",
     loginText: "Seller Login",
-    helper: "Login to manage listings, leads & negotiations",
+    helper: "Manage listings & leads",
   },
   {
     title: "Partner Hub",
-    desc: "Access verified inventory, collaborate on deals, and grow faster with Property Wala Bhaiya.",
-    tag: "Property Wala Bhaiya's Network",
+    desc: "Access inventory & collaborate on deals.",
+    tag: "Network",
     icon: "🤝",
     loginText: "Partner Login",
-    helper: "Login to access inventory & partner tools",
+    helper: "Get partner tools",
   },
   {
     title: "Developer Portal",
-    desc: "Strategic sales and marketing support for residential and commercial developments.",
-    tag: "For Developers & Builders",
+    desc: "Strategic sales support for builders.",
+    tag: "Builders",
     icon: "🏗️",
-    loginText: "Developer Login",
-    helper: "Login to manage projects & sales dashboards",
+    loginText: "Dev Login",
+    helper: "Sales dashboards",
   },
 ];
 
@@ -47,140 +47,101 @@ export default function ServiceHub() {
   };
 
   return (
-    <Section className="bg-white font-poppins">
+    <Section className="bg-white font-poppins py-12 md:py-24 overflow-hidden">
       <Container>
-
-        {/* HEADER */}
-        <div className="max-w-3xl mb-12 lg:mb-16">
-
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-8 h-[1.5px] bg-dark-orange" />
-            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
+        {/* HEADER: Tightened for mobile */}
+        <div className="max-w-2xl mb-10 md:mb-16">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="w-6 h-0.5 bg-dark-orange" />
+            <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
               Our Services
             </span>
           </div>
 
-          <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
-            A Complete{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange to-lighter-orange">
-              Real Estate Ecosystem
-            </span>
+          <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter leading-none">
+            Real Estate <span className="text-dark-orange">Ecosystem.</span>
           </h2>
-
-          <p className="mt-4 text-slate-500 text-sm lg:text-base leading-relaxed max-w-2xl">
-            Built for buyers, sellers, partners, and developers — powered by
-            trusted local expertise and verified property networks.
-          </p>
-
         </div>
 
-
-        {/* SERVICES GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-
+        {/* SERVICES GRID: 2-columns on mobile for compactness */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
               className="
                 group relative 
-                p-8 lg:p-10
-                rounded-3xl lg:rounded-[2.5rem]
-                bg-white border border-slate-100
-                hover:border-soft-orange/30
-                hover:shadow-xl hover:shadow-soft-orange/10
+                p-5 md:p-10
+                rounded-2xl md:rounded-[2.5rem]
+                bg-orange-50 border border-slate-100
+                hover:border-dark-orange/20
+                hover:shadow-2xl hover:shadow-dark-orange/5
                 transition-all duration-500
-                overflow-hidden flex flex-col
+                flex flex-col justify-between
+                overflow-hidden
               "
             >
-
-              {/* Background Icon */}
-              <div className="absolute -right-6 -top-6 text-7xl opacity-5 group-hover:opacity-10 transition-opacity rotate-12">
+              {/* Floating Icon: Sized down for mobile */}
+              <div className="absolute -right-2 -top-2 text-4xl md:text-7xl opacity-5 group-hover:opacity-10 transition-opacity rotate-12">
                 {service.icon}
               </div>
 
+              <div className="relative z-10 space-y-4">
+                <span className="inline-block px-2 py-1 rounded-md bg-slate-50 text-[8px] md:text-[9px] font-black uppercase tracking-widest text-slate-500">
+                  {service.tag}
+                </span>
 
-              <div className="relative z-10 flex flex-col h-full justify-between">
-
-                {/* TOP */}
-                <div className="space-y-6">
-
-                  <span className="
-                    inline-block px-3 py-1.5 
-                    rounded-lg 
-                    bg-warm-yellow/20
-                    text-[9px] font-black uppercase tracking-[0.2em]
-                    text-slate-900
-                  ">
-                    {service.tag}
-                  </span>
-
-
-                  <div className="space-y-3">
-
-                    <h3 className="
-                      text-xl lg:text-2xl font-black 
-                      text-slate-900 
-                      tracking-tight
-                      group-hover:text-dark-orange 
-                      transition-colors
-                    ">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-slate-500 text-sm lg:text-base leading-relaxed">
-                      {service.desc}
-                    </p>
-
-                  </div>
-
-                </div>
-
-
-                {/* ACTION AREA */}
-                <div className="mt-8 pt-6 border-t border-slate-50 space-y-4">
-
-                  <p className="text-[11px] text-slate-400 leading-relaxed">
-                    {service.helper}
+                <div>
+                  <h3 className="text-sm md:text-2xl font-black text-slate-900 tracking-tight group-hover:text-dark-orange transition-colors leading-tight">
+                    {service.title}
+                  </h3>
+                  {/* Description: Hidden or simplified on tiny screens if needed */}
+                  <p className="mt-2 text-slate-500 text-[10px] md:text-base leading-snug md:leading-relaxed">
+                    {service.desc}
                   </p>
-
-
-                  <button
-                    onClick={() => handleLogin(service.loginText)}
-                    className="
-                      w-full 
-                      flex items-center justify-center gap-2
-                      px-4 py-3
-                      rounded-xl
-                      bg-slate-900 text-white
-                      text-[10px] font-black uppercase tracking-[0.2em]
-                      hover:bg-dark-orange
-                      transition-all duration-300
-                      cursor-pointer
-                      shadow-lg hover:shadow-dark-orange/20
-                    "
-                  >
-                    <Lock className="w-4 h-4" />
-                    {service.loginText}
-                  </button>
-
                 </div>
-
               </div>
 
+              {/* ACTION AREA: Compact buttons */}
+              <div className="mt-6 space-y-3 relative z-10">
+                <p className="hidden md:block text-[11px] text-slate-400 leading-relaxed">
+                  {service.helper}
+                </p>
 
-              {/* Accent Bar */}
-              <div className="
-                absolute bottom-0 inset-x-0 h-1.5
-                bg-linear-to-r from-dark-orange via-lighter-orange to-soft-orange
-                opacity-0 group-hover:opacity-100
-                transition-opacity
-              "/>
+                <button
+                  onClick={() => handleLogin(service.loginText)}
+                  className="
+                    w-full 
+                    flex items-center justify-center gap-2
+                    py-2.5 md:py-4
+                    rounded-lg md:rounded-xl
+                    bg-slate-900 text-white
+                    text-[9px] md:text-[10px] font-black uppercase tracking-widest
+                    hover:bg-dark-orange
+                    transition-all duration-300
+                    cursor-pointer
+                  "
+                >
+                  <Lock className="w-3 h-3 md:w-4 md:h-4" />
+                  <span className="truncate">{service.loginText}</span>
+                </button>
+              </div>
 
+              {/* Bottom Accent Bar: Shine Effect */}
+              <div className="absolute bottom-0 inset-x-0 h-1 overflow-hidden">
+                <div className="w-full h-full bg-dark-orange opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                   <span
+                      className="absolute inset-0 w-full h-full"
+                      style={{
+                        background: "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
+                        backgroundSize: "200% 100%",
+                        animation: "shine 2s linear infinite",
+                      }}
+                    />
+                </div>
+              </div>
             </div>
           ))}
-
         </div>
-
       </Container>
     </Section>
   );
