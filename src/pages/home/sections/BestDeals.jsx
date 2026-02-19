@@ -140,19 +140,18 @@ export default function BestDeals() {
       <Container>
         {/* HEADING WITH ANIMATED ICON */}
         <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl lg:text-5xl uppercase text-white">
+              Our Best Deals
+            </h2>
             {/* SHINING YELLOW ICON */}
 
             <Sparkles
               size={28}
               strokeWidth={1}
               // Changed 3s to 1s for a faster animation
-              className="text-yellow-300 animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
+              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
             />
-
-            <h2 className="text-2xl lg:text-5xl uppercase text-white">
-              Our Best Deals
-            </h2>
           </div>
 
           <div className="flex items-center gap-3 self-end md:self-center">
