@@ -33,26 +33,54 @@ export default function SellYourProperty() {
   return (
     <Section>
       <Container>
-        {/* HEADER */}
-        <div className="mb-8 lg:mb-14 text-center px-4 max-w-3xl mx-auto">
-          {/* Main Heading */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-800 tracking-tight">
-            Owner Dashboard
-          </h1>
+{/* COMPACT HEADER FOR OWNER DASHBOARD */}
+<div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+  <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+    
+    <div className="space-y-1 lg:space-y-2">
+      {/* Category Tag */}
+      <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
+        Sell Your Property Faster & Smarter
+      </span>
 
-          {/* Sub Heading */}
-          <h2 className="mt-2 text-lg sm:text-xl lg:text-2xl font-bold leading-tight">
-            <span className="bg-linear-to-r from-dark-orange to-warm-yellow bg-clip-text text-transparent">
-              Sell Your Property Faster and Smarter
-            </span>
-          </h2>
+      {/* Main Heading */}
+      <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+        Owner {" "}
+        <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
+          Dashboard
+        </span>
+      </h2>
 
-          {/* Supporting Text */}
-          <p className="mt-3 text-sm lg:text-base font-medium text-slate-600 leading-relaxed">
-            Connect with genuine buyers, manage your listings easily, and track
-            enquiries.
-          </p>
-        </div>
+      {/* Supporting Text */}
+      <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+        Connect with genuine buyers, manage your listings easily, and track enquiries directly.
+      </p>
+    </div>
+
+    {/* Action Button */}
+    <button
+      onClick={() => navigate("/sell")}
+      className="
+        cursor-pointer
+        bg-dark-orange text-white
+        flex items-center gap-2 group
+        text-[10px] lg:text-[11px]
+        font-black uppercase tracking-widest
+        px-4 py-2 lg:px-5 lg:py-2.5
+        border-2 border-white
+        rounded-md
+        hover:bg-white hover:text-orange-600 hover:border-orange-600
+        transition-all duration-300
+        shadow-sm hover:shadow-md
+        w-fit
+      "
+    >
+      Start Selling
+      <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 transition-transform duration-300" />
+    </button>
+
+  </div>
+</div>
 
         {/* WRAPPER: Full width on mobile, normal width on desktop */}
         <div className="relative w-screen lg:w-full left-1/2 lg:left-0 right-1/2 lg:right-0 -ml-[50vw] lg:ml-0 -mr-[50vw] lg:mr-0">
