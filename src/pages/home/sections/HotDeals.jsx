@@ -6,7 +6,6 @@ import {
   Maximize2,
   MapPin,
   ArrowUpRight,
-  Flame,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
