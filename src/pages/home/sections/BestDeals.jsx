@@ -145,6 +145,7 @@ export default function BestDeals() {
 
             <Sparkles
               size={28}
+              strokeWidth={1}
               // Changed 3s to 1s for a faster animation
               className="text-yellow-300 animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
             />
