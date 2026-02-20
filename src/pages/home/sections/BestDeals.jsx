@@ -152,30 +152,33 @@ transition-all duration-500 pb-4
     >
       <div className="px-0">
         {/* HEADING AREA */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
-          <div className="flex items-center gap-4 bg-white py-4 px-6 w-fit shadow-sm">
-            <h2 className="text-2xl lg:text-5xl uppercase text-dark-orange">
+        {/* HEADING AREA */}
+        <div className="flex items-center justify-between gap-4 mb-6 md:mb-10 w-full">
+          {/* LEFT SIDE: Heading with Sparkles (Justify Start) */}
+          <div className="flex items-center gap-3 md:gap-4 bg-white py-4 md:py-6 px-3 md:px-6 w-fit shadow-sm">
+            <h2 className="text-xl lg:text-5xl uppercase text-dark-orange whitespace-nowrap">
               Our Best Deals
             </h2>
             <Sparkles
-              size={28}
+              size={24}
               strokeWidth={1}
-              className="text-dark-orange animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0"
+              className="text-dark-orange animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0 lg:w-7"
             />
           </div>
 
-          <div className="flex items-center gap-3 self-end md:self-center mt-4 md:mt-0">
+          {/* RIGHT SIDE: Navigation Arrows (Justify End) */}
+          <div className="flex items-center gap-2 md:gap-3 shrink-0 pe-3">
             <button
               onClick={() => scroll("left")}
-              className="p-2 rounded-xl border border-white hover:bg-white/10 transition-colors"
+              className="p-2 md:p-3 rounded-xl border hover:bg-slate-50 transition-colors shadow-sm active:scale-95 mt-3"
             >
-              <ChevronLeft size={20} className="text-white" />
+              <ChevronLeft size={30} className="text-white lg:w-6" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="p-2 rounded-xl border border-white hover:bg-white/10 transition-colors"
+              className="p-2 md:p-3 rounded-xl border hover:bg-slate-50 transition-colors shadow-sm active:scale-95 mt-3"
             >
-              <ChevronRight size={20} className="text-white" />
+              <ChevronRight size={30} className="text-white lg:w-6" />
             </button>
           </div>
         </div>
