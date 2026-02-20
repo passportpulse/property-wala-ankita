@@ -96,12 +96,10 @@ export default function BestDeals() {
     const handleScroll = () => {
       const el = scrollRef.current;
       if (el) {
-        // Calculate progress percentage for the bar
         const maxScroll = el.scrollWidth - el.clientWidth;
-        const progress = (el.scrollLeft / maxScroll) * 100;
+        const progress = maxScroll > 0 ? (el.scrollLeft / maxScroll) * 100 : 0;
         setScrollProgress(progress);
 
-        // Calculate current "page" or item index for the counter
         const cardWidth = el.scrollWidth / categories.length;
         const index = Math.round(el.scrollLeft / cardWidth) + 1;
         setCurrentIndex(index);
@@ -118,8 +116,7 @@ export default function BestDeals() {
   const scroll = (direction) => {
     const el = scrollRef.current;
     if (el) {
-      const scrollAmount =
-        direction === "left" ? -el.offsetWidth : el.offsetWidth;
+      const scrollAmount = direction === "left" ? -el.offsetWidth : el.offsetWidth;
       el.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -128,130 +125,110 @@ export default function BestDeals() {
     const sectionId = name.toLowerCase().replace(/\s+|\/+/g, "-");
     navigate(`/buy#${sectionId}`);
     setTimeout(() => {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 150);
   };
 
   return (
-    <section
-      className="
-bg-linear-to-br 
-from-orange-500 
-via-amber-400 
-to-orange-500
-text-white
-lg:bg-linear-to-br
-lg:from-slate-900
-lg:via-slate-800
-lg:to-slate-900
-
-transition-all duration-500 pb-4
-"
+    <Section
+      className="bg-linear-to-br from-orange-500 via-amber-400 to-orange-500 text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
     >
-      <div className="px-0">
-        {/* HEADING AREA */}
-        {/* HEADING AREA */}
+      <Container>
+        {/* HEADING AREA - Contained and Single Line */}
         <div className="flex items-center justify-between gap-4 mb-6 md:mb-10 w-full">
-          {/* LEFT SIDE: Heading with Sparkles (Justify Start) */}
-          <div className="flex items-center gap-3 md:gap-4 bg-white py-4 md:py-6 px-3 md:px-6 w-fit shadow-sm">
-            <h2 className="text-xl lg:text-5xl uppercase text-dark-orange whitespace-nowrap">
+          {/* LEFT SIDE */}
+          <div className="flex items-center gap-3 md:gap-4 py-2 md:py-4 w-fit">
+            <h2 className="text-xl lg:text-5xl uppercase text-white whitespace-nowrap tracking-tight">
               Our Best Deals
             </h2>
             <Sparkles
               size={24}
               strokeWidth={1}
-              className="text-dark-orange animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0 lg:w-7"
+              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0 lg:w-8 lg:h-8"
             />
           </div>
 
-          {/* RIGHT SIDE: Navigation Arrows (Justify End) */}
-          <div className="flex items-center gap-2 md:gap-3 shrink-0 pe-3">
+          {/* RIGHT SIDE */}
+          <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <button
               onClick={() => scroll("left")}
-              className="p-2 md:p-3 rounded-xl border hover:bg-slate-50 transition-colors shadow-sm active:scale-95 mt-3"
+              className="p-2 md:p-3 rounded-xl border border-white/70 hover:bg-white/10 transition-colors shadow-sm active:scale-95"
             >
-              <ChevronLeft size={30} className="text-white lg:w-6" />
+              <ChevronLeft size={24} className="text-white" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="p-2 md:p-3 rounded-xl border hover:bg-slate-50 transition-colors shadow-sm active:scale-95 mt-3"
+              className="p-2 md:p-3 rounded-xl border border-white/70 hover:bg-white/10 transition-colors shadow-sm active:scale-95"
             >
-              <ChevronRight size={30} className="text-white lg:w-6" />
+              <ChevronRight size={24} className="text-white" />
             </button>
           </div>
         </div>
 
-        {/* SWIPE AREA */}
+        {/* SWIPE AREA - Contained within Container */}
         <div
           ref={scrollRef}
-          className="flex gap-3 md:gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-6"
+          className="flex gap-4 md:gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-6"
         >
           {categories.map((item, i) => (
             <div
               key={i}
               onClick={() => handleClick(item.name)}
-              className="group relative min-w-45 md:min-w-60 aspect-3/4 rounded-2xl overflow-hidden cursor-pointer snap-start border border-white/10"
+              className="group relative min-w-50 md:min-w-70 aspect-3/4 rounded-2xl overflow-hidden cursor-pointer snap-start border border-white/10"
             >
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute top-3 left-3 z-20">
-                <div className="bg-black/50 backdrop-blur px-2 py-1 rounded-lg shadow-sm">
-                  <p className="text-[10px] font-black text-orange-300 tracking-tight">
+              {/* Count Tag */}
+              <div className="absolute top-4 left-4 z-20">
+                <div className="bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
+                  <p className="text-[10px] font-black text-orange-300 uppercase tracking-wider">
                     {item.count}
                   </p>
                 </div>
               </div>
-              <div className="absolute inset-x-2 bottom-2 z-20">
-                <div className="bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl p-3 transform transition-transform duration-300 group-hover:-translate-y-1">
-                  <div className="flex justify-between items-start">
+
+              {/* Bottom Content */}
+              <div className="absolute inset-x-3 bottom-3 z-20">
+                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-4 transform transition-all duration-300 group-hover:-translate-y-1">
+                  <div className="flex justify-between items-end">
                     <div>
-                      <p className="text-[8px] font-black uppercase tracking-widest text-orange-200 mb-0.5">
+                      <p className="text-[9px] font-bold uppercase tracking-widest text-orange-200 mb-1">
                         {item.tag}
                       </p>
-                      <h3 className="text-sm md:text-base font-black text-white leading-tight">
+                      <h3 className="text-sm md:text-lg font-black text-white leading-tight">
                         {item.name}
                       </h3>
                     </div>
-                    <div className="bg-white rounded-full p-1.5 lg:opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
-                      <ArrowRight
-                        size={14}
-                        className="text-orange-500"
-                        strokeWidth={3}
-                      />
+                    <div className="bg-white rounded-full p-2 transform transition-all duration-300 group-hover:bg-orange-500">
+                      <ArrowRight size={16} className="text-black group-hover:text-white transition-colors" strokeWidth={3} />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
             </div>
           ))}
         </div>
 
-        {/* NEW PROGRESS & COUNTER UI */}
-        <div className="mt-4 flex flex-col items-center gap-3">
-          {/* Progress Bar Track */}
-          <div className="w-32 md:w-48 h-0.5 bg-white/20 rounded-full overflow-hidden">
+        {/* PROGRESS & COUNTER UI - Contained */}
+        <div className="mt-4 flex flex-col items-center gap-4">
+          <div className="w-40 md:w-64 h-1 bg-white/10 rounded-full overflow-hidden">
             <div
-              className="h-full bg-white transition-all duration-200 ease-out"
+              className="h-full bg-orange-400 transition-all duration-300 ease-out shadow-[0_0_10px_rgba(251,146,60,0.5)]"
               style={{ width: `${scrollProgress}%` }}
             />
           </div>
 
-          {/* Fractional Counter */}
-          <div className="flex items-center gap-2 font-black text-[10px] tracking-[0.2em] uppercase text-white/80">
-            <span className="text-white">
-              {currentIndex.toString().padStart(2, "0")}
-            </span>
-            <span className="w-4 h-px bg-white/30" />
+          <div className="flex items-center gap-4 font-black text-xs tracking-[0.3em] text-white/60">
+            <span className="text-white font-black">{currentIndex.toString().padStart(2, "0")}</span>
+            <span className="w-8 h-[1px] bg-white/20" />
             <span>{categories.length.toString().padStart(2, "0")}</span>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }
