@@ -34,35 +34,42 @@ export default function Trust() {
   return (
     <Section>
       <Container>
-        {/* HEADER: Stacked on mobile, side-by-side on desktop */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="w-6 h-0.5 bg-dark-orange" />
-              <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
+        {/* HEADER */}
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1 lg:space-y-2">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
                 Our Promise
               </span>
-            </div>
-            <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter leading-none">
-              Built on <span className="text-dark-orange">Pure Trust.</span>
-            </h2>
-          </div>
 
-          {/* COMPACT VERIFIED TAG */}
-          <div className="flex items-center gap-3 bg-lighter-orange p-2 pr-4 rounded-full border border-slate-100 w-fit">
-            <div className="flex -space-x-2">
-              {dealAvatars.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt="client"
-                  className="w-7 h-7 rounded-full border-2 border-white shadow-sm"
-                />
-              ))}
+              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                Built on{" "}
+                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
+                  Pure Trust.
+                </span>
+              </h2>
+
+              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+                Prime Durgapur properties with verified documentation.
+              </p>
             </div>
-            <p className="text-[9px] font-black text-white uppercase tracking-widest">
-              1.2k+ Verified Deals
-            </p>
+
+            {/* COMPACT VERIFIED TAG */}
+            <div className="flex items-center gap-3 bg-dark-orange p-2 pr-4 rounded-full border border-slate-100 w-fit">
+              <div className="flex -space-x-2">
+                {dealAvatars.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt="client"
+                    className="w-7 h-7 rounded-full border-2 border-white shadow-sm"
+                  />
+                ))}
+              </div>
+              <p className="text-[9px] font-black text-white uppercase tracking-widest">
+                1.2k+ Verified Deals
+              </p>
+            </div>
           </div>
         </div>
 
@@ -90,7 +97,8 @@ export default function Trust() {
                     <span
                       className="absolute inset-0 w-full h-full"
                       style={{
-                        background: "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
+                        background:
+                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
                         backgroundSize: "200% 100%",
                         animation: "shine 2s linear infinite",
                       }}
@@ -122,11 +130,18 @@ export default function Trust() {
           </div>
 
           <button
-            onClick={() => window.open("https://www.google.com/search?q=PROPERTY+WALA+BHAIYA+Reviews", "_blank")}
+            onClick={() =>
+              window.open(
+                "https://www.google.com/search?q=PROPERTY+WALA+BHAIYA+Reviews",
+                "_blank",
+              )
+            }
             className="text-dark-orange font-black text-[10px] uppercase tracking-widest flex items-center gap-2 group"
           >
             Read Testimonials
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="group-hover:translate-x-1 transition-transform">
+              →
+            </span>
           </button>
         </div>
       </Container>
