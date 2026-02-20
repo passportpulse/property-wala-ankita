@@ -1,7 +1,6 @@
 import HotDeals from "./sections/HotDeals";
 import FeaturedProperties from "./sections/FeaturedProperties";
 import HomeHero from "./sections/HomeHero";
-import ServiceHub from "./sections/ServiceHub";
 import Trust from "./sections/Trust";
 import BestDeals from "./sections/BestDeals";
 import ContactCTA from "./sections/ContactCTA";
@@ -23,7 +22,6 @@ export default function Home() {
       <BestBuy/>
       <Trust />
       <Testimonials/>
-      <ServiceHub />
       <JoinUs/>
       <ContactCTA />
     </>

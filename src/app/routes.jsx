@@ -9,6 +9,7 @@ import Rent from "../pages/rent/Rent";
 import ContactPage from "../pages/contact/Contact";
 import JoinUs from "../pages/joinus/JoinUs";
 import Login from "../pages/login/Login";
+import Dashboard from "../pages/dashboard/Dashboard";
 import Register from "../pages/signup/Register";
 import ScrollToTop from "../components/ScrollToTop"; 
 
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "/rent", element: <Rent /> },
       { path: "/contact", element: <ContactPage /> },
       { path: "/join-us", element: <JoinUs /> },
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
     ],
