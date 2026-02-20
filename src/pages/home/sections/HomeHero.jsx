@@ -199,7 +199,7 @@ export default function HomeHero() {
                   <span className="text-sm lg:text-base font-semibold text-slate-700">
                     Post Your Property
                   </span>
-                  <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-green-700">
+                  <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-dark-orange">
                     Get unlimited enquiries
                   </span>
                 </div>
