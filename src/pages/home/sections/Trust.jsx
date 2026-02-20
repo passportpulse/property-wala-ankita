@@ -121,31 +121,6 @@ export default function Trust() {
             </div>
           ))}
         </div>
-
-        {/* FOOTER: Minimalist & Centered */}
-        <div className="mt-4 flex flex-col items-center gap-4 text-center">
-          <div className="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-full">
-            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-            <span className="text-[9px] font-black text-slate-500 uppercase tracking-widest">
-              5 Star Google Rated
-            </span>
-          </div>
-
-          <button
-            onClick={() =>
-              window.open(
-                "https://www.google.com/search?q=PROPERTY+WALA+BHAIYA+Reviews",
-                "_blank",
-              )
-            }
-            className="text-dark-orange font-black text-[10px] uppercase tracking-widest flex items-center gap-2 group"
-          >
-            Read Testimonials
-            <span className="group-hover:translate-x-1 transition-transform">
-              →
-            </span>
-          </button>
-        </div>
       </Container>
     </Section>
   );

@@ -2,9 +2,6 @@ import { useState } from "react";
 import {
   ArrowRight,
   MapPin,
-  X,
-  Phone,
-  MessageSquare,
   ArrowUpRight,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";

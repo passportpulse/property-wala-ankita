@@ -1,43 +1,98 @@
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, StarHalf } from "lucide-react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
     {
       name: "Rahul Sharma",
       location: "Durgapur",
+      image:
+        "https://media.istockphoto.com/id/628330148/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=3HlVTzZA4mFWonZtxu7xCYamgLxcb8zE3YMU9AGYXAc=",
       text: "Property Wala Bhaiya helped me find my dream flat within my budget. The process was smooth and completely transparent.",
-      rating: 5,
+      rating: 4.5,
     },
     {
       name: "Sneha Mukherjee",
       location: "Kolkata",
+      image:
+        "https://img.freepik.com/free-photo/portrait-smiling-indian-person-posing-front-camera_482257-122324.jpg?semt=ais_user_personalization&w=740&q=80",
       text: "Very professional service. I scheduled a visit and finalized my property within 3 days. Highly recommended.",
-      rating: 5,
+      rating: 4,
     },
     {
       name: "Amit Das",
       location: "Asansol",
+      image:
+        "https://media.istockphoto.com/id/1363118407/photo/portrait-of-young-businessman.jpg?s=612x612&w=0&k=20&c=e9xjo1AdlIbr7ttZe3iBG3CBWKUBwdTMLkPus9DxA_s=",
       text: "Best platform for buying property without brokers. Genuine listings and excellent support.",
-      rating: 5,
+      rating: 4.2,
     },
   ];
 
   return (
     <Section>
       <Container>
-        {/* HEADER: Compact & Left-Aligned */}
-        <div className="max-w-xl mb-10 md:mb-16">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="w-6 h-0.5 bg-dark-orange" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
-              Success Stories
-            </span>
+        {/* HEADER */}
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1 lg:space-y-2">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
+                Success Stories
+              </span>
+
+              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                What Our{" "}
+                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
+                  Clients Say
+                </span>
+              </h2>
+
+              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+                Read how our clients found the right property opportunities.
+              </p>
+
+              <a
+                href="https://share.google/b2tgAKDzKDyHl73fI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+        cursor-pointer
+    bg-dark-orange text-white
+    flex items-center gap-2 group
+    text-[10px] lg:text-[11px]
+    font-black uppercase tracking-widest
+    px-4 py-2 lg:px-5 lg:py-2.5
+    border-2 border-white
+    rounded-md
+    hover:bg-white hover:text-orange-600 hover:border-orange-600
+    transition-all duration-300
+    shadow-sm hover:shadow-md
+    w-fit
+      "
+              >
+                {/* Google style stars */}
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-4 h-4 fill-[#FFC107] stroke-[#FFC107]"
+                    />
+                  ))}
+                </div>
+
+                {/* Rating text */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] lg:text-[11px] font-black tracking-widest uppercase">
+                    5.0 Google Reviews
+                  </span>
+
+                  <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+                </div>
+              </a>
+            </div>
           </div>
-          <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-900 tracking-tighter leading-none">
-            Client <span className="text-dark-orange">Stories.</span>
-          </h2>
         </div>
 
         {/* TESTIMONIAL SNAP CAROUSEL */}
@@ -63,14 +118,41 @@ export default function Testimonials() {
               />
 
               {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(t.rating)].map((_, index) => (
-                  <Star
-                    key={index}
-                    size={14}
-                    className="fill-amber-400 text-amber-400"
-                  />
-                ))}
+              <div className="flex items-center gap-1 mb-4">
+                {Array.from({ length: 5 }).map((_, index) => {
+                  const fullStars = Math.floor(t.rating);
+                  const hasHalfStar = t.rating - fullStars >= 0.5;
+
+                  if (index < fullStars) {
+                    // full star
+                    return (
+                      <Star
+                        key={index}
+                        size={14}
+                        className="fill-[#FFC107] text-[#FFC107]"
+                      />
+                    );
+                  } else if (index === fullStars && hasHalfStar) {
+                    // half star
+                    return (
+                      <StarHalf
+                        key={index}
+                        size={14}
+                        className="fill-[#FFC107] text-[#FFC107]"
+                      />
+                    );
+                  } else {
+                    // empty star
+                    return (
+                      <Star key={index} size={14} className="text-slate-300" />
+                    );
+                  }
+                })}
+
+                {/* Numeric rating like Google */}
+                <span className="ml-2 text-xs font-bold text-slate-600">
+                  {t.rating.toFixed(1)}
+                </span>
               </div>
 
               {/* Text: Constrained for better vertical rhythm */}
@@ -80,9 +162,14 @@ export default function Testimonials() {
 
               {/* User Info with Lucky Orange Detail */}
               <div className="flex items-center gap-3 border-t border-slate-100 pt-6">
-                <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center font-black text-dark-orange text-xs border border-slate-200">
-                  {t.name.charAt(0)}
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-dark-orange/20 shadow-md group-hover:border-dark-orange transition-all">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
+
                 <div>
                   <p className="font-black text-slate-900 text-[12px] uppercase tracking-wide group-hover:text-dark-orange transition-colors">
                     {t.name}
@@ -99,7 +186,8 @@ export default function Testimonials() {
                   <span
                     className="absolute inset-0 w-full h-full"
                     style={{
-                      background: "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
+                      background:
+                        "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
                       backgroundSize: "200% 100%",
                       animation: "shine 2s linear infinite",
                     }}
