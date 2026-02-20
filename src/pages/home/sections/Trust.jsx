@@ -87,7 +87,7 @@ export default function Trust() {
             >
               <div className="relative z-10">
                 {/* Changed justify-between to justify-start and added gap-4 */}
-                <div className="flex items-center justify-start gap-4 mb-6">
+                <div className="flex items-center justify-start gap-2 mb-6">
                   {/* ICON CONTAINER */}
                   <div className="w-12 h-12 rounded-2xl bg-dark-orange flex items-center justify-center text-white group-hover:bg-dark-orange group-hover:text-white transition-all duration-500 shrink-0">
                     {item.icon}
