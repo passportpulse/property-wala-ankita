@@ -135,32 +135,32 @@ export default function BestDeals() {
   };
 
   return (
-    <Section className="
+    <section
+      className="
 bg-linear-to-br 
 from-orange-500 
 via-amber-400 
 to-orange-500
 text-white
-
 lg:bg-linear-to-br
 lg:from-slate-900
 lg:via-slate-800
 lg:to-slate-900
 
-transition-all duration-500
-">
-
-      <Container>
+transition-all duration-500 pb-4
+"
+    >
+      <div className="px-0">
         {/* HEADING AREA */}
         <div className="flex flex-col md:flex-row md:items-center justify-between lg:gap-6 mb-2 md:mb-10">
-          <div className="flex items-center gap-4">
-            <h2 className="text-2xl lg:text-5xl uppercase text-white">
+          <div className="flex items-center gap-4 bg-white py-4 px-6 w-fit shadow-sm">
+            <h2 className="text-2xl lg:text-5xl uppercase text-dark-orange">
               Our Best Deals
             </h2>
             <Sparkles
               size={28}
               strokeWidth={1}
-              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30"
+              className="text-dark-orange animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0"
             />
           </div>
 
@@ -248,7 +248,7 @@ transition-all duration-500
             <span>{categories.length.toString().padStart(2, "0")}</span>
           </div>
         </div>
-      </Container>
-    </Section>
+      </div>
+    </section>
   );
 }

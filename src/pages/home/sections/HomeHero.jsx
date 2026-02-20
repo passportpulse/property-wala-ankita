@@ -108,8 +108,8 @@ export default function HomeHero() {
         <Container>
           <div className="text-center px-2">
             <h1
-              className="text-xl lg:text-3xl leading-tight mt-1 lg:mt-4 font-semibold text-yellow-700"
-              style={{ fontFamily: "'Parisienne', cursive" }}
+              className="text-4xl lg:text-6xl leading-tight mt-1 lg:mt-4 font-semibold text-yellow-700"
+              style={{ fontFamily: "'Tangerine', cursive" }}
             >
               Investment to Aesthetic Living
             </h1>
@@ -196,7 +196,7 @@ export default function HomeHero() {
                 className="w-full bg-white rounded-2xl shadow-lg border border-orange-100 px-4 py-4 flex items-center justify-between active:scale-[0.98] transition cursor-pointer"
               >
                 <div className="flex flex-col items-start">
-                  <span className="text-sm lg:text-base font-bold text-slate-800">
+                  <span className="text-sm lg:text-base font-semibold text-slate-700">
                     Post Your Property
                   </span>
                   <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-green-700">
@@ -204,7 +204,7 @@ export default function HomeHero() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="relative inline-block text-xs lg:text-sm font-black text-white bg-green-700 px-2 py-1 rounded-lg overflow-hidden">
+                  <span className="relative inline-block text-xs lg:text-sm text-white bg-green-700 px-2 py-1 rounded-lg overflow-hidden">
                     FREE
                     <span
                       className="absolute inset-0 w-full h-full"
