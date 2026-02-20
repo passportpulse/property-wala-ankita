@@ -86,19 +86,21 @@ export default function Trust() {
               "
             >
               <div className="relative z-10">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-dark-orange group-hover:bg-dark-orange group-hover:text-white transition-all duration-500">
+                {/* Changed justify-between to justify-start and added gap-4 */}
+                <div className="flex items-center justify-start gap-4 mb-6">
+                  {/* ICON CONTAINER */}
+                  <div className="w-12 h-12 rounded-2xl bg-dark-orange flex items-center justify-center text-white group-hover:bg-dark-orange group-hover:text-white transition-all duration-500 shrink-0">
                     {item.icon}
                   </div>
 
                   {/* SHINING LUCKY ORANGE BADGE */}
-                  <span className="relative overflow-hidden text-[9px] font-black uppercase tracking-widest px-3 py-1 bg-dark-orange text-white rounded-lg">
+                  <span className="relative overflow-hidden text-[9px] font-black uppercase tracking-widest px-3 py-1 bg-white text-dark-orange rounded-lg h-fit border border-orange-100">
                     {item.tag}
                     <span
                       className="absolute inset-0 w-full h-full"
                       style={{
                         background:
-                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
+                          "linear-gradient(120deg, transparent 25%, rgba(255, 140, 0, 0.3) 50%, transparent 75%)",
                         backgroundSize: "200% 100%",
                         animation: "shine 2s linear infinite",
                       }}
@@ -109,7 +111,7 @@ export default function Trust() {
                 <div className="space-y-2">
                   <h4 className="text-xl font-black text-slate-900 flex items-center justify-between">
                     {item.title}
-                    <ArrowUpRight className="w-4 h-4 text-green-500 group-hover:text-green-800 transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-green-600 group-hover:text-green-800 transition-colors" />
                   </h4>
                   <p className="text-slate-500 text-sm leading-relaxed">
                     {item.text}
