@@ -41,21 +41,59 @@ export default function Dashboard() {
   return (
     <Section className="bg-[#fcfcfd] mt-0 pt-6 lg:mt-0 ">
       <Container>
-        {/* SOBER HEADER */}
-        <div className="max-w-4xl mb-12 md:mb-20">
-          <div className="flex items-center gap-2 mb-6">
-            <div className="h-1 w-8 bg-emerald-600 rounded-full" />
-            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-              Service Directory
-            </span>
-          </div>
+        {/* HEADER */}
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1 lg:space-y-2">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
+                Secure Access
+              </span>
 
-          <h2 className="text-2xl md:text-5xl font-black text-slate-900 tracking-tight leading-[0.9] mb-4">
-            Professional <span className="text-emerald-600">Portals.</span>
-          </h2>
-          <p className="text-slate-500 text-sm md:text-lg max-w-lg">
-            Select your specialized gateway to access the ecosystem.
-          </p>
+              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                User{" "}
+                <span className="bg-linear-to-r from-dark-orange to-dark-orange bg-clip-text text-transparent">
+                  Service Portals
+                </span>
+              </h2>
+
+              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+                Select your specialized gateway to manage your real estate
+                ecosystem.
+              </p>
+
+              <a
+                href="#portals"
+                className="
+          cursor-pointer
+          bg-dark-orange text-white
+          flex items-center gap-2 group
+          text-[10px] lg:text-[11px]
+          font-black uppercase tracking-widest
+          px-4 py-2 lg:px-5 lg:py-2.5
+          border-2 border-white
+          rounded-md
+          hover:bg-white hover:text-orange-600 hover:border-orange-600
+          transition-all duration-300
+          shadow-sm hover:shadow-md
+          w-fit
+        "
+              >
+                {/* Shield icon style for security/login context */}
+                <div className="flex items-center gap-0.5">
+                  <ShieldCheck className="w-4 h-4 text-white group-hover:text-orange-600" />
+                </div>
+
+                {/* Rating text changed to status text */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] lg:text-[11px] font-black tracking-widest uppercase">
+                    Encrypted Login Access
+                  </span>
+
+                  <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* GRID */}
@@ -72,7 +110,7 @@ export default function Dashboard() {
                     {service.tag}
                   </span>
                 </div>
-                
+
                 <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
                   {service.title}
                 </h3>
@@ -88,14 +126,14 @@ export default function Dashboard() {
                   relative overflow-hidden
                   w-full flex items-center justify-between
                   pl-5 pr-2 py-3 rounded-xl
-                  bg-emerald-600 text-white
+                  bg-dark-orange text-white
                   text-[10px] font-black uppercase tracking-widest
-                  hover:bg-emerald-700 transition-colors duration-300
+                  hover:bg-lighter-orange transition-colors duration-300
                   group/btn
                 "
               >
                 <span className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-200/50" />
+                  <ShieldCheck className="w-4 h-4 text-orange-200/50" />
                   {service.loginText}
                 </span>
 
@@ -107,7 +145,8 @@ export default function Dashboard() {
                 <span
                   className="absolute inset-0 w-full h-full -translate-x-full group-hover/btn:animate-[shine_0.75s_ease-in-out] pointer-events-none"
                   style={{
-                    background: "linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent)",
+                    background:
+                      "linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent)",
                   }}
                 />
               </button>
