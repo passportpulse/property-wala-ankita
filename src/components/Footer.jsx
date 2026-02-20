@@ -20,7 +20,6 @@ export default function Footer() {
       <Container className="py-8 sm:py-16">
         {/* Main Grid: 1 col on tiny, 2 col on mobile, 4 col on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-4 lg:gap-8 text-left">
-          
           {/* Brand Section - Spans 2 columns on mobile for better width */}
           <div className="col-span-2 lg:col-span-1 flex flex-col items-start space-y-3">
             <Link to="/" className="flex flex-col items-start">
@@ -32,12 +31,15 @@ export default function Footer() {
               </span>
             </Link>
 
-            <p className="text-[11px] sm:text-sm text-slate-500 max-w-xs leading-relaxed">
-              Simplifying property journey with verified listings & expert guidance.
+            <p className="text-xs sm:text-sm text-slate-500 max-w-xs leading-relaxed">
+              Simplifying property journey with verified listings & expert
+              guidance.
             </p>
 
             <div className="flex gap-2 text-xs sm:text-sm items-start">
-              <span className="text-dark-orange text-base sm:text-lg shrink-0">📍</span>
+              <span className="text-dark-orange text-base sm:text-lg shrink-0">
+                📍
+              </span>
               <p className="text-slate-500 leading-tight">
                 5th Floor, Suhatta Commercial Complex, City Center, Durgapur, WB
               </p>
@@ -69,9 +71,15 @@ export default function Footer() {
               Resources
             </h4>
             <ul className="space-y-2 text-xs sm:text-sm font-medium">
-              <li className="hover:text-dark-orange cursor-pointer">Market Trends</li>
-              <li className="hover:text-dark-orange cursor-pointer">Privacy Policy</li>
-              <li className="hover:text-dark-orange cursor-pointer">Terms & Conditions</li>
+              <li className="hover:text-dark-orange cursor-pointer">
+                Market Trends
+              </li>
+              <li className="hover:text-dark-orange cursor-pointer">
+                Privacy Policy
+              </li>
+              <li className="hover:text-dark-orange cursor-pointer">
+                Terms & Conditions
+              </li>
               <li className="hover:text-dark-orange cursor-pointer">Sitemap</li>
             </ul>
           </div>
@@ -79,7 +87,7 @@ export default function Footer() {
           {/* Connect Us - Spans 2 columns on mobile */}
           <div className="col-span-2 lg:col-span-1 flex flex-col items-start gap-1 sm:gap-2 pt-4 lg:pt-0 border-t lg:border-t-0 border-slate-200">
             <h4 className="text-dark-orange font-black uppercase text-[10px] sm:text-xs mb-1 sm:mb-4 tracking-widest">
-              Connect Us
+              Connect With Us
             </h4>
             <a
               href="mailto:propertywalabhaiya@gmail.com"
@@ -104,22 +112,31 @@ export default function Footer() {
               Talk to Advisor
             </button>
 
-            {/* Social Icons */}
-            <div className="flex gap-4 mt-4 items-center">
-              {socials.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.name}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:scale-110 transition-transform duration-200"
-                  >
-                    <Icon size={18} color={social.color} />
-                  </a>
-                );
-              })}
+            {/* Social Section */}
+            <div className="mt-4">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                  Follow Us On
+                </span>
+                <div className="h-px w-8 bg-slate-200" />
+              </div>
+
+              <div className="flex gap-4 items-center">
+                {socials.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:scale-110 transition-transform duration-200 opacity-80 hover:opacity-100"
+                    >
+                      <Icon size={18} color={social.color} />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

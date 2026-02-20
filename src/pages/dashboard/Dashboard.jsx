@@ -88,8 +88,6 @@ export default function Dashboard() {
                   <span className="text-[10px] lg:text-[11px] font-black tracking-widest uppercase">
                     Encrypted Login Access
                   </span>
-
-                  <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </a>
             </div>
