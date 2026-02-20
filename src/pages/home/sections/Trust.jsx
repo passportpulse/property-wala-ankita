@@ -109,7 +109,7 @@ export default function Trust() {
                 <div className="space-y-2">
                   <h4 className="text-xl font-black text-slate-900 flex items-center justify-between">
                     {item.title}
-                    <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-dark-orange transition-colors" />
+                    <ArrowUpRight className="w-4 h-4 text-green-500 group-hover:text-green-800 transition-colors" />
                   </h4>
                   <p className="text-slate-500 text-sm leading-relaxed">
                     {item.text}
