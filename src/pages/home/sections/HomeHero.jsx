@@ -119,64 +119,6 @@ export default function HomeHero() {
               </span>
             </h1>
           </div>
-
-          {/* SEARCH CARD */}
-          <div className="w-full sm:w-1/2 mt-4">
-            <div className="bg-white rounded-2xl shadow-lg border border-dark-orange overflow-hidden">
-              <div className="px-4 py-3 border-b border-slate-100 text-center">
-                <span className="text-xs lg:text-sm font-semibold text-slate-600">
-                  Login to unlock full property access
-                </span>
-              </div>
-              <div className="flex gap-0.5">
-                {["Buy", "Rent"].map((type) => (
-                  <button
-                    key={type}
-                    onClick={() => navigate("/login")}
-                    className="flex-1 py-3 font-bold text-sm uppercase bg-linear-to-r from-dark-orange to-lighter-orange text-white active:scale-95 transition cursor-pointer"
-                  >
-                    {type}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* SELL CARD */}
-            <div className="mt-3">
-              <button
-                onClick={() => navigate("/sell")}
-                className="w-full bg-white rounded-2xl shadow-lg border border-orange-100 px-4 py-4 flex items-center justify-between active:scale-[0.98] transition cursor-pointer"
-              >
-                <div className="flex flex-col items-start">
-                  <span className="text-sm lg:text-base font-bold text-slate-800">
-                    Post Your Property
-                  </span>
-                  <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-green-700">
-                    Get unlimited enquiries
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="relative inline-block text-xs lg:text-sm font-black text-white bg-green-700 px-2 py-1 rounded-lg overflow-hidden">
-                    FREE
-                    <span
-                      className="absolute inset-0 w-full h-full"
-                      style={{
-                        background:
-                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%)",
-                        backgroundSize: "200% 100%",
-                        animation: "shine 2s linear infinite",
-                      }}
-                    />
-                  </span>
-                  <Search
-                    size={20}
-                    className="text-orange-600"
-                    strokeWidth={2.5}
-                  />
-                </div>
-              </button>
-            </div>
-          </div>
         </div>
       </Container>
 
