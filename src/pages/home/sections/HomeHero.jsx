@@ -108,7 +108,7 @@ export default function HomeHero() {
         <Container>
           <div className="text-center px-2">
             <h1
-              className="text-xl lg:text-3xl leading-tight mt-1 lg:mt-4 font-semibold text-yellow-600"
+              className="text-xl lg:text-3xl leading-tight mt-1 lg:mt-4 font-semibold text-yellow-700"
               style={{ fontFamily: "'Parisienne', cursive" }}
             >
               Investment to Aesthetic Living
