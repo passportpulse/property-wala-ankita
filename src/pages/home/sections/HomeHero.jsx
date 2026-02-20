@@ -184,7 +184,7 @@ export default function HomeHero() {
           MARQUEE SECTION (No BG)
       ========================= */}
       <div className="relative w-full mt-4 lg:mt-10">
-        <p className="relative z-10 text-xs lg:text-sm font-semibold text-slate-700 mb-2 lg:mb-8 text-center">
+        <p className="relative z-10 text-xs lg:text-sm text-dark-orange mb-4 lg:mb-8 text-center">
           Browse by Property Type
         </p>
 

@@ -31,7 +31,7 @@ const services = [
     desc: "Strategic sales support for builders.",
     tag: "Builders",
     icon: "🏗️",
-    loginText: "Dev Login",
+    loginText: "Developer Login",
   },
 ];
 
@@ -106,8 +106,19 @@ export default function Dashboard() {
               <div>
                 <div className="flex justify-between items-start mb-6">
                   <div className="text-3xl">{service.icon}</div>
-                  <span className="text-[9px] font-bold px-2 py-1 bg-slate-100 text-slate-500 rounded uppercase tracking-tighter">
+                  <span className="relative overflow-hidden text-sm text-white bg-green-700 px-2 py-1 rounded-lg">
                     {service.tag}
+
+                    {/* SHINE LAYER */}
+                    <span
+                      className="absolute inset-0 w-full h-full"
+                      style={{
+                        background:
+                          "linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.3) 50%, transparent 75%)",
+                        backgroundSize: "200% 100%",
+                        animation: "shine 2s linear infinite",
+                      }}
+                    />
                   </span>
                 </div>
 
@@ -133,7 +144,7 @@ export default function Dashboard() {
                 "
               >
                 <span className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-orange-200/50" />
+                  <ShieldCheck className="w-4 h-4 text-white" />
                   {service.loginText}
                 </span>
 
