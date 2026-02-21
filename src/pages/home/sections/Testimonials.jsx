@@ -5,31 +5,57 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Testimonials() {
   const testimonials = [
-    {
-      name: "Rahul Sharma",
-      location: "Durgapur",
-      image:
-        "https://media.istockphoto.com/id/628330148/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=3HlVTzZA4mFWonZtxu7xCYamgLxcb8zE3YMU9AGYXAc=",
-      text: "Property Wala Bhaiya helped me find my dream flat within my budget. The process was smooth and completely transparent.",
-      rating: 4.5,
-    },
-    {
-      name: "Sneha Mukherjee",
-      location: "Kolkata",
-      image:
-        "https://img.freepik.com/free-photo/portrait-smiling-indian-person-posing-front-camera_482257-122324.jpg?semt=ais_user_personalization&w=740&q=80",
-      text: "Very professional service. I scheduled a visit and finalized my property within 3 days. Highly recommended.",
-      rating: 4,
-    },
-    {
-      name: "Amit Das",
-      location: "Asansol",
-      image:
-        "https://media.istockphoto.com/id/1363118407/photo/portrait-of-young-businessman.jpg?s=612x612&w=0&k=20&c=e9xjo1AdlIbr7ttZe3iBG3CBWKUBwdTMLkPus9DxA_s=",
-      text: "Best platform for buying property without brokers. Genuine listings and excellent support.",
-      rating: 4.2,
-    },
-  ];
+  {
+    name: "Rahul Sharma",
+    location: "Durgapur",
+    image: "https://media.istockphoto.com/id/628330148/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=3HlVTzZA4mFWonZtxu7xCYamgLxcb8zE3YMU9AGYXAc=",
+    text: "Property Wala Bhaiya helped me find my dream flat within my budget. The process was smooth and completely transparent.",
+    rating: 4.5,
+  },
+  {
+    name: "Sneha Mukherjee",
+    location: "Kolkata",
+    image: "https://img.freepik.com/free-photo/portrait-smiling-indian-person-posing-front-camera_482257-122324.jpg?semt=ais_user_personalization&w=740&q=80",
+    text: "Very professional service. I scheduled a visit and finalized my property within 3 days. Highly recommended.",
+    rating: 4,
+  },
+  {
+    name: "Amit Das",
+    location: "Asansol",
+    image: "https://media.istockphoto.com/id/1363118407/photo/portrait-of-young-businessman.jpg?s=612x612&w=0&k=20&c=e9xjo1AdlIbr7ttZe3iBG3CBWKUBwdTMLkPus9DxA_s=",
+    text: "Best platform for buying property without brokers. Genuine listings and excellent support.",
+    rating: 4.2,
+  },
+  // Added 4 More Indian Demo Profiles
+  {
+    name: "Priyanka Roy",
+    location: "Siliguri",
+    image: "https://www.shutterstock.com/image-photo/studio-shot-photo-4k-image-260nw-2534322585.jpg",
+    text: "Finding a rental in a new city was stressful until I found this. The verified photos saved me so much time traveling!",
+    rating: 4.8,
+  },
+  {
+    name: "Vikram Chatterjee",
+    location: "Howrah",
+    image: "https://media.istockphoto.com/id/613557584/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=hkCg5CrmTKOApePbPOyo1U9GexEfIJOJqoLXJIvcN8E=",
+    text: "Their network of independent brokers is top-notch. I got a great deal on my commercial space for my new startup.",
+    rating: 4.5,
+  },
+  {
+    name: "Ananya Ghosh",
+    location: "Burdwan",
+    image: "https://media.istockphoto.com/id/1313502972/photo/portrait-of-beautiful-woman-having-fun.jpg?s=612x612&w=0&k=20&c=DHGWp3wIoSlpjK9xFdARpgpyo4t-hIzuqOSx5ZyRsHA=",
+    text: "Transparency is hard to find in real estate. Here, I knew exactly what I was paying for. Excellent support team!",
+    rating: 5,
+  },
+  {
+    name: "Sandeep Verma",
+    location: "Kharagpur",
+    image: "https://st5.depositphotos.com/4218696/72817/i/450/depositphotos_728179600-stock-photo-image-shows-smiling-man-standing.jpg",
+    text: "I appreciated the digital-first approach. Being able to browse verified listings on my phone made the whole search effortless.",
+    rating: 4.6,
+  }
+];
 
   return (
     <Section>
