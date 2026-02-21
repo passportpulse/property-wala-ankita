@@ -150,3 +150,348 @@ export const placesInWB = {
   Santipur: ["Santipur Bazaar", "Krishnanagar Road"],
   Purulia: ["Purulia Town Area", "Bagmundi"],
 };
+
+export const propertiesInWB = {
+
+  /* ========================
+     DURGAPUR PROPERTIES
+  ======================== */
+
+  "City Centre": [
+    "Dreamplex Residency",
+    "Ambuja Upohar",
+    "City Centre Heights",
+    "Utsav Residency"
+  ],
+
+  "Ambuja": [
+    "Ambuja Neotia Residency",
+    "Ambuja Housing Complex",
+    "Ambuja Premium Towers"
+  ],
+
+  "Kabiguru": [
+    "Kabiguru Residency",
+    "Kabiguru Heights"
+  ],
+
+  "54 Foot": [
+    "54 Foot Residency",
+    "Green Avenue Apartments"
+  ],
+
+  "Sepco Township": [
+    "Sepco Residency",
+    "Sepco Green Enclave",
+    "Sepco Premium Apartments"
+  ],
+
+  "A-Zone": [
+    "A-Zone Residency",
+    "Steel City Apartments"
+  ],
+
+  "B-Zone": [
+    "B-Zone Residency",
+    "B-Zone Heights"
+  ],
+
+  "C-Zone": [
+    "C-Zone Residency",
+    "Green Valley Apartments"
+  ],
+
+  "D-Zone": [
+    "D-Zone Residency",
+    "Durgapur Enclave"
+  ],
+
+  "IQ City": [
+    "IQ City Residency",
+    "IQ City Smart Homes",
+    "IQ City Apartments"
+  ],
+
+  "Bizra": [
+    "Bizra Residency",
+    "Bizra Green Enclave"
+  ],
+
+  "Fuljhore": [
+    "Fuljhore Heights",
+    "Smart Living Residency"
+  ],
+
+  "Amrabati": [
+    "Amrabati Residency",
+    "Amrabati Enclave"
+  ],
+
+  "Arra": [
+    "Arra Residency",
+    "Arra Green Apartments"
+  ],
+
+  "Rupganj": [
+    "Rupganj Residency",
+    "Rupganj Heights"
+  ],
+
+  "Kantaberia": [
+    "Kantaberia Residency",
+    "Kantaberia Green Homes"
+  ],
+
+  "Gopalpur": [
+    "Gopalpur Residency",
+    "Gopalpur Heights"
+  ],
+
+  "Bamunara": [
+    "Bamunara Residency",
+    "Bamunara Green View"
+  ],
+
+  "Banskopa": [
+    "Banskopa Residency",
+    "Banskopa Enclave"
+  ],
+
+  "Kuldiha": [
+    "Kuldiha Residency",
+    "Kuldiha Green Apartments"
+  ],
+
+  "Malandighi": [
+    "Malandighi Residency",
+    "Malandighi Smart Homes"
+  ],
+
+  "Madhaiganj": [
+    "Madhaiganj Residency",
+    "Madhaiganj Heights"
+  ],
+
+  "Mayanazar": [
+    "Mayanazar Residency",
+    "Mayanazar Apartments"
+  ],
+
+  "Laudoha": [
+    "Laudoha Residency",
+    "Laudoha Green Enclave"
+  ],
+
+  "Bidhannagar": [
+    "Bidhannagar Residency",
+    "Meghdoot Apartments",
+    "Srijan Residency"
+  ],
+
+  "Muchipara": [
+    "Muchipara Residency",
+    "Galaxy Residency"
+  ],
+
+  "Station Bazar": [
+    "Station Residency",
+    "Bazar Heights"
+  ],
+
+  "Sagarbhanga": [
+    "Sagarbhanga Residency",
+    "Sagarbhanga Apartments"
+  ],
+
+  "Shyampur": [
+    "Shyampur Residency",
+    "Shyampur Green Homes"
+  ],
+
+  "Nodia": [
+    "Nodia Residency",
+    "Nodia Heights"
+  ],
+
+  "Rajbandh": [
+    "Rajbandh Residency",
+    "Rajbandh Enclave"
+  ],
+
+  "Gamon": [
+    "Gamon Residency",
+    "Gamon Apartments"
+  ],
+
+  "DVC More": [
+    "DVC Residency",
+    "DVC Green Towers"
+  ],
+
+  "ABL Township": [
+    "ABL Residency",
+    "ABL Heights"
+  ],
+
+  "MAMC": [
+    "MAMC Residency",
+    "MAMC Apartments"
+  ],
+
+  "Shankarpur": [
+    "Shankarpur Residency",
+    "Shankarpur Heights"
+  ],
+
+  "Piyala": [
+    "Piyala Residency",
+    "Piyala Green View"
+  ],
+
+  "Palasdiha": [
+    "Palasdiha Residency",
+    "Palasdiha Apartments"
+  ],
+
+  "Faridpur": [
+    "Faridpur Residency",
+    "Faridpur Enclave"
+  ],
+
+  "Benachity": [
+    "Benachity Residency",
+    "Benachity Heights",
+    "Green Park Residency"
+  ],
+
+  "Bhiringi": [
+    "Bhiringi Residency",
+    "Bhiringi Green Homes"
+  ],
+
+  "Maingate": [
+    "Maingate Residency",
+    "Maingate Heights"
+  ],
+
+  "Kada Road": [
+    "Kada Road Residency",
+    "Kada Road Apartments"
+  ],
+
+  "Gopalmath": [
+    "Gopalmath Residency",
+    "Gopalmath Enclave"
+  ],
+
+  "Dubchuria": [
+    "Dubchuria Residency",
+    "Dubchuria Green View"
+  ],
+
+  "Andal Gram": [
+    "Andal Residency",
+    "Andal Heights"
+  ],
+
+  "Kazi Nazrul Islam Airport": [
+    "Airport Residency",
+    "Airport View Apartments"
+  ],
+
+  "Dhandabag": [
+    "Dhandabag Residency",
+    "Dhandabag Enclave"
+  ],
+
+  "Dhunraplot": [
+    "Dhunraplot Residency",
+    "Dhunraplot Heights"
+  ],
+
+  "Chandidas": [
+    "Chandidas Residency",
+    "Chandidas Apartments"
+  ],
+
+  "Golf Nagar": [
+    "Golf Nagar Residency",
+    "Golf Nagar Green Homes"
+  ],
+
+  "Sabujnagar": [
+    "Sabujnagar Residency",
+    "Sabujnagar Enclave"
+  ],
+
+  "Raghunathpur": [
+    "Raghunathpur Residency",
+    "Raghunathpur Heights"
+  ],
+
+  "Hetadoba": [
+    "Hetadoba Residency",
+    "Hetadoba Green View"
+  ],
+
+  "Nachan": [
+    "Nachan Residency",
+    "Nachan Apartments"
+  ],
+
+  "Kamalpur": [
+    "Kamalpur Residency",
+    "Kamalpur Heights"
+  ],
+
+  "Dhabani": [
+    "Dhabani Residency",
+    "Dhabani Enclave"
+  ],
+
+  "Ichapur": [
+    "Ichapur Residency",
+    "Ichapur Green Homes"
+  ],
+
+  "Bansol": [
+    "Bansol Residency",
+    "Bansol Heights"
+  ],
+
+  "Amrai": [
+    "Amrai Residency",
+    "Amrai Apartments"
+  ],
+
+  "Akandra": [
+    "Akandra Residency",
+    "Akandra Green View"
+  ],
+
+  "Shibpur": [
+    "Shibpur Residency",
+    "Shibpur Heights"
+  ],
+
+  "Jemua": [
+    "Jemua Residency",
+    "Jemua Apartments"
+  ],
+
+  "Haribazar": [
+    "Haribazar Residency",
+    "Haribazar Enclave"
+  ],
+
+  "Paranganj": [
+    "Paranganj Residency",
+    "Paranganj Heights"
+  ],
+
+  "Shovapur": [
+    "Shovapur Residency",
+    "Shovapur Green Homes"
+  ]
+
+};

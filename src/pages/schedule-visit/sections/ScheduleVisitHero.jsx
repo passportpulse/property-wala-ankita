@@ -9,11 +9,12 @@ import {
   Building2,
   Mail,
   Home,
+  LayoutDashboard,
 } from "lucide-react";
 
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
-import { placesInWB } from "../../../data/locations";
+import { placesInWB, propertiesInWB } from "../../../data/locations"; // Ensure propertiesInWB is exported
 
 export default function ScheduleVisitHero() {
   const cities = Object.keys(placesInWB);
@@ -23,6 +24,7 @@ export default function ScheduleVisitHero() {
     email: "",
     city: "",
     location: "",
+    property: "",
     address: "",
     phone: "",
     date: "",
@@ -39,6 +41,7 @@ export default function ScheduleVisitHero() {
       `📧 Email: ${formData.email}%0A` +
       `🏙️ City: ${formData.city}%0A` +
       `📍 Area: ${formData.location}%0A` +
+      `🏢 Property: ${formData.property}%0A` +
       `🏠 Address: ${formData.address}%0A` +
       `📞 Phone: ${formData.phone}%0A` +
       `📅 Date: ${formData.date}%0A` +
@@ -53,23 +56,19 @@ export default function ScheduleVisitHero() {
   return (
     <Section className="py-12 md:py-20 bg-linear-to-b from-orange-50 via-white to-white overflow-hidden">
       <Container>
-        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+        {/* Header Section */}
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-orange-600 pl-4 lg:pl-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div className="space-y-1 lg:space-y-2">
-              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-orange-600">
                 Direct Booking
               </span>
-
               <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
                 Schedule{" "}
-                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                  Site Visit
-                </span>
+                <span className="text-orange-500">Site Visit</span>
               </h2>
-
               <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                Choose your preferred location and time — our experts will
-                assist you.
+                Select your preferred project and visit time — our team is ready to assist you.
               </p>
             </div>
           </div>
@@ -81,7 +80,6 @@ export default function ScheduleVisitHero() {
             onSubmit={handleWhatsAppRedirect}
             className="bg-white rounded-[2.5rem] shadow-2xl shadow-orange-100/50 border border-slate-100 p-4 md:p-8 flex flex-col gap-4 relative"
           >
-            {/* Input Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {/* Name */}
               <InputBox icon={User} label="Full Name">
@@ -90,9 +88,7 @@ export default function ScheduleVisitHero() {
                   type="text"
                   placeholder="e.g. John Doe"
                   className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 />
               </InputBox>
 
@@ -103,9 +99,7 @@ export default function ScheduleVisitHero() {
                   type="email"
                   placeholder="john@example.com"
                   className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </InputBox>
 
@@ -116,65 +110,58 @@ export default function ScheduleVisitHero() {
                   type="tel"
                   placeholder="10-digit phone"
                   className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 />
               </InputBox>
 
-              {/* City */}
+              {/* City Selection */}
               <InputBox icon={Building2} label="Select City">
                 <select
                   required
                   className="input-style appearance-none cursor-pointer"
                   value={formData.city}
                   onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      city: e.target.value,
-                      location: "",
-                    })
+                    setFormData({ ...formData, city: e.target.value, location: "", property: "" })
                   }
                 >
                   <option value="">Choose City</option>
-                  {cities.map((city) => (
-                    <option key={city}>{city}</option>
-                  ))}
+                  {cities.map((city) => <option key={city} value={city}>{city}</option>)}
                 </select>
               </InputBox>
 
-              {/* Area */}
+              {/* Area Selection */}
               <InputBox icon={MapPin} label="Select Area">
                 <select
                   required
                   className="input-style appearance-none cursor-pointer disabled:opacity-50"
                   value={formData.location}
-                  onChange={(e) =>
-                    setFormData({ ...formData, location: e.target.value })
-                  }
+                  onChange={(e) => setFormData({ ...formData, location: e.target.value, property: "" })}
                   disabled={!formData.city}
                 >
                   <option value="">Choose Area</option>
                   {formData.city &&
-                    placesInWB[formData.city].map((area) => (
-                      <option key={area}>{area}</option>
+                    placesInWB[formData.city].map((area) => <option key={area} value={area}>{area}</option>)}
+                </select>
+              </InputBox>
+
+              {/* Property Selection (New) */}
+              <InputBox icon={LayoutDashboard} label="Choose Property">
+                <select
+                  required
+                  className="input-style appearance-none cursor-pointer disabled:opacity-50"
+                  value={formData.property}
+                  onChange={(e) => setFormData({ ...formData, property: e.target.value })}
+                  disabled={!formData.location}
+                >
+                  <option value="">Choose Property</option>
+                  {formData.location &&
+                    propertiesInWB[formData.location]?.map((prop) => (
+                      <option key={prop} value={prop}>{prop}</option>
                     ))}
                 </select>
               </InputBox>
 
-              {/* Date */}
-              <InputBox icon={Calendar} label="Visit Date">
-                <input
-                  required
-                  type="date"
-                  className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, date: e.target.value })
-                  }
-                />
-              </InputBox>
-
-              {/* Address - Spans full width on desktop for better typing space */}
+              {/* Detailed Address */}
               <div className="md:col-span-2">
                 <InputBox icon={Home} label="Detailed Address">
                   <input
@@ -182,31 +169,37 @@ export default function ScheduleVisitHero() {
                     type="text"
                     placeholder="House No, Street, Landmark..."
                     className="input-style"
-                    onChange={(e) =>
-                      setFormData({ ...formData, address: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   />
                 </InputBox>
               </div>
 
-              {/* Time */}
-              <InputBox icon={Clock} label="Visit Time">
-                <input
-                  required
-                  type="time"
-                  className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, time: e.target.value })
-                  }
-                />
-              </InputBox>
+              {/* Date & Time */}
+              <div className="grid grid-cols-2 gap-2 md:col-span-1">
+                <InputBox icon={Calendar} label="Date">
+                  <input
+                    required
+                    type="date"
+                    className="input-style text-[12px]"
+                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  />
+                </InputBox>
+                <InputBox icon={Clock} label="Time">
+                  <input
+                    required
+                    type="time"
+                    className="input-style text-[12px]"
+                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  />
+                </InputBox>
+              </div>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <div className="mt-4 flex flex-col items-center">
               <button
                 type="submit"
-                className="w-fit bg-[#25D366] hover:bg-[#1eb956] text-white font-bold py-3.5 px-12 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-green-100 text-xs lg:text-sm uppercase tracking-wider"
+                className="w-fit bg-[#25D366] hover:bg-[#1eb956] text-white font-bold py-3 px-10 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-green-100 text-xs lg:text-sm uppercase tracking-wider"
               >
                 Confirm Appointment
                 <ArrowRight size={16} />
@@ -225,10 +218,10 @@ export default function ScheduleVisitHero() {
           border: none;
           outline: none;
           background: transparent;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 700;
           color: #1e293b;
-          padding-top: 4px;
+          padding-top: 2px;
         }
         .input-style::placeholder {
           color: #94a3b8;
@@ -241,10 +234,10 @@ export default function ScheduleVisitHero() {
 
 function InputBox({ icon: Icon, label, children }) {
   return (
-    <div className="flex flex-col bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3 focus-within:border-orange-300 focus-within:bg-white focus-within:shadow-md focus-within:shadow-orange-100/50 transition-all h-full">
+    <div className="flex flex-col bg-slate-50 border border-slate-100 rounded-2xl px-4 py-2.5 focus-within:border-orange-300 focus-within:bg-white focus-within:shadow-md focus-within:shadow-orange-100/50 transition-all">
       <div className="flex items-center gap-2 mb-0.5">
         <Icon size={14} className="text-orange-500 shrink-0" />
-        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">
           {label}
         </span>
       </div>
