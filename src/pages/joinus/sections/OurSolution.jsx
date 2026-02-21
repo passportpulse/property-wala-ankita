@@ -1,108 +1,97 @@
-import { Database, ShieldCheck, Layers, Globe } from "lucide-react";
+import { 
+  Database, ShieldCheck, Layers, Globe, 
+  IndianRupee, Users, Briefcase, Award 
+} from "lucide-react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
 
 export default function OurSolution() {
-  const solutions = [
+  const features = [
     {
       icon: Database,
-      title: "Centralized Lead Generation",
-      text: "Qualified lead generation through our integrated CRM. Focus on nurturing leads instead of just capturing them.",
+      title: "Centralized Leads",
+      text: "Qualified lead generation through our integrated CRM.",
+      benefit: "Better Earnings",
+      benefitIcon: IndianRupee
     },
     {
       icon: Layers,
-      title: "Unified Inventory System",
-      text: "Exclusive real-time inventory management system ensuring accuracy, transparency, and instant access.",
+      title: "Unified Inventory",
+      text: "Real-time access to exclusive property listings.",
+      benefit: "Verified Leads",
+      benefitIcon: Users
     },
     {
       icon: ShieldCheck,
-      title: "Compliance & Back-Office Support",
-      text: "Mandatory compliance framework with automated documentation and complete back-office assistance.",
+      title: "Compliance & Support",
+      text: "Automated documentation and back-office assistance.",
+      benefit: "Zero Office Cost",
+      benefitIcon: Briefcase
     },
     {
       icon: Globe,
-      title: "Branding & Digital Presence",
-      text: "Strong network branding, standardized service protocols, and powerful digital presence support.",
+      title: "Digital Presence",
+      text: "Powerful branding and digital marketing support.",
+      benefit: "Brand Trust",
+      benefitIcon: Award
     },
   ];
 
   return (
-    <Section
-      size="default"
-      className="bg-linear-to-b from-[#FFF9F2] via-white to-[#FFF5EC] font-poppins text-slate-900"
-    >
+    <Section className="bg-white font-poppins py-10">
       <Container>
-        <div className="max-w-6xl mx-auto">
-
-          {/* Heading */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest font-semibold text-dark-orange">
-              Our Solution
+        {/* Header */}
+        <div className="mb-10 px-2">
+          <h2 className="text-2xl font-bold text-slate-900 leading-tight">
+            The Infrastructure for <br />
+            <span className="text-dark-orange underline decoration-orange-200 underline-offset-4">
+              Modern Brokers
             </span>
+          </h2>
+          <p className="text-slate-500 text-sm mt-3">
+            Everything you need to scale your real estate business without the overhead.
+          </p>
+        </div>
 
-            <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight mt-3">
-              Complete <span className="text-dark-orange">Business Infrastructure</span>
-            </h2>
+        {/* Mobile-First Timeline List */}
+        <div className="relative space-y-8 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-linear-to-b before:from-transparent before:via-slate-200 before:to-transparent">
+          {features.map((item, index) => (
+            <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+              {/* Dot on the line */}
+              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-50 text-dark-orange shadow-sm shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                <item.icon size={18} />
+              </div>
 
-            <p className="text-slate-600 mt-4">
-              We provide technology, branding, compliance, and operational
-              support so you can focus purely on closing deals and growing.
-            </p>
-          </div>
-
-          {/* Grid */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            {solutions.map((item, index) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={index}
-                  className="
-                    group
-                    bg-white
-                    border border-slate-100
-                    rounded-3xl
-                    p-8
-                    shadow-sm
-                    hover:shadow-lg
-                    hover:border-dark-orange/20
-                    transition-all
-                    duration-500
-                  "
-                >
-                  {/* Icon */}
-                  <div
-                    className="
-                      w-14 h-14
-                      bg-dark-orange/10
-                      text-dark-orange
-                      flex items-center justify-center
-                      rounded-2xl
-                      mb-6
-                      group-hover:bg-dark-orange
-                      group-hover:text-white
-                      transition-all
-                      duration-300
-                    "
-                  >
-                    <Icon size={26} />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold text-slate-900 mb-3">
+              {/* Content Card */}
+              <div className="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-linear-to-br from-slate-50 to-white p-5 rounded-2xl border border-slate-100 shadow-xs">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-slate-800 text-sm md:text-base">
                     {item.title}
                   </h3>
-
-                  {/* Text */}
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    {item.text}
-                  </p>
+                  {/* Small tag for the Benefit */}
+                  <div className="flex items-center gap-1 bg-orange-100/50 px-2 py-0.5 rounded-full">
+                    <item.benefitIcon size={10} className="text-dark-orange" />
+                    <span className="text-[9px] font-bold uppercase text-dark-orange tracking-tight">
+                      {item.benefit}
+                    </span>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
+                
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  {item.text}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
+        {/* Mobile Bottom Action (Compact) */}
+        <div className="mt-12 p-6 bg-dark-orange rounded-3xl text-center shadow-lg shadow-orange-200">
+           <p className="text-white/80 text-xs font-medium uppercase tracking-widest">Ready to grow?</p>
+           <h4 className="text-white text-lg font-semibold mb-4">Start your journey today</h4>
+           <button className="w-full bg-white text-dark-orange font-bold py-3 rounded-xl shadow-sm active:scale-95 transition-transform text-sm">
+             Apply to Join
+           </button>
         </div>
       </Container>
     </Section>

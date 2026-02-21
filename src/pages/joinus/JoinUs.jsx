@@ -1,17 +1,15 @@
 import JoinHero from "./sections/JoinHero";
-import JoinBenefits from "./sections/JoinBenefits";
-import Cta from "../../components/Cta";
+import WhoCanJoin from "./sections/WhoCanJoin";
+import WhyToJoin from "./sections/WhyToJoin";
 import OurSolution from "./sections/OurSolution";
 
-const JoinUs = () => {
+export default function JoinUs() {
   return (
     <>
       <JoinHero />
+      <WhoCanJoin />
+      <WhyToJoin />
       <OurSolution/>
-      <JoinBenefits />
-      <Cta />
     </>
   );
-};
-
-export default JoinUs;
+}

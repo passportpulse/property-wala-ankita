@@ -4,90 +4,43 @@ import Section from "../../../components/layout/Section";
 
 const JoinHero = () => {
   return (
-    <Section
-      size="default"
-      className="bg-linear-to-b from-[#FFF9F2] via-white to-[#FFF5EC] font-poppins text-slate-900"
-    >
+    <Section className="bg-linear-to-b from-[#FFF9F2] via-white to-[#FFF5EC] text-slate-900">
       <Container>
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs uppercase tracking-widest font-semibold text-dark-orange">
+        {/* Header - Compact margins for mobile */}
+        <div className="text-center max-w-2xl mx-auto mb-4 md:mb-10">
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-dark-orange">
             Partner With Us
           </span>
-          <h1 className="text-3xl lg:text-4xl font-semibold tracking-tight mt-3">
-            Become a{" "}
+          <h1 className="text-2xl md:text-4xl font-semibold tracking-tight mt-2 leading-tight">
+            Become a <br className="sm:hidden" />
             <span className="text-dark-orange">Property Wala Bhaiya</span>
           </h1>
-          <p className="text-slate-600 mt-4">
+          <p className="text-slate-600 mt-3 text-sm md:text-base leading-relaxed px-4 md:px-0">
             Join a trusted real estate network designed for independent brokers
-            who value credibility, growth, and long-term success.
+            who value credibility and long-term success.
           </p>
         </div>
 
         {/* Image + Why Section */}
-        <div className="grid lg:grid-cols-12 gap-12 items-center mb-20">
-          {/* Image */}
-          <div className="lg:col-span-6 text-center">
-            <div className="relative inline-block overflow-hidden rounded-3xl shadow-lg bg-white">
+        <div className="grid lg:grid-cols-12 gap-4 md:gap-12 items-center mb-4 md:mb-20">
+          {/* Image - Aspect ratio controlled for mobile */}
+          <div className="lg:col-span-6">
+            <div className="relative overflow-hidden rounded-2xl shadow-md bg-white aspect-video md:aspect-auto">
               <img
                 src="https://cdn.corporatefinanceinstitute.com/assets/brokerage-1024x576.jpeg"
                 alt="Real estate professionals"
-                className="h-65 w-auto object-cover"
+                className="w-full h-full object-cover md:h-80"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-slate-900/25 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 text-white text-left">
-                <p className="text-[11px] uppercase tracking-widest opacity-80">
+              <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <p className="text-[10px] uppercase tracking-wider opacity-90">
                   Trusted Network
                 </p>
-                <p className="text-sm font-medium">
+                <p className="text-xs md:text-sm font-medium">
                   Local Brokers & Genuine Clients
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* Why Work With Us */}
-          <div className="lg:col-span-6">
-            <div className="bg-white border border-slate-100 rounded-3xl p-10 shadow-sm">
-              <h3 className="text-xl font-semibold mb-6">Why Work With Us?</h3>
-
-              <ul className="space-y-4 text-slate-600 text-sm">
-                {[
-                  "Verified buyers and sellers — no random inquiries",
-                  "Transparent process that builds lasting trust",
-                  "You stay independent, we support visibility and leads",
-                  "Ideal for brokers focused on long-term growth",
-                ].map((item, index) => (
-                  <li key={index} className="flex gap-3">
-                    <CheckCircle className="w-5 h-5 text-dark-orange mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* Who Can Join */}
-        <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-semibold mb-4">Who Can Join?</h3>
-          <p className="text-slate-600 mb-8">
-            We collaborate with professionals who value ethics, local expertise,
-            and long-term relationships.
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-6 text-left">
-            {[
-              "Independent property brokers or agents",
-              "Strong local market understanding",
-              "Ethical and transparent work style",
-              "Looking for stable, long-term growth",
-            ].map((point, index) => (
-              <div key={index} className="flex gap-3">
-                <CheckCircle className="w-5 h-5 text-dark-orange mt-0.5" />
-                <p className="text-slate-600 text-sm">{point}</p>
-              </div>
-            ))}
           </div>
         </div>
       </Container>
