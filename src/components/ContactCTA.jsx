@@ -54,7 +54,7 @@ export default function ContactCTA() {
                 rel="noopener noreferrer"
                 className="
                   flex items-center justify-center gap-2
-                  bg-slate-900 text-white
+                  bg-[#25D366] text-white
                   px-8 py-4 rounded-xl
                   font-black text-[10px] uppercase tracking-widest
                   hover:bg-dark-orange transition-all duration-300
