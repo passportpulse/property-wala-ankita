@@ -47,8 +47,11 @@ export default function ScheduleVisit() {
                 <span className="text-[10px] font-bold text-white uppercase tracking-widest">Available Now</span>
               </div>
               <h2 className="text-xl font-black text-white tracking-tight uppercase">
-                Book a <span className="text-orange-100">Visit</span>
+                Schedule A <span className="text-orange-100">Site Visit</span>
               </h2>
+              <p className="text-orange-50 text-[12px] leading-relaxed mt-2 font-medium opacity-90 px-2">
+                Visit your future home in person — choose a convenient time and our experts will guide you.
+              </p>
             </div>
 
             {/* Inner White Form Card */}
