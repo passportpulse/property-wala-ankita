@@ -27,14 +27,14 @@ const JoinHero = () => {
           {/* Image - Aspect ratio controlled for mobile */}
           <div className="lg:col-span-6">
             <div className="relative overflow-hidden rounded-2xl shadow-md bg-dark-orange aspect-video md:aspect-auto flex items-center justify-center">
-  <img
-    src={logo}
-    alt="Real estate professionals"
-    /* object-contain: ensures the whole logo is visible without cropping.
+              <img
+                src={logo}
+                alt="Real estate professionals"
+                /* object-contain: ensures the whole logo is visible without cropping.
        p-8: keeps the logo from touching the edges of the orange box.
     */
-    className="w-full h-full object-contain p-6 md:h-80 md:w-auto"
-  />
+                className="w-full h-full object-contain p-6 md:h-80 md:w-auto"
+              />
               <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
                 <p className="text-[10px] uppercase tracking-wider opacity-90">

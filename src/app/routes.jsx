@@ -12,6 +12,7 @@ import Login from "../pages/login/Login";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Register from "../pages/signup/Register";
 import ScrollToTop from "../components/ScrollToTop"; 
+import ScheduleVisit from "../pages/schedule-visit/ScheduleVisit";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "/sell", element: <Sell /> },
       { path: "/rent", element: <Rent /> },
       { path: "/contact", element: <ContactPage /> },
+      { path: "/schedule-site-visit", element: <ScheduleVisit/> },
       { path: "/join-us", element: <JoinUs /> },
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/login", element: <Login /> },
