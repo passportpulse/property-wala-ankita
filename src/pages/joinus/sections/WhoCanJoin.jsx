@@ -24,12 +24,12 @@ export default function WhoCanJoin() {
   ];
 
   return (
-    <Section size="default" className="bg-white py-12 md:py-20 border-t border-slate-50">
+    <Section>
       <Container>
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+            <h2 className="text-xl md:text-3xl font-bold text-slate-900 mb-3">
               Who Can Join?
             </h2>
             <p className="text-slate-500 text-sm md:text-base px-4">
