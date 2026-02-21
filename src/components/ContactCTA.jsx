@@ -1,7 +1,7 @@
 /* sections/ContactCTA.js */
 
-import Section from "../../../components/layout/Section";
-import Container from "../../../components/layout/Container";
+import Section from "./layout/Section";
+import Container from "./layout/Container";
 import { MessageCircle, Phone } from "lucide-react";
 
 export default function ContactCTA() {

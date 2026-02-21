@@ -3,7 +3,7 @@ import FeaturedProperties from "./sections/FeaturedProperties";
 import HomeHero from "./sections/HomeHero";
 import Trust from "./sections/Trust";
 import BestDeals from "./sections/BestDeals";
-import ContactCTA from "./sections/ContactCTA";
+import ContactCTA from "../../components/ContactCTA";
 import SellYourProperty from "./sections/SellYourProperty";
 import BestBuy from "./sections/BestBuy";
 import JoinUs from "../joinus/JoinUs";
