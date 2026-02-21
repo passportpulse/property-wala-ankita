@@ -33,15 +33,12 @@ const JoinHero = () => {
                 /* object-contain: ensures the whole logo is visible without cropping.
        p-8: keeps the logo from touching the edges of the orange box.
     */
-                className="w-full h-full object-contain p-6 md:h-80 md:w-auto"
+                className="w-full h-full object-contain p-1 md:h-80 md:w-auto"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
                 <p className="text-[10px] uppercase tracking-wider opacity-90">
-                  Trusted Network
-                </p>
-                <p className="text-xs md:text-sm font-medium">
-                  Local Brokers & Genuine Clients
+                  Trusted Unified Network
                 </p>
               </div>
             </div>
