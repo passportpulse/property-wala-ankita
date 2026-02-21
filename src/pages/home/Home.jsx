@@ -9,6 +9,7 @@ import BestBuy from "./sections/BestBuy";
 import JoinUs from "../joinus/JoinUs";
 import HomeFilter from "./sections/HomeFilter";
 import Testimonials from "./sections/Testimonials";
+import ScheduleVisit from "./sections/ScheduleVisit";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Trust />
       <Testimonials/>
       <JoinUs/>
+      <ScheduleVisit/>
       <ContactCTA />
     </>
   );

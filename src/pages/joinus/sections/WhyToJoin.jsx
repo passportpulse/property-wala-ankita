@@ -49,7 +49,7 @@ export default function WhyToJoin() {
               return (
                 <div 
                   key={index} 
-                  className="flex flex-col items-center text-center p-5 md:p-8 rounded-[2rem] bg-white border border-orange-100 shadow-sm shadow-orange-200/50 hover:shadow-md transition-all duration-300"
+                  className="flex flex-col items-center text-center p-5 md:p-8 rounded-4xl bg-white border border-orange-100 shadow-sm shadow-orange-200/50 hover:shadow-md transition-all duration-300"
                 >
                   {/* Icon Container */}
                   <div className="w-10 h-10 md:w-14 md:h-14 rounded-2xl bg-orange-100/80 flex items-center justify-center mb-3 md:mb-5">
