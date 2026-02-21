@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  MessageCircle,
   MapPin,
   Calendar,
   Clock,
@@ -8,6 +7,8 @@ import {
   Phone,
   ArrowRight,
   Building2,
+  Mail,
+  Home,
 } from "lucide-react";
 
 import Section from "../../../components/layout/Section";
@@ -19,8 +20,10 @@ export default function ScheduleVisitHero() {
 
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     city: "",
     location: "",
+    address: "",
     phone: "",
     date: "",
     time: "",
@@ -33,8 +36,10 @@ export default function ScheduleVisitHero() {
       `*NEW SITE VISIT REQUEST*%0A` +
       `━━━━━━━━━━━━━━━━━━%0A` +
       `👤 Name: ${formData.name}%0A` +
+      `📧 Email: ${formData.email}%0A` +
       `🏙️ City: ${formData.city}%0A` +
       `📍 Area: ${formData.location}%0A` +
+      `🏠 Address: ${formData.address}%0A` +
       `📞 Phone: ${formData.phone}%0A` +
       `📅 Date: ${formData.date}%0A` +
       `⏰ Time: ${formData.time}%0A` +
@@ -48,41 +53,36 @@ export default function ScheduleVisitHero() {
   return (
     <Section className="py-12 md:py-20 bg-linear-to-b from-orange-50 via-white to-white overflow-hidden">
       <Container>
-        {/* Header - Enhanced for Mobile */}
-        <div className="text-center mb-10 px-4">
-          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-            </span>
-            Direct Booking
+        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div className="space-y-1 lg:space-y-2">
+              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
+                Direct Booking
+              </span>
+
+              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                Schedule{" "}
+                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
+                  Site Visit
+                </span>
+              </h2>
+
+              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+                Choose your preferred location and time — our experts will
+                assist you.
+              </p>
+            </div>
           </div>
-          <h2 className="text-2xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight">
-            Schedule a <span className="text-orange-500">Site Visit</span>
-          </h2>
-          <p className="text-slate-500 text-sm md:text-base font-medium max-w-lg mx-auto leading-relaxed">
-            Choose your preferred location and time — our experts will assist
-            you.
-          </p>
         </div>
 
         {/* Form Container */}
         <div className="max-w-4xl mx-auto">
           <form
             onSubmit={handleWhatsAppRedirect}
-            className="
-              bg-white
-              rounded-[2.5rem]
-              shadow-2xl shadow-orange-100/50
-              border border-slate-100
-              p-4 md:p-8
-              flex flex-col
-              gap-4
-              relative
-            "
+            className="bg-white rounded-[2.5rem] shadow-2xl shadow-orange-100/50 border border-slate-100 p-4 md:p-8 flex flex-col gap-4 relative"
           >
             {/* Input Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {/* Name */}
               <InputBox icon={User} label="Full Name">
                 <input
@@ -92,6 +92,32 @@ export default function ScheduleVisitHero() {
                   className="input-style"
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
+                  }
+                />
+              </InputBox>
+
+              {/* Email */}
+              <InputBox icon={Mail} label="Email Address">
+                <input
+                  required
+                  type="email"
+                  placeholder="john@example.com"
+                  className="input-style"
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              </InputBox>
+
+              {/* Phone */}
+              <InputBox icon={Phone} label="Contact Number">
+                <input
+                  required
+                  type="tel"
+                  placeholder="10-digit phone"
+                  className="input-style"
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
                   }
                 />
               </InputBox>
@@ -136,19 +162,6 @@ export default function ScheduleVisitHero() {
                 </select>
               </InputBox>
 
-              {/* Phone */}
-              <InputBox icon={Phone} label="Contact Number">
-                <input
-                  required
-                  type="tel"
-                  placeholder="Your 10-digit phone"
-                  className="input-style"
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                />
-              </InputBox>
-
               {/* Date */}
               <InputBox icon={Calendar} label="Visit Date">
                 <input
@@ -160,6 +173,21 @@ export default function ScheduleVisitHero() {
                   }
                 />
               </InputBox>
+
+              {/* Address - Spans full width on desktop for better typing space */}
+              <div className="md:col-span-2">
+                <InputBox icon={Home} label="Detailed Address">
+                  <input
+                    required
+                    type="text"
+                    placeholder="House No, Street, Landmark..."
+                    className="input-style"
+                    onChange={(e) =>
+                      setFormData({ ...formData, address: e.target.value })
+                    }
+                  />
+                </InputBox>
+              </div>
 
               {/* Time */}
               <InputBox icon={Clock} label="Visit Time">
@@ -175,37 +203,18 @@ export default function ScheduleVisitHero() {
             </div>
 
             {/* Submit Button */}
-
-            <div className="mt-4 flex justify-center">
-              {" "}
-              {/* Centering container */}
+            <div className="mt-4 flex flex-col items-center">
               <button
                 type="submit"
-                className="
-      w-fit                   /* Only as wide as the content */
-      bg-[#25D366]
-      hover:bg-[#1eb956]
-      text-white
-      font-bold
-      py-3 px-10              /* Balanced padding for a pill shape */
-      rounded-full            /* Pill-shaped design */
-      flex items-center
-      justify-center
-      gap-2
-      transition-all
-      active:scale-95         /* Snappier feedback for mobile */
-      shadow-lg shadow-green-100
-      text-xs lg:text-sm
-      uppercase tracking-wider
-    "
+                className="w-fit bg-[#25D366] hover:bg-[#1eb956] text-white font-bold py-3.5 px-12 rounded-full flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-green-100 text-xs lg:text-sm uppercase tracking-wider"
               >
                 Confirm Appointment
                 <ArrowRight size={16} />
               </button>
+              <p className="text-center text-[10px] text-slate-400 mt-4 font-bold uppercase tracking-widest">
+                Instant confirmation via WhatsApp Business
+              </p>
             </div>
-            <p className="text-center text-[10px] text-slate-400 mt-3 font-bold uppercase tracking-widest">
-              Instant confirmation via WhatsApp Business
-            </p>
           </form>
         </div>
       </Container>
@@ -232,21 +241,9 @@ export default function ScheduleVisitHero() {
 
 function InputBox({ icon: Icon, label, children }) {
   return (
-    <div
-      className="
-        flex flex-col
-        bg-slate-50
-        border border-slate-100
-        rounded-2xl
-        px-4 py-3
-        focus-within:border-orange-300
-        focus-within:bg-white
-        focus-within:shadow-md focus-within:shadow-orange-100/50
-        transition-all
-      "
-    >
+    <div className="flex flex-col bg-slate-50 border border-slate-100 rounded-2xl px-4 py-3 focus-within:border-orange-300 focus-within:bg-white focus-within:shadow-md focus-within:shadow-orange-100/50 transition-all h-full">
       <div className="flex items-center gap-2 mb-0.5">
-        <Icon size={14} className="text-orange-500 flex-shrink-0" />
+        <Icon size={14} className="text-orange-500 shrink-0" />
         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
           {label}
         </span>
