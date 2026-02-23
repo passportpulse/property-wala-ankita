@@ -15,7 +15,7 @@ const TransformCard = ({ beforeTitle, beforeDesc, afterTitle, afterDesc }) => (
     <div className="grid grid-cols-2">
       <div className="p-4 border-r border-slate-100">
         <span className="text-[9px] font-bold uppercase tracking-wider text-red-500">
-          Before
+          Current Independent Status
         </span>
         <h4 className="text-xs font-semibold text-slate-700 mt-2">
           {beforeTitle}
@@ -26,7 +26,7 @@ const TransformCard = ({ beforeTitle, beforeDesc, afterTitle, afterDesc }) => (
       </div>
       <div className="p-4 bg-orange-50">
         <span className="text-[9px] font-bold uppercase tracking-wider text-dark-orange">
-          After
+          Network Benefit
         </span>
         <h4 className="text-xs font-semibold text-slate-900 mt-2">
           {afterTitle}
@@ -101,12 +101,6 @@ export default function About() {
             afterDesc="Verified inventory with real-time digital tracking."
           />
           <TransformCard
-            beforeTitle="Unstable Income"
-            beforeDesc='Risky deals and unpredictable "hit-or-miss" months.'
-            afterTitle="Predictable NEER"
-            afterDesc="Legal protection with higher net earnings."
-          />
-          <TransformCard
             beforeTitle="Independent Broker"
             beforeDesc="Working alone without structured support."
             afterTitle="Network Partner"
@@ -121,8 +115,8 @@ export default function About() {
           <TransformCard
             beforeTitle="Unstable Earnings"
             beforeDesc="Volatile income, high marketing burn rate, and payout uncertainty."
-            afterTitle="Guaranteed Growth"
-            afterDesc="Guaranteed qualified leads with an optimized cost-sharing model and 80-20 payout structure."
+            afterTitle="Higher Net Effective Earning Rate (NEER)"
+            afterDesc="Guaranteed qualified leads with an optimized cost-sharing model and 70-30 payout structure."
           />
           <TransformCard
             beforeTitle="Legal Risk"
