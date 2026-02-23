@@ -103,7 +103,7 @@ export default function HomeFilter() {
             {/* MOBILE HEADER */}
             <div className="text-center mb-4 lg:hidden">
               <h2 className="text-lg font-black uppercase tracking-tight text-slate-800">
-                Find Your <span className="text-dark-orange">Own Property</span>
+                Find Your <span className="text-dark-orange"> Property</span>
               </h2>
               <div className="w-12 h-1 bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>
