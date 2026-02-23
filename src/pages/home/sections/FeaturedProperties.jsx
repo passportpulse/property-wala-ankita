@@ -1,13 +1,7 @@
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import { useState, useEffect } from "react";
-import {
-  Bed,
-  Bath,
-  Maximize,
-  MapPin,
-  ArrowUpRight,
-} from "lucide-react";
+import { Bed, Bath, Maximize, MapPin, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import FeaturedPropertyModal from "../../../components/modals/FeaturedPropertyModal";
@@ -68,11 +62,9 @@ export default function FeaturedProperties() {
   return (
     <Section>
       <Container>
-
         {/* COMPACT HEADER */}
         <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-
             <div className="space-y-1 lg:space-y-2">
               <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
                 Curated Marketplace
@@ -90,9 +82,9 @@ export default function FeaturedProperties() {
               </p>
             </div>
 
-           <button
-  onClick={() => navigate("/buy")}
-  className="
+            <button
+              onClick={() => navigate("/buy")}
+              className="
     cursor-pointer
     bg-dark-orange text-white
     flex items-center gap-2 group
@@ -106,19 +98,15 @@ export default function FeaturedProperties() {
     shadow-sm hover:shadow-md
     w-fit
   "
->
-  Browse All
-  <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-</button>
-
-
+            >
+              Browse All
+              <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+            </button>
           </div>
         </div>
 
-
         {/* PROPERTY GRID / MOBILE SWIPER */}
         <div className="flex lg:grid lg:grid-cols-3 gap-4 lg:gap-8 overflow-x-auto no-scrollbar pb-6 px-1 lg:px-0 snap-x snap-mandatory">
-
           {properties.map((item) => (
             <div
               key={item.id}
@@ -130,7 +118,6 @@ export default function FeaturedProperties() {
                 border border-slate-100 transition-all duration-500
               "
             >
-
               {/* Image */}
               <div className="relative h-48 lg:h-64 overflow-hidden">
                 <img
@@ -146,10 +133,8 @@ export default function FeaturedProperties() {
                 </div>
               </div>
 
-
               {/* Content */}
               <div className="p-4 lg:p-6 space-y-4 lg:space-y-5">
-
                 <div className="space-y-1">
                   <p className="text-xl lg:text-2xl font-black text-slate-900 tracking-tight">
                     {item.price}
@@ -165,10 +150,8 @@ export default function FeaturedProperties() {
                   </p>
                 </div>
 
-
                 {/* Details Bar */}
                 <div className="flex items-center justify-between py-3 border-y border-slate-50 text-slate-500 text-[9px] lg:text-[10px] font-black uppercase tracking-widest">
-
                   <div className="flex items-center gap-1">
                     <Bed className="w-3.5 h-3.5 text-dark-orange/60" />
                     {item.beds > 0 ? `${item.beds} B` : "N/A"}
@@ -183,9 +166,7 @@ export default function FeaturedProperties() {
                     <Maximize className="w-3.5 h-3.5 text-dark-orange/60" />
                     {item.sqft} ft
                   </div>
-
                 </div>
-
 
                 {/* View Button */}
                 <button
@@ -194,23 +175,17 @@ export default function FeaturedProperties() {
                 >
                   View Details
                 </button>
-
               </div>
-
             </div>
           ))}
-
         </div>
-
       </Container>
-
 
       {/* MODAL */}
       <FeaturedPropertyModal
         property={selectedProperty}
         onClose={() => setSelectedProperty(null)}
       />
-
     </Section>
   );
 }
