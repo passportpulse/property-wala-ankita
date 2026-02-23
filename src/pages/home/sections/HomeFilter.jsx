@@ -313,7 +313,7 @@ export default function HomeFilter() {
                 <div className="pt-1 flex justify-center lg:justify-end">
                   <button
                     onClick={handleSearch}
-                    className="w-auto min-w-50 bg-linear-to-r from-dark-orange to-lighter-orange text-white font-black uppercase text-xs tracking-[0.15em] py-3 lg:py-4 px-4 lg:px-6 rounded-full shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
+                    className="w-auto bg-linear-to-r from-dark-orange to-lighter-orange text-white font-black uppercase text-xs tracking-[0.15em] py-3 lg:py-4 px-4 lg:px-6 rounded-full shadow-sm hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 group"
                   >
                     <Search
                       size={18}
