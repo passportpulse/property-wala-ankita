@@ -101,14 +101,19 @@ export default function HomeFilter() {
           {/* RIGHT SIDE: Filter Card */}
           <div className="lg:col-span-7">
             {/* MOBILE HEADER */}
-            <div className="text-center mb-4 lg:hidden">
+            {/* <div className="text-start mb-4 lg:hidden">
               <h2 className="text-base lg:text-3xl font-medium text-dark-orange tracking-tight">
                 Explore Verified Properties
               </h2>
-            </div>
+            </div> */}
 
             <div className="bg-orange-50 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
               <div className="space-y-4 lg:space-y-6">
+                <div className="text-start mb-4 lg:hidden">
+              <h2 className="text-sm lg:text-3xl font-medium text-dark-orange tracking-tight">
+                Explore Verified Properties
+              </h2>
+            </div>
                 {/* GRID FOR DROPDOWNS */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {/* STATE - Fixed Dropdown */}
