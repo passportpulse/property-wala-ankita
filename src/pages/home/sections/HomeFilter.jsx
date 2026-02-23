@@ -102,11 +102,9 @@ export default function HomeFilter() {
           <div className="lg:col-span-7">
             {/* MOBILE HEADER */}
             <div className="text-center mb-4 lg:hidden">
-              <h2 className="text-lg lg:text-3xl font-medium text-dark-orange tracking-tight">
+              <h2 className="text-base lg:text-3xl font-medium text-dark-orange tracking-tight">
                 Explore Verified Properties
               </h2>
-
-              <div className="w-12 h-1 bg-linear-to-r from-dark-orange via-lighter-orange-500 to-warm-yellow mx-auto mt-2 rounded-full"></div>
             </div>
 
             <div className="bg-orange-50 backdrop-blur-md rounded-3xl lg:rounded-[2.5rem] shadow-3xl shadow-orange-100/50 border border-slate-200 p-4 lg:p-10 relative z-30">
