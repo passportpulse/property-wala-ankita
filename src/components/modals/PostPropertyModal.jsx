@@ -1,11 +1,28 @@
 import { X } from "lucide-react";
 import { useState } from "react";
 
+const propertyTypes = [
+  "Flats",
+  "Plots",
+  "Joint Ventures",
+  "House/Duplex",
+  "Office/Retail",
+  "Factory",
+  "Industrial Plots",
+  "Ware House",
+  "Hospital",
+  "Hotels/Resort",
+  "Petrol Pump",
+  "Institutes",
+  "Investment",
+];
+
 export default function PostPropertyModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
     title: "",
     type: "",
     location: "",
+    googleLocation: "",
     price: "",
     purpose: "Sell",
     owner: "",
@@ -13,15 +30,22 @@ export default function PostPropertyModal({ isOpen, onClose }) {
     whatsapp: "",
     email: "",
     details: "",
+    photos: [],
+    video: null,
   });
 
   if (!isOpen) return null;
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, files } = e.target;
+
+    if (name === "photos") {
+      setForm({ ...form, photos: files });
+    } else if (name === "video") {
+      setForm({ ...form, video: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -31,51 +55,56 @@ export default function PostPropertyModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+    <div className="fixed inset-0 z-500 flex items-start sm:items-center 
+                justify-center bg-black/40 backdrop-blur-sm 
+                px-3 pt-20 sm:pt-0">
 
-      {/* overlay click close */}
+
+      {/* overlay */}
       <div className="absolute inset-0" onClick={onClose}></div>
 
       {/* modal */}
-      <div className="relative bg-white rounded-4xl w-full max-w-lg p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div className="relative bg-white rounded-3xl w-full max-w-lg 
+                      p-5 sm:p-8 shadow-2xl 
+                      max-h-[90vh] overflow-y-auto">
 
         {/* close */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-slate-400 hover:text-black"
+          className="absolute top-4 right-4 text-slate-400 hover:text-black"
         >
           <X size={20} />
         </button>
 
-        {/* heading */}
-        <h2 className="text-2xl font-black uppercase mb-6">
-          Post Property
+        <h2 className="text-xl sm:text-2xl font-black uppercase mb-4 sm:mb-6">
+          Property Details
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
 
-          {/* property title */}
+          {/* title */}
           <input
             name="title"
             placeholder="Property Title"
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
-          {/* property type */}
+          {/* type */}
           <select
             name="type"
+            value={form.type}
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           >
-            <option value="">Property Type</option>
-            <option>Flat</option>
-            <option>Plot</option>
-            <option>House</option>
-            <option>Office</option>
-            <option>Warehouse</option>
+            <option value="">Select Property Type</option>
+            {propertyTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
 
           {/* location */}
@@ -84,7 +113,15 @@ export default function PostPropertyModal({ isOpen, onClose }) {
             placeholder="Location"
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
+          />
+
+          {/* Google Map link */}
+          <input
+            name="googleLocation"
+            placeholder="Google Map Location Link"
+            onChange={handleChange}
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
           {/* price */}
@@ -93,26 +130,26 @@ export default function PostPropertyModal({ isOpen, onClose }) {
             placeholder="Expected Price"
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
           {/* purpose */}
           <select
             name="purpose"
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           >
             <option>Sell</option>
             <option>Rent</option>
           </select>
 
-          {/* owner name */}
+          {/* owner */}
           <input
             name="owner"
             placeholder="Owner Name"
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
           {/* phone */}
@@ -121,7 +158,7 @@ export default function PostPropertyModal({ isOpen, onClose }) {
             placeholder="Contact Number"
             required
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
           {/* whatsapp */}
@@ -129,7 +166,7 @@ export default function PostPropertyModal({ isOpen, onClose }) {
             name="whatsapp"
             placeholder="WhatsApp Number (optional)"
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
           {/* email */}
@@ -137,22 +174,54 @@ export default function PostPropertyModal({ isOpen, onClose }) {
             name="email"
             placeholder="Email (optional)"
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 text-sm"
           />
 
-          {/* details */}
+          {/* photo upload */}
+          <div>
+            <label className="text-xs font-semibold text-slate-600">
+              Upload Property Photos
+            </label>
+            <input
+              type="file"
+              name="photos"
+              multiple
+              accept="image/*"
+              onChange={handleChange}
+              className="w-full mt-1 text-sm"
+            />
+          </div>
+
+          {/* video upload */}
+          <div>
+            <label className="text-xs font-semibold text-slate-600">
+              Upload Property Video
+            </label>
+            <input
+              type="file"
+              name="video"
+              accept="video/*"
+              onChange={handleChange}
+              className="w-full mt-1 text-sm"
+            />
+          </div>
+
+          {/* details (Resizable / Draggable) */}
           <textarea
             name="details"
-            placeholder="Property Details (optional)"
+            placeholder="Property Details"
             rows="3"
             onChange={handleChange}
-            className="w-full border border-slate-200 rounded-xl p-3"
+            className="w-full border border-slate-200 rounded-xl p-2.5 sm:p-3 
+                       text-sm resize-y min-h-[80px] max-h-[300px]"
           />
 
           {/* submit */}
           <button
             type="submit"
-            className="w-full bg-dark-orange text-white py-3 rounded-xl font-bold uppercase tracking-wider hover:bg-slate-900 transition-all"
+            className="w-full bg-dark-orange text-white py-2.5 sm:py-3 
+                       rounded-xl font-bold uppercase tracking-wider 
+                       hover:bg-slate-900 transition-all text-sm"
           >
             Submit Property
           </button>
