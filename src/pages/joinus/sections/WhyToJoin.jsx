@@ -36,7 +36,7 @@ export default function WhyToJoin() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div className="space-y-1 lg:space-y-2">
                 <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                  Grow With Us
+                  Carrier Building
                 </span>
 
                 <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
