@@ -47,7 +47,7 @@ export default function ContactCTA() {
             </p>
 
             {/* BUTTONS: Full width on mobile, side-by-side on desktop */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4 md:pt-6">
+            <div className="flex gap-2 justify-center pt-4 md:pt-6">
               <a
                 href="https://wa.me/917699988876"
                 target="_blank"
@@ -55,7 +55,7 @@ export default function ContactCTA() {
                 className="
                   flex items-center justify-center gap-2
                   bg-[#25D366] text-white
-                  px-8 py-4 rounded-xl
+                  px-4 py-1 rounded-xl
                   font-black text-[10px] uppercase tracking-widest
                   hover:bg-dark-orange transition-all duration-300
                   active:scale-95 shadow-lg hover:shadow-dark-orange/20
