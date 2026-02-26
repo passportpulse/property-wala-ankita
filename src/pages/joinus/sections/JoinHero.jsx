@@ -16,7 +16,7 @@ const JoinHero = () => {
               </span>
 
               <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                Become A{" "}
+                Become <br/>
                 <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
                   Property Wala Bhaiya
                 </span>
@@ -47,7 +47,7 @@ const JoinHero = () => {
           </div>
         </div>
 
-        <p className="text-xs uppercase tracking-wider text-dark-orange text-center mt-6">
+        <p className="text-sm uppercase tracking-wider text-dark-orange text-center mt-6">
           Be A Part Of Our Network
         </p>
       </Container>
