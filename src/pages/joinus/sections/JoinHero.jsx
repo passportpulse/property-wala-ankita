@@ -42,7 +42,7 @@ const JoinHero = () => {
             </div>
           </div>
         </div>
-        <p className="text-[10px] uppercase tracking-wider opacity-90">
+        <p className="text-xs uppercase tracking-wider opacity-90 text-center">
                   Be A Part Of Our Network
                 </p>
       </Container>
