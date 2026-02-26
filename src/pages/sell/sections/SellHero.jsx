@@ -13,7 +13,7 @@ export default function SellHero({ setIsModalOpen }) {
 
             {/* Compact Premium Badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full 
-            bg-gradient-to-r from-orange-50 to-orange-100 
+            bg-linear-to-r from-orange-50 to-orange-100 
             border border-orange-200 mx-auto lg:mx-0">
 
               <Zap size={10} className="text-dark-orange" />
@@ -91,7 +91,7 @@ export default function SellHero({ setIsModalOpen }) {
                   className="absolute inset-0 w-full h-full object-cover opacity-90"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t 
+                <div className="absolute inset-0 bg-linear-to-t 
                 from-white via-white/50 to-transparent 
                 lg:from-slate-900 lg:to-transparent"></div>
 

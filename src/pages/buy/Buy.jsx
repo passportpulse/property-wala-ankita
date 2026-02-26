@@ -1,13 +1,23 @@
 import { useState, useEffect } from "react";
 import FilterHeader from "./sections/FilterHeader";
-import PropertyGrid from "./sections/PropertyGrid"; 
+import PropertyGrid from "./sections/PropertyGrid";
 import Cta from "../../components/Cta";
 
 export default function Buy() {
   const tabsLabels = [
-    "Flats", "Plots", "House / Duplex", "Commercial Space", 
-    "Factory", "Industrial Plots", "Warehouse", 
-    "Hospital", "Hotels / Resort", "Investment"
+    "Flats",
+    "Plots",
+    "Joint Ventures",
+    "House / Duplex",
+    "Office / Retail",
+    "Factory",
+    "Industrial Plots",
+    "Warehouse",
+    "Hospital",
+    "Hotels / Resort",
+    "Petrol Pump",
+    "Institutes",
+    "Investment",
   ];
 
   // 1. Initialize state by checking the URL immediately
@@ -15,8 +25,13 @@ export default function Buy() {
     if (typeof window !== "undefined") {
       const hash = window.location.hash.replace("#", "");
       if (hash) {
-        const found = tabsLabels.find(label => 
-          label.toLowerCase().trim().replace(/\s+|\/+/g, "-").replace(/-+/g, "-") === hash
+        const found = tabsLabels.find(
+          (label) =>
+            label
+              .toLowerCase()
+              .trim()
+              .replace(/\s+|\/+/g, "-")
+              .replace(/-+/g, "-") === hash,
         );
         return found || "Flats";
       }
@@ -28,8 +43,13 @@ export default function Buy() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
-      const found = tabsLabels.find(label => 
-        label.toLowerCase().trim().replace(/\s+|\/+/g, "-").replace(/-+/g, "-") === hash
+      const found = tabsLabels.find(
+        (label) =>
+          label
+            .toLowerCase()
+            .trim()
+            .replace(/\s+|\/+/g, "-")
+            .replace(/-+/g, "-") === hash,
       );
       if (found) setActiveTab(found);
     };
