@@ -62,7 +62,7 @@ export default function ContactCTA() {
                 "
               >
                 <MessageCircle size={14} strokeWidth={3} />
-                WhatsApp Now
+                WhatsApp
               </a>
 
               <a
@@ -78,7 +78,7 @@ export default function ContactCTA() {
                 "
               >
                 <Phone size={14} strokeWidth={3} />
-                Call Expert
+                Call
               </a>
             </div>
           </div>
