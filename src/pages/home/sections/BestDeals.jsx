@@ -131,20 +131,20 @@ export default function BestDeals() {
 
   return (
     <Section
-      className="bg-linear-to-br from-orange-500 via-amber-400 to-orange-500 text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
+      className="bg-orange-50 text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
     >
       <Container>
         {/* HEADING AREA - Contained and Single Line */}
         <div className="flex items-center justify-between gap-4 mb-6 md:mb-10 w-full">
           {/* LEFT SIDE */}
           <div className="flex items-center gap-3 md:gap-4 py-2 md:py-4 w-fit">
-            <h2 className="text-xl lg:text-5xl uppercase text-white whitespace-nowrap tracking-tight">
+            <h2 className="text-xl lg:text-5xl uppercase text-dark-orange whitespace-nowrap tracking-tight">
               Our Best Deals
             </h2>
             <Sparkles
               size={24}
               strokeWidth={1}
-              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-yellow-300/30 shrink-0 lg:w-8 lg:h-8"
+              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-dark-orange shrink-0 lg:w-8 lg:h-8"
             />
           </div>
 
@@ -152,15 +152,15 @@ export default function BestDeals() {
           <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <button
               onClick={() => scroll("left")}
-              className="p-2 md:p-3 rounded-xl border border-white/70 hover:bg-white/10 transition-colors shadow-sm active:scale-95"
+              className="p-2 md:p-3 rounded-xl border border-dark-orange hover:bg-white/10 transition-colors shadow-sm active:scale-95"
             >
-              <ChevronLeft size={24} className="text-white" />
+              <ChevronLeft size={24} className="text-dark-orange" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="p-2 md:p-3 rounded-xl border border-white/70 hover:bg-white/10 transition-colors shadow-sm active:scale-95"
+              className="p-2 md:p-3 rounded-xl border border-dark-orange hover:bg-white/10 transition-colors shadow-sm active:scale-95"
             >
-              <ChevronRight size={24} className="text-white" />
+              <ChevronRight size={24} className="text-dark-orange" />
             </button>
           </div>
         </div>
@@ -224,7 +224,7 @@ export default function BestDeals() {
 
           <div className="flex items-center gap-4 font-black text-xs tracking-[0.3em] text-white/60">
             <span className="text-white font-black">{currentIndex.toString().padStart(2, "0")}</span>
-            <span className="w-8 h-[1px] bg-white/20" />
+            <span className="w-8 h-px bg-white/20" />
             <span>{categories.length.toString().padStart(2, "0")}</span>
           </div>
         </div>
