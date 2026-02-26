@@ -47,7 +47,7 @@ export default function ContactCTA() {
             </p>
 
             {/* BUTTONS: Full width on mobile, side-by-side on desktop */}
-            <div className="flex gap-2 justify-center pt-4 md:pt-6">
+            <div className="flex justify-center pt-4 md:pt-6">
               <a
                 href="https://wa.me/917699988876"
                 target="_blank"
@@ -55,13 +55,13 @@ export default function ContactCTA() {
                 className="
                   flex items-center justify-center gap-2
                   bg-[#25D366] text-white
-                  px-4 py-1 rounded-xl
+                  px-4 py-1 rounded-l-lg
                   font-black text-[10px] uppercase tracking-widest
                   hover:bg-dark-orange transition-all duration-300
                   active:scale-95 shadow-lg hover:shadow-dark-orange/20
                 "
               >
-                <MessageCircle size={14} strokeWidth={3} />
+                <MessageCircle size={16} strokeWidth={3} />
                 WhatsApp
               </a>
 
@@ -71,13 +71,14 @@ export default function ContactCTA() {
                   flex items-center justify-center gap-2
                   bg-white text-slate-900
                   border border-slate-200
-                  px-8 py-4 rounded-xl
+                  px-8 py-4 rounded-r-lg
                   font-black text-[10px] uppercase tracking-widest
                   hover:border-dark-orange hover:text-dark-orange
                   transition-all duration-300 active:scale-95
                 "
               >
-                <Phone size={14} strokeWidth={3} />
+                <Phone size={16} strokeWidth={3} />
+
                 Call
               </a>
             </div>
