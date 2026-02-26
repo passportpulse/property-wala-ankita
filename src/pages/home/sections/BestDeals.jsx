@@ -131,7 +131,7 @@ export default function BestDeals() {
 
   return (
     <Section
-      className="bg-orange-50 text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
+      className="bg-[#f0bd52] text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
     >
       <Container>
         {/* HEADING AREA - Contained and Single Line */}
@@ -144,7 +144,7 @@ export default function BestDeals() {
             <Sparkles
               size={24}
               strokeWidth={1}
-              className="text-white animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-dark-orange shrink-0 lg:w-8 lg:h-8"
+              className="text-dark-orange animate-[yellow-glow-shine_2s_ease-in-out_infinite] fill-dark-orange shrink-0 lg:w-8 lg:h-8"
             />
           </div>
 
@@ -222,8 +222,8 @@ export default function BestDeals() {
             />
           </div>
 
-          <div className="flex items-center gap-4 font-black text-xs tracking-[0.3em] text-white/60">
-            <span className="text-white font-black">{currentIndex.toString().padStart(2, "0")}</span>
+          <div className="flex items-center gap-4 font-black text-xs tracking-[0.3em] text-white">
+            <span>{currentIndex.toString().padStart(2, "0")}</span>
             <span className="w-8 h-px bg-white/20" />
             <span>{categories.length.toString().padStart(2, "0")}</span>
           </div>
