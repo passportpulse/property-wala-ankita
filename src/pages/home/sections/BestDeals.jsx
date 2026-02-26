@@ -131,7 +131,7 @@ export default function BestDeals() {
 
   return (
     <Section
-      className="bg-[#f0bd52] text-white lg:bg-linear-to-br lg:from-slate-900 lg:via-slate-800 lg:to-slate-900 transition-all duration-500"
+      className="bg-gradient-to-tr from-white via-[#f0bd52] to-[#efae2e]"
     >
       <Container>
         {/* HEADING AREA - Contained and Single Line */}
