@@ -37,13 +37,14 @@ const JoinHero = () => {
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 text-white">
-                <p className="text-[10px] uppercase tracking-wider opacity-90">
-                  Trusted Unified Network
-                </p>
+                
               </div>
             </div>
           </div>
         </div>
+        <p className="text-[10px] uppercase tracking-wider opacity-90">
+                  Be A Part Of Our Network
+                </p>
       </Container>
     </Section>
   );
