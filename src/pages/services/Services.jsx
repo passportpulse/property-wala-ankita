@@ -11,22 +11,74 @@ import {
   CreditCard,
   ChevronDown,
   ArrowRight,
-  ArrowUpRight
+  ArrowUpRight,
+  Compass,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Container from "../../components/layout/Container";
 import Section from "../../components/layout/Section";
 
 const servicesData = [
-  { icon: <Shield size={18} />, title: "Property Due Diligence", content: "Thorough verification of property ownership, legal history, and regulatory compliance to eliminate risks and ensure secure transactions." },
-  { icon: <FileCheck size={18} />, title: "Title Verification", content: "Professional examination of title records, ownership chain, and legal validity to confirm clear and dispute-free property ownership." },
-  { icon: <Landmark size={18} />, title: "Property Registration", content: "Complete assistance with property registration, stamp duty processing, and coordination with authorities." },
-  { icon: <FileText size={18} />, title: "Documentation Drafting", content: "Preparation and review of sale agreements, contracts, and legal documents to ensure compliance and legal protection." },
-  { icon: <Scale size={18} />, title: "Valuation Services", content: "Accurate market valuation based on location, demand, regulatory framework, and professional assessment standards." },
-  { icon: <Users size={18} />, title: "JV Documentation", content: "Structured drafting and compliance management for joint development agreements and partnership projects." },
-  { icon: <ClipboardList size={18} />, title: "DPR Preparation", content: "Creation of Detailed Project Reports including feasibility, compliance, financial projections, and regulatory readiness." },
-  { icon: <Building size={18} />, title: "Government Liaison", content: "Coordination with municipal and regulatory authorities for approvals, permits, and statutory clearances." },
-  { icon: <CreditCard size={18} />, title: "Home Loan Assistance", content: "Support with loan documentation, eligibility evaluation, and coordination with financial institutions." },
+  {
+    icon: <Shield size={18} />,
+    title: "Property Due Diligence",
+    content:
+      "Thorough verification of property ownership, legal history, and regulatory compliance to eliminate risks and ensure secure transactions.",
+  },
+  {
+    icon: <FileCheck size={18} />,
+    title: "Title Verification",
+    content:
+      "Professional examination of title records, ownership chain, and legal validity to confirm clear and dispute-free property ownership.",
+  },
+  {
+    icon: <Landmark size={18} />,
+    title: "Property Registration",
+    content:
+      "Complete assistance with property registration, stamp duty processing, and coordination with authorities.",
+  },
+  {
+    icon: <FileText size={18} />,
+    title: "Documentation Drafting",
+    content:
+      "Preparation and review of sale agreements, contracts, and legal documents to ensure compliance and legal protection.",
+  },
+  {
+    icon: <Scale size={18} />,
+    title: "Valuation Services",
+    content:
+      "Accurate market valuation based on location, demand, regulatory framework, and professional assessment standards.",
+  },
+  {
+    icon: <Users size={18} />,
+    title: "JV Documentation",
+    content:
+      "Structured drafting and compliance management for joint development agreements and partnership projects.",
+  },
+  {
+    icon: <ClipboardList size={18} />,
+    title: "DPR Preparation",
+    content:
+      "Creation of Detailed Project Reports including feasibility, compliance, financial projections, and regulatory readiness.",
+  },
+  {
+    icon: <Building size={18} />,
+    title: "Government Liaison",
+    content:
+      "Coordination with municipal and regulatory authorities for approvals, permits, and statutory clearances.",
+  },
+  {
+    icon: <CreditCard size={18} />,
+    title: "Home Loan Assistance",
+    content:
+      "Support with loan documentation, eligibility evaluation, and coordination with financial institutions.",
+  },
+  {
+    icon: <Compass size={18} />,
+    title: "Vastu Consultancy",
+    content:
+      "Professional guidance to align your property with Vastu principles for positive energy and prosperity.",
+  },
 ];
 
 const Services = () => {
@@ -35,7 +87,10 @@ const Services = () => {
   const navigate = useNavigate();
 
   return (
-    <Section className="bg-[#f8fafc] font-poppins text-slate-800 py-10" size="small">
+    <Section
+      className="bg-[#f8fafc] font-poppins text-slate-800 py-10"
+      size="small"
+    >
       <Container>
         {/* HEADER SECTION */}
         <div className="relative mb-8 lg:mb-12 border-l-4 border-dark-orange pl-4 lg:pl-8">
@@ -99,8 +154,9 @@ const Services = () => {
           >
             <div className="px-5 lg:px-8 pb-6 border-t border-slate-50 pt-4">
               <p className="text-xs lg:text-base text-slate-600 leading-relaxed italic">
-                "Complete building plan approvals, licences, mutation processing, 
-                and all statutory compliance requirements handled by experts."
+                "Complete building plan approvals, licences, mutation
+                processing, and all statutory compliance requirements handled by
+                experts."
               </p>
 
               <a
@@ -123,10 +179,12 @@ const Services = () => {
               const isOpen = openIndex === index;
 
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`transition-all duration-300 rounded-xl ${
-                    isOpen ? "bg-white border border-slate-200 shadow-sm" : "bg-transparent border border-transparent"
+                    isOpen
+                      ? "bg-white border border-slate-200 shadow-sm"
+                      : "bg-transparent border border-transparent"
                   }`}
                 >
                   <button
@@ -134,15 +192,21 @@ const Services = () => {
                     className="w-full flex justify-between items-center p-3 lg:p-4 text-left"
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg transition-colors ${
-                        isOpen ? "bg-dark-orange text-white" : "bg-white border border-slate-100 text-dark-orange shadow-sm"
-                      }`}>
+                      <div
+                        className={`p-2 rounded-lg transition-colors ${
+                          isOpen
+                            ? "bg-dark-orange text-white"
+                            : "bg-white border border-slate-100 text-dark-orange shadow-sm"
+                        }`}
+                      >
                         {service.icon}
                       </div>
 
-                      <span className={`text-[13px] lg:text-base font-bold transition-colors ${
-                        isOpen ? "text-slate-900" : "text-slate-600"
-                      }`}>
+                      <span
+                        className={`text-[13px] lg:text-base font-bold transition-colors ${
+                          isOpen ? "text-slate-900" : "text-slate-600"
+                        }`}
+                      >
                         {service.title}
                       </span>
                     </div>
@@ -150,7 +214,9 @@ const Services = () => {
                     <ChevronDown
                       size={16}
                       className={`transition-transform duration-300 ${
-                        isOpen ? "rotate-180 text-dark-orange" : "text-slate-300"
+                        isOpen
+                          ? "rotate-180 text-dark-orange"
+                          : "text-slate-300"
                       }`}
                     />
                   </button>
