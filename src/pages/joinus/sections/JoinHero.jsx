@@ -24,30 +24,28 @@ const JoinHero = () => {
             </div>
           </div>
         </div>
-       <div className="grid grid-cols-12 gap-3 md:gap-10 items-stretch">
-  
-  {/* LEFT SIDE */}
-  <div className="col-span-7 flex">
-    <div className="bg-white rounded-lg md:rounded-xl p-3 md:p-6 shadow-sm h-full flex items-center">
-      <p className="text-xs md:text-base text-slate-700 leading-snug md:leading-relaxed">
-        Join a trusted real estate network for independent brokers who value credibility and long-term success.
-      </p>
-    </div>
-  </div>
+        <div className="grid grid-cols-12 items-stretch">
+          {/* LEFT SIDE */}
+          <div className="col-span-6 flex">
+            <div className="bg-white rounded-l-lg md:rounded-xl p-3 md:p-6 shadow-sm h-full flex items-center">
+              <p className="text-xs md:text-base text-slate-700 leading-snug md:leading-relaxed">
+                Join a trusted real estate network for independent brokers who
+                value credibility and long-term success.
+              </p>
+            </div>
+          </div>
 
-  {/* RIGHT SIDE */}
-  <div className="col-span-5 flex">
-    <div className="rounded-lg md:rounded-xl bg-[#efae2e] shadow-md h-full w-full flex items-center justify-center p-2 md:p-4">
-      <img
-        src={logo}
-        alt="Real estate professionals"
-        className="w-full h-full object-contain"
-      />
-    </div>
-  </div>
-
-</div>
-
+          {/* RIGHT SIDE */}
+          <div className="col-span-6 flex">
+            <div className="rounded-r-lg md:rounded-xl bg-dark-orange shadow-md h-full w-full flex items-center justify-center p-2 md:p-4">
+              <img
+                src={logo}
+                alt="Real estate professionals"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
 
         <p className="text-xs uppercase tracking-wider text-dark-orange text-center mt-6">
           Be A Part Of Our Network
