@@ -20,15 +20,15 @@ import { states, citiesInWB, placesInWB } from "../../data/locations";
 export default function Rent() {
   const [showResults, setShowResults] = useState(false);
 
-  // FORM STATE
+  // FORM STATE - Initialized to 0 and 80k
   const [formData, setFormData] = useState({
     state: "West Bengal",
     city: "Durgapur",
     loc: "City Centre",
     type: "PG / Co-living",
     bed: "1 BHK",
-    minBud: 5000,
-    maxBud: 25000,
+    minBud: 0,
+    maxBud: 80000,
     fur: "Semi-furnished",
   });
 
@@ -82,8 +82,13 @@ export default function Rent() {
                         }
                       >
                         {states.map((s) => (
-                          <option key={s.id} value={s.name}>
-                            {s.name}
+                          <option
+                            key={s.id}
+                            value={s.name}
+                            disabled={s.name !== "West Bengal"} // Disables everything except West Bengal
+                          >
+                            {s.name}{" "}
+                            {s.name !== "West Bengal" ? "(Coming Soon)" : ""}
                           </option>
                         ))}
                       </select>
@@ -135,70 +140,99 @@ export default function Rent() {
                 </section>
 
                 <div className="grid md:grid-cols-2 gap-10 pt-6 border-t border-slate-50">
-                  {/* 02. BUDGET SLIDER SECTION */}
-<section className="space-y-6">
-  <div className="flex justify-between items-center">
-    <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
-      <Wallet size={12} /> 02. Monthly Budget
-    </div>
-    <span className="text-[10px] font-black text-slate-900 bg-orange-50 px-3 py-1 rounded-full border border-orange-100">
-      ₹{formData.minBud >= 80000 ? "80K+" : formData.minBud.toLocaleString()} — 
-      ₹{formData.maxBud >= 80000 ? "80K+" : formData.maxBud.toLocaleString()}
-    </span>
-  </div>
+                  {/* 02. UPDATED BUDGET SLIDER SECTION */}
+                  <section className="space-y-6">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
+                        <Wallet size={12} /> 02. Monthly Budget
+                      </div>
+                      <span className="text-[10px] font-black text-slate-900 bg-orange-50 px-3 py-1 rounded-full border border-orange-100">
+                        ₹
+                        {formData.minBud === 0
+                          ? "0"
+                          : formData.minBud >= 80000
+                            ? "80K+"
+                            : `${formData.minBud / 1000}K`}{" "}
+                        — ₹
+                        {formData.maxBud >= 80000
+                          ? "80K+"
+                          : `${formData.maxBud / 1000}K`}
+                      </span>
+                    </div>
 
-  <div className="relative h-10 flex items-center px-2">
-    {/* Base Track */}
-    <div className="absolute w-[calc(100%-16px)] h-1 bg-slate-100 rounded-full" />
-    
-    {/* Active Range Highlight */}
-    <div 
-      className="absolute h-1 bg-[#efae2e] rounded-full transition-all duration-150"
-      style={{
-        left: `${((formData.minBud - 0) / (80000 - 0)) * 100}%`,
-        right: `${100 - ((formData.maxBud - 0) / (80000 - 0)) * 100}%`
-      }}
-    />
+                    <div className="relative h-10 flex items-center">
+                      {/* 1. Base Track - Using w-full for perfect alignment */}
+                      <div className="absolute w-full h-1 bg-slate-100 rounded-full" />
 
-    {/* Breakpoint Ticks */}
-    <div className="absolute w-[calc(100%-16px)] flex justify-between px-0.5">
-      {[0, 20000, 40000, 60000, 80000].map((tick) => (
-        <div key={tick} className="flex flex-col items-center gap-2">
-          <div className={`w-1 h-1 rounded-full ${formData.maxBud >= tick && formData.minBud <= tick ? 'bg-orange-400' : 'bg-slate-300'}`} />
-          <span className="text-[7px] font-bold text-slate-400 mt-4 uppercase">
-            {tick === 0 ? "0" : tick === 80000 ? "80K+" : `${tick/1000}K`}
-          </span>
-        </div>
-      ))}
-    </div>
+                      {/* 2. Active Range Highlight - Improved Math */}
+                      <div
+                        className="absolute h-1 bg-[#efae2e] rounded-full z-10"
+                        style={{
+                          left: `${(formData.minBud / 80000) * 100}%`,
+                          width: `${((formData.maxBud - formData.minBud) / 80000) * 100}%`,
+                        }}
+                      />
 
-    {/* Dual Range Inputs */}
-    <input
-      type="range"
-      min="0"
-      max="80000"
-      step="1000"
-      value={formData.minBud}
-      onChange={(e) => {
-        const val = Math.min(parseInt(e.target.value), formData.maxBud - 5000);
-        setFormData({ ...formData, minBud: val });
-      }}
-      className="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-1 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#efae2e] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md"
-    />
-    <input
-      type="range"
-      min="0"
-      max="80000"
-      step="1000"
-      value={formData.maxBud}
-      onChange={(e) => {
-        const val = Math.max(parseInt(e.target.value), formData.minBud + 5000);
-        setFormData({ ...formData, maxBud: val });
-      }}
-      className="absolute w-full appearance-none bg-transparent pointer-events-none z-20 h-1 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#efae2e] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md"
-    />
-  </div>
-</section>
+                      {/* 3. Breakpoint Ticks & Labels - Shifted to match thumb center */}
+                      <div className="absolute w-full flex justify-between px-[2px]">
+                        {[0, 20000, 40000, 60000, 80000].map((tick) => (
+                          <div
+                            key={tick}
+                            className="flex flex-col items-center relative"
+                          >
+                            <div
+                              className={`w-1 h-1 rounded-full transition-colors duration-300 ${
+                                tick >= formData.minBud &&
+                                tick <= formData.maxBud
+                                  ? "bg-orange-400"
+                                  : "bg-slate-300"
+                              }`}
+                            />
+                            <span className="text-[7px] font-bold text-slate-400 mt-5 absolute whitespace-nowrap uppercase tracking-tighter">
+                              {tick === 0
+                                ? "₹0"
+                                : tick === 80000
+                                  ? "80K+"
+                                  : `${tick / 1000}K`}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* 4. Range Inputs - Pure w-full with zero padding */}
+                      <input
+                        type="range"
+                        min="0"
+                        max="80000"
+                        step="1000"
+                        value={formData.minBud}
+                        onChange={(e) => {
+                          const val = Math.min(
+                            parseInt(e.target.value),
+                            formData.maxBud - 1000,
+                          );
+                          setFormData({ ...formData, minBud: val });
+                        }}
+                        className="absolute w-full appearance-none bg-transparent pointer-events-none z-30 h-1 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#efae2e] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md"
+                      />
+                      <input
+                        type="range"
+                        min="0"
+                        max="80000"
+                        step="1000"
+                        value={formData.maxBud}
+                        onChange={(e) => {
+                          const val = Math.max(
+                            parseInt(e.target.value),
+                            formData.minBud + 1000,
+                          );
+                          setFormData({ ...formData, maxBud: val });
+                        }}
+                        className="absolute w-full appearance-none bg-transparent pointer-events-none z-30 h-1 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-[#efae2e] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:shadow-md"
+                      />
+                    </div>
+                  </section>
+
                   {/* 03. PROPERTY SPECS */}
                   <section className="space-y-6">
                     <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
@@ -260,7 +294,7 @@ export default function Rent() {
             </div>
           </>
         ) : (
-          /* PAGE 2: RESULTS */
+          /* PAGE 2: RESULTS - Same as original */
           <>
             <div className="flex items-center justify-between mb-8">
               <button
