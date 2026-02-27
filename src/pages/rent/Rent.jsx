@@ -4,6 +4,7 @@ import { placesInWB } from "../../data/locations";
 import { useState } from "react";
 import Section from "../../components/layout/Section";
 import Container from "../../components/layout/Container";
+
 export default function Rent() {
   const [showResults, setShowResults] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,18 +26,17 @@ export default function Rent() {
       <Container>
         {!showResults ? (
           <>
-            {/* Header Content Here */}
-            <RentForm 
-              formData={formData} 
-              setFormData={setFormData} 
-              availablePlaces={availablePlaces} 
-              onSubmit={() => setShowResults(true)} 
+            <RentForm
+              formData={formData}
+              setFormData={setFormData}
+              availablePlaces={availablePlaces}
+              onSubmit={() => setShowResults(true)}
             />
           </>
         ) : (
-          <RentResults 
-            formData={formData} 
-            onBack={() => setShowResults(false)} 
+          <RentResults
+            formData={formData}
+            onBack={() => setShowResults(false)}
           />
         )}
       </Container>
