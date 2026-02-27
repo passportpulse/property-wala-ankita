@@ -70,18 +70,18 @@ export default function FilterHeader({ activeTab, setActiveTab }) {
 
   return (
     <Section
-  className={`sticky z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 transition-all duration-300 ${
-    isScrolled 
-      ? "top-24 shadow-md mt-2"  // Moves the "sticky" position down when scrolled
-      : "top-20 mt-0"            // Original sticky position
-  }`}
->
+      className={`sticky z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 transition-all duration-300 ${
+        isScrolled
+          ? "top-24 shadow-md mt-2" // Moves the "sticky" position down when scrolled
+          : "top-20 mt-0" // Original sticky position
+      }`}
+    >
       <Container>
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between gap-4 mb-4">
           <div>
             <h1 className="text-lg font-black uppercase tracking-tight">
-              Durgapur <span className="text-dark-orange">Inventory</span>
+              Your City <span className="text-dark-orange">Inventory</span>
             </h1>
 
             <p className="text-[9px] uppercase tracking-widest text-slate-400 font-bold">
