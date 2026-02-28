@@ -130,27 +130,9 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                   ))}
                 </select>
               </div>
-
-              {/* MOVE IN */}
-              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100">
-                <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
-                  Move-in
-                </label>
-                <select
-                  className="w-full bg-transparent text-xs font-bold outline-none cursor-pointer"
-                  value={formData.moveTime || "Immediately"}
-                  onChange={(e) => handleChange("moveTime", e.target.value)}
-                >
-                  <option>Immediately</option>
-                  <option>Within 1 Week</option>
-                  <option>Within 2 Weeks</option>
-                  <option>Within 1 Month</option>
-                  <option>2-3 Months</option>
-                </select>
-              </div>
             </div>
           </section>
-          {/* 01. LOCATION & TIMELINE */}
+        
           <section className="space-y-4">
             <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
               <MapPin size={14} className="text-orange-500" />Relocation Time
