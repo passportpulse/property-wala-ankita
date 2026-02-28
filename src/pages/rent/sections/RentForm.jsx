@@ -132,10 +132,11 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
               </div>
             </div>
           </section>
-        
+
           <section className="space-y-4">
             <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
-              <MapPin size={14} className="text-orange-500" />Relocation Time
+              <MapPin size={14} className="text-orange-500" />
+              Relocation Time
             </div>
             {/* MOVE IN */}
             <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100">
@@ -144,9 +145,10 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
               </label>
               <select
                 className="w-full bg-transparent text-xs font-bold outline-none cursor-pointer"
-                value={formData.moveTime || "Immediately"}
+                value={formData.moveTime || ""}
                 onChange={(e) => handleChange("moveTime", e.target.value)}
               >
+                <option value="">Select</option>
                 <option>Immediately</option>
                 <option>Within 1 Week</option>
                 <option>Within 2 Weeks</option>
@@ -535,17 +537,28 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
             })()}
           </section>
 
-          {/* 04. CONFIGURATION GRID */}
+          {/* 04. PROPERTY DETAILS */}
+
           <section className="pt-6 border-t border-slate-50 space-y-4">
             <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
               <Settings2 size={14} className="text-orange-600" />
-              Configuration
+              Property Details
             </div>
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Property */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${
+        formData.type && formData.type !== "flat"
+          ? "bg-orange-50 border-orange-200"
+          : "bg-slate-50 border-transparent"
+      }`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Property
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
                   value={formData.type || "flat"}
@@ -563,16 +576,22 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                 </select>
               </div>
 
+              {/* BHK */}
               {isResidential && (
-                <div className="bg-orange-50/50 p-2.5 rounded-xl border border-orange-100">
-                  <label className="text-[8px] font-black uppercase text-orange-600 block mb-1">
+                <div
+                  className={`p-2.5 rounded-xl border transition
+        ${formData.bed ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+                >
+                  <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                     BHK / 1RK
                   </label>
+
                   <select
                     className="w-full bg-transparent text-[11px] font-bold outline-none"
-                    value={formData.bed || "1 BHK"}
+                    value={formData.bed || ""}
                     onChange={(e) => handleChange("bed", e.target.value)}
                   >
+                    <option value="">Select</option>
                     <option>1 RK</option>
                     <option>1 BHK</option>
                     <option>2 BHK</option>
@@ -583,31 +602,42 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                 </div>
               )}
 
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Furnishing */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${formData.fur ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Furnishing
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.fur || "Unfurnished"}
+                  value={formData.fur || ""}
                   onChange={(e) => handleChange("fur", e.target.value)}
                 >
+                  <option value="">Select</option>
                   <option>Unfurnished</option>
                   <option>Semi-Furnished</option>
                   <option>Fully Furnished</option>
                 </select>
               </div>
 
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Floor */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${formData.floor ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Floor
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.floor || "Any"}
+                  value={formData.floor || ""}
                   onChange={(e) => handleChange("floor", e.target.value)}
                 >
-                  <option>Any</option>
+                  <option value="">Any</option>
                   <option>Ground</option>
                   <option>1</option>
                   <option>2</option>
@@ -615,15 +645,21 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                 </select>
               </div>
 
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Bathrooms */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${formData.bath ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Bathrooms
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.bath || "1"}
+                  value={formData.bath || ""}
                   onChange={(e) => handleChange("bath", e.target.value)}
                 >
+                  <option value="">Select</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -631,15 +667,21 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                 </select>
               </div>
 
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Tenant Type */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${formData.tenant ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Tenant Type
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.tenant || "Family"}
+                  value={formData.tenant || ""}
                   onChange={(e) => handleChange("tenant", e.target.value)}
                 >
+                  <option value="">Select</option>
                   <option>Family</option>
                   <option>Student</option>
                   <option>Working Professionals</option>
@@ -647,15 +689,21 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                 </select>
               </div>
 
-              <div className="bg-slate-50 p-2.5 rounded-xl">
+              {/* Property Age */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+      ${formData.age ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Property Age
                 </label>
+
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.age || "0-1 Years"}
+                  value={formData.age || ""}
                   onChange={(e) => handleChange("age", e.target.value)}
                 >
+                  <option value="">Select</option>
                   <option>0-1 Years</option>
                   <option>1-5 Years</option>
                   <option>5-10 Years</option>
@@ -696,10 +744,10 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           </section>
 
           {/* SUBMIT */}
-          <div className="pt-4">
+          <div className="pt-4 flex justify-center">
             <button
               onClick={onSubmit}
-              className="w-full bg-dark-orange text-white py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-orange-500 transition-all shadow-xl group"
+              className="bg-dark-orange text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-orange-500 transition-all shadow-xl group"
             >
               Show Listings
               <ChevronRight

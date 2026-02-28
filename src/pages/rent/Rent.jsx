@@ -11,11 +11,11 @@ export default function Rent() {
     state: "West Bengal",
     city: "Kolkata",
     loc: "Salt Lake",
-    type: "Flat",
-    bed: "2 BHK",
+    // type: "Flat",
+    // bed: "2 BHK",
     minBud: 0,
     maxBud: 80000,
-    fur: "Semi-furnished",
+    // fur: "Semi-furnished",
   });
 
   // Calculate available places here in the parent
