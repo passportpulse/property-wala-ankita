@@ -150,147 +150,198 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
               </div>
             </div>
           </section>
-          {/* 02. BUDGET SLIDER SECTION */}
-          <section className="space-y-6 pt-4 select-none">
-            {(() => {
-              const minBudgetNum = Number(formData.minBud) || 0;
-              const maxBudgetNum = Number(formData.maxBud) || 500000;
-              const isInvalid = minBudgetNum > maxBudgetNum;
+{/* 02. BUDGET SLIDER SECTION */}
+<section className="space-y-4 sm:space-y-6 pt-4 select-none">
+  {(() => {
+    const minBudgetNum = Number(formData.minBud) || 0;
+    const maxBudgetNum = Number(formData.maxBud) || 500000;
+    const isInvalid = minBudgetNum > maxBudgetNum;
 
-              return (
-                <>
-                  {/* Header & Manual Inputs */}
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
-                        <Wallet size={12} /> Monthly Budget
-                      </div>
-                      <p className="text-[10px] text-slate-400 font-medium tracking-tight">
-                        Type freely or use the slider
-                      </p>
-                    </div>
+    return (
+      <>
+        {/* Header & Manual Inputs */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
 
-                    {/* Manual Input Fields */}
-                    <div className="flex flex-col items-end gap-1">
-                      <div className="flex items-center gap-2">
-                        <div className="relative group">
-                          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
-                            ₹
-                          </span>
+          {/* Title */}
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-orange-600">
+              <Wallet size={12} className="sm:w-[14px] sm:h-[14px]" />
+              Monthly Budget
+            </div>
 
-                          <input
-                            type="number"
-                            value={formData.minBud ?? ""}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                minBud: e.target.value,
-                              })
-                            }
-                            onFocus={(e) => e.target.select()}
-                            className={`w-28 pl-6 pr-2 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 
-                  ${
+            <p className="text-[9px] sm:text-[10px] text-slate-400 font-medium tracking-tight">
+              Type freely or use the slider
+            </p>
+          </div>
+
+          {/* Inputs */}
+          <div className="flex flex-col items-start sm:items-end gap-1 w-full sm:w-auto">
+
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+
+              {/* Min */}
+              <div className="relative group flex-1 sm:flex-none">
+                <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
+                  ₹
+                </span>
+
+                <input
+                  type="number"
+                  value={formData.minBud ?? ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      minBud: e.target.value,
+                    })
+                  }
+                  onFocus={(e) => e.target.select()}
+                  className={`w-full sm:w-28 pl-6 pr-2 py-2 text-[10px] sm:text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 ${
                     isInvalid
                       ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
                       : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
                   }`}
-                          />
-                        </div>
+                />
+              </div>
 
-                        <span className="text-slate-300 font-bold text-xs">
-                          —
-                        </span>
+              <span className="text-slate-300 font-bold text-xs">—</span>
 
-                        <div className="relative group">
-                          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
-                            ₹
-                          </span>
+              {/* Max */}
+              <div className="relative group flex-1 sm:flex-none">
+                <span className="absolute left-2 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
+                  ₹
+                </span>
 
-                          <input
-                            type="number"
-                            value={formData.maxBud ?? ""}
-                            onChange={(e) =>
-                              setFormData({
-                                ...formData,
-                                maxBud: e.target.value,
-                              })
-                            }
-                            onFocus={(e) => e.target.select()}
-                            className={`w-28 pl-6 pr-2 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 
-                  ${
+                <input
+                  type="number"
+                  value={formData.maxBud ?? ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      maxBud: e.target.value,
+                    })
+                  }
+                  onFocus={(e) => e.target.select()}
+                  className={`w-full sm:w-28 pl-6 pr-2 py-2 text-[10px] sm:text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 ${
                     isInvalid
                       ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
                       : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
                   }`}
-                          />
-                        </div>
-                      </div>
+                />
+              </div>
+            </div>
 
-                      {/* ERROR ALERT */}
-                      {isInvalid && (
-                        <span className="text-[9px] font-bold text-red-500 uppercase animate-pulse">
-                          ⚠️ Min budget cannot exceed Max
-                        </span>
-                      )}
-                    </div>
-                  </div>
+            {isInvalid && (
+              <span className="text-[8px] sm:text-[9px] font-bold text-red-500 uppercase animate-pulse">
+                ⚠️ Min budget cannot exceed Max
+              </span>
+            )}
+          </div>
+        </div>
 
-                  {/* Slider Component */}
-                  <div className="relative h-12 flex items-center px-2">
-                    <div className="absolute left-2 right-2 h-2 bg-slate-100 rounded-full" />
+        {/* Slider */}
+        <div className="relative h-10 sm:h-12 flex items-center px-1 sm:px-2">
 
-                    {/* Active Range */}
-                    <div
-                      className={`absolute h-2 rounded-full transition-all duration-75 shadow-sm 
-            ${isInvalid ? "bg-red-400" : "bg-orange-400"}`}
-                      style={{
-                        left: `${Math.max(0, Math.min(100, (minBudgetNum / 500000) * 100))}%`,
-                        width: `${Math.max(
-                          0,
-                          Math.min(
-                            100,
-                            ((maxBudgetNum - minBudgetNum) / 500000) * 100,
-                          ),
-                        )}%`,
-                      }}
-                    />
+          {/* Track */}
+          <div className="absolute left-1 sm:left-2 right-1 sm:right-2 h-2 bg-slate-100 rounded-full" />
 
-                    {/* Min Slider */}
-                    <input
-                      type="range"
-                      min="0"
-                      max="500000"
-                      step="1000"
-                      value={minBudgetNum}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          minBud: Number(e.target.value),
-                        })
-                      }
-                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab"
-                    />
+          {/* Active Range */}
+          <div
+            className={`absolute h-2 rounded-full transition-all duration-75 shadow-sm ${
+              isInvalid ? "bg-red-400" : "bg-orange-400"
+            }`}
+            style={{
+              left: `${Math.max(0, Math.min(100, (minBudgetNum / 500000) * 100))}%`,
+              width: `${Math.max(
+                0,
+                Math.min(100, ((maxBudgetNum - minBudgetNum) / 500000) * 100)
+              )}%`,
+            }}
+          />
 
-                    {/* Max Slider */}
-                    <input
-                      type="range"
-                      min="0"
-                      max="500000"
-                      step="1000"
-                      value={maxBudgetNum}
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          maxBud: Number(e.target.value),
-                        })
-                      }
-                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab"
-                    />
-                  </div>
-                </>
-              );
-            })()}
-          </section>
+          {/* BREAKPOINTS */}
+          <div className="absolute left-1 sm:left-2 right-1 sm:right-2 flex justify-between px-[2px]">
+            {[0, 100000, 200000, 300000, 400000, 500000].map((tick) => (
+              <div key={tick} className="relative flex flex-col items-center">
+
+                <div
+                  className={`w-[1px] transition-all duration-300 ${
+                    tick >= minBudgetNum && tick <= maxBudgetNum
+                      ? "h-4 bg-orange-400"
+                      : "h-2 bg-slate-200"
+                  }`}
+                />
+
+                <span
+                  className={`absolute top-5 text-[7px] sm:text-[8px] font-bold tracking-tighter ${
+                    tick >= minBudgetNum && tick <= maxBudgetNum
+                      ? "text-orange-500"
+                      : "text-slate-400"
+                  }`}
+                >
+                  {tick === 0 ? "0" : `${tick / 100000}L`}
+                </span>
+
+              </div>
+            ))}
+          </div>
+
+          {/* Min Slider */}
+          <input
+            type="range"
+            min="0"
+            max="500000"
+            step="1000"
+            value={minBudgetNum}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                minBud: Number(e.target.value),
+              })
+            }
+            className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2
+            [&::-webkit-slider-thumb]:pointer-events-auto
+            [&::-webkit-slider-thumb]:appearance-none
+            [&::-webkit-slider-thumb]:w-5 sm:[&::-webkit-slider-thumb]:w-6
+            [&::-webkit-slider-thumb]:h-5 sm:[&::-webkit-slider-thumb]:h-6
+            [&::-webkit-slider-thumb]:bg-white
+            [&::-webkit-slider-thumb]:border-[3px] sm:[&::-webkit-slider-thumb]:border-[4px]
+            [&::-webkit-slider-thumb]:border-orange-400
+            [&::-webkit-slider-thumb]:rounded-full
+            [&::-webkit-slider-thumb]:cursor-grab"
+          />
+
+          {/* Max Slider */}
+          <input
+            type="range"
+            min="0"
+            max="500000"
+            step="1000"
+            value={maxBudgetNum}
+            onChange={(e) =>
+              setFormData({
+                ...formData,
+                maxBud: Number(e.target.value),
+              })
+            }
+            className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2
+            [&::-webkit-slider-thumb]:pointer-events-auto
+            [&::-webkit-slider-thumb]:appearance-none
+            [&::-webkit-slider-thumb]:w-5 sm:[&::-webkit-slider-thumb]:w-6
+            [&::-webkit-slider-thumb]:h-5 sm:[&::-webkit-slider-thumb]:h-6
+            [&::-webkit-slider-thumb]:bg-white
+            [&::-webkit-slider-thumb]:border-[3px] sm:[&::-webkit-slider-thumb]:border-[4px]
+            [&::-webkit-slider-thumb]:border-orange-400
+            [&::-webkit-slider-thumb]:rounded-full
+            [&::-webkit-slider-thumb]:cursor-grab"
+          />
+
+        </div>
+      </>
+    );
+  })()}
+</section>
+
+
 
           {/* 03. AREA SIZE SLIDER SECTION */}
           <section className="space-y-6 pt-6 border-t border-slate-50 select-none">
