@@ -29,6 +29,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
     "WiFi",
     "AC",
     "Pet Allowed",
+    "Purified Water",
   ];
 
   // Logic to show BHK/1RK only for residential types
@@ -550,7 +551,8 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
               <div
                 className={`p-2.5 rounded-xl border transition
       ${
-        formData.type && formData.type !== "flat"
+        // formData.type && formData.type !== "flat"
+        formData.type
           ? "bg-orange-50 border-orange-200"
           : "bg-slate-50 border-transparent"
       }`}
@@ -561,9 +563,10 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
 
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none"
-                  value={formData.type || "flat"}
+                  value={formData.type || ""}
                   onChange={(e) => handleChange("type", e.target.value)}
                 >
+                  <option value="">Select</option>
                   <option value="duplex">Duplex</option>
                   <option value="flat">Flat</option>
                   <option value="hall">Hall</option>
@@ -709,6 +712,52 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                   <option>5-10 Years</option>
                   <option>10-20 Years</option>
                   <option>20-50 Years</option>
+                </select>
+              </div>
+
+              {/* Tenure */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+  ${formData.tenure ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
+                <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
+                  Tenure
+                </label>
+
+                <select
+                  className="w-full bg-transparent text-[11px] font-bold outline-none"
+                  value={formData.tenure || ""}
+                  onChange={(e) => handleChange("tenure", e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option>6 Months</option>
+                  <option>11 Months</option>
+                  <option>1 Year</option>
+                  <option>2 Years</option>
+                  <option>3+ Years</option>
+                </select>
+              </div>
+
+              {/* Family Members */}
+              <div
+                className={`p-2.5 rounded-xl border transition
+  ${formData.family ? "bg-orange-50 border-orange-200" : "bg-slate-50 border-transparent"}`}
+              >
+                <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
+                  Family Members
+                </label>
+
+                <select
+                  className="w-full bg-transparent text-[11px] font-bold outline-none"
+                  value={formData.family || ""}
+                  onChange={(e) => handleChange("family", e.target.value)}
+                >
+                  <option value="">Select</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
                 </select>
               </div>
             </div>
