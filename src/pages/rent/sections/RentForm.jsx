@@ -30,6 +30,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
     "AC",
     "Pet Allowed",
   ];
+  
 
   // Logic to show BHK/1RK only for residential types
   const isResidential = ["flat", "house", "duplex", "pg / co-living"].includes(
@@ -150,271 +151,332 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
             </div>
           </section>
           {/* 02. BUDGET SLIDER SECTION */}
-         <section className="space-y-6 pt-4 select-none">
-  {/* Header & Manual Inputs */}
-  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-    <div className="space-y-1">
-      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
-        <Wallet size={12} /> Monthly Budget
-      </div>
-      <p className="text-[10px] text-slate-400 font-medium tracking-tight">
-        Precise range selection (₹1 steps)
-      </p>
-    </div>
+          <section className="space-y-6 pt-4 select-none">
+            {(() => {
+              const minBudgetNum = Number(formData.minBud) || 0;
+              const maxBudgetNum = Number(formData.maxBud) || 500000;
+              const isInvalid = minBudgetNum > maxBudgetNum;
 
-    {/* Manual Input Fields */}
-    <div className="flex items-center gap-2">
-      <div className="relative group">
-        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
-          ₹
-        </span>
-        <input
-          type="number"
-          value={formData.minBud === 0 ? "" : formData.minBud}
-          placeholder="0"
-          onChange={(e) => {
-            const val = Number(e.target.value);
-            const constrainedVal = Math.max(0, Math.min(val, (formData.maxBud || 500000) - 1));
-            setFormData({ ...formData, minBud: constrainedVal });
-          }}
-          className="w-28 pl-6 pr-2 py-2 text-[11px] font-black text-slate-800 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all shadow-sm"
-        />
-      </div>
-      <span className="text-slate-300 font-bold text-xs">—</span>
-      <div className="relative group">
-        <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
-          ₹
-        </span>
-        <input
-          type="number"
-          value={formData.maxBud === 0 ? "" : formData.maxBud}
-          placeholder="500000"
-          onChange={(e) => {
-            const val = Number(e.target.value);
-            const constrainedVal = Math.min(500000, Math.max(val, (formData.minBud || 0) + 1));
-            setFormData({ ...formData, maxBud: constrainedVal });
-          }}
-          className="w-28 pl-6 pr-2 py-2 text-[11px] font-black text-slate-800 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all shadow-sm"
-        />
-      </div>
-    </div>
-  </div>
+              return (
+                <>
+                  {/* Header & Manual Inputs */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
+                        <Wallet size={12} /> Monthly Budget
+                      </div>
+                      <p className="text-[10px] text-slate-400 font-medium tracking-tight">
+                        Type freely or use the slider
+                      </p>
+                    </div>
 
-  {/* Slider Component */}
-  <div className="relative h-12 flex items-center px-2">
-    {/* Base Track */}
-    <div className="absolute left-2 right-2 h-2 bg-slate-100 rounded-full" />
+                    {/* Manual Input Fields */}
+                    <div className="flex flex-col items-end gap-1">
+                      <div className="flex items-center gap-2">
+                        <div className="relative group">
+                          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
+                            ₹
+                          </span>
 
-    {/* Active Range Highlight - FIXED INITIAL VISIBILITY */}
-    {/* Active Range Highlight - Bulletproof Version */}
-<div
-  className="absolute h-2 bg-orange-400 rounded-full transition-all duration-75 shadow-[0_0_15px_rgba(251,146,60,0.3)]"
-  style={{
-    left: `${
-      ((Number(formData.minBud) || 0) / 500000) * 100
-    }%`,
-    width: `${
-      ((Number(formData.maxBud || 500000) - Number(formData.minBud || 0)) / 500000) * 100
-    }%`,
-  }}
-/>
+                          <input
+                            type="number"
+                            value={formData.minBud ?? ""}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                minBud: e.target.value,
+                              })
+                            }
+                            onFocus={(e) => e.target.select()}
+                            className={`w-28 pl-6 pr-2 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 
+                  ${
+                    isInvalid
+                      ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
+                      : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
+                  }`}
+                          />
+                        </div>
 
-    {/* Granular Breakpoints */}
-    <div className="absolute left-2 right-2 flex justify-between px-[2px]">
-      {[0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000, 500000].map((tick) => (
-        <div key={tick} className="relative flex flex-col items-center">
-          <div className={`w-[1px] transition-all duration-300 ${tick >= (formData.minBud || 0) && tick <= (formData.maxBud || 500000) ? "h-4 bg-orange-400" : "h-2 bg-slate-200"}`} />
-          {(tick % 100000 === 0 || tick === 0) && (
-            <span className={`absolute top-5 text-[8px] font-bold uppercase tracking-tighter whitespace-nowrap transition-colors ${tick >= (formData.minBud || 0) && tick <= (formData.maxBud || 500000) ? "text-orange-500" : "text-slate-400"}`}>
-              {tick === 0 ? "0" : tick >= 100000 ? `${tick / 100000}L` : `${tick / 1000}K`}
-            </span>
-          )}
-        </div>
-      ))}
-    </div>
+                        <span className="text-slate-300 font-bold text-xs">
+                          —
+                        </span>
 
-    {/* Dual Inputs */}
-    <input
-      type="range"
-      min="0"
-      max="500000"
-      step="1"
-      value={formData.minBud || 0}
-      onChange={(e) => {
-        const val = Math.min(parseInt(e.target.value), (formData.maxBud || 500000) - 1);
-        setFormData({ ...formData, minBud: val });
-      }}
-      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:active:scale-90 [&::-webkit-slider-thumb]:transition-transform"
-    />
-    <input
-      type="range"
-      min="0"
-      max="500000"
-      step="1"
-      value={formData.maxBud || 500000}
-      onChange={(e) => {
-        const val = Math.max(parseInt(e.target.value), (formData.minBud || 0) + 1);
-        setFormData({ ...formData, maxBud: val });
-      }}
-      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:active:scale-90 [&::-webkit-slider-thumb]:transition-transform"
-    />
-  </div>
+                        <div className="relative group">
+                          <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[10px] font-bold text-slate-400 group-focus-within:text-orange-500 transition-colors">
+                            ₹
+                          </span>
 
-  {/* Dynamic Selection Summary */}
-  <div className="flex justify-center mt-2">
-    <div className="bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100">
-      <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest">
-        Selected: ₹{new Intl.NumberFormat("en-IN").format(formData.minBud || 0)} — ₹{new Intl.NumberFormat("en-IN").format(formData.maxBud || 500000)}
-      </p>
-    </div>
-  </div>
-</section>
+                          <input
+                            type="number"
+                            value={formData.maxBud ?? ""}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                maxBud: e.target.value,
+                              })
+                            }
+                            onFocus={(e) => e.target.select()}
+                            className={`w-28 pl-6 pr-2 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2 
+                  ${
+                    isInvalid
+                      ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
+                      : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
+                  }`}
+                          />
+                        </div>
+                      </div>
+
+                      {/* ERROR ALERT */}
+                      {isInvalid && (
+                        <span className="text-[9px] font-bold text-red-500 uppercase animate-pulse">
+                          ⚠️ Min budget cannot exceed Max
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Slider Component */}
+                  <div className="relative h-12 flex items-center px-2">
+                    <div className="absolute left-2 right-2 h-2 bg-slate-100 rounded-full" />
+
+                    {/* Active Range */}
+                    <div
+                      className={`absolute h-2 rounded-full transition-all duration-75 shadow-sm 
+            ${isInvalid ? "bg-red-400" : "bg-orange-400"}`}
+                      style={{
+                        left: `${Math.max(0, Math.min(100, (minBudgetNum / 500000) * 100))}%`,
+                        width: `${Math.max(
+                          0,
+                          Math.min(
+                            100,
+                            ((maxBudgetNum - minBudgetNum) / 500000) * 100,
+                          ),
+                        )}%`,
+                      }}
+                    />
+
+                    {/* Min Slider */}
+                    <input
+                      type="range"
+                      min="0"
+                      max="500000"
+                      step="1000"
+                      value={minBudgetNum}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          minBud: Number(e.target.value),
+                        })
+                      }
+                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab"
+                    />
+
+                    {/* Max Slider */}
+                    <input
+                      type="range"
+                      min="0"
+                      max="500000"
+                      step="1000"
+                      value={maxBudgetNum}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          maxBud: Number(e.target.value),
+                        })
+                      }
+                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab"
+                    />
+                  </div>
+                </>
+              );
+            })()}
+          </section>
+
           {/* 03. AREA SIZE SLIDER SECTION */}
           <section className="space-y-6 pt-6 border-t border-slate-50 select-none">
-            {/* Header & Manual Inputs */}
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
-                  <Ruler size={12} /> 03. Area Size (Sq.ft)
-                </div>
-                <p className="text-[10px] text-slate-400 font-medium tracking-tight">
-                  Enter size or slide for range
-                </p>
-              </div>
+            {(() => {
+              const minSqftNum = Number(formData.minSqft) || 100;
+              const maxSqftNum = Number(formData.maxSqft) || 60000;
+              const isInvalid = minSqftNum > maxSqftNum;
 
-              {/* Manual Input Fields for Area */}
-              <div className="flex items-center gap-2">
-                <div className="relative group">
-                  <input
-                    type="number"
-                    // Fix: Shows empty string instead of 0 for easier typing
-                    value={formData.minSqft === 0 ? "" : formData.minSqft}
-                    placeholder="100"
-                    onChange={(e) => {
-                      const val = Number(e.target.value);
-                      const constrainedVal = Math.max(
-                        100,
-                        Math.min(val, (formData.maxSqft || 60000) - 1),
-                      );
-                      setFormData({ ...formData, minSqft: constrainedVal });
-                    }}
-                    className="w-28 px-3 py-2 text-[11px] font-black text-slate-800 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all shadow-sm"
-                  />
-                  <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[8px] font-bold text-slate-300">
-                    SQFT
-                  </span>
-                </div>
-                <span className="text-slate-300 font-bold text-xs">—</span>
-                <div className="relative group">
-                  <input
-                    type="number"
-                    value={formData.maxSqft === 0 ? "" : formData.maxSqft}
-                    placeholder="60000"
-                    onChange={(e) => {
-                      const val = Number(e.target.value);
-                      const constrainedVal = Math.min(
-                        60000,
-                        Math.max(val, (formData.minSqft || 100) + 1),
-                      );
-                      setFormData({ ...formData, maxSqft: constrainedVal });
-                    }}
-                    className="w-28 px-3 py-2 text-[11px] font-black text-slate-800 bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all shadow-sm"
-                  />
-                  <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[8px] font-bold text-slate-300">
-                    SQFT
-                  </span>
-                </div>
-              </div>
-            </div>
+              return (
+                <>
+                  {/* Header & Manual Inputs */}
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
+                        <Ruler size={12} /> 03. Area Size (Sq.ft)
+                      </div>
+                      <p className="text-[10px] text-slate-400 font-medium tracking-tight">
+                        Enter size or slide for range
+                      </p>
+                    </div>
 
-            {/* Slider Component */}
-            <div className="relative h-12 flex items-center px-2">
-              {/* Base Track */}
-              <div className="absolute left-2 right-2 h-2 bg-slate-100 rounded-full" />
+                    {/* Manual Input Fields */}
+                    <div className="flex items-center gap-2">
+                      {/* MIN */}
+                      <div className="relative group">
+                        <input
+                          type="number"
+                          value={formData.minSqft ?? ""}
+                          placeholder="100"
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              minSqft: e.target.value,
+                            })
+                          }
+                          onFocus={(e) => e.target.select()}
+                          className={`w-28 px-3 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2
+                ${
+                  isInvalid
+                    ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
+                    : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
+                }`}
+                        />
+                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[8px] font-bold text-slate-300">
+                          SQFT
+                        </span>
+                      </div>
 
-              {/* Active Range Highlight */}
-              {/* Active Range Highlight */}
-              <div
-                className="absolute h-2 bg-orange-400 rounded-full transition-all duration-75 shadow-[0_0_15px_rgba(251,146,60,0.3)]"
-                style={{
-                  // We add fallbacks (|| 100) and (|| 60000) to ensure the line renders on load
-                  left: `${(((formData.minSqft || 100) - 100) / (60000 - 100)) * 100}%`,
-                  width: `${(((formData.maxSqft || 60000) - (formData.minSqft || 100)) / (60000 - 100)) * 100}%`,
-                }}
-              />
+                      <span className="text-slate-300 font-bold text-xs">
+                        —
+                      </span>
 
-              {/* Breakpoints (Granular scale for Area) */}
-              <div className="absolute left-2 right-2 flex justify-between px-[2px]">
-                {[100, 15000, 30000, 45000, 60000].map((tick) => (
-                  <div
-                    key={tick}
-                    className="relative flex flex-col items-center"
-                  >
-                    <div
-                      className={`w-[1px] transition-all duration-300 ${tick >= formData.minSqft && tick <= formData.maxSqft ? "h-4 bg-orange-400" : "h-2 bg-slate-200"}`}
-                    />
-                    <span
-                      className={`absolute top-5 text-[8px] font-bold uppercase tracking-tighter whitespace-nowrap transition-colors ${tick >= formData.minSqft && tick <= formData.maxSqft ? "text-orange-500" : "text-slate-400"}`}
-                    >
-                      {tick >= 1000 ? `${tick / 1000}K` : tick}
-                    </span>
+                      {/* MAX */}
+                      <div className="relative group">
+                        <input
+                          type="number"
+                          value={formData.maxSqft ?? ""}
+                          placeholder="60000"
+                          onChange={(e) =>
+                            setFormData({
+                              ...formData,
+                              maxSqft: e.target.value,
+                            })
+                          }
+                          onFocus={(e) => e.target.select()}
+                          className={`w-28 px-3 py-2 text-[11px] font-black rounded-xl border transition-all shadow-sm focus:outline-none focus:ring-2
+                ${
+                  isInvalid
+                    ? "border-red-300 bg-red-50 focus:ring-red-100 text-red-600"
+                    : "border-slate-200 bg-white focus:border-orange-400 focus:ring-orange-100 text-slate-800"
+                }`}
+                        />
+                        <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[8px] font-bold text-slate-300">
+                          SQFT
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Dual Thumb Inputs */}
-              <input
-                type="range"
-                min="100"
-                max="60000"
-                step="1"
-                value={formData.minSqft || 100}
-                onChange={(e) => {
-                  const val = Math.min(
-                    parseInt(e.target.value),
-                    (formData.maxSqft || 60000) - 1,
-                  );
-                  setFormData({ ...formData, minSqft: val });
-                }}
-                className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 
-        [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
-        [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white 
-        [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 
-        [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab 
-        [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:active:scale-90 [&::-webkit-slider-thumb]:transition-transform"
-              />
-              <input
-                type="range"
-                min="100"
-                max="60000"
-                step="1"
-                value={formData.maxSqft || 60000}
-                onChange={(e) => {
-                  const val = Math.max(
-                    parseInt(e.target.value),
-                    (formData.minSqft || 100) + 1,
-                  );
-                  setFormData({ ...formData, maxSqft: val });
-                }}
-                className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2 
-        [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none 
-        [&::-webkit-slider-thumb]:w-6 [&::-webkit-slider-thumb]:h-6 [&::-webkit-slider-thumb]:bg-white 
-        [&::-webkit-slider-thumb]:border-[4px] [&::-webkit-slider-thumb]:border-orange-400 
-        [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-grab 
-        [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:active:scale-90 [&::-webkit-slider-thumb]:transition-transform"
-              />
-            </div>
+                  {/* Slider */}
+                  <div className="relative h-12 flex items-center px-2">
+                    {/* Track */}
+                    <div className="absolute left-2 right-2 h-2 bg-slate-100 rounded-full" />
 
-            {/* Area Summary Badge */}
-            <div className="flex justify-center mt-2">
-              <div className="bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100 flex items-center gap-2">
-                <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest">
-                  Range: {formData.minSqft?.toLocaleString()} —{" "}
-                  {formData.maxSqft?.toLocaleString()} Sq.ft
-                </p>
-              </div>
-            </div>
+                    {/* Active Range */}
+                    <div
+                      className={`absolute h-2 rounded-full transition-all duration-75 shadow-[0_0_15px_rgba(251,146,60,0.3)]
+            ${isInvalid ? "bg-red-400" : "bg-orange-400"}`}
+                      style={{
+                        left: `${((minSqftNum - 100) / (60000 - 100)) * 100}%`,
+                        width: `${((maxSqftNum - minSqftNum) / (60000 - 100)) * 100}%`,
+                      }}
+                    />
+
+                    {/* Breakpoints */}
+                    <div className="absolute left-2 right-2 flex justify-between px-[2px]">
+                      {[100, 15000, 30000, 45000, 60000].map((tick) => (
+                        <div
+                          key={tick}
+                          className="relative flex flex-col items-center"
+                        >
+                          <div
+                            className={`w-[1px] transition-all duration-300 ${
+                              tick >= minSqftNum && tick <= maxSqftNum
+                                ? "h-4 bg-orange-400"
+                                : "h-2 bg-slate-200"
+                            }`}
+                          />
+                          <span
+                            className={`absolute top-5 text-[8px] font-bold uppercase tracking-tighter whitespace-nowrap transition-colors ${
+                              tick >= minSqftNum && tick <= maxSqftNum
+                                ? "text-orange-500"
+                                : "text-slate-400"
+                            }`}
+                          >
+                            {tick >= 1000 ? `${tick / 1000}K` : tick}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* MIN SLIDER */}
+                    <input
+                      type="range"
+                      min="100"
+                      max="60000"
+                      step="1"
+                      value={minSqftNum}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          minSqft: Number(e.target.value),
+                        })
+                      }
+                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2
+            [&::-webkit-slider-thumb]:pointer-events-auto
+            [&::-webkit-slider-thumb]:appearance-none
+            [&::-webkit-slider-thumb]:w-6
+            [&::-webkit-slider-thumb]:h-6
+            [&::-webkit-slider-thumb]:bg-white
+            [&::-webkit-slider-thumb]:border-[4px]
+            [&::-webkit-slider-thumb]:border-orange-400
+            [&::-webkit-slider-thumb]:rounded-full
+            [&::-webkit-slider-thumb]:cursor-grab"
+                    />
+
+                    {/* MAX SLIDER */}
+                    <input
+                      type="range"
+                      min="100"
+                      max="60000"
+                      step="1"
+                      value={maxSqftNum}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          maxSqft: Number(e.target.value),
+                        })
+                      }
+                      className="absolute left-0 w-full appearance-none bg-transparent pointer-events-none z-30 h-2
+            [&::-webkit-slider-thumb]:pointer-events-auto
+            [&::-webkit-slider-thumb]:appearance-none
+            [&::-webkit-slider-thumb]:w-6
+            [&::-webkit-slider-thumb]:h-6
+            [&::-webkit-slider-thumb]:bg-white
+            [&::-webkit-slider-thumb]:border-[4px]
+            [&::-webkit-slider-thumb]:border-orange-400
+            [&::-webkit-slider-thumb]:rounded-full
+            [&::-webkit-slider-thumb]:cursor-grab"
+                    />
+                  </div>
+
+                  {/* Range Summary */}
+                  <div className="flex justify-center mt-2">
+                    <div className="bg-orange-50 px-4 py-1.5 rounded-full border border-orange-100 flex items-center gap-2">
+                      <p className="text-[10px] font-black text-orange-700 uppercase tracking-widest">
+                        Range: {minSqftNum.toLocaleString()} —{" "}
+                        {maxSqftNum.toLocaleString()} Sq.ft
+                      </p>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
           </section>
+
           {/* 04. CONFIGURATION GRID */}
           <section className="pt-6 border-t border-slate-50 space-y-4">
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-orange-600">
