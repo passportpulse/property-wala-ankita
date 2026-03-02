@@ -1,68 +1,40 @@
-import { useState, useEffect } from "react";
-import FilterHeader from "./sections/FilterHeader";
-import PropertyGrid from "./sections/PropertyGrid";
-import Cta from "../../components/Cta";
+import BuyForm from "./sections/BuyForm";
+import BuyResults from "./sections/BuyResults";
+import { placesInWB } from "../../data/locations";
+import { useState } from "react";
+import Section from "../../components/layout/Section";
+import Container from "../../components/layout/Container";
 
 export default function Buy() {
-  const tabsLabels = [
-    "Flats",
-    "Plots",
-    "Joint Ventures",
-    "House / Duplex",
-    "Office / Retail",
-    "Factory",
-    "Industrial Plots",
-    "Warehouse",
-    "Hospital",
-    "Hotels / Resort",
-    "Petrol Pump",
-    "Institutes",
-    "Investment",
-  ];
+  const [showResults, setShowResults] = useState(false);
 
-  // 1. Initialize state by checking the URL immediately
-  const [activeTab, setActiveTab] = useState(() => {
-    if (typeof window !== "undefined") {
-      const hash = window.location.hash.replace("#", "");
-      if (hash) {
-        const found = tabsLabels.find(
-          (label) =>
-            label
-              .toLowerCase()
-              .trim()
-              .replace(/\s+|\/+/g, "-")
-              .replace(/-+/g, "-") === hash,
-        );
-        return found || "Flats";
-      }
-    }
-    return "Flats";
+  const [formData, setFormData] = useState({
+    state: "West Bengal",
+    city: "Kolkata",
+    loc: "Salt Lake",
+    minPrice: 0,
+    maxPrice: 20000000,
   });
 
-  // 2. Sync if user clicks browser back/forward buttons
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
-      const found = tabsLabels.find(
-        (label) =>
-          label
-            .toLowerCase()
-            .trim()
-            .replace(/\s+|\/+/g, "-")
-            .replace(/-+/g, "-") === hash,
-      );
-      if (found) setActiveTab(found);
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [tabsLabels]);
+  const availablePlaces = placesInWB[formData.city] || [];
 
   return (
-    <>
-      <FilterHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-      <PropertyGrid activeTab={activeTab} />
-      <Cta />
-    </>
+    <Section className="bg-[#f8fafc] min-h-screen py-10" size="small">
+      <Container>
+        {!showResults ? (
+          <BuyForm
+            formData={formData}
+            setFormData={setFormData}
+            availablePlaces={availablePlaces}
+            onSubmit={() => setShowResults(true)}
+          />
+        ) : (
+          <BuyResults
+            formData={formData}
+            onBack={() => setShowResults(false)}
+          />
+        )}
+      </Container>
+    </Section>
   );
 }

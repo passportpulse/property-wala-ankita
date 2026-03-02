@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
 
-import Section from "../../../components/layout/Section";
-import Container from "../../../components/layout/Container";
+import Section from "../../../../components/layout/Section";
+import Container from "../../../../components/layout/Container";
 
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);

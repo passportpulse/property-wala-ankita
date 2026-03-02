@@ -1,6 +1,6 @@
 import { MapPin, Tag } from "lucide-react";
-import Container from "../../../components/layout/Container";
-import Section from "../../../components/layout/Section";
+import Container from "../../../../components/layout/Container";
+import Section from "../../../../components/layout/Section";
 
 export default function SellPeerDeals() {
   const peerDeals = [
