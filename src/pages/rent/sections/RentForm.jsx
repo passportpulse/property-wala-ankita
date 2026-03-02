@@ -48,7 +48,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           Find Your <span className="italic text-orange-500">Next Space</span>
         </h2>
         <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-          Property Wala simplifies real estate by connecting property owners,
+          Property Wala Bhaiya simplifies real estate by connecting property owners,
           buyers, and tenants on one trusted platform. Powered by Java
           technology, we ensure verified listings backed by complete legal due
           diligence for a safe and transparent property experience.
