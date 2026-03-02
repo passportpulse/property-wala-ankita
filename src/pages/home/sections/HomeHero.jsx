@@ -18,7 +18,7 @@ import {
   GraduationCap,
   Key, // Added for Rent
   ShoppingCart, // Added for Buy
-  BadgeCheck
+  BadgeCheck,
 } from "lucide-react";
 
 export default function HomeHero() {
@@ -145,7 +145,8 @@ export default function HomeHero() {
             }}
             onMouseDown={(e) => {
               dragState.current.isDragging = true;
-              dragState.current.startX = e.pageX - marqueeRef.current.offsetLeft;
+              dragState.current.startX =
+                e.pageX - marqueeRef.current.offsetLeft;
               dragState.current.scrollLeft = marqueeRef.current.scrollLeft;
             }}
             onMouseMove={(e) => {
@@ -153,7 +154,8 @@ export default function HomeHero() {
               e.preventDefault();
               const x = e.pageX - marqueeRef.current.offsetLeft;
               const walk = (x - dragState.current.startX) * 1.5;
-              marqueeRef.current.scrollLeft = dragState.current.scrollLeft - walk;
+              marqueeRef.current.scrollLeft =
+                dragState.current.scrollLeft - walk;
             }}
             onMouseUp={() => {
               dragState.current.isDragging = false;
@@ -161,7 +163,8 @@ export default function HomeHero() {
             }}
             onTouchStart={(e) => {
               dragState.current.isDragging = true;
-              dragState.current.startX = e.touches[0].pageX - marqueeRef.current.offsetLeft;
+              dragState.current.startX =
+                e.touches[0].pageX - marqueeRef.current.offsetLeft;
               dragState.current.scrollLeft = marqueeRef.current.scrollLeft;
               setIsPaused(true);
             }}
@@ -169,7 +172,8 @@ export default function HomeHero() {
               if (!dragState.current.isDragging) return;
               const x = e.touches[0].pageX - marqueeRef.current.offsetLeft;
               const walk = (x - dragState.current.startX) * 1.5;
-              marqueeRef.current.scrollLeft = dragState.current.scrollLeft - walk;
+              marqueeRef.current.scrollLeft =
+                dragState.current.scrollLeft - walk;
             }}
             onTouchEnd={() => {
               dragState.current.isDragging = false;
@@ -241,52 +245,63 @@ export default function HomeHero() {
         </Container>
 
         {/* NEW SECTION: EXPLORE VERIFIED PROPERTIES */}
-        <Container className="w-full mt-10 mb-10">
-          <div className="flex flex-col items-center">
-            <div className="flex items-center gap-2 mb-6">
-               <BadgeCheck className="text-green-600" size={20} />
-               <h2 className="text-xs lg:text-sm  text-dark-orange uppercase tracking-tight">
-                Explore <span className="text-dark-orange">Verified</span> Properties
-               </h2>
-            </div>
-
-            {/* GRID CONTAINER - Narrower max-width for smaller look */}
-<div className="grid grid-cols-3 gap-2 lg:gap-4 w-full max-w-lg">
-  {/* BUY BUTTON */}
-  <button 
-    onClick={() => navigate("/buy")}
-    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-  >
-    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-      <ShoppingCart size={18} className="text-orange-600 group-hover:text-white" />
+<Container className="w-full mt-10 mb-10">
+  <div className="flex flex-col items-center">
+    {/* HEADER - Aligned left relative to the content width */}
+    <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
+      <BadgeCheck className="text-green-600 shrink-0" size={18} />
+      <h2 className="text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
+        Explore <span className="text-dark-orange">Verified</span> Properties
+      </h2>
+      {/* Subtle line decoration */}
+      <div className="h-[1px] flex-grow bg-linear-to-r from-slate-200 to-transparent ml-2"></div>
     </div>
-    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Buy</span>
-  </button>
 
-  {/* SELL BUTTON */}
-  <button 
-    onClick={() => navigate("/sell")}
-    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-  >
-    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-      <TrendingUp size={18} className="text-orange-600 group-hover:text-white" />
-    </div>
-    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Sell</span>
-  </button>
+    {/* GRID CONTAINER */}
+    <div className="grid grid-cols-3 gap-2 lg:gap-4 w-full max-w-lg">
+      {/* BUY BUTTON */}
+      <button
+        onClick={() => navigate("/buy")}
+        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+      >
+        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+          <ShoppingCart size={18} className="text-orange-600 group-hover:text-white" />
+        </div>
+        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Buy</span>
+      </button>
 
-  {/* RENT BUTTON */}
-  <button 
-    onClick={() => navigate("/rent")}
-    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-  >
-    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-      <Key size={18} className="text-orange-600 group-hover:text-white" />
+      {/* SELL BUTTON */}
+      <button
+        onClick={() => navigate("/sell")}
+        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+      >
+        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+          <TrendingUp size={18} className="text-orange-600 group-hover:text-white" />
+        </div>
+        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Sell</span>
+      </button>
+
+      {/* RENT BUTTON */}
+      <button
+        onClick={() => navigate("/rent")}
+        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+      >
+        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+          <Key size={18} className="text-orange-600 group-hover:text-white" />
+        </div>
+        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Rent</span>
+      </button>
     </div>
-    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Rent</span>
-  </button>
-</div>
-          </div>
-        </Container>
+
+    {/* FOOTER PARA - Centered with design */}
+    <div className="mt-6 flex flex-col items-center gap-1">
+      <p className="text-[10px] lg:text-xs font-medium text-slate-400 italic">
+        Select a category to <span className="text-dark-orange font-bold not-italic">unlock</span> exclusive listings
+      </p>
+      <div className="w-8 h-1 bg-orange-100 rounded-full"></div>
+    </div>
+  </div>
+</Container>
       </div>
     </Section>
   );
