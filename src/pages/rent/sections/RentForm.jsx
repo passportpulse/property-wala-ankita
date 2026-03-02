@@ -51,7 +51,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           Property Wala Bhaiya simplifies real estate by connecting property owners,
           buyers, and tenants on one trusted platform. Powered by Java
           technology, we ensure verified listings backed by complete legal due
-          diligence for a safe and transparent property experience.
+          diligence for a safe and transparent property dealing experience.
         </p>
       </div>
 
