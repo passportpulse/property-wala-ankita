@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MapPin,
   Wallet,
@@ -10,8 +10,34 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
+import { IndianRupee } from "lucide-react";
 
 export default function BuyForm({ formData, setFormData, onSubmit }) {
+  const MIN_LIMIT = 1000000;
+  const MAX_LIMIT = 500000000;
+  const [minBudget, setMinBudget] = useState(MIN_LIMIT);
+  const [maxBudget, setMaxBudget] = useState(MAX_LIMIT);
+  const formatPrice = (value) => {
+    if (value >= 10000000) return (value / 10000000).toFixed(1) + " Cr";
+    if (value >= 100000) return (value / 100000).toFixed(0) + " L";
+    return value;
+  };
+
+  const propertyTypes = [
+    "Flats",
+    "Plots",
+    "Joint Ventures",
+    "House/Duplex",
+    "Office/Retail",
+    "Factory",
+    "Industrial Plots",
+    "Ware House",
+    "Hospital",
+    "Hotels/Resort",
+    "Petrol Pump",
+    "Institutes",
+    "Investment",
+  ];
   // Safe access to places
   const availablePlaces =
     formData && formData.city ? placesInWB[formData.city] || [] : [];
@@ -144,7 +170,6 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
             </div>
           </section>
 
-
           {/* 04. PROPERTY DETAILS - TURN ORANGE ON SELECT */}
           <section className="pt-6 border-t border-slate-50 space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
@@ -169,10 +194,11 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
                   <option value="" disabled>
                     Select
                   </option>
-                  <option value="flat">Flat</option>
-                  <option value="house">House</option>
-                  <option value="duplex">Duplex</option>
-                  <option value="vacant land">Vacant Land</option>
+                  {propertyTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -222,6 +248,7 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
                   <option>Under Construction</option>
                   <option>Ready to Move</option>
                   <option>New Launch</option>
+                  <option>Resell</option>
                 </select>
               </div>
 
@@ -232,7 +259,7 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
                 <label
                   className={`text-[8px] font-black uppercase mb-1 block ${getLabelStyle(formData.possession)}`}
                 >
-                  Possession
+                  Time Period
                 </label>
                 <select
                   className="w-full bg-transparent text-[11px] font-bold outline-none cursor-pointer"
@@ -249,50 +276,69 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
               </div>
             </div>
           </section>
-                    {/* 02. BUDGET SLIDER (Same as your provided design) */}
+          {/* 02. BUDGET SLIDER (Same as your provided design) */}
           <section className="space-y-4 pt-4 select-none">
-            {(() => {
-              const minBudgetNum = Number(formData.minBud) || 0;
-              const maxBudgetNum = Number(formData.maxBud) || 10000000; // Adjusted for Buying (1Cr)
-              const isInvalid = minBudgetNum > maxBudgetNum;
+            {/* BUDGET SECTION */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6">
+              <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                <div className="flex justify-between items-center mb-1 lg:mb-4">
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">
+                    Min Budget
+                  </span>
+                  <span className="text-xs lg:text-sm font-black text-dark-orange">
+                    ₹ {formatPrice(minBudget)}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
+                  <IndianRupee size={14} className="text-slate-400" />
+                  <input
+                    type="number"
+                    value={minBudget}
+                    onChange={(e) => setMinBudget(Number(e.target.value))}
+                    className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
+                  />
+                </div>
+                <input
+                  type="range"
+                  min={MIN_LIMIT}
+                  max={MAX_LIMIT}
+                  step="100000"
+                  value={minBudget}
+                  onChange={(e) => setMinBudget(Number(e.target.value))}
+                  className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-dark-orange"
+                />
+              </div>
 
-              return (
-                <>
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
-                        <Wallet size={12} /> Purchase Budget
-                      </div>
-                      <p className="text-[10px] text-slate-400 font-medium tracking-tight">
-                        Set your price range
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="number"
-                        value={formData.minBud ?? ""}
-                        onChange={(e) => handleChange("minBud", e.target.value)}
-                        className={`w-24 p-2 text-[11px] font-black rounded-xl border outline-none ${isInvalid ? "border-red-300 bg-red-50" : "border-slate-200"}`}
-                        placeholder="Min"
-                      />
-                      <span className="text-slate-300 font-bold">—</span>
-                      <input
-                        type="number"
-                        value={formData.maxBud ?? ""}
-                        onChange={(e) => handleChange("maxBud", e.target.value)}
-                        className={`w-24 p-2 text-[11px] font-black rounded-xl border outline-none ${isInvalid ? "border-red-300 bg-red-50" : "border-slate-200"}`}
-                        placeholder="Max"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Slider Logic Here... (Kept as per your design) */}
-                </>
-              );
-            })()}
+              <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+                <div className="flex justify-between items-center mb-1 lg:mb-4">
+                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">
+                    Max Budget
+                  </span>
+                  <span className="text-xs lg:text-sm font-black text-dark-orange">
+                    ₹ {formatPrice(maxBudget)}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
+                  <IndianRupee size={14} className="text-slate-400" />
+                  <input
+                    type="number"
+                    value={maxBudget}
+                    onChange={(e) => setMaxBudget(Number(e.target.value))}
+                    className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
+                  />
+                </div>
+                <input
+                  type="range"
+                  min={MIN_LIMIT}
+                  max={MAX_LIMIT}
+                  step="100000"
+                  value={maxBudget}
+                  onChange={(e) => setMaxBudget(Number(e.target.value))}
+                  className="w-full h-1 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-dark-orange"
+                />
+              </div>
+            </div>
           </section>
-
 
           {/* SUBMIT */}
           <div className="pt-4 flex justify-center">
