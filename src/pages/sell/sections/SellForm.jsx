@@ -15,6 +15,22 @@ import {
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
 
 export default function SellForm({ formData, setFormData, onSubmit }) {
+  const propertyTypes = [
+    "Flats",
+    "Plots",
+    "Joint Ventures",
+    "House/Duplex",
+    "Office/Retail",
+    "Factory",
+    "Industrial Plots",
+    "Ware House",
+    "Hospital",
+    "Hotels/Resort",
+    "Petrol Pump",
+    "Institutes",
+    "Investment",
+  ];
+
   const availablePlaces =
     formData && formData.city ? placesInWB[formData.city] || [] : [];
 
@@ -84,7 +100,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {/* STATE */}
-              <div className="bg-slate-50 p-3 rounded-2xl border">
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   State
                 </label>
@@ -102,7 +118,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               </div>
 
               {/* CITY */}
-              <div className="bg-slate-50 p-3 rounded-2xl border">
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   City
                 </label>
@@ -128,7 +144,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               </div>
 
               {/* AREA */}
-              <div className="bg-slate-50 p-3 rounded-2xl border">
+              <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200 ">
                 <label className="text-[8px] font-black uppercase text-slate-400 block mb-1">
                   Area
                 </label>
@@ -148,35 +164,39 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
             </div>
           </section>
 
-          {/* PROPERTY PRICE */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
-              <Wallet size={14} /> Expected Price
-            </div>
-            <div className="bg-slate-50 p-3 rounded-2xl border">
-              <input
-                type="number"
-                placeholder="Enter Expected Price (₹)"
-                value={formData.price || ""}
-                onChange={(e) => handleChange("price", e.target.value)}
-                className="w-full bg-transparent text-sm font-bold outline-none"
-              />
-            </div>
-          </section>
-
           {/* AREA SIZE */}
           <section className="space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
               <Ruler size={14} /> Property Size
             </div>
-            <div className="bg-slate-50 p-3 rounded-2xl border">
-              <input
-                type="number"
-                placeholder="Total Area (Sq.ft)"
-                value={formData.sqft || ""}
-                onChange={(e) => handleChange("sqft", e.target.value)}
-                className="w-full bg-transparent text-sm font-bold outline-none"
-              />
+
+            <div className="flex gap-3">
+              {/* Area Input */}
+              <div className="flex-1 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <input
+                  type="number"
+                  placeholder="Total Area"
+                  value={formData.area || ""}
+                  onChange={(e) => handleChange("area", e.target.value)}
+                  className="w-full bg-transparent text-xs outline-none"
+                />
+              </div>
+
+              {/* Unit Dropdown */}
+              <div className="w-32 bg-slate-50 p-3 rounded-2xl border border-slate-200">
+                <select
+                  value={formData.unit || ""}
+                  onChange={(e) => handleChange("unit", e.target.value)}
+                  className="w-full bg-transparent text-xs outline-none"
+                >
+                  <option value="">Unit</option>
+                  <option value="sqft">Sq.ft</option>
+                  <option value="katha">Katha</option>
+                  <option value="decimal">Decimal</option>
+                  <option value="yard">Yard</option>
+                  <option value="acre">Acre</option>
+                </select>
+              </div>
             </div>
           </section>
 
@@ -188,23 +208,21 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               <select
-                className="bg-slate-50 p-3 rounded-xl text-xs font-bold"
+                className="bg-slate-50 p-3 rounded-xl text-xs font-bold border border-slate-200"
                 value={formData.type || ""}
                 onChange={(e) => handleChange("type", e.target.value)}
               >
                 <option value="">Property Type</option>
-                <option>Flat</option>
-                <option>House</option>
-                <option>Duplex</option>
-                <option>Office</option>
-                <option>Warehouse</option>
-                <option>Retail Space</option>
-                <option>Vacant Land</option>
+                {propertyTypes.map((type) => (
+                  <option key={type} value={type}>
+                    {type}
+                  </option>
+                ))}
               </select>
 
               {isResidential && (
                 <select
-                  className="bg-slate-50 p-3 rounded-xl text-xs font-bold"
+                  className="bg-slate-50 p-3 rounded-xl text-xs font-bold border border-slate-200"
                   value={formData.bed || ""}
                   onChange={(e) => handleChange("bed", e.target.value)}
                 >
@@ -217,7 +235,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               )}
 
               <select
-                className="bg-slate-50 p-3 rounded-xl text-xs font-bold"
+                className="bg-slate-50 p-3 rounded-xl text-xs font-bold border border-slate-200"
                 value={formData.fur || ""}
                 onChange={(e) => handleChange("fur", e.target.value)}
               >
@@ -228,7 +246,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               </select>
 
               <select
-                className="bg-slate-50 p-3 rounded-xl text-xs font-bold"
+                className="bg-slate-50 p-3 rounded-xl text-xs font-bold border border-slate-200"
                 value={formData.age || ""}
                 onChange={(e) => handleChange("age", e.target.value)}
               >
@@ -240,16 +258,50 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               </select>
             </div>
           </section>
+          {/* LANDMARK */}
+          <section className="space-y-2">
+            <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+              Nearest Landmark
+            </label>
+
+            <input
+              type="text"
+              placeholder="Example: Near City Centre Mall / Metro Station"
+              value={formData.landmark || ""}
+              onChange={(e) => handleChange("landmark", e.target.value)}
+              className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-4 
+               text-xs outline-none focus:border-orange-400 
+               focus:ring-2 focus:ring-orange-100 transition"
+            />
+          </section>
 
           {/* DESCRIPTION */}
-          <section className="space-y-3">
+          <section className="space-y-2">
+            <div className="flex justify-between items-center">
+              <label className="text-[10px] font-black uppercase tracking-widest text-slate-400">
+                Property Description
+              </label>
+
+              <span className="text-[10px] text-slate-400 font-bold">
+                {(formData.desc || "").length}/500
+              </span>
+            </div>
             <textarea
-              rows="3"
-              placeholder="Property description"
+              rows="5"
+              maxLength={500}
+              placeholder="Describe the property... (size, amenities, location benefits, etc.)"
               value={formData.desc || ""}
               onChange={(e) => handleChange("desc", e.target.value)}
-              className="w-full border border-slate-200 rounded-xl p-3 text-sm resize-y"
+              className="w-full border border-slate-200 rounded-2xl p-4 text-sm 
+             outline-none focus:border-orange-400 focus:ring-2 
+             focus:ring-orange-100 transition
+             resize-y min-h-[140px] max-h-[500px] overflow-auto"
             />
+
+            <p className="text-[10px] text-slate-400">
+              Tip: Mention nearby schools, metro, hospitals, and property
+              highlights.
+            </p>
           </section>
 
           {/* AMENITIES */}
@@ -279,6 +331,21 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                   {item}
                 </button>
               ))}
+            </div>
+          </section>
+          {/* PROPERTY PRICE */}
+          <section className="space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
+              <Wallet size={14} /> Expected Price
+            </div>
+            <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
+              <input
+                type="number"
+                placeholder="Enter Expected Price (₹)"
+                value={formData.price || ""}
+                onChange={(e) => handleChange("price", e.target.value)}
+                className="w-full bg-transparent text-xs outline-none"
+              />
             </div>
           </section>
           {/* --- NEW MEDIA SECTION --- */}
