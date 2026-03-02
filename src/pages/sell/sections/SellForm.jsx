@@ -71,6 +71,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
   const isResidential = ["flat", "house", "duplex"].includes(
     formData?.type?.toLowerCase(),
   );
+  
 
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">

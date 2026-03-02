@@ -16,6 +16,9 @@ import {
   TrendingUp,
   Fuel,
   GraduationCap,
+  Key, // Added for Rent
+  ShoppingCart, // Added for Buy
+  BadgeCheck
 } from "lucide-react";
 
 export default function HomeHero() {
@@ -92,6 +95,16 @@ export default function HomeHero() {
 
   return (
     <Section className="mt-0 pt-6 lg:mt-0 relative bg-linear-to-b from-orange-50 via-white to-orange-50 overflow-hidden">
+      {/* GLOBAL ANIMATION STYLES */}
+      <style>
+        {`
+          @keyframes shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+        `}
+      </style>
+
       {/* PROFESSIONAL DOT GRID */}
       <div className="hidden md:block absolute inset-0 bottom-1/3 pointer-events-none z-0">
         <div
@@ -104,7 +117,7 @@ export default function HomeHero() {
       </div>
 
       <div className="relative z-10 flex flex-col items-center">
-        {/* HEADING (Wrapped in Container to keep width) */}
+        {/* HEADING */}
         <Container>
           <div className="text-center px-2">
             <h1
@@ -116,9 +129,9 @@ export default function HomeHero() {
           </div>
         </Container>
 
-        {/* MARQUEE SECTION - NOW FULL WIDTH (Outside Container) */}
+        {/* MARQUEE SECTION */}
         <div className="relative w-full mt-4 lg:mt-10">
-          <p className="relative z-10 text-xs lg:text-sm text-dark-orange mb-4 lg:mb-8 text-center">
+          <p className="relative z-10 text-xs lg:text-sm text-dark-orange mb-4 lg:mb-8 text-center font-bold tracking-widest uppercase">
             Browse by Property Type
           </p>
 
@@ -171,10 +184,10 @@ export default function HomeHero() {
                   onClick={() => handlePropertyClick(item.name)}
                   className="shrink-0 flex flex-col items-center gap-1 w-17.5 group cursor-pointer"
                 >
-                  <div className="w-16 lg:w-18 h-16 lg:h-18 shadow-sm rounded-xl flex items-center justify-center border border-orange-50 group-hover:border-dark-orange transition-colors relative z-20">
+                  <div className="w-16 lg:w-18 h-16 lg:h-18 shadow-sm rounded-xl flex items-center justify-center bg-white border border-orange-50 group-hover:border-dark-orange group-hover:shadow-md transition-all relative z-20">
                     <IconComponent
                       size={32}
-                      className="text-dark-orange opacity-90"
+                      className="text-dark-orange opacity-90 group-hover:scale-110 transition-transform"
                       strokeWidth={1.5}
                     />
                   </div>
@@ -187,30 +200,30 @@ export default function HomeHero() {
           </div>
         </div>
 
-        {/* SEARCH CARD (Wrapped in Container to keep width) */}
+        {/* POST PROPERTY CARD */}
         <Container className="w-full flex justify-center">
           <div className="w-full sm:w-1/2 mt-4">
             <div className="mt-3">
               <button
                 onClick={() => navigate("/sell")}
-                className="w-full bg-white rounded-2xl shadow-lg border border-orange-100 px-4 py-4 flex items-center justify-between active:scale-[0.98] transition cursor-pointer"
+                className="w-full bg-white rounded-2xl shadow-lg border border-orange-100 px-4 py-4 flex items-center justify-between active:scale-[0.98] transition cursor-pointer hover:border-orange-300"
               >
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-start text-left">
                   <span className="text-sm lg:text-base font-semibold text-slate-700">
                     Post Your Property
                   </span>
                   <span className="text-[10px] lg:text-xs mt-0 lg:mt-1 text-dark-orange">
-                    Get unlimited enquiries
+                    Get unlimited enquiries from genuine buyers
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="relative inline-block text-xs lg:text-sm text-white bg-green-700 px-2 py-1 rounded-lg overflow-hidden">
+                  <span className="relative inline-block text-[10px] lg:text-sm font-black text-white bg-green-700 px-3 py-1 rounded-lg overflow-hidden">
                     FREE
                     <span
                       className="absolute inset-0 w-full h-full"
                       style={{
                         background:
-                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%)",
+                          "linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.4) 50%, transparent 75%)",
                         backgroundSize: "200% 100%",
                         animation: "shine 2s linear infinite",
                       }}
@@ -224,6 +237,54 @@ export default function HomeHero() {
                 </div>
               </button>
             </div>
+          </div>
+        </Container>
+
+        {/* NEW SECTION: EXPLORE VERIFIED PROPERTIES */}
+        <Container className="w-full mt-10 mb-10">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-6">
+               <BadgeCheck className="text-green-600" size={20} />
+               <h2 className="text-xs lg:text-sm  text-dark-orange uppercase tracking-tight">
+                Explore <span className="text-dark-orange">Verified</span> Properties
+               </h2>
+            </div>
+
+            {/* GRID CONTAINER - Narrower max-width for smaller look */}
+<div className="grid grid-cols-3 gap-2 lg:gap-4 w-full max-w-lg">
+  {/* BUY BUTTON */}
+  <button 
+    onClick={() => navigate("/buy")}
+    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+  >
+    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+      <ShoppingCart size={18} className="text-orange-600 group-hover:text-white" />
+    </div>
+    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Buy</span>
+  </button>
+
+  {/* SELL BUTTON */}
+  <button 
+    onClick={() => navigate("/sell")}
+    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+  >
+    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+      <TrendingUp size={18} className="text-orange-600 group-hover:text-white" />
+    </div>
+    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Sell</span>
+  </button>
+
+  {/* RENT BUTTON */}
+  <button 
+    onClick={() => navigate("/rent")}
+    className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+  >
+    <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+      <Key size={18} className="text-orange-600 group-hover:text-white" />
+    </div>
+    <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Rent</span>
+  </button>
+</div>
           </div>
         </Container>
       </div>

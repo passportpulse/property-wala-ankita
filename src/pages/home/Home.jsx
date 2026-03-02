@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <HomeHero />
-      <HomeFilter/>
+      {/* <HomeFilter/> */}
       <BestDeals />
       <SellYourProperty/>
       <FeaturedProperties />
