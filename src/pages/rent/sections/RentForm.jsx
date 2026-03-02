@@ -56,7 +56,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
         <div className="p-5 lg:p-8 space-y-8">
           {/* 01. LOCATION & TIMELINE */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
               <MapPin size={14} className="text-orange-500" /> Choose Your
               Desired Location
             </div>
@@ -135,7 +135,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           </section>
 
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
               <MapPin size={14} className="text-orange-500" />
               Relocation Time
             </div>
@@ -171,7 +171,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
                     {/* Title */}
                     <div className="space-y-1">
-                      <div className="flex items-center gap-2 text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-orange-600">
+                      <div className="flex items-center gap-2 text-xs sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-orange-600">
                         <Wallet size={12} className="sm:w-[14px] sm:h-[14px]" />
                         Monthly Budget
                       </div>
@@ -364,7 +364,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
                   {/* Header & Manual Inputs */}
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="space-y-1">
-                      <div className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-orange-600">
+                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
                         <Ruler size={12} />
                         Area Size (Sq.ft)
                       </div>
@@ -541,7 +541,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           {/* 04. PROPERTY DETAILS */}
 
           <section className="pt-6 border-t border-slate-50 space-y-4">
-            <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
               <Settings2 size={14} className="text-orange-600" />
               Property Details
             </div>
@@ -765,7 +765,7 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
 
           {/* 04. AMENITIES */}
           <section className="space-y-4">
-            <div className="flex items-center gap-2 text-[8px] font-bold uppercase tracking-widest text-orange-600">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
               <LayoutGrid size={14} className="text-orange-500" /> Amenities
             </div>
             <div className="flex flex-wrap gap-2">
