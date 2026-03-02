@@ -9,7 +9,7 @@ import {
   Camera,
   Video,
   X,
-  Plus
+  Plus,
 } from "lucide-react";
 
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
@@ -26,18 +26,18 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
   const handleFileChange = (e, type) => {
     const files = Array.from(e.target.files);
     const currentMedia = formData[type] || [];
-    
-    const newMedia = files.map(file => ({
+
+    const newMedia = files.map((file) => ({
       file,
       preview: URL.createObjectURL(file),
-      id: Math.random().toString(36).substr(2, 9)
+      id: Math.random().toString(36).substr(2, 9),
     }));
 
     setFormData({ ...formData, [type]: [...currentMedia, ...newMedia] });
   };
 
   const removeMedia = (type, id) => {
-    const filtered = formData[type].filter(item => item.id !== id);
+    const filtered = formData[type].filter((item) => item.id !== id);
     setFormData({ ...formData, [type]: filtered });
   };
 
@@ -76,7 +76,6 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
 
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
         <div className="p-5 lg:p-8 space-y-8">
-
           {/* LOCATION */}
           <section className="space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
@@ -95,7 +94,9 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                   onChange={(e) => handleChange("state", e.target.value)}
                 >
                   {states.map((s) => (
-                    <option key={s.id} value={s.name}>{s.name}</option>
+                    <option key={s.id} value={s.name}>
+                      {s.name}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -119,7 +120,9 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                 >
                   <option value="">Select City</option>
                   {citiesInWB.map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -136,7 +139,9 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                 >
                   <option value="">Select Area</option>
                   {availablePlaces.map((p) => (
-                    <option key={p} value={p}>{p}</option>
+                    <option key={p} value={p}>
+                      {p}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -172,54 +177,6 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                 onChange={(e) => handleChange("sqft", e.target.value)}
                 className="w-full bg-transparent text-sm font-bold outline-none"
               />
-            </div>
-          </section>
-
-          {/* --- NEW MEDIA SECTION --- */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
-              <Camera size={14} /> Photos & Videos
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {/* Image Upload Trigger */}
-              <label className="aspect-square flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition-all cursor-pointer group">
-                <div className="bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
-                    <Plus size={16} className="text-orange-500" />
-                </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase">Add Photo</span>
-                <input type="file" multiple accept="image/*" className="hidden" onChange={(e) => handleFileChange(e, 'images')} />
-              </label>
-
-              {/* Video Upload Trigger */}
-              <label className="aspect-square flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition-all cursor-pointer group">
-                <div className="bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
-                    <Video size={16} className="text-orange-500" />
-                </div>
-                <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase">Add Video</span>
-                <input type="file" accept="video/*" className="hidden" onChange={(e) => handleFileChange(e, 'videos')} />
-              </label>
-
-              {/* Image Previews */}
-              {formData.images?.map((img) => (
-                <div key={img.id} className="relative aspect-square rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
-                  <img src={img.preview} className="w-full h-full object-cover" alt="preview" />
-                  <button onClick={() => removeMedia('images', img.id)} className="absolute top-1 right-1 bg-slate-900/80 text-white rounded-full p-1 hover:bg-red-500 transition-colors">
-                    <X size={12} />
-                  </button>
-                </div>
-              ))}
-
-              {/* Video Previews */}
-              {formData.videos?.map((vid) => (
-                <div key={vid.id} className="relative aspect-square rounded-2xl bg-slate-900 flex items-center justify-center border border-slate-100 shadow-sm">
-                  <Video size={24} className="text-white/40" />
-                  <span className="absolute bottom-2 text-[8px] text-white/60 font-bold uppercase">Video Added</span>
-                  <button onClick={() => removeMedia('videos', vid.id)} className="absolute top-1 right-1 bg-white text-slate-900 rounded-full p-1 hover:bg-red-500 hover:text-white transition-colors">
-                    <X size={12} />
-                  </button>
-                </div>
-              ))}
             </div>
           </section>
 
@@ -324,18 +281,97 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               ))}
             </div>
           </section>
+          {/* --- NEW MEDIA SECTION --- */}
+          <section className="space-y-4">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
+              <Camera size={14} /> Photos & Videos
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {/* Image Upload Trigger */}
+              <label className="aspect-square flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition-all cursor-pointer group">
+                <div className="bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
+                  <Plus size={16} className="text-orange-500" />
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase">
+                  Add Photo
+                </span>
+                <input
+                  type="file"
+                  multiple
+                  accept="image/*"
+                  className="hidden"
+                  onChange={(e) => handleFileChange(e, "images")}
+                />
+              </label>
+
+              {/* Video Upload Trigger */}
+              <label className="aspect-square flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-slate-50 hover:bg-orange-50 hover:border-orange-300 transition-all cursor-pointer group">
+                <div className="bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
+                  <Video size={16} className="text-orange-500" />
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 mt-2 uppercase">
+                  Add Video
+                </span>
+                <input
+                  type="file"
+                  accept="video/*"
+                  className="hidden"
+                  onChange={(e) => handleFileChange(e, "videos")}
+                />
+              </label>
+
+              {/* Image Previews */}
+              {formData.images?.map((img) => (
+                <div
+                  key={img.id}
+                  className="relative aspect-square rounded-2xl overflow-hidden border border-slate-100 shadow-sm"
+                >
+                  <img
+                    src={img.preview}
+                    className="w-full h-full object-cover"
+                    alt="preview"
+                  />
+                  <button
+                    onClick={() => removeMedia("images", img.id)}
+                    className="absolute top-1 right-1 bg-slate-900/80 text-white rounded-full p-1 hover:bg-red-500 transition-colors"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ))}
+
+              {/* Video Previews */}
+              {formData.videos?.map((vid) => (
+                <div
+                  key={vid.id}
+                  className="relative aspect-square rounded-2xl bg-slate-900 flex items-center justify-center border border-slate-100 shadow-sm"
+                >
+                  <Video size={24} className="text-white/40" />
+                  <span className="absolute bottom-2 text-[8px] text-white/60 font-bold uppercase">
+                    Video Added
+                  </span>
+                  <button
+                    onClick={() => removeMedia("videos", vid.id)}
+                    className="absolute top-1 right-1 bg-white text-slate-900 rounded-full p-1 hover:bg-red-500 hover:text-white transition-colors"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </section>
 
           {/* SUBMIT */}
           <div className="flex justify-center pt-4">
             <button
               onClick={onSubmit}
-              className="bg-orange-600 text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-orange-700 transition-colors"
+              className="bg-orange-600 text-white px-6 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-orange-700 transition-colors"
             >
-              Post Property
+              Post
               <ChevronRight size={18} />
             </button>
           </div>
-
         </div>
       </div>
     </div>
