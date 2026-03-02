@@ -85,8 +85,8 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
         </h2>
 
         <p className="text-slate-500 text-xs lg:text-base max-w-md">
-          List your property on Property Wala Bhaiya and connect directly with
-          genuine buyers with verified listings and transparent dealings.
+          List your property on Property Wala Bhaiya digital platform and connect directly with
+          genuine buyers. 
         </p>
       </div>
 
@@ -429,11 +429,35 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
             </div>
           </section>
 
-          {/* SUBMIT */}
+          {/* Terms & Conditions */}
+          <div className="flex items-start gap-2 pt-4 text-xs">
+            <input
+              type="checkbox"
+              checked={formData.terms || false}
+              onChange={(e) => handleChange("terms", e.target.checked)}
+              className="mt-1 accent-orange-600"
+            />
+
+            <label className="text-slate-600 leading-relaxed">
+              I agree to the{" "}
+              <span className="text-orange-600 font-semibold cursor-pointer">
+                Terms & Conditions
+              </span>
+            </label>
+          </div>
+
+          {/* Post Button */}
           <div className="flex justify-center pt-4">
             <button
               onClick={onSubmit}
-              className="bg-orange-600 text-white px-6 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center gap-3 hover:bg-orange-700 transition-colors"
+              disabled={!formData.terms}
+              className={`px-6 py-2 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] 
+    flex items-center gap-3 transition-colors
+    ${
+      formData.terms
+        ? "bg-orange-600 text-white hover:bg-orange-700"
+        : "bg-slate-300 text-slate-500 cursor-not-allowed"
+    }`}
             >
               Post
               <ChevronRight size={18} />
