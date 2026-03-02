@@ -8,6 +8,7 @@ import {
   Home,
   Clock,
   LayoutGrid,
+  Banknote,
 } from "lucide-react";
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
 import { IndianRupee } from "lucide-react";
@@ -59,7 +60,7 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
 
   const getLabelStyle = (value) =>
     value ? "text-orange-600" : "text-slate-400";
-
+  const [budgetError, setBudgetError] = useState("");
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">
       {/* HEADER SECTION */}
@@ -276,25 +277,48 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
               </div>
             </div>
           </section>
-          {/* 02. BUDGET SLIDER (Same as your provided design) */}
+          {/* 02. BUDGET SLIDER */}
           <section className="space-y-4 pt-4 select-none">
-            {/* BUDGET SECTION */}
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
+                <Banknote size={14} /> Set your budget
+              </div>
+
+              {/* DYNAMIC ALERT MESSAGE */}
+              {minBudget > maxBudget && (
+                <span className="text-[10px] font-bold text-red-500 animate-pulse bg-red-50 px-2 py-1 rounded-lg border border-red-100">
+                  ⚠️ Min budget cannot exceed Max
+                </span>
+              )}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 lg:gap-6">
-              <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+              {/* MIN BUDGET BOX */}
+              <div
+                className={`bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border transition-colors ${minBudget > maxBudget ? "border-red-200 bg-red-50/30" : "border-slate-100"}`}
+              >
                 <div className="flex justify-between items-center mb-1 lg:mb-4">
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">
-                    Min Budget
+                  <span className="text-[9px] font-black text-slate-400 uppercase">
+                    Min
                   </span>
                   <span className="text-xs lg:text-sm font-black text-dark-orange">
                     ₹ {formatPrice(minBudget)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
-                  <IndianRupee size={14} className="text-slate-400" />
+                  <IndianRupee
+                    size={14}
+                    className={
+                      minBudget > maxBudget ? "text-red-400" : "text-slate-400"
+                    }
+                  />
                   <input
-                    type="number"
-                    value={minBudget}
-                    onChange={(e) => setMinBudget(Number(e.target.value))}
+                    type="text"
+                    value={minBudget === 0 ? "" : minBudget}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, "");
+                      setMinBudget(val === "" ? 0 : Number(val));
+                    }}
                     className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
                   />
                 </div>
@@ -309,21 +333,32 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
                 />
               </div>
 
-              <div className="bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border border-slate-100">
+              {/* MAX BUDGET BOX */}
+              <div
+                className={`bg-white rounded-xl lg:rounded-2xl p-3 lg:p-5 border transition-colors ${minBudget > maxBudget ? "border-red-200 bg-red-50/30" : "border-slate-100"}`}
+              >
                 <div className="flex justify-between items-center mb-1 lg:mb-4">
-                  <span className="text-[9px] font-black text-slate-400 uppercase tracking-tighter">
-                    Max Budget
+                  <span className="text-[9px] font-black text-slate-400 uppercase">
+                    Max
                   </span>
                   <span className="text-xs lg:text-sm font-black text-dark-orange">
                     ₹ {formatPrice(maxBudget)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 lg:gap-3 mb-2 lg:mb-4">
-                  <IndianRupee size={14} className="text-slate-400" />
+                  <IndianRupee
+                    size={14}
+                    className={
+                      minBudget > maxBudget ? "text-red-400" : "text-slate-400"
+                    }
+                  />
                   <input
-                    type="number"
-                    value={maxBudget}
-                    onChange={(e) => setMaxBudget(Number(e.target.value))}
+                    type="text"
+                    value={maxBudget === 0 ? "" : maxBudget}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, "");
+                      setMaxBudget(val === "" ? 0 : Number(val));
+                    }}
                     className="bg-transparent w-full text-xs lg:text-sm font-black outline-none text-slate-700"
                   />
                 </div>
@@ -344,7 +379,8 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
           <div className="pt-4 flex justify-center">
             <button
               onClick={onSubmit}
-              className="bg-dark-orange text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-orange-500 transition-all shadow-xl group"
+              disabled={minBudget > maxBudget}
+              className={`${minBudget > maxBudget ? "opacity-50 cursor-not-allowed" : ""} bg-dark-orange text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 hover:bg-orange-500 transition-all shadow-xl group`}
             >
               Show Listings
               <ChevronRight
