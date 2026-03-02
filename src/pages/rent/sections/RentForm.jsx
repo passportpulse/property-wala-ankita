@@ -48,6 +48,8 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
           Find Your <span className="italic text-orange-500">Next Space</span>
         </h2>
         <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
+          Property wala bhaiya free brings focus onto reality by connecting
+          owners, buyers and tenants through a single platform. It is powered by java technology.
           Verified listings with complete legal due diligence.
         </p>
       </div>
