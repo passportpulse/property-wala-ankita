@@ -121,7 +121,7 @@ export default function HomeHero() {
         <Container>
           <div className="text-center px-2">
             <h1
-              className="text-lg lg:text-6xl leading-tight mt-1 lg:mt-4 font-bold text-yellow-600"
+              className="text-[17px] lg:text-6xl leading-tight mt-1 lg:mt-4 text-yellow-700"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Elevate Your Living
