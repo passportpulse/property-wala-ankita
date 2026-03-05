@@ -246,11 +246,10 @@ export default function HomeHero() {
         </Container>
 
         {/* NEW SECTION: EXPLORE VERIFIED PROPERTIES */}
-        <Container className="w-full mt-10 mb-10">
+        <Container className="w-full mt-6">
           <div className="flex flex-col items-center">
             {/* HEADER - Aligned left relative to the content width */}
             <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
-              
               <h2 className="pl-4 text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
                 Explore <span className="text-dark-orange">Verified</span>{" "}
                 Properties
