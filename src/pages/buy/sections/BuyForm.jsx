@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
 import { IndianRupee } from "lucide-react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function BuyForm({ formData, setFormData, onSubmit }) {
   const MIN_LIMIT = 1000000;
@@ -39,6 +41,26 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
     "Institutes",
     "Investment",
   ];
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      // 1. Clean the hash (e.g., "#house-duplex" -> "house-duplex")
+      const selectedType = hash.replace("#", "");
+
+      // 2. Match it against your array
+      const matchedType = propertyTypes.find(
+        (t) => t.toLowerCase().replace(/\s+|\/+/g, "-") === selectedType,
+      );
+
+      if (matchedType) {
+        // We call setFormData directly here to ensure the state updates
+        // even if handleChange has dependencies
+        setFormData((prev) => ({ ...prev, type: matchedType }));
+      }
+    }
+  }, [hash]); // Only trigger when hash changes
+
   // Safe access to places
   const availablePlaces =
     formData && formData.city ? placesInWB[formData.city] || [] : [];
@@ -191,15 +213,32 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
                   className="w-full bg-transparent text-[11px] font-bold outline-none cursor-pointer"
                   value={formData.type || ""}
                   onChange={(e) => handleChange("type", e.target.value)}
+                  // The select itself stays enabled so they can click it
                 >
                   <option value="" disabled>
                     Select
                   </option>
-                  {propertyTypes.map((type) => (
-                    <option key={type} value={type}>
-                      {type}
-                    </option>
-                  ))}
+                  {propertyTypes.map((type) => {
+                    // Logic: If there is a hash, only the matching type is enabled.
+                    // If there is NO hash, all types are enabled.
+                    const isLockedByHash =
+                      hash &&
+                      hash.replace("#", "") !==
+                        type.toLowerCase().replace(/\s+|\/+/g, "-");
+
+                    return (
+                      <option
+                        key={type}
+                        value={type}
+                        disabled={isLockedByHash} // This disables all other options
+                        className={
+                          isLockedByHash ? "text-slate-300" : "text-slate-800"
+                        }
+                      >
+                        {type}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
 
