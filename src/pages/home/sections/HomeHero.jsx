@@ -250,11 +250,12 @@ export default function HomeHero() {
           <div className="flex flex-col items-center">
             {/* HEADER - Aligned left relative to the content width */}
             <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
-              <BadgeCheck className="text-green-600 shrink-0" size={18} />
+              
               <h2 className="text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
                 Explore <span className="text-dark-orange">Verified</span>{" "}
                 Properties
               </h2>
+              <BadgeCheck className="text-green-600 shrink-0" size={18} />
               {/* Subtle line decoration */}
               <div className="h-[1px] flex-grow bg-linear-to-r from-slate-200 to-transparent ml-2"></div>
             </div>
