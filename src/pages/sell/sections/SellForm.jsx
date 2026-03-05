@@ -587,6 +587,95 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
               })}
             </div>
           </section>
+          {/* --- PREMIUM PROMOTION PLANS --- */}
+          <section className="space-y-4 pt-6 border-t border-slate-100">
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
+                <ShieldCheck size={14} /> Choose Your Listing's Priority
+              </div>
+              <p className="text-[10px] text-slate-400 mt-1">
+                Select how you want your property to be showcased on our
+                platform.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+              {[
+                {
+                  id: "free",
+                  label: "Free",
+                  price: "₹0",
+                  desc: "Basic listing in search results.",
+                },
+                {
+                  id: "best-deals",
+                  label: "Our Best Deals",
+                  price: "₹499",
+                  desc: "Featured in the 'Best Deals' collection.",
+                },
+                {
+                  id: "feature",
+                  label: "Feature Listing",
+                  price: "₹999",
+                  desc: "Pinned to the top of category pages.",
+                },
+                {
+                  id: "high-value",
+                  label: "High Value",
+                  price: "₹1499",
+                  desc: "Priority for institutional investors.",
+                },
+                {
+                  id: "best-buy",
+                  label: "Best Buy",
+                  price: "₹1999",
+                  desc: "Maximum visibility + Homepage Banner.",
+                },
+              ].map((plan) => {
+                const isSelected = formData.plan === plan.id;
+                return (
+                  <button
+                    key={plan.id}
+                    type="button"
+                    onClick={() => handleChange("plan", plan.id)}
+                    className={`relative p-3 rounded-2xl border-2 text-left transition-all flex flex-col justify-between h-full ${
+                      isSelected
+                        ? "border-orange-500 bg-orange-50 ring-4 ring-orange-50"
+                        : "border-slate-100 bg-slate-50 hover:border-slate-200"
+                    }`}
+                  >
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <span
+                          className={`text-[8px] font-black uppercase px-2 py-0.5 rounded-full ${
+                            isSelected
+                              ? "bg-orange-500 text-white"
+                              : "bg-slate-200 text-slate-500"
+                          }`}
+                        >
+                          {plan.id === "best-buy" ? "Premium" : "Plan"}
+                        </span>
+                        {isSelected && (
+                          <Check size={14} className="text-orange-600" />
+                        )}
+                      </div>
+
+                      <span className="text-[10px] font-black text-slate-800 block leading-tight mb-1">
+                        {plan.label}
+                      </span>
+                      <span className="text-sm font-black text-orange-600 block">
+                        {plan.price}
+                      </span>
+                    </div>
+
+                    <p className="text-[9px] text-slate-500 mt-2 leading-tight">
+                      {plan.desc}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
 
           {/* Terms & Conditions */}
           <div className="flex items-start gap-2 pt-4 text-xs">
