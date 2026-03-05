@@ -10,6 +10,9 @@ import {
   Video,
   X,
   Plus,
+  ShieldCheck,
+  FileText,
+  Check,
 } from "lucide-react";
 
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
@@ -39,8 +42,33 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
   };
 
   // --- Media Handlers ---
-  const handleFileChange = (e, type) => {
+  const handleFileChange = (e, type, id = null) => {
     const files = Array.from(e.target.files);
+
+    // DOCUMENTS (single file)
+    if (type === "documents" && id) {
+      const file = files[0];
+      if (!file) return;
+
+      const preview = URL.createObjectURL(file);
+
+      setFormData({
+        ...formData,
+        documents: {
+          ...formData.documents,
+          [id]: {
+            file,
+            name: file.name,
+            type: file.type,
+            preview,
+          },
+        },
+      });
+
+      return;
+    }
+
+    // IMAGES / VIDEOS
     const currentMedia = formData[type] || [];
 
     const newMedia = files.map((file) => ({
@@ -49,12 +77,31 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
       id: Math.random().toString(36).substr(2, 9),
     }));
 
-    setFormData({ ...formData, [type]: [...currentMedia, ...newMedia] });
+    setFormData({
+      ...formData,
+      [type]: [...currentMedia, ...newMedia],
+    });
   };
 
   const removeMedia = (type, id) => {
+    if (type === "documents") {
+      const updatedDocs = { ...formData.documents };
+      delete updatedDocs[id];
+
+      setFormData({
+        ...formData,
+        documents: updatedDocs,
+      });
+
+      return;
+    }
+
     const filtered = formData[type].filter((item) => item.id !== id);
-    setFormData({ ...formData, [type]: filtered });
+
+    setFormData({
+      ...formData,
+      [type]: filtered,
+    });
   };
 
   const amenitiesList = [
@@ -71,7 +118,6 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
   const isResidential = ["flat", "house", "duplex"].includes(
     formData?.type?.toLowerCase(),
   );
-  
 
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">
@@ -86,8 +132,8 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
         </h2>
 
         <p className="text-slate-500 text-xs lg:text-base max-w-md">
-          List your property on Property Wala Bhaiya digital platform and connect directly with
-          genuine buyers. 
+          List your property on Property Wala Bhaiya digital platform and
+          connect directly with genuine buyers.
         </p>
       </div>
 
@@ -427,6 +473,117 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                   </button>
                 </div>
               ))}
+            </div>
+          </section>
+          {/* --- DOCUMENT VERIFICATION SECTION --- */}
+          <section className="space-y-4 pt-6 border-t border-slate-100">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
+              <ShieldCheck size={14} /> Verification Documents
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+              {[
+                { label: "Porcha", id: "porcha" },
+                { label: "Mutation", id: "mutation" },
+                { label: "Site Plan", id: "sitePlan" },
+                { label: "Aadhar Card", id: "aadhar" },
+                { label: "PAN Card", id: "pan" },
+              ].map((doc) => {
+                const fileData = formData.documents?.[doc.id];
+                const isImage = fileData?.type?.startsWith("image/");
+
+                return (
+                  <div key={doc.id} className="relative group">
+                    <label
+                      className={`aspect-[4/3] flex flex-col items-center justify-center border rounded-xl cursor-pointer transition overflow-hidden
+            ${
+              fileData
+                ? "border-green-200 bg-green-50"
+                : "border-dashed border-slate-200 bg-slate-50 hover:border-orange-300 hover:bg-orange-50"
+            }`}
+                    >
+                      {fileData ? (
+                        <div className="w-full h-full flex flex-col items-center justify-center relative p-2">
+                          {/* Preview */}
+                          {isImage ? (
+                            <img
+                              src={fileData.preview}
+                              alt={doc.label}
+                              className="absolute inset-0 w-full h-full object-cover opacity-25"
+                            />
+                          ) : (
+                            <FileText
+                              size={24}
+                              className="text-orange-500 mb-1"
+                            />
+                          )}
+
+                          {/* File Name */}
+                          <span className="text-[10px] font-semibold text-slate-700 text-center line-clamp-1 px-2 z-10">
+                            {fileData.name}
+                          </span>
+
+                          {/* Uploaded Badge */}
+                          <div className="flex items-center gap-1 mt-1 z-10">
+                            <Check size={12} className="text-green-600" />
+                            <span className="text-[9px] font-bold text-green-600 uppercase">
+                              Uploaded
+                            </span>
+                          </div>
+
+                          {/* Preview Button */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.open(fileData.preview, "_blank");
+                            }}
+                            className="mt-2 text-[9px] font-semibold text-orange-600 bg-white px-2 py-1 rounded shadow-sm hover:bg-orange-50 z-10"
+                          >
+                            Preview
+                          </button>
+
+                          {/* Hover Change */}
+                          <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 flex items-center justify-center transition">
+                            <span className="text-[10px] font-semibold bg-white px-2 py-1 rounded shadow">
+                              Change File
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <div className="bg-white p-2 rounded-full shadow-sm group-hover:scale-110 transition">
+                            <Plus size={16} className="text-orange-500" />
+                          </div>
+                          <span className="text-[10px] font-semibold text-slate-400 mt-2 uppercase text-center px-2">
+                            {doc.label}
+                          </span>
+                        </>
+                      )}
+
+                      <input
+                        type="file"
+                        accept=".pdf,image/*"
+                        className="hidden"
+                        onChange={(e) =>
+                          handleFileChange(e, "documents", doc.id)
+                        }
+                      />
+                    </label>
+
+                    {/* Remove Button */}
+                    {fileData && (
+                      <button
+                        type="button"
+                        onClick={() => removeMedia("documents", doc.id)}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 shadow hover:bg-red-600"
+                      >
+                        <X size={10} />
+                      </button>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </section>
 
