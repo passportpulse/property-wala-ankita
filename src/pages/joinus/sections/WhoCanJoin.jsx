@@ -44,7 +44,10 @@ export default function WhoCanJoin() {
                 </h2>
 
                 <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                  We partner with ethical, local experts for lasting
+                  The West Bengal first digital platform for property
+                  management. We take care of all your property needs, bringing
+                  property owners, buyers, and tenants all together on one
+                  platform. We partner with ethical, local experts for lasting
                   relationships.
                 </p>
               </div>
