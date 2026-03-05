@@ -29,12 +29,9 @@ const JoinHero = () => {
           <div className="col-span-6 flex">
             <div className="bg-white rounded-l-lg md:rounded-xl p-3 md:p-6 shadow-sm h-full flex items-center">
               <p className="text-xs md:text-base text-slate-700 leading-snug md:leading-relaxed">
-                Join a trusted real estate network built for independent
-                professionals who value credibility and long-term success. A
-                purely digital shared platform for property inventory and
-                collaboration, designed to build trust, standardize practices,
-                and bring industry professionals together under one roof to
-                better serve buyers and sellers.
+                It is a purely digital shared platform for independent
+                professionals and property inventory.Join us and collaborate
+                under one roof to serve buyers and sellers.
               </p>
             </div>
           </div>
