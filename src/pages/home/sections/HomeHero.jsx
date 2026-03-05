@@ -124,17 +124,13 @@ export default function HomeHero() {
               className="text-3xl lg:text-6xl leading-tight mt-1 lg:mt-4 font-bold text-yellow-700"
               style={{ fontFamily: "'Tangerine', cursive" }}
             >
-              Investment to Aesthetic Living
+              Elevate Your Living
             </h1>
           </div>
         </Container>
 
         {/* MARQUEE SECTION */}
         <div className="relative w-full mt-4 lg:mt-10">
-          <p className="relative z-10 text-xs lg:text-sm text-dark-orange mb-4 lg:mb-8 text-center font-bold tracking-widest uppercase">
-            Browse by Property Type
-          </p>
-
           <div
             ref={marqueeRef}
             className="flex gap-3 overflow-x-auto no-scrollbar pb-2 px-3 cursor-grab active:cursor-grabbing relative z-10"
@@ -202,6 +198,10 @@ export default function HomeHero() {
               );
             })}
           </div>
+          <p className="mt-2 z-10 text-xs lg:text-sm text-slate-600 mb-4 lg:mb-8 text-center cursor-pointer capitalize">
+            Click to <span className="text-dark-orange font-semibold">see</span>{" "}
+            all properties
+          </p>
         </div>
 
         {/* POST PROPERTY CARD */}
@@ -245,63 +245,83 @@ export default function HomeHero() {
         </Container>
 
         {/* NEW SECTION: EXPLORE VERIFIED PROPERTIES */}
-<Container className="w-full mt-10 mb-10">
-  <div className="flex flex-col items-center">
-    {/* HEADER - Aligned left relative to the content width */}
-    <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
-      <BadgeCheck className="text-green-600 shrink-0" size={18} />
-      <h2 className="text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
-        Explore <span className="text-dark-orange">Verified</span> Properties
-      </h2>
-      {/* Subtle line decoration */}
-      <div className="h-[1px] flex-grow bg-linear-to-r from-slate-200 to-transparent ml-2"></div>
-    </div>
+        <Container className="w-full mt-10 mb-10">
+          <div className="flex flex-col items-center">
+            {/* HEADER - Aligned left relative to the content width */}
+            <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
+              <BadgeCheck className="text-green-600 shrink-0" size={18} />
+              <h2 className="text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
+                Explore <span className="text-dark-orange">Verified</span>{" "}
+                Properties
+              </h2>
+              {/* Subtle line decoration */}
+              <div className="h-[1px] flex-grow bg-linear-to-r from-slate-200 to-transparent ml-2"></div>
+            </div>
 
-    {/* GRID CONTAINER */}
-    <div className="grid grid-cols-3 gap-2 lg:gap-4 w-full max-w-lg">
-      {/* BUY BUTTON */}
-      <button
-        onClick={() => navigate("/buy")}
-        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-      >
-        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-          <ShoppingCart size={18} className="text-orange-600 group-hover:text-white" />
-        </div>
-        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Buy</span>
-      </button>
+            {/* GRID CONTAINER */}
+            <div className="grid grid-cols-3 gap-2 lg:gap-4 w-full max-w-lg">
+              {/* BUY BUTTON */}
+              <button
+                onClick={() => navigate("/buy")}
+                className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+              >
+                <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+                  <ShoppingCart
+                    size={18}
+                    className="text-orange-600 group-hover:text-white"
+                  />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">
+                  Buy
+                </span>
+              </button>
 
-      {/* SELL BUTTON */}
-      <button
-        onClick={() => navigate("/sell")}
-        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-      >
-        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-          <TrendingUp size={18} className="text-orange-600 group-hover:text-white" />
-        </div>
-        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Sell</span>
-      </button>
+              {/* SELL BUTTON */}
+              <button
+                onClick={() => navigate("/sell")}
+                className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+              >
+                <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+                  <TrendingUp
+                    size={18}
+                    className="text-orange-600 group-hover:text-white"
+                  />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">
+                  Sell
+                </span>
+              </button>
 
-      {/* RENT BUTTON */}
-      <button
-        onClick={() => navigate("/rent")}
-        className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
-      >
-        <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
-          <Key size={18} className="text-orange-600 group-hover:text-white" />
-        </div>
-        <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">Rent</span>
-      </button>
-    </div>
+              {/* RENT BUTTON */}
+              <button
+                onClick={() => navigate("/rent")}
+                className="group flex flex-col items-center gap-2 p-2.5 bg-white border border-slate-100 rounded-xl shadow-xs hover:shadow-lg hover:border-orange-200 transition-all active:scale-95 cursor-pointer"
+              >
+                <div className="p-2 bg-orange-50 rounded-lg group-hover:bg-orange-500 transition-colors">
+                  <Key
+                    size={18}
+                    className="text-orange-600 group-hover:text-white"
+                  />
+                </div>
+                <span className="text-[11px] font-bold text-slate-700 uppercase tracking-wide">
+                  Rent
+                </span>
+              </button>
+            </div>
 
-    {/* FOOTER PARA - Centered with design */}
-    <div className="mt-6 flex flex-col items-center gap-1">
-      <p className="text-[10px] lg:text-xs font-medium text-slate-400 italic">
-        Select a category to <span className="text-dark-orange font-bold not-italic">unlock</span> exclusive listings
-      </p>
-      <div className="w-8 h-1 bg-orange-100 rounded-full"></div>
-    </div>
-  </div>
-</Container>
+            {/* FOOTER PARA - Centered with design */}
+            <div className="mt-6 flex flex-col items-center gap-1">
+              <p className="text-[10px] lg:text-xs font-medium text-slate-400 italic">
+                Select a category to{" "}
+                <span className="text-dark-orange font-bold not-italic">
+                  unlock
+                </span>{" "}
+                exclusive listings
+              </p>
+              <div className="w-8 h-1 bg-orange-100 rounded-full"></div>
+            </div>
+          </div>
+        </Container>
       </div>
     </Section>
   );

@@ -42,7 +42,7 @@ function DesktopUser({ scrolled }) {
         rounded-full
         border
         transition-all duration-300
-        shadow-sm
+        shadow-sm bg-pink-700
         hover:bg-dark-orange hover:text-white hover:border-dark-orange hover:shadow-md
         ${
           scrolled
@@ -61,13 +61,13 @@ function DesktopUser({ scrolled }) {
 ========================= */
 function DesktopNav({ scrolled }) {
   return (
-    <nav className="hidden lg:flex items-center gap-10 h-full">
+    <nav className="hidden lg:flex items-center gap-4 justify-evenly h-full">
       {navigationLinks.map((link) => (
         <NavLink
           key={link.id}
           to={link.path}
           className={({ isActive }) =>
-            `relative text-sm font-semibold uppercase tracking-wide transition-all duration-200 ${
+            `relative text-base font-medium uppercase tracking-wide transition-all duration-200 ${
               scrolled
                 ? "text-slate-600 hover:text-dark-orange"
                 : "text-white hover:text-warm-yellow"
