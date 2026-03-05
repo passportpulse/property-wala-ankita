@@ -483,7 +483,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
               {[
-                { label: "Porcha", id: "porcha" },
+                { label: "Parcha", id: "parcha" },
                 { label: "Mutation", id: "mutation" },
                 { label: "Site Plan", id: "sitePlan" },
                 { label: "Aadhar Card", id: "aadhar" },
