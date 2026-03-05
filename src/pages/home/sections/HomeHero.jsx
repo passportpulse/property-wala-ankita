@@ -198,8 +198,9 @@ export default function HomeHero() {
               );
             })}
           </div>
-          <p className="mt-2 z-10 text-xs lg:text-sm text-slate-600 mb-4 lg:mb-8 text-center cursor-pointer capitalize">
-            Click to <span className="text-dark-orange font-semibold">see</span>{" "}
+          <p className="text-[10px] lg:text-xs font-medium text-slate-400 italic text-center mt-2">
+            Click to{" "}
+            <span className="text-dark-orange font-bold not-italic">see</span>{" "}
             all properties
           </p>
         </div>
