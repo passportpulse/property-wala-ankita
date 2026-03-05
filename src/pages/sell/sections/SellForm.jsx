@@ -478,7 +478,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
           {/* --- DOCUMENT VERIFICATION SECTION --- */}
           <section className="space-y-4 pt-6 border-t border-slate-100">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-orange-600">
-              <ShieldCheck size={14} /> Verification Documents
+              <ShieldCheck size={14} /> Upload Documents
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
