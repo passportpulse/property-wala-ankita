@@ -210,7 +210,7 @@ export default function HomeHero() {
           <div className="w-full sm:w-1/2 mt-4">
             <div className="mt-3">
               <button
-                onClick={() => navigate("/sell")}
+                
                 className="w-full bg-white rounded-2xl shadow-lg border border-orange-100 px-4 py-4 flex items-center justify-between active:scale-[0.98] transition cursor-pointer hover:border-orange-300"
               >
                 <div className="flex flex-col items-start text-left">
