@@ -16,7 +16,7 @@ const JoinHero = () => {
               </span>
 
               <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                Become <br/>
+                Become <br />
                 <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
                   Property Wala Bhaiya
                 </span>
@@ -29,8 +29,12 @@ const JoinHero = () => {
           <div className="col-span-6 flex">
             <div className="bg-white rounded-l-lg md:rounded-xl p-3 md:p-6 shadow-sm h-full flex items-center">
               <p className="text-xs md:text-base text-slate-700 leading-snug md:leading-relaxed">
-                Join a trusted real estate network for independent brokers who
-                value credibility and long-term success.
+                Join a trusted real estate network built for independent
+                professionals who value credibility and long-term success. A
+                purely digital shared platform for property inventory and
+                collaboration, designed to build trust, standardize practices,
+                and bring industry professionals together under one roof to
+                better serve buyers and sellers.
               </p>
             </div>
           </div>
