@@ -251,7 +251,7 @@ export default function HomeHero() {
             {/* HEADER - Aligned left relative to the content width */}
             <div className="w-full max-w-lg flex items-center gap-2 mb-4 px-1">
               
-              <h2 className="text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
+              <h2 className="pl-4 text-xs lg:text-sm font-black text-slate-800 uppercase tracking-widest">
                 Explore <span className="text-dark-orange">Verified</span>{" "}
                 Properties
               </h2>
