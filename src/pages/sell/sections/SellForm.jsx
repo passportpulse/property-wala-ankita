@@ -486,6 +486,7 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
                 { label: "Parcha", id: "parcha" },
                 { label: "Mutation", id: "mutation" },
                 { label: "Site Plan", id: "sitePlan" },
+                { label: "Sale Deed", id: "sellDeed" },
                 { label: "Aadhar Card", id: "aadhar" },
                 { label: "PAN Card", id: "pan" },
               ].map((doc) => {
