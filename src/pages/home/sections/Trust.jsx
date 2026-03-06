@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import { ShieldCheck, Award, Zap, ArrowUpRight, Star } from "lucide-react";
+import Header from "../../../components/Header";
 
 export default function Trust() {
   const points = [
@@ -25,53 +26,17 @@ export default function Trust() {
     },
   ];
 
-  const dealAvatars = [
-    "https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=100&h=100&fit=crop",
-    "https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100&h=100&fit=crop",
-    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
-  ];
-
   return (
     <Section>
       <Container>
         {/* HEADER */}
-        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1 lg:space-y-2">
-              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                Our Promise
-              </span>
-
-              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                Built on{" "}
-                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                  Pure Trust.
-                </span>
-              </h2>
-
-              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                Prime Durgapur properties with verified documentation.
-              </p>
-            </div>
-
-            {/* COMPACT VERIFIED TAG */}
-            <div className="flex items-center gap-3 bg-dark-orange p-2 pr-4 rounded-full border border-slate-100 w-fit">
-              <div className="flex -space-x-2">
-                {dealAvatars.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt="client"
-                    className="w-7 h-7 rounded-full border-2 border-white shadow-sm"
-                  />
-                ))}
-              </div>
-              <p className="text-[9px] font-black text-white uppercase tracking-widest">
-                1.2k+ Verified Deals
-              </p>
-            </div>
-          </div>
-        </div>
+        <Header
+          tag="Our Promise"
+          title="Built on"
+          highlight="Pure Trust"
+          subtitle="Prime Durgapur properties with verified documentation"
+          buttonText="1.2k+ Verified Deals"
+        />
 
         {/* TRUST CARDS: Horizontal Scroll on Mobile */}
         <div className="flex overflow-x-auto pb-8 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:mx-0 md:px-0">

@@ -11,6 +11,7 @@ import {
   LayoutGrid,
 } from "lucide-react";
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
+import Header from "../../../components/Header";
 
 export default function RentForm({ formData, setFormData, onSubmit }) {
   // Safe access to places
@@ -40,20 +41,15 @@ export default function RentForm({ formData, setFormData, onSubmit }) {
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">
       {/* HEADER SECTION */}
-      <div className="relative mb-6 border-l-4 border-orange-500 pl-4">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
-          Rental Inventory
-        </span>
-        <h2 className="text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-tight">
-          Find Your <span className="italic text-orange-500">Next Space</span>
-        </h2>
-        <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-          Property Wala Bhaiya simplifies real estate by connecting property owners,
+      <Header
+        tag="Rental Inventory"
+        title="Find Your"
+        highlight="Next Space"
+        subtitle="Property Wala Bhaiya simplifies real estate by connecting property owners,
           buyers, and tenants on one trusted platform. Powered by Java
           technology, we ensure verified listings backed by complete legal due
-          diligence for a safe and transparent property dealing experience.
-        </p>
-      </div>
+          diligence for a safe and transparent property dealing experience."
+      />
 
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
         <div className="p-5 lg:p-8 space-y-8">

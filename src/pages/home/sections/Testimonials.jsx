@@ -2,124 +2,80 @@ import { Star, Quote, StarHalf } from "lucide-react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
 import { ArrowUpRight } from "lucide-react";
+import Header from "../../../components/Header";
 
 export default function Testimonials() {
   const testimonials = [
-  {
-    name: "Rahul Sharma",
-    location: "Durgapur",
-    image: "https://media.istockphoto.com/id/628330148/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=3HlVTzZA4mFWonZtxu7xCYamgLxcb8zE3YMU9AGYXAc=",
-    text: "Property Wala Bhaiya helped me find my dream flat within my budget. The process was smooth and completely transparent.",
-    rating: 4.5,
-  },
-  {
-    name: "Sneha Mukherjee",
-    location: "Kolkata",
-    image: "https://img.freepik.com/free-photo/portrait-smiling-indian-person-posing-front-camera_482257-122324.jpg?semt=ais_user_personalization&w=740&q=80",
-    text: "Very professional service. I scheduled a visit and finalized my property within 3 days. Highly recommended.",
-    rating: 4,
-  },
-  {
-    name: "Amit Das",
-    location: "Asansol",
-    image: "https://media.istockphoto.com/id/1363118407/photo/portrait-of-young-businessman.jpg?s=612x612&w=0&k=20&c=e9xjo1AdlIbr7ttZe3iBG3CBWKUBwdTMLkPus9DxA_s=",
-    text: "Best platform for buying property without brokers. Genuine listings and excellent support.",
-    rating: 4.2,
-  },
-  // Added 4 More Indian Demo Profiles
-  {
-    name: "Priyanka Roy",
-    location: "Siliguri",
-    image: "https://www.shutterstock.com/image-photo/studio-shot-photo-4k-image-260nw-2534322585.jpg",
-    text: "Finding a rental in a new city was stressful until I found this. The verified photos saved me so much time traveling!",
-    rating: 4.8,
-  },
-  {
-    name: "Vikram Chatterjee",
-    location: "Howrah",
-    image: "https://media.istockphoto.com/id/613557584/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=hkCg5CrmTKOApePbPOyo1U9GexEfIJOJqoLXJIvcN8E=",
-    text: "Their network of independent brokers is top-notch. I got a great deal on my commercial space for my new startup.",
-    rating: 4.5,
-  },
-  {
-    name: "Ananya Ghosh",
-    location: "Burdwan",
-    image: "https://media.istockphoto.com/id/1313502972/photo/portrait-of-beautiful-woman-having-fun.jpg?s=612x612&w=0&k=20&c=DHGWp3wIoSlpjK9xFdARpgpyo4t-hIzuqOSx5ZyRsHA=",
-    text: "Transparency is hard to find in real estate. Here, I knew exactly what I was paying for. Excellent support team!",
-    rating: 5,
-  },
-  {
-    name: "Sandeep Verma",
-    location: "Kharagpur",
-    image: "https://st5.depositphotos.com/4218696/72817/i/450/depositphotos_728179600-stock-photo-image-shows-smiling-man-standing.jpg",
-    text: "I appreciated the digital-first approach. Being able to browse verified listings on my phone made the whole search effortless.",
-    rating: 4.6,
-  }
-];
+    {
+      name: "Rahul Sharma",
+      location: "Durgapur",
+      image:
+        "https://media.istockphoto.com/id/628330148/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=3HlVTzZA4mFWonZtxu7xCYamgLxcb8zE3YMU9AGYXAc=",
+      text: "Property Wala Bhaiya helped me find my dream flat within my budget. The process was smooth and completely transparent.",
+      rating: 4.5,
+    },
+    {
+      name: "Sneha Mukherjee",
+      location: "Kolkata",
+      image:
+        "https://img.freepik.com/free-photo/portrait-smiling-indian-person-posing-front-camera_482257-122324.jpg?semt=ais_user_personalization&w=740&q=80",
+      text: "Very professional service. I scheduled a visit and finalized my property within 3 days. Highly recommended.",
+      rating: 4,
+    },
+    {
+      name: "Amit Das",
+      location: "Asansol",
+      image:
+        "https://media.istockphoto.com/id/1363118407/photo/portrait-of-young-businessman.jpg?s=612x612&w=0&k=20&c=e9xjo1AdlIbr7ttZe3iBG3CBWKUBwdTMLkPus9DxA_s=",
+      text: "Best platform for buying property without brokers. Genuine listings and excellent support.",
+      rating: 4.2,
+    },
+    // Added 4 More Indian Demo Profiles
+    {
+      name: "Priyanka Roy",
+      location: "Siliguri",
+      image:
+        "https://www.shutterstock.com/image-photo/studio-shot-photo-4k-image-260nw-2534322585.jpg",
+      text: "Finding a rental in a new city was stressful until I found this. The verified photos saved me so much time traveling!",
+      rating: 4.8,
+    },
+    {
+      name: "Vikram Chatterjee",
+      location: "Howrah",
+      image:
+        "https://media.istockphoto.com/id/613557584/photo/portrait-of-a-beautifull-smiling-man.jpg?s=612x612&w=0&k=20&c=hkCg5CrmTKOApePbPOyo1U9GexEfIJOJqoLXJIvcN8E=",
+      text: "Their network of independent brokers is top-notch. I got a great deal on my commercial space for my new startup.",
+      rating: 4.5,
+    },
+    {
+      name: "Ananya Ghosh",
+      location: "Burdwan",
+      image:
+        "https://media.istockphoto.com/id/1313502972/photo/portrait-of-beautiful-woman-having-fun.jpg?s=612x612&w=0&k=20&c=DHGWp3wIoSlpjK9xFdARpgpyo4t-hIzuqOSx5ZyRsHA=",
+      text: "Transparency is hard to find in real estate. Here, I knew exactly what I was paying for. Excellent support team!",
+      rating: 5,
+    },
+    {
+      name: "Sandeep Verma",
+      location: "Kharagpur",
+      image:
+        "https://st5.depositphotos.com/4218696/72817/i/450/depositphotos_728179600-stock-photo-image-shows-smiling-man-standing.jpg",
+      text: "I appreciated the digital-first approach. Being able to browse verified listings on my phone made the whole search effortless.",
+      rating: 4.6,
+    },
+  ];
 
   return (
     <Section>
       <Container>
         {/* HEADER */}
-        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1 lg:space-y-2">
-              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                Success Stories
-              </span>
-
-              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                What Our{" "}
-                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                  Clients Say
-                </span>
-              </h2>
-
-              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                Read how our clients found the right property opportunities.
-              </p>
-
-              <a
-                href="https://share.google/b2tgAKDzKDyHl73fI"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-        cursor-pointer
-    bg-dark-orange text-white
-    flex items-center gap-2 group
-    text-[10px] lg:text-[11px]
-    font-black uppercase tracking-widest
-    px-4 py-2 lg:px-5 lg:py-2.5
-    border-2 border-white
-    rounded-md
-    hover:bg-white hover:text-orange-600 hover:border-orange-600
-    transition-all duration-300
-    shadow-sm hover:shadow-md
-    w-fit
-      "
-              >
-                {/* Google style stars */}
-                <div className="flex items-center gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-[#FFC107] stroke-[#FFC107]"
-                    />
-                  ))}
-                </div>
-
-                {/* Rating text */}
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] lg:text-[11px] font-black tracking-widest uppercase">
-                    5.0 Google Reviews
-                  </span>
-
-                  <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
+        <Header
+          tag="Success Stories"
+          title="What Our"
+          highlight="Clients Say"
+          subtitle="Read how our clients found the right property opportunities."
+          
+        />
 
         {/* TESTIMONIAL SNAP CAROUSEL */}
         <div className="flex overflow-x-auto pb-10 -mx-4 px-4 snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-3 md:gap-6 lg:gap-8 md:mx-0 md:px-0">

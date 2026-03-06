@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import Section from "../../../components/layout/Section";
+import Header from "../../../components/Header";
 
 export default function SellFaq() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -30,18 +31,11 @@ export default function SellFaq() {
 
   return (
     <Section>
-      <div className="relative mb-10 border-l-4 border-orange-500 pl-4">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
-          Support
-        </span>
-        <h2 className="text-2xl lg:text-4xl font-black text-slate-800">
-          Frequently Asked <span className="italic text-orange-500">Questions</span>
-        </h2>
-      </div>
+      <Header tag="Support" title=" Frequently Asked" highlight="Questions" />
 
       <div className="space-y-3">
         {faqs.map((faq, index) => (
-          <div 
+          <div
             key={index}
             className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all"
           >
@@ -50,12 +44,14 @@ export default function SellFaq() {
               className="w-full flex items-center justify-between p-5 text-left"
             >
               <span className="text-xs font-bold text-slate-700">{faq.q}</span>
-              <div className={`p-1 rounded-full transition-colors ${openIndex === index ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-400'}`}>
+              <div
+                className={`p-1 rounded-full transition-colors ${openIndex === index ? "bg-orange-500 text-white" : "bg-slate-100 text-slate-400"}`}
+              >
                 {openIndex === index ? <Minus size={14} /> : <Plus size={14} />}
               </div>
             </button>
-            
-            <div 
+
+            <div
               className={`px-5 transition-all duration-300 ease-in-out overflow-hidden ${
                 openIndex === index ? "max-h-40 pb-5" : "max-h-0"
               }`}

@@ -1,13 +1,9 @@
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 import { useState, useEffect } from "react";
-import {
-  ChevronRight,
-  Maximize2,
-  MapPin,
-  ArrowUpRight,
-} from "lucide-react";
+import { ChevronRight, Maximize2, MapPin, ArrowUpRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Header from "../../../components/Header";
 
 const deals = [
   {
@@ -57,47 +53,14 @@ export default function HotDeals() {
     <Section className="bg-white font-poppins py-8 lg:py-20">
       <Container>
         {/* MOBILE ONLY HEADER */}
-        <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1 lg:space-y-2">
-              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                Hot Deals
-              </span>
-
-              <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                High-Value{" "}
-                <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                  Opportunities
-                </span>
-              </h2>
-
-              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                High-value property opportunities with exclusive pricing.
-              </p>
-            </div>
-
-            <button
-              onClick={() => navigate("/buy")}
-              className="
-    cursor-pointer
-    bg-dark-orange text-white
-    flex items-center gap-2 group
-    text-[10px] lg:text-[11px]
-    font-black uppercase tracking-widest
-    px-4 py-2 lg:px-5 lg:py-2.5
-    border-2 border-white
-    rounded-md
-    hover:bg-white hover:text-orange-600 hover:border-orange-600
-    transition-all duration-300
-    shadow-sm hover:shadow-md
-    w-fit
-  "
-            >
-              Discover More
-              <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-            </button>
-          </div>
-        </div>
+        <Header
+          tag="Hot Deals"
+          title="High-Value"
+          highlight="Opportunities"
+          subtitle=" High-value property opportunities with exclusive pricing."
+          buttonText=" Discover More"
+          onButtonClick="/buy"
+        />
 
         {/* THE OUTER FRAME (The container that holds everything) */}
         <div

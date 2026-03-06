@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Section from "../../components/layout/Section";
 import Container from "../../components/layout/Container";
 import {
@@ -9,6 +8,7 @@ import {
   ShieldCheck,
   Globe,
 } from "lucide-react";
+import Header from "../../components/Header";
 
 const TransformCard = ({ beforeTitle, beforeDesc, afterTitle, afterDesc }) => (
   <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
@@ -59,38 +59,20 @@ const InfraRow = ({ icon, number, title, text }) => (
 );
 
 export default function About() {
-  const navigate = useNavigate();
 
   return (
     <Section className="mt-0 pt-6 lg:mt-0">
       <Container>
         {/* HEADER SECTION */}
-        <div className="relative mb-8 lg:mb-12 border-l-4 border-dark-orange pl-4 lg:pl-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-1 lg:space-y-2">
-              <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                Durgapur's Digital Backbone
-              </span>
-              <h2 className="mt-3 text-xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                About{" "}
-                <span className="bg-linear-to-r from-dark-orange to-orange-400 bg-clip-text text-transparent italic">
-                  Property Wala Bhaiya
-                </span>
-              </h2>
-              <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                Bringing trust, structure, and transparency to Durgapur’s real
-                estate market.
-              </p>
-            </div>
-            <button
-              onClick={() => navigate("/join-us")}
-              className="cursor-pointer bg-dark-orange text-white flex items-center gap-2 group text-[10px] lg:text-[11px] font-black uppercase tracking-widest px-4 py-2 lg:px-5 lg:py-2.5 border-2 border-white rounded-md hover:bg-white hover:text-orange-600 hover:border-orange-600 transition-all duration-300 shadow-sm hover:shadow-md w-fit"
-            >
-              Join Us{" "}
-              <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-            </button>
-          </div>
-        </div>
+        <Header
+          tag="Durgapur's Digital Backbone"
+          title="About"
+          highlight="Property Wala Bhaiya"
+          subtitle="Bringing trust, structure, and transparency to Durgapur’s real
+                estate market."
+          buttonText="Join Us"
+          onButtonClick="/join-us"
+        />
 
         {/* TRANSFORMATION CARDS */}
         <div className="space-y-3 mb-4 pb-4">

@@ -1,6 +1,13 @@
 import React from "react";
-import { Upload, Users, MessageSquare, LineChart, ChevronRight } from "lucide-react";
+import {
+  Upload,
+  Users,
+  MessageSquare,
+  LineChart,
+  ChevronRight,
+} from "lucide-react";
 import Section from "../../../components/layout/Section";
+import Header from "../../../components/Header";
 
 export default function SellHowItWorks() {
   const steps = [
@@ -28,19 +35,12 @@ export default function SellHowItWorks() {
 
   return (
     <Section>
-      <div className="relative mb-10 border-l-4 border-orange-500 pl-4">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
-          Process
-        </span>
-        <h2 className="text-2xl lg:text-4xl font-black text-slate-800">
-          How it <span className="italic text-orange-500">Works</span>
-        </h2>
-      </div>
+      <Header tag="Process" title="How it" highlight="Works" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {steps.map((step, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className="group bg-white border border-slate-200 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all"
           >
             <div className="flex items-start gap-4">

@@ -1,5 +1,5 @@
 import { ArrowUpRight } from "lucide-react"; // Refined icon
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({
   tag,
@@ -7,18 +7,19 @@ export default function Header({
   highlight,
   subtitle,
   buttonText,
-  onButtonClick, // Added prop for action
+  onButtonClick, 
 }) {
+  const navigate = useNavigate();
   return (
     <div className="relative mb-8 border-l-4 border-dark-orange pl-4 flex flex-col gap-3">
       {/* TAG */}
       <div>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-orange-500">
           {tag}
         </span>
 
         {/* TITLE */}
-        <h2 className="text-lg lg:text-4xl font-black text-slate-800 leading-tight">
+        <h2 className="text-lg lg:text-4xl font-bold text-slate-800 leading-tight mt-1">
           {title} <span className="text-dark-orange">{highlight}</span>
         </h2>
       </div>
@@ -33,7 +34,7 @@ export default function Header({
       {/* BUTTON - Refined with better spacing and arrow */}
       {buttonText && (
         <button
-          onClick={onButtonClick}
+          onClick={() => navigate(onButtonClick)}
           className="
             mt-2
             cursor-pointer
@@ -51,9 +52,7 @@ export default function Header({
           "
         >
           {buttonText}
-          <ArrowUpRight 
-            className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
-          />
+          <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
       )}
     </div>

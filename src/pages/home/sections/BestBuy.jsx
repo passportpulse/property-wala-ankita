@@ -1,13 +1,9 @@
 import { useState } from "react";
-import {
-  ArrowRight,
-  MapPin,
-  ArrowUpRight,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { ArrowRight, MapPin, ArrowUpRight } from "lucide-react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
 import BestBuyModal from "../../../components/modals/BestBuyModal";
+import Header from "../../../components/Header";
 
 const bestBuys = [
   {
@@ -53,7 +49,6 @@ const bestBuys = [
 ];
 
 export default function BestBuySection() {
-  const navigate = useNavigate();
   const [selectedItem, setSelectedItem] = useState(null);
 
   return (
@@ -61,47 +56,14 @@ export default function BestBuySection() {
       <Section>
         <Container>
           {/* HEADER */}
-          <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div className="space-y-1 lg:space-y-2">
-                <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                  Durgapur Properties
-                </span>
-
-                <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                  Best Buys in{" "}
-                  <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                    Durgapur
-                  </span>
-                </h2>
-
-                <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                  Prime Durgapur properties with verified documentation.
-                </p>
-              </div>
-
-              <button
-                onClick={() => navigate("/buy")}
-                className="
-    cursor-pointer
-    bg-dark-orange text-white
-    flex items-center gap-2 group
-    text-[10px] lg:text-[11px]
-    font-black uppercase tracking-widest
-    px-4 py-2 lg:px-5 lg:py-2.5
-    border-2 border-white
-    rounded-md
-    hover:bg-white hover:text-orange-600 hover:border-orange-600
-    transition-all duration-300
-    shadow-sm hover:shadow-md
-    w-fit
-  "
-              >
-                See What's New
-                <ArrowUpRight className="w-3 h-3 lg:w-4 lg:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-              </button>
-            </div>
-          </div>
+          <Header
+            tag="Durgapur Properties"
+            title="Best Buys in"
+            highlight="Durgapur"
+            subtitle="Prime Durgapur properties with verified documentation."
+            buttonText="See What's New"
+            onButtonClick="/buy"
+          />
 
           {/* GRID: Horizontal Scroll on Mobile, Grid on Desktop */}
           <div
@@ -172,10 +134,7 @@ export default function BestBuySection() {
       </Section>
 
       {/* MODAL*/}
-      <BestBuyModal 
-        item={selectedItem} 
-        onClose={() => setSelectedItem(null)} 
-      />
+      <BestBuyModal item={selectedItem} onClose={() => setSelectedItem(null)} />
     </>
   );
 }

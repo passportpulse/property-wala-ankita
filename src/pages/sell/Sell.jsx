@@ -35,8 +35,9 @@ export default function Sell() {
               availablePlaces={availablePlaces}
               onSubmit={() => setShowResults(true)}
             />
-            <SellFaq/>
+            
             <SellHowItWorks/>
+            <SellFaq/>
           </>
         ) : (
           <SellResults

@@ -14,6 +14,7 @@ import { states, citiesInWB, placesInWB } from "../../../data/locations";
 import { IndianRupee } from "lucide-react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import Header from "../../../components/Header";
 
 export default function BuyForm({ formData, setFormData, onSubmit }) {
   const MIN_LIMIT = 1000000;
@@ -86,19 +87,13 @@ export default function BuyForm({ formData, setFormData, onSubmit }) {
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">
       {/* HEADER SECTION */}
-      <div className="relative mb-6 border-l-4 border-orange-500 pl-4">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
-          Property Purchase
-        </span>
-        <h2 className="text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-tight">
-          Buy Your{" "}
-          <span className="italic text-orange-500">Dream Property</span>
-        </h2>
-        <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-          Verified listings and direct owner connectivity. Find residential and
-          commercial spaces with ease.
-        </p>
-      </div>
+      <Header
+        tag="Property Purchase"
+        title="Buy Your"
+        highlight="Dream Property"
+        subtitle="Verified listings and direct owner connectivity. Find residential and
+          commercial spaces with ease."
+      />
 
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
         <div className="p-5 lg:p-8 space-y-8">
