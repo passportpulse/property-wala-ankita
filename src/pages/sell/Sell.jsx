@@ -1,9 +1,12 @@
 import SellForm from "./sections/SellForm";
+import SellFaq from "./sections/old/SellFaq";
+import SellHowItWorks from "./sections/old/SellHowItWorks";
 import SellResults from "./sections/SellResults";
 import { placesInWB } from "../../data/locations";
 import { useState } from "react";
 import Section from "../../components/layout/Section";
 import Container from "../../components/layout/Container";
+
 
 export default function Sell() {
   const [showResults, setShowResults] = useState(false);
@@ -32,6 +35,8 @@ export default function Sell() {
               availablePlaces={availablePlaces}
               onSubmit={() => setShowResults(true)}
             />
+            <SellFaq/>
+            <SellHowItWorks/>
           </>
         ) : (
           <SellResults

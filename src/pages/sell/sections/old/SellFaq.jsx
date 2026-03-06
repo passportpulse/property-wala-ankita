@@ -1,111 +1,72 @@
-import { useState } from "react";
-import { ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
-
+import React, { useState } from "react";
+import { Plus, Minus } from "lucide-react";
 import Section from "../../../../components/layout/Section";
-import Container from "../../../../components/layout/Container";
-
-const FaqItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-slate-100 last:border-0">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex justify-between items-center text-left group"
-      >
-        <span
-          className={`font-bold text-sm uppercase tracking-wider transition-colors ${
-            isOpen
-              ? "text-dark-orange"
-              : "text-slate-700 group-hover:text-dark-orange"
-          }`}
-        >
-          {question}
-        </span>
-
-        {isOpen ? (
-          <ChevronUp size={18} className="text-dark-orange" />
-        ) : (
-          <ChevronDown size={18} className="text-slate-300" />
-        )}
-      </button>
-
-      {isOpen && (
-        <div className="pb-6">
-          <p className="text-slate-500 text-sm leading-relaxed max-w-2xl">
-            {answer}
-          </p>
-        </div>
-      )}
-    </div>
-  );
-};
 
 export default function SellFaq() {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const faqs = [
     {
-      question: "Is there a listing fee?",
-      answer:
-        "Basic listing is free. We only charge a nominal fee for premium verification and professional photography.",
+      q: "How to post a property on Property Wala Bhaiya?",
+      a: "Simply fill out the form above with your property details, location, and photos. Once you agree to the terms and click 'Post', our team verifies the details before making it live.",
     },
     {
-      question: "How long does verification take?",
-      answer:
-        "Once you submit, our team usually conducts the site audit within 24 to 48 hours.",
+      q: "Can I post a property for free?",
+      a: "Yes! We offer a Free Basic Plan that allows you to list your property in our search results at no cost.",
     },
     {
-      question: "Will my contact number be public?",
-      answer:
-        "No. Your privacy is paramount. We filter leads and only connect you with verified, serious buyers.",
+      q: "What type of property can I post for selling/renting?",
+      a: "You can post residential flats, houses, plots, and commercial spaces including offices, warehouses, and industrial land.",
+    },
+    {
+      q: "What are the benefits of posting a property here?",
+      a: "You get direct access to local buyers in West Bengal, professional lead management, and high visibility through our targeted regional marketing.",
+    },
+    {
+      q: "When do I start getting enquiries on my property?",
+      a: "Enquiries usually start coming in within 24-48 hours after your property listing is verified and goes live on the platform.",
     },
   ];
 
   return (
-    <Section className="py-32">
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+    <Section>
+      <div className="relative mb-10 border-l-4 border-orange-500 pl-4">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
+          Support
+        </span>
+        <h2 className="text-2xl lg:text-4xl font-black text-slate-800">
+          Frequently Asked <span className="italic text-orange-500">Questions</span>
+        </h2>
+      </div>
 
-          {/* LEFT SIDE */}
-          <div className="lg:col-span-5">
-            <h2 className="text-4xl font-black tracking-tighter uppercase mb-6">
-              Common <br />
-              <span className="text-slate-300">Doubts</span>
-            </h2>
-
-            <p className="text-slate-500 font-medium mb-8">
-              Kindly find answers to some common doubts. We believe in 100%
-              transparency with our sellers.
-            </p>
-
-            {/* Trust Card */}
-            <div className="inline-flex items-center gap-4 p-6 bg-slate-50 rounded-3xl border border-slate-100">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm">
-                <CheckCircle2 className="text-dark-orange" size={20} />
+      <div className="space-y-3">
+        {faqs.map((faq, index) => (
+          <div 
+            key={index}
+            className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all"
+          >
+            <button
+              onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              className="w-full flex items-center justify-between p-5 text-left"
+            >
+              <span className="text-xs font-bold text-slate-700">{faq.q}</span>
+              <div className={`p-1 rounded-full transition-colors ${openIndex === index ? 'bg-orange-500 text-white' : 'bg-slate-100 text-slate-400'}`}>
+                {openIndex === index ? <Minus size={14} /> : <Plus size={14} />}
               </div>
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 leading-none mb-1">
-                  Total Trust
-                </p>
-                <p className="text-sm font-bold">2M+ Satisfied Owners</p>
-              </div>
+            </button>
+            
+            <div 
+              className={`px-5 transition-all duration-300 ease-in-out overflow-hidden ${
+                openIndex === index ? "max-h-40 pb-5" : "max-h-0"
+              }`}
+            >
+              <p className="text-xs text-slate-500 leading-relaxed border-t border-slate-50 pt-4">
+                {faq.a}
+              </p>
             </div>
           </div>
-
-          {/* RIGHT SIDE */}
-          <div className="lg:col-span-7">
-            <div className="bg-white border border-slate-100 rounded-[3rem] p-8 md:p-12 shadow-sm">
-              {faqs.map((faq, index) => (
-                <FaqItem
-                  key={index}
-                  question={faq.question}
-                  answer={faq.answer}
-                />
-              ))}
-            </div>
-          </div>
-
-        </div>
-      </Container>
+        ))}
+      </div>
     </Section>
   );
 }

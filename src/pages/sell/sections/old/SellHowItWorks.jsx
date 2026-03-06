@@ -1,57 +1,64 @@
-import { FileCheck, Camera, Megaphone, Handshake } from "lucide-react";
-import Container from "../../../../components/layout/Container";
+import React from "react";
+import { Upload, Users, MessageSquare, LineChart, ChevronRight } from "lucide-react";
 import Section from "../../../../components/layout/Section";
 
 export default function SellHowItWorks() {
   const steps = [
     {
-      icon: <FileCheck />,
-      title: "List Property",
-      desc: "Share basic details and legal status.",
+      icon: <Upload className="text-orange-500" size={24} />,
+      title: "Upload your property in 3 quick steps",
+      desc: "Tell us a few basic details about your property, add pricing & upload photos.",
     },
     {
-      icon: <Camera />,
-      title: "Site Audit",
-      desc: "Professional photography & verification.",
+      icon: <Users className="text-orange-500" size={24} />,
+      title: "Reach 10 lacs+ tenants & buyers",
+      desc: "As the largest property search platform, your property reaches maximum buyers online.",
     },
     {
-      icon: <Megaphone />,
-      title: "Premium Blast",
-      desc: "Promote to verified investors.",
+      icon: <MessageSquare className="text-orange-500" size={24} />,
+      title: "Start getting enquiries",
+      desc: "Receive enquiries from interested buyers as soon as your property goes live.",
     },
     {
-      icon: <Handshake />,
-      title: "Close Deal",
-      desc: "Direct buyer interaction.",
+      icon: <LineChart className="text-orange-500" size={24} />,
+      title: "Important insights",
+      desc: "View property insights and track how your listing is performing.",
     },
   ];
 
   return (
-    <Section className="bg-slate-50/50">
-      <Container>
-        <h2 className="text-3xl font-black uppercase mb-16">How it works</h2>
+    <Section>
+      <div className="relative mb-10 border-l-4 border-orange-500 pl-4">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
+          Process
+        </span>
+        <h2 className="text-2xl lg:text-4xl font-black text-slate-800">
+          How it <span className="italic text-orange-500">Works</span>
+        </h2>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, i) => (
-            <div
-              key={i}
-              className="group p-10 bg-white border border-slate-100 rounded-[2.5rem] hover:shadow-2xl transition-all duration-500"
-            >
-              <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 text-dark-orange">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {steps.map((step, index) => (
+          <div 
+            key={index} 
+            className="group bg-white border border-slate-200 p-6 rounded-3xl shadow-sm hover:shadow-md transition-all"
+          >
+            <div className="flex items-start gap-4">
+              <div className="bg-orange-50 p-3 rounded-2xl group-hover:scale-110 transition-transform">
                 {step.icon}
               </div>
-
-              <h3 className="text-lg font-black uppercase mb-2">
-                0{i + 1}. {step.title}
-              </h3>
-
-              <p className="text-slate-500 text-xs leading-relaxed">
-                {step.desc}
-              </p>
+              <div>
+                <h3 className="text-sm font-black text-slate-800 mb-2 leading-tight">
+                  {step.title}
+                </h3>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
             </div>
-          ))}
-        </div>
-      </Container>
+          </div>
+        ))}
+      </div>
     </Section>
   );
 }
