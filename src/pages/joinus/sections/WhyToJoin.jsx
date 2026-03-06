@@ -2,6 +2,7 @@ import React from "react";
 import { IndianRupee, Users, Briefcase, Award } from "lucide-react";
 import Section from "../../../components/layout/Section";
 import Container from "../../../components/layout/Container";
+import Header from "../../../components/Header";
 
 export default function WhyToJoin() {
   const benefits = [
@@ -32,26 +33,13 @@ export default function WhyToJoin() {
       <Container>
         <div className="max-w-5xl mx-auto">
           {/* Header - Compact margins for mobile */}
-          <div className="relative mb-8 lg:mb-16 border-l-4 border-dark-orange pl-4 lg:pl-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div className="space-y-1 lg:space-y-2">
-                <span className="text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] text-dark-orange">
-                  Carrier Building
-                </span>
-
-                <h2 className="mt-3 text-2xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                  Why Join{" "}
-                  <span className="bg-linear-to-r from-dark-orange to-lighter-orange bg-clip-text text-transparent">
-                    Our Network?
-                  </span>
-                </h2>
-                <p className="text-slate-500 max-w-md text-xs lg:text-base leading-relaxed font-medium">
-                  Empowering independent brokers with tools and leads to
-                  dominate locally.
-                </p>
-              </div>
-            </div>
-          </div>
+          <Header
+            tag="Carrier Building"
+            title="Why Join"
+            highlight="Our Network ?"
+            subtitle="Empowering independent brokers with tools and leads to
+                  dominate locally."
+          />
 
           {/* Benefits Grid - Compact 2-column mobile layout */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8">

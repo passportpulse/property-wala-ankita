@@ -1,20 +1,60 @@
+import { ArrowUpRight } from "lucide-react"; // Refined icon
 import React from "react";
 
-export default function Header({ tag, title, highlight, subtitle }) {
+export default function Header({
+  tag,
+  title,
+  highlight,
+  subtitle,
+  buttonText,
+  onButtonClick, // Added prop for action
+}) {
   return (
-    <div className="relative mb-6 border-l-4 border-orange-600 pl-4">
-      <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-600">
-        {tag}
-      </span>
+    <div className="relative mb-8 border-l-4 border-dark-orange pl-4 flex flex-col gap-3">
+      {/* TAG */}
+      <div>
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
+          {tag}
+        </span>
 
-      <h2 className="text-xl lg:text-4xl font-black text-slate-800">
-        {title} <span className="text-orange-600">{highlight}</span>
-      </h2>
+        {/* TITLE */}
+        <h2 className="text-lg lg:text-4xl font-black text-slate-800 leading-tight">
+          {title} <span className="text-dark-orange">{highlight}</span>
+        </h2>
+      </div>
 
+      {/* SUBTITLE */}
       {subtitle && (
-        <p className="text-slate-500 text-xs lg:text-base max-w-md">
+        <p className="text-slate-500 text-xs lg:text-sm max-w-lg leading-relaxed">
           {subtitle}
         </p>
+      )}
+
+      {/* BUTTON - Refined with better spacing and arrow */}
+      {buttonText && (
+        <button
+          onClick={onButtonClick}
+          className="
+            mt-2
+            cursor-pointer
+            bg-dark-orange text-white
+            inline-flex items-center gap-2 group
+            text-[10px] lg:text-[11px]
+            font-black uppercase tracking-widest
+            px-5 py-2.5
+            rounded-md
+            border-2 border-transparent
+            hover:bg-white hover:text-dark-orange hover:border-dark-orange
+            transition-all duration-300
+            shadow-md hover:shadow-orange-100
+            w-fit
+          "
+        >
+          {buttonText}
+          <ArrowUpRight 
+            className="w-3 h-3 lg:w-4 lg:h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
+          />
+        </button>
       )}
     </div>
   );
