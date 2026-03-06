@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import Section from "../../../../components/layout/Section";
+import Section from "../../../components/layout/Section";
 
 export default function SellFaq() {
   const [openIndex, setOpenIndex] = useState(null);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Upload, Users, MessageSquare, LineChart, ChevronRight } from "lucide-react";
-import Section from "../../../../components/layout/Section";
+import Section from "../../../components/layout/Section";
 
 export default function SellHowItWorks() {
   const steps = [

@@ -1,6 +1,6 @@
 import SellForm from "./sections/SellForm";
-import SellFaq from "./sections/old/SellFaq";
-import SellHowItWorks from "./sections/old/SellHowItWorks";
+import SellFaq from "./sections/SellFaq";
+import SellHowItWorks from "./sections/SellHowItWorks";
 import SellResults from "./sections/SellResults";
 import { placesInWB } from "../../data/locations";
 import { useState } from "react";
