@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 import { states, citiesInWB, placesInWB } from "../../../data/locations";
+import Header from "../../../components/Header";
 
 export default function SellForm({ formData, setFormData, onSubmit }) {
   const propertyTypes = [
@@ -122,20 +123,12 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
   return (
     <div className="max-w-4xl mx-auto px-2 pb-10">
       {/* HEADER */}
-      <div className="relative mb-6 border-l-4 border-orange-500 pl-4">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-500">
-          Property Listing
-        </span>
-
-        <h2 className="text-2xl lg:text-4xl font-black text-slate-800">
-          Post Your <span className="italic text-orange-500">Property</span>
-        </h2>
-
-        <p className="text-slate-500 text-xs lg:text-base max-w-md">
-          List your property on Property Wala Bhaiya digital platform and
-          connect directly with genuine buyers.
-        </p>
-      </div>
+      <Header 
+        tag="Property Listing"
+        title="Post Your"
+        highlight="Property"
+        subtitle="List your property on Property Wala Bhaiya digital platform and connect directly with genuine buyers."
+      />
 
       <div className="bg-white border border-slate-200 rounded-3xl shadow-xl overflow-hidden">
         <div className="p-5 lg:p-8 space-y-8">
@@ -599,121 +592,137 @@ export default function SellForm({ formData, setFormData, onSubmit }) {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-  {[
-    {
-      id: "free",
-      label: "Basic Free",
-      price: "₹0",
-      validity: "7 Days",
-      desc: "Basic listing in search results for casual sellers.",
-      features: ["Standard Search", "3 Photos", "Owner Contact"],
-    },
-    {
-      id: "best-deals",
-      label: "Best Deals",
-      price: "₹499",
-      validity: "30 Days",
-      badge: "Popular",
-      desc: "Featured in the 'Best Deals' collection for quick visibility.",
-      features: ["Verified Tag", "Social Media Blast", "10 Photos"],
-    },
-    {
-      id: "feature",
-      label: "Top Feature",
-      price: "₹999",
-      validity: "45 Days",
-      badge: "Fast Sale",
-      desc: "Pinned to the top of category pages to beat the competition.",
-      features: ["Top of Search", "Google Indexing", "HD Video"],
-    },
-    {
-      id: "high-value",
-      label: "High Value",
-      price: "₹1499",
-      validity: "60 Days",
-      badge: "Save 15%",
-      desc: "Priority for institutional investors and high-budget buyers.",
-      features: ["Investor Network", "Legal Advice", "Email Blasts"],
-    },
-    {
-      id: "best-buy",
-      label: "Elite Buy",
-      price: "₹1999",
-      validity: "90 Days",
-      badge: "Best Value",
-      desc: "Maximum visibility + Homepage Banner for ultimate exposure.",
-      features: ["Home Page Ads", "Pro Photoshoot", "Personal Manager"],
-    },
-  ].map((plan) => {
-    const isSelected = formData.plan === plan.id;
-    return (
-      <button
-        key={plan.id}
-        type="button"
-        onClick={() => handleChange("plan", plan.id)}
-        className={`relative p-4 rounded-3xl border-2 text-left transition-all flex flex-col h-full group ${
-          isSelected
-            ? "border-orange-500 bg-orange-50 ring-4 ring-orange-100/50"
-            : "border-slate-100 bg-slate-50 hover:border-slate-200"
-        }`}
-      >
-        {/* Header Section */}
-        <div className="mb-2">
-          <div className="flex justify-between items-center mb-1">
-            <span className={`text-[7px] font-black uppercase px-2 py-0.5 rounded-full ${
-              isSelected ? "bg-orange-500 text-white" : "bg-slate-200 text-slate-500"
-            }`}>
-              {plan.validity}
-            </span>
-            {plan.badge && (
-              <span className="text-[7px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 uppercase tracking-tighter">
-                {plan.badge}
-              </span>
-            )}
-          </div>
-          <div className="mt-2">
-            <span className="text-[10px] font-black text-slate-800 block uppercase tracking-tight">
-              {plan.label}
-            </span>
-            <span className="text-xl font-black text-orange-600 block">
-              {plan.price}
-            </span>
-          </div>
-        </div>
+              {[
+                {
+                  id: "free",
+                  label: "Basic Free",
+                  price: "₹0",
+                  validity: "7 Days",
+                  desc: "Basic listing in search results for casual sellers.",
+                  features: ["Standard Search", "3 Photos", "Owner Contact"],
+                },
+                {
+                  id: "best-deals",
+                  label: "Best Deals",
+                  price: "₹499",
+                  validity: "30 Days",
+                  badge: "Popular",
+                  desc: "Featured in the 'Best Deals' collection for quick visibility.",
+                  features: ["Verified Tag", "Social Media Blast", "10 Photos"],
+                },
+                {
+                  id: "feature",
+                  label: "Top Feature",
+                  price: "₹999",
+                  validity: "45 Days",
+                  badge: "Fast Sale",
+                  desc: "Pinned to the top of category pages to beat the competition.",
+                  features: ["Top of Search", "Google Indexing", "HD Video"],
+                },
+                {
+                  id: "high-value",
+                  label: "High Value",
+                  price: "₹1499",
+                  validity: "60 Days",
+                  badge: "Save 15%",
+                  desc: "Priority for institutional investors and high-budget buyers.",
+                  features: [
+                    "Investor Network",
+                    "Legal Advice",
+                    "Email Blasts",
+                  ],
+                },
+                {
+                  id: "best-buy",
+                  label: "Elite Buy",
+                  price: "₹1999",
+                  validity: "90 Days",
+                  badge: "Best Value",
+                  desc: "Maximum visibility + Homepage Banner for ultimate exposure.",
+                  features: [
+                    "Home Page Ads",
+                    "Pro Photoshoot",
+                    "Personal Manager",
+                  ],
+                },
+              ].map((plan) => {
+                const isSelected = formData.plan === plan.id;
+                return (
+                  <button
+                    key={plan.id}
+                    type="button"
+                    onClick={() => handleChange("plan", plan.id)}
+                    className={`relative p-4 rounded-3xl border-2 text-left transition-all flex flex-col h-full group ${
+                      isSelected
+                        ? "border-orange-500 bg-orange-50 ring-4 ring-orange-100/50"
+                        : "border-slate-100 bg-slate-50 hover:border-slate-200"
+                    }`}
+                  >
+                    {/* Header Section */}
+                    <div className="mb-2">
+                      <div className="flex justify-between items-center mb-1">
+                        <span
+                          className={`text-[7px] font-black uppercase px-2 py-0.5 rounded-full ${
+                            isSelected
+                              ? "bg-orange-500 text-white"
+                              : "bg-slate-200 text-slate-500"
+                          }`}
+                        >
+                          {plan.validity}
+                        </span>
+                        {plan.badge && (
+                          <span className="text-[7px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-100 uppercase tracking-tighter">
+                            {plan.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-2">
+                        <span className="text-[10px] font-black text-slate-800 block uppercase tracking-tight">
+                          {plan.label}
+                        </span>
+                        <span className="text-xl font-black text-orange-600 block">
+                          {plan.price}
+                        </span>
+                      </div>
+                    </div>
 
-        {/* The Descriptive Paragraph */}
-        <p className="text-[9px] text-slate-400 font-medium leading-relaxed mb-4 min-h-[24px]">
-          {plan.desc}
-        </p>
+                    {/* The Descriptive Paragraph */}
+                    <p className="text-[9px] text-slate-400 font-medium leading-relaxed mb-4 min-h-[24px]">
+                      {plan.desc}
+                    </p>
 
-        {/* Feature List - Single Line & Green Ticks */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-auto pt-3 border-t border-slate-200/60">
-          {plan.features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-1">
-              <div className={`flex-shrink-0 p-0.5 rounded-full ${
-                isSelected ? "bg-emerald-500 text-white" : "bg-emerald-100 text-emerald-600"
-              }`}>
-                <Check size={6} strokeWidth={6} />
-              </div>
-              <span className="text-[7.5px] font-bold text-slate-500 whitespace-nowrap leading-none uppercase tracking-tighter group-hover:text-slate-900 transition-colors">
-                {feature}
-              </span>
+                    {/* Feature List - Single Line & Green Ticks */}
+                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5 mt-auto pt-3 border-t border-slate-200/60">
+                      {plan.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-1">
+                          <div
+                            className={`flex-shrink-0 p-0.5 rounded-full ${
+                              isSelected
+                                ? "bg-emerald-500 text-white"
+                                : "bg-emerald-100 text-emerald-600"
+                            }`}
+                          >
+                            <Check size={6} strokeWidth={6} />
+                          </div>
+                          <span className="text-[7.5px] font-bold text-slate-500 whitespace-nowrap leading-none uppercase tracking-tighter group-hover:text-slate-900 transition-colors">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Selection Icon */}
+                    {isSelected && (
+                      <div className="absolute -top-2 -right-1">
+                        <div className="bg-orange-500 text-white rounded-full p-1 shadow-lg ring-2 ring-white">
+                          <Check size={10} strokeWidth={4} />
+                        </div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
-          ))}
-        </div>
-
-        {/* Selection Icon */}
-        {isSelected && (
-          <div className="absolute -top-2 -right-1">
-            <div className="bg-orange-500 text-white rounded-full p-1 shadow-lg ring-2 ring-white">
-              <Check size={10} strokeWidth={4} />
-            </div>
-          </div>
-        )}
-      </button>
-    );
-  })}
-</div>
           </section>
 
           {/* Terms & Conditions */}
