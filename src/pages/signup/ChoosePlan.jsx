@@ -166,12 +166,7 @@ export default function ChoosePlan({
         </div>
         <button className="w-full max-w-sm flex items-center justify-center gap-2 py-4 rounded-xl bg-dark-orange text-white text-xs font-black uppercase tracking-widest shadow-xl active:scale-95 transition-all">
           <CreditCard size={18} className="text-white" />
-          Pay ₹
-          {selectedPlan === "Bronze"
-            ? "1100"
-            : selectedPlan === "Silver"
-              ? "2000"
-              : "2500"}
+          Pay Now
         </button>
       </div>
     </div>
