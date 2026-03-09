@@ -47,7 +47,7 @@ export default function Login() {
             </div>
 
             <h1 className="text-3xl lg:text-4xl font-semibold text-slate-800 leading-tight">
-              Welcome <span className="text-dark-orange">Back</span>
+               <span className="text-dark-orange">Login</span>
             </h1>
 
             <p className="text-sm text-slate-500 mt-2">
