@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import ChoosePlan from "./ChoosePlan";
 // Import the location data
-import { placesInWB } from "../../data/locations"; 
+import { placesInWB } from "../../data/locations";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -68,20 +68,21 @@ export default function Register() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-orange-100 mb-4">
                 <ShieldCheck size={12} className="text-dark-orange" />
                 <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
-                  Account Registration
+                  {userType} Verification
                 </span>
               </div>
 
               <h1 className="text-3xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
-                {userType === "buyer" || userType === "seller"
-                  ? "Join"
-                  : "Partner"}{" "}
-                <span className="text-dark-orange">Onboarding</span>
+                {userType === "buyer" && "Buyer"}
+                {userType === "seller" && "Seller"}
+                {userType === "partner" && "Partner"}
+                {userType === "developer" && "Developer"}
+                <span className="text-dark-orange"> Signup</span>
               </h1>
 
               <div className="mt-4 inline-block px-4 py-1.5 rounded-lg bg-orange-100/50 border border-orange-200">
                 <p className="text-[10px] font-black text-dark-orange uppercase tracking-[0.1em]">
-                  Gateway: {userType} Portal
+                  Gateway: {userType} Access Point
                 </p>
               </div>
             </div>
@@ -110,7 +111,7 @@ export default function Register() {
                     type="email"
                     required
                   />
-                  
+
                   {/* AREA DROPDOWN: Only for Partners */}
                   {userType === "partner" && (
                     <div className="space-y-1.5">
@@ -165,12 +166,14 @@ export default function Register() {
                     />
                   </div>
 
-                  {/* DOCUMENTS SECTION: Only for Partners and Developers */}
-                  {(userType === "partner" || userType === "developer") && (
-                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-100">
+                  {/* ROLE-SPECIFIC SECTIONS */}
+
+                  {/* 1. PARTNER SECTION: Photo & KYC */}
+                  {userType === "partner" && (
+                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-100 animate-in fade-in duration-500">
                       <div className="md:col-span-2">
                         <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
-                          Required Credentials
+                          Partner Verification
                         </h3>
                       </div>
 
@@ -208,7 +211,7 @@ export default function Register() {
                         </div>
                       </div>
 
-                      {/* Document Upload */}
+                      {/* KYC Document Upload */}
                       <div className="space-y-3">
                         <label className="text-[10px] font-black uppercase text-slate-500 ml-1">
                           KYC Document (PDF/JPG)
@@ -235,10 +238,50 @@ export default function Register() {
                               {addressFile ? addressFile.name : "Select File"}
                             </span>
                             <span className="text-[9px] font-bold text-slate-400">
-                              Address Proof
+                              Identity Proof
                             </span>
                           </div>
                         </label>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* 2. DEVELOPER SECTION: Project Name & Location */}
+                  {userType === "developer" && (
+                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 pt-6 mt-2 border-t border-slate-100 animate-in fade-in duration-500">
+                      <div className="md:col-span-2">
+                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
+                          Development Details
+                        </h3>
+                      </div>
+
+                      <InputField
+                        label="Project Name"
+                        icon={<FileText size={16} />}
+                        placeholder="e.g. City Heights"
+                        required
+                      />
+
+                      <div className="space-y-1.5">
+                        <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">
+                          Project Location
+                        </label>
+                        <div className="relative flex items-center group">
+                          <select
+                            required
+                            className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all appearance-none cursor-pointer"
+                          >
+                            <option value="">Select Durgapur Area</option>
+                            {placesInWB.Durgapur.map((area) => (
+                              <option key={area} value={area}>
+                                {area}
+                              </option>
+                            ))}
+                          </select>
+                          <div className="absolute right-4 text-slate-300 pointer-events-none group-focus-within:text-dark-orange transition-colors">
+                            <MapPin size={16} />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -248,8 +291,7 @@ export default function Register() {
                   type="submit"
                   className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-dark-orange text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-slate-200 active:scale-95 transition-all hover:bg-black mt-4"
                 >
-                  Proceed to Subscription{" "}
-                  <ChevronRight size={18} />
+                  Proceed to Subscription <ChevronRight size={18} />
                 </button>
               </form>
             </div>
