@@ -13,6 +13,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Register from "../pages/signup/Register";
 import ScrollToTop from "../components/ScrollToTop"; 
 import ScheduleVisit from "../pages/schedule-visit/ScheduleVisit";
+import VerifyOtp from "../pages/login/VerifyOtp";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
       { path: "/join-us", element: <JoinUs /> },
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/login", element: <Login /> },
+      { path: "/verify-otp", element: <VerifyOtp /> },
       { path: "/register", element: <Register /> },
     ],
   },
