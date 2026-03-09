@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   ArrowLeft,
   User,
@@ -10,18 +10,38 @@ import {
   Calendar,
   ChevronRight,
   ShieldCheck,
+  Plus,
+  FileText,
+  Map, // Added for Area icon
 } from "lucide-react";
-
 import ChoosePlan from "./ChoosePlan";
+// Import the location data
+import { placesInWB } from "../../data/locations"; 
 
 export default function Register() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
+  // UI State
   const [step, setStep] = useState(1);
   const [selectedPlan, setSelectedPlan] = useState("Silver");
 
-  // NEW
-  const [userType, setUserType] = useState("buyer");
+  // Automatically derive role from URL (Partner, Buyer, etc.)
+  const roleQuery = searchParams.get("role") || "Buyer Login";
+  const userType = roleQuery.split(" ")[0].toLowerCase();
+
+  // Form State
+  const [selectedArea, setSelectedArea] = useState("");
+  const [profilePreview, setProfilePreview] = useState(null);
+  const [addressFile, setAddressFile] = useState(null);
+
+  // Filter Durgapur areas specifically
+  const durgapurAreas = placesInWB.Durgapur || [];
+
+  const handleProfileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) setProfilePreview(URL.createObjectURL(file));
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -29,130 +49,217 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 font-poppins flex flex-col lg:items-center lg:justify-center py-10">
+    <div className="min-h-screen bg-orange-50 font-poppins flex flex-col lg:items-center lg:justify-center py-10 antialiased">
       <div className="w-full lg:max-w-2xl px-6">
-        {/* Back */}
+        {/* Navigation */}
         <div className="flex items-center mb-6">
           <button
             onClick={() => (step === 1 ? navigate(-1) : setStep(1))}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 active:scale-95 transition-all"
           >
             <ArrowLeft size={18} />
           </button>
         </div>
 
         {step === 1 ? (
-          <>
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
             {/* HEADER */}
             <div className="mb-8 text-left lg:text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-orange-100 mb-4">
                 <ShieldCheck size={12} className="text-dark-orange" />
-                <span className="text-[10px] font-bold uppercase tracking-widest text-dark-orange">
-                  Secure Onboarding
+                <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
+                  Account Registration
                 </span>
               </div>
 
-              <h1 className="text-3xl lg:text-4xl font-semibold text-slate-800">
-                Create <span className="text-dark-orange">Account</span>
+              <h1 className="text-3xl lg:text-4xl font-black text-slate-800 tracking-tight leading-none">
+                {userType === "buyer" || userType === "seller"
+                  ? "Join"
+                  : "Partner"}{" "}
+                <span className="text-dark-orange">Onboarding</span>
               </h1>
 
-              <p className="text-sm text-slate-500 mt-2">
-                Join the Durgapur real estate ecosystem.
-              </p>
+              <div className="mt-4 inline-block px-4 py-1.5 rounded-lg bg-orange-100/50 border border-orange-200">
+                <p className="text-[10px] font-black text-dark-orange uppercase tracking-[0.1em]">
+                  Gateway: {userType} Portal
+                </p>
+              </div>
             </div>
 
             {/* FORM */}
-            <div className="bg-white rounded-2xl shadow-md p-6 lg:p-10">
+            <div className="bg-white rounded-[2.5rem] shadow-xl shadow-orange-100/50 p-6 lg:p-10 border border-white">
               <form onSubmit={handleNext} className="space-y-6">
-                {/* USER TYPE (NEW) */}
-                <div>
-                  <label className="text-[11px] font-bold uppercase text-slate-400 tracking-widest ml-1">
-                    I am a
-                  </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <InputField
+                    label="Full Name"
+                    icon={<User size={16} />}
+                    placeholder="Enter legal name"
+                    required
+                  />
+                  <InputField
+                    label="Mobile Number"
+                    icon={<Phone size={16} />}
+                    placeholder="Primary contact"
+                    type="tel"
+                    required
+                  />
+                  <InputField
+                    label="Email Address"
+                    icon={<Mail size={16} />}
+                    placeholder="For documents"
+                    type="email"
+                    required
+                  />
+                  
+                  {/* AREA DROPDOWN: Only for Partners */}
+                  {userType === "partner" && (
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">
+                        Choose Your Area
+                      </label>
+                      <div className="relative flex items-center group">
+                        <select
+                          value={selectedArea}
+                          onChange={(e) => setSelectedArea(e.target.value)}
+                          required
+                          className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-700 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all appearance-none cursor-pointer"
+                        >
+                          <option value="">Select Area in Durgapur</option>
+                          {durgapurAreas.map((area) => (
+                            <option key={area} value={area}>
+                              {area}
+                            </option>
+                          ))}
+                        </select>
+                        <div className="absolute right-4 text-slate-300 pointer-events-none group-focus-within:text-dark-orange transition-colors">
+                          <Map size={16} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
-                  <select
-                    value={userType}
-                    onChange={(e) => setUserType(e.target.value)}
-                    className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 text-sm font-semibold text-slate-800 outline-none focus:border-dark-orange focus:ring-4 focus:ring-orange-50"
-                  >
-                    <option value="buyer">Buyer</option>
-                    <option value="seller">Seller</option>
-                    <option value="partner">Partner</option>
-                    <option value="developer">Developer</option>
-                  </select>
+                  <InputField
+                    label="Date of Birth"
+                    icon={<Calendar size={16} />}
+                    type="date"
+                    required
+                  />
+                  <InputField
+                    label="Age"
+                    icon={<Hash size={16} />}
+                    placeholder="Years"
+                  />
+                  <InputField
+                    label="Pincode"
+                    icon={<Hash size={16} />}
+                    placeholder="713XXX"
+                    required
+                  />
+
+                  <div className="md:col-span-2">
+                    <InputField
+                      label="Permanent Address"
+                      icon={<MapPin size={16} />}
+                      placeholder="House No, Street, Landmark"
+                      required
+                    />
+                  </div>
+
+                  {/* DOCUMENTS SECTION: Only for Partners and Developers */}
+                  {(userType === "partner" || userType === "developer") && (
+                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 mt-2 border-t border-slate-100">
+                      <div className="md:col-span-2">
+                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
+                          Required Credentials
+                        </h3>
+                      </div>
+
+                      {/* Photo Upload */}
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase text-slate-500 ml-1">
+                          Upload Your Photo
+                        </label>
+                        <div className="relative group w-24 h-24">
+                          <input
+                            type="file"
+                            id="p-img"
+                            className="hidden"
+                            accept="image/*"
+                            onChange={handleProfileChange}
+                          />
+                          <label
+                            htmlFor="p-img"
+                            className="flex items-center justify-center w-full h-full rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 cursor-pointer hover:border-dark-orange hover:bg-orange-50 transition-all overflow-hidden group"
+                          >
+                            {profilePreview ? (
+                              <img
+                                src={profilePreview}
+                                className="w-full h-full object-cover"
+                                alt="Preview"
+                              />
+                            ) : (
+                              <Plus
+                                size={24}
+                                className="text-slate-300 group-hover:text-dark-orange"
+                                strokeWidth={3}
+                              />
+                            )}
+                          </label>
+                        </div>
+                      </div>
+
+                      {/* Document Upload */}
+                      <div className="space-y-3">
+                        <label className="text-[10px] font-black uppercase text-slate-500 ml-1">
+                          KYC Document (PDF/JPG)
+                        </label>
+                        <input
+                          type="file"
+                          id="a-img"
+                          className="hidden"
+                          onChange={(e) => setAddressFile(e.target.files[0])}
+                        />
+                        <label
+                          htmlFor="a-img"
+                          className="flex items-center gap-4 px-5 h-24 rounded-2xl border-2 border-dashed border-slate-200 bg-slate-50 cursor-pointer hover:border-dark-orange hover:bg-orange-50 transition-all group"
+                        >
+                          <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm text-slate-300 group-hover:text-dark-orange transition-colors">
+                            {addressFile ? (
+                              <FileText size={20} />
+                            ) : (
+                              <Plus size={20} strokeWidth={3} />
+                            )}
+                          </div>
+                          <div className="flex flex-col">
+                            <span className="text-[10px] font-black text-slate-600 uppercase truncate max-w-[120px]">
+                              {addressFile ? addressFile.name : "Select File"}
+                            </span>
+                            <span className="text-[9px] font-bold text-slate-400">
+                              Address Proof
+                            </span>
+                          </div>
+                        </label>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-  <InputField label="Full Name" icon={<User size={16} />} />
-  <InputField label="Phone" icon={<Phone size={16} />} />
-  <InputField label="Email" icon={<Mail size={16} />} />
-  <InputField
-    label="Date of Birth"
-    icon={<Calendar size={16} />}
-    type="date"
-  />
-  <InputField label="Age" icon={<Hash size={16} />} />
-
-  <div className="md:col-span-2">
-    <InputField
-      label="Street Address"
-      icon={<MapPin size={16} />}
-    />
-  </div>
-
-  <InputField label="Pincode" icon={<Hash size={16} />} />
-
-  {/* Partner Documents Upload */}
-  {userType === "partner" && (
-    <>
-      {/* Section Title */}
-      <div className="md:col-span-2">
-        <h3 className="text-xs font-bold uppercase tracking-widest text-slate-400">
-          Verification Documents
-        </h3>
-      </div>
-
-      {/* Profile Photo */}
-      <div>
-        <label className="text-[11px] font-bold uppercase text-slate-400 tracking-widest ml-1">
-          Upload Profile Photo
-        </label>
-
-        <input
-          type="file"
-          accept="image/*"
-          className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 text-sm"
-        />
-      </div>
-
-      {/* Address Proof */}
-      <div>
-        <label className="text-[11px] font-bold uppercase text-slate-400 tracking-widest ml-1">
-          Upload Address Proof
-        </label>
-
-        <input
-          type="file"
-          accept="image/*,.pdf"
-          className="w-full mt-1 px-4 py-3 rounded-xl bg-slate-50 border border-slate-100 text-sm"
-        />
-      </div>
-    </>
-  )}
-</div>
-
-
-                <button className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-dark-orange text-white text-xs font-black uppercase tracking-widest shadow-lg">
-                  Choose Subscription <ChevronRight size={18} />
+                <button
+                  type="submit"
+                  className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-dark-orange text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-slate-200 active:scale-95 transition-all hover:bg-black mt-4"
+                >
+                  Proceed to Subscription{" "}
+                  <ChevronRight size={18} />
                 </button>
               </form>
             </div>
-          </>
+          </div>
         ) : (
           <ChoosePlan
             selectedPlan={selectedPlan}
             setSelectedPlan={setSelectedPlan}
-            userType={userType} // ✅ PASSED HERE
+            userType={userType}
+            area={selectedArea} // Pass area to the plan stage if needed
           />
         )}
       </div>
@@ -163,17 +270,15 @@ export default function Register() {
 function InputField({ label, icon, ...props }) {
   return (
     <div className="space-y-1.5">
-      <label className="text-[11px] font-bold uppercase text-slate-400 tracking-widest ml-1">
+      <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">
         {label}
       </label>
-
       <div className="relative flex items-center group">
         <input
           {...props}
-          className="w-full pl-4 pr-11 py-3 rounded-xl bg-slate-50 border border-slate-100 text-sm font-semibold text-slate-800 outline-none focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all"
+          className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all placeholder:text-slate-300 placeholder:font-normal"
         />
-
-        <div className="absolute right-4 text-slate-300 group-focus-within:text-dark-orange">
+        <div className="absolute right-4 text-slate-300 group-focus-within:text-dark-orange transition-colors">
           {icon}
         </div>
       </div>
