@@ -33,6 +33,13 @@ const services = [
     icon: "🏗️",
     loginText: "Developer Login",
   },
+  {
+    title: "Bhaiya’s Expert Panel",
+    desc: "Collaborate on premium projects and scale your practice.",
+    tag: "Professionals",
+    icon: "📐",
+    loginText: "Expert Login",
+  },
 ];
 
 export default function Dashboard() {

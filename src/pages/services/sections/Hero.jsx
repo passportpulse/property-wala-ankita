@@ -12,8 +12,8 @@ export default function Hero() {
         tag="Professional Infrastructure"
         title="Our"
         highlight="Services"
-        subtitle="Scale your business without increasing your stress."
-        buttonText=" Login to avail services"
+        subtitle="Need Help with Paperwork. Then Bhaiya assigns a vetted partner. Progress is tracked in the user's dashboard."
+        buttonText=" Login to Bhaiya’s Expert Panel"
         onButtonClick="/dashboard"
       />
 
