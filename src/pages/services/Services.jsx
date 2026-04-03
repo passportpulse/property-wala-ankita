@@ -17,13 +17,13 @@ const Services = () => {
     >
       <Container>
         <Hero />
-        <PricingPanel/>
         <AllServices />
         <BundleTable onOpen={setActiveBundle} />
         <BundleModal
           active={activeBundle}
           onClose={() => setActiveBundle(null)}
         />
+        <PricingPanel />
       </Container>
     </Section>
   );

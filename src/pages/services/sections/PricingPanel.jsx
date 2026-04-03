@@ -76,56 +76,78 @@ const ExpertPricingTable = () => {
 
       {/* Table Container - Mobile Optimized Scroll */}
       {/* MOBILE TABLE (UNCHANGED) */}
-      <div className="block md:hidden overflow-x-auto">
-        <table className="w-full text-left border-collapse min-w-[600px]">
-          <thead>
-            <tr className="bg-slate-50 text-[10px] uppercase font-bold text-slate-500 border-b border-slate-200">
-              <th className="p-3 pl-5 sticky left-0 bg-slate-50 z-10">
-                Specific Task
-              </th>
-              <th className="p-3">Partner Base</th>
-              <th className="p-3 text-dark-orange text-center">Platform Fee</th>
-              <th className="p-3 font-extrabold text-slate-900">Final Price</th>
-              <th className="p-3 pr-5 text-right">TAT</th>
-            </tr>
-          </thead>
 
-          <tbody className="divide-y divide-slate-100">
-            {pricingData.map((row, i) => (
-              <tr key={i}>
-                <td className="p-3 pl-5 sticky left-0 bg-white">
-                  <div className="text-[11px] font-bold">{row.task}</div>
-                  <div className="text-[9px] text-slate-400 uppercase">
-                    {row.cat}
-                  </div>
-                </td>
+      <div className="block md:hidden">
+        {/* ✅ Clean Swipe Hint (No Overlap) */}
+        <div className="flex justify-end items-center text-[11px] text-slate-500 mb-1 pr-2">
+          <span className="flex items-center gap-1 animate-pulse">
+            👉 Swipe to view more →
+          </span>
+        </div>
 
-                <td className="p-3 text-xs">
-                  {typeof row.base === "number"
-                    ? `₹${row.base.toLocaleString()}`
-                    : row.base}
-                  {row.hasNote && (
-                    <span className="text-dark-orange ml-1">*</span>
-                  )}
-                </td>
+        {/* ✅ Table Container */}
+        <div className="relative">
+          {/* 👉 Right Fade Effect */}
+          <div className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent z-10" />
 
-                <td className="p-3 text-xs text-center">
-                  {typeof row.fee === "number"
-                    ? `₹${row.fee.toLocaleString()}`
-                    : row.fee}
-                </td>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr className="bg-slate-50 text-[10px] uppercase font-bold text-slate-500 border-b border-slate-200">
+                  <th className="p-3 pl-5 sticky left-0 bg-slate-50 z-10">
+                    Specific Task
+                  </th>
+                  <th className="p-3">Partner Base</th>
+                  <th className="p-3 text-dark-orange text-center">
+                    Platform Fee
+                  </th>
+                  <th className="p-3 font-extrabold text-slate-900">
+                    Final Price
+                  </th>
+                  <th className="p-3 pr-5 text-right">TAT</th>
+                </tr>
+              </thead>
 
-                <td className="p-3 text-xs font-bold">
-                  {typeof row.final === "number"
-                    ? `₹${row.final.toLocaleString()}`
-                    : row.final}
-                </td>
+              <tbody className="divide-y divide-slate-100">
+                {pricingData.map((row, i) => (
+                  <tr key={i}>
+                    <td className="p-3 pl-5 sticky left-0 bg-white">
+                      <div className="text-[11px] font-bold">{row.task}</div>
+                      <div className="text-[9px] text-slate-400 uppercase">
+                        {row.cat}
+                      </div>
+                    </td>
 
-                <td className="p-3 pr-5 text-right text-[10px]">{row.tat}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    <td className="p-3 text-xs">
+                      {typeof row.base === "number"
+                        ? `₹${row.base.toLocaleString()}`
+                        : row.base}
+                      {row.hasNote && (
+                        <span className="text-dark-orange ml-1">*</span>
+                      )}
+                    </td>
+
+                    <td className="p-3 text-xs text-center">
+                      {typeof row.fee === "number"
+                        ? `₹${row.fee.toLocaleString()}`
+                        : row.fee}
+                    </td>
+
+                    <td className="p-3 text-xs font-bold">
+                      {typeof row.final === "number"
+                        ? `₹${row.final.toLocaleString()}`
+                        : row.final}
+                    </td>
+
+                    <td className="p-3 pr-5 text-right text-[10px]">
+                      {row.tat}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
       {/* DESKTOP FULL TABLE */}
