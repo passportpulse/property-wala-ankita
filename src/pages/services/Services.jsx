@@ -5,6 +5,7 @@ import AllServices from "./sections/AllServices";
 import Hero from "./sections/Hero";
 import BundleTable from "./sections/BundleTable";
 import BundleModal from "../../components/modals/BundleModal";
+import PricingPanel from "./sections/PricingPanel";
 
 const Services = () => {
   const [activeBundle, setActiveBundle] = useState(null);
@@ -16,6 +17,7 @@ const Services = () => {
     >
       <Container>
         <Hero />
+        <PricingPanel/>
         <AllServices />
         <BundleTable onOpen={setActiveBundle} />
         <BundleModal
