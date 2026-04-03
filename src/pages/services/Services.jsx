@@ -1,91 +1,267 @@
 import { useState } from "react";
-import {
-  FileCheck,
-  Shield,
-  FileText,
-  Scale,
-  Landmark,
-  Users,
-  ClipboardList,
-  Building,
-  CreditCard,
-  ChevronDown,
-  ArrowRight,
-  ArrowUpRight,
-  Compass,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Shield, ChevronDown, ArrowRight } from "lucide-react";
 import Container from "../../components/layout/Container";
 import Section from "../../components/layout/Section";
 import Header from "../../components/Header";
 
 const servicesData = [
   {
-    icon: <Shield size={18} />,
-    title: "Property Due Diligence",
-    content:
-      "Thorough verification of property ownership, legal history, and regulatory compliance to eliminate risks and ensure secure transactions.",
+    category: "⚖️ Legal & Compliance Services",
+    services: [
+      {
+        title: "Property Due Diligence",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Chain of Title Search:</strong> Verification of ownership
+              history for the last 30 years to ensure a "clean" marketable
+              title.
+            </li>
+            <li>
+              <strong>Encumbrance Check:</strong> Verification of existing
+              mortgages, court stays, or unpaid government dues.
+            </li>
+            <li>
+              <strong>RERA Compliance Audit:</strong> Validation of project
+              registration and promoter credentials.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Title Verification",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Verification of Original Documents:</strong> Expert
+              scrutiny of Sale Deeds, Allotment Letters, and Possession
+              Certificates.
+            </li>
+            <li>
+              <strong>Public Notice Management:</strong> Issuing public notices
+              in newspapers to invite and clear third-party claims before
+              purchase.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Property Registration",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>End-to-End Execution:</strong> Handling the appointment
+              with the Sub-Registrar Office (SRO).
+            </li>
+            <li>
+              <strong>Stamp Duty Advisory:</strong> Precise calculation of stamp
+              duty and registration fees based on the latest circle rates.
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
   {
-    icon: <FileCheck size={18} />,
-    title: "Title Verification",
-    content:
-      "Professional examination of title records, ownership chain, and legal validity to confirm clear and dispute-free property ownership.",
+    category: "📝 Documentation & Technical Services",
+    services: [
+      {
+        title: "Documentation Drafting",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Standard Agreements:</strong> Drafting of ATS (Agreement
+              to Sell), Sale Deeds, Lease Agreements, and Power of Attorney
+              (PoA).
+            </li>
+            <li>
+              <strong>Custom Contracts:</strong> Tailored Gift Deeds,
+              Relinquishment Deeds, and Partition Deeds.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "JV Documentation (Joint Ventures)",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Collaboration Agreements:</strong> Drafting legal
+              frameworks between landowners and developers.
+            </li>
+            <li>
+              <strong>Profit/Area Sharing Models:</strong> Defining clear terms
+              for revenue sharing, construction timelines, and exit clauses.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Valuation Services",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Market Value Assessment:</strong> Professional valuation
+              by Government-approved valuers for buying, selling, or capital
+              gains tax.
+            </li>
+            <li>
+              <strong>Bank/Insurance Valuation:</strong> Certified reports
+              required for collateral security and insurance purposes.
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
   {
-    icon: <Landmark size={18} />,
-    title: "Property Registration",
-    content:
-      "Complete assistance with property registration, stamp duty processing, and coordination with authorities.",
+    category: "🏗️ Strategic & Government Services",
+    services: [
+      {
+        title: "DPR Preparation (Detailed Project Report)",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Feasibility Studies:</strong> Comprehensive technical and
+              financial analysis for new residential or commercial developments.
+            </li>
+            <li>
+              <strong>Financial Modeling:</strong> Cash flow projections, ROI
+              analysis, and break-even points for investors.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Government Liaison",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Sanctions & Approvals:</strong> Assistance in obtaining
+              Building Plan approvals, Change of Land Use (CLU), and Occupancy
+              Certificates (OC).
+            </li>
+            <li>
+              <strong>Mutation Services:</strong> Handling the transfer of
+              property title in municipal and revenue records post-purchase.
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
   {
-    icon: <FileText size={18} />,
-    title: "Documentation Drafting",
-    content:
-      "Preparation and review of sale agreements, contracts, and legal documents to ensure compliance and legal protection.",
-  },
-  {
-    icon: <Scale size={18} />,
-    title: "Valuation Services",
-    content:
-      "Accurate market valuation based on location, demand, regulatory framework, and professional assessment standards.",
-  },
-  {
-    icon: <Users size={18} />,
-    title: "JV Documentation",
-    content:
-      "Structured drafting and compliance management for joint development agreements and partnership projects.",
-  },
-  {
-    icon: <ClipboardList size={18} />,
-    title: "DPR Preparation",
-    content:
-      "Creation of Detailed Project Reports including feasibility, compliance, financial projections, and regulatory readiness.",
-  },
-  {
-    icon: <Building size={18} />,
-    title: "Government Liaison",
-    content:
-      "Coordination with municipal and regulatory authorities for approvals, permits, and statutory clearances.",
-  },
-  {
-    icon: <CreditCard size={18} />,
-    title: "Home Loan Assistance",
-    content:
-      "Support with loan documentation, eligibility evaluation, and coordination with financial institutions.",
-  },
-  {
-    icon: <Compass size={18} />,
-    title: "Vastu Consultancy",
-    content:
-      "Professional guidance to align your property with Vastu principles for positive energy and prosperity.",
+    category: "💳 Financial & Lifestyle Services",
+    services: [
+      {
+        title: "Home Loan Assistance",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Multi-Bank Comparison:</strong> Finding the lowest ROI
+              across 15+ leading banks and NBFCs.
+            </li>
+            <li>
+              <strong>Auction Financing:</strong> Specialized loan assistance
+              for properties purchased via bank auctions (often difficult to
+              fund).
+            </li>
+            <li>
+              <strong>Doorstep Processing:</strong> Hassle-free processing from
+              login to disbursement.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Vastu Consultancy",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Design Audit:</strong> Pre-purchase Vastu evaluation of
+              floor plans and directional alignment.
+            </li>
+            <li>
+              <strong>Remedial Vastu:</strong> Non-structural "Bhaiya-Approved"
+              remedies to improve the energy and prosperity of an existing home.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Architectural Design & Drawing",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Focus:</strong> Turning a piece of land into a blueprint
+              for a dream.
+            </li>
+            <li>
+              <strong>Concept 2D Floor Plans:</strong> Space planning and room
+              layouts based on modern lifestyle needs.
+            </li>
+            <li>
+              <strong>3D Elevation & Walkthroughs:</strong> High-quality
+              realistic renders to see exactly how the house will look from the
+              outside.
+            </li>
+            <li>
+              <strong>Structural Drawings:</strong> Technical blueprints for
+              pillars, beams, and foundations (essential for safe construction).
+            </li>
+            <li>
+              <strong>Municipal/Sanction Drawings:</strong> Drafting plans
+              specifically to meet Durgapur Municipal Corporation (DMC) or local
+              Panchayat building bylaws for easy approval.
+            </li>
+            <li>
+              <strong>Electrical & Plumbing (MEP) Layouts:</strong> Detailed
+              maps for wiring and piping to avoid future maintenance headaches.
+            </li>
+          </ul>
+        ),
+      },
+      {
+        title: "Interior Design & Execution (Interior Works)",
+        content: (
+          <ul className="list-disc pl-5 space-y-1">
+            <li>
+              <strong>Focus:</strong> Aesthetics meets functionality.
+            </li>
+            <li>
+              <strong>Modular Kitchen & Wardrobe Design:</strong>{" "}
+              Space-optimized, factory-finished solutions with a 5-year "Bhaiya
+              Warranty."
+            </li>
+            <li>
+              <strong>False Ceiling & Lighting Design:</strong> Modern LED
+              layouts and POP work to enhance the home's ambiance.
+            </li>
+            <li>
+              <strong>Material Selection Support:</strong> A consultant to help
+              you choose the right marble, tiles, and laminates from local
+              Durgapur vendors.
+            </li>
+            <li>
+              <strong>Full Turnkey Execution:</strong> End-to-end site
+              management where Bhaiya’s partner handles the labor, materials,
+              and finishing.
+            </li>
+            <li>
+              <strong>Furniture Customization:</strong> Bespoke sofas, beds, and
+              dining sets tailored to the floor plan.
+            </li>
+          </ul>
+        ),
+      },
+    ],
   },
 ];
 
 const Services = () => {
   const [coreOpen, setCoreOpen] = useState(true);
-  const [openIndex, setOpenIndex] = useState(null);
-  const navigate = useNavigate();
+  const [openCategory, setOpenCategory] = useState(null);
+  const [openService, setOpenService] = useState(null);
 
   return (
     <Section
@@ -93,7 +269,7 @@ const Services = () => {
       size="small"
     >
       <Container>
-        {/* HEADER SECTION */}
+        {/* HEADER */}
         <Header
           tag="Professional Infrastructure"
           title="Our"
@@ -103,7 +279,7 @@ const Services = () => {
           onButtonClick="/dashboard"
         />
 
-        {/* CORE OFFERING CARD (Sleeker Mobile Design) */}
+        {/* CORE CARD (UNCHANGED) */}
         <div className="mt-10 bg-orange-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
           <button
             onClick={() => setCoreOpen(!coreOpen)}
@@ -132,7 +308,7 @@ const Services = () => {
           </button>
 
           <div
-            className={`transition-all duration-500 ease-in-out overflow-hidden ${
+            className={`transition-all duration-500 overflow-hidden ${
               coreOpen ? "max-h-100 opacity-100" : "max-h-0 opacity-0"
             }`}
           >
@@ -145,7 +321,7 @@ const Services = () => {
 
               <a
                 href="tel:+917699988876"
-                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-dark-orange text-white text-[11px] font-bold rounded-lg hover:bg-dark-orange transition-colors"
+                className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 bg-dark-orange text-white text-[11px] font-bold rounded-lg"
               >
                 Call Experts <ArrowRight size={14} />
               </a>
@@ -153,67 +329,91 @@ const Services = () => {
           </div>
         </div>
 
-        {/* SERVICES ACCORDION (High Density List) */}
+        {/* NESTED ACCORDION */}
         <div className="mt-12">
           <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4 px-1">
             Browse All Services
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-2">
-            {servicesData.map((service, index) => {
-              const isOpen = openIndex === index;
+
+          <div className="space-y-3">
+            {servicesData.map((category, catIndex) => {
+              const isCategoryOpen = openCategory === catIndex;
 
               return (
                 <div
-                  key={index}
-                  className={`transition-all duration-300 rounded-xl ${
-                    isOpen
-                      ? "bg-white border border-slate-200 shadow-sm"
-                      : "bg-transparent border border-transparent"
-                  }`}
+                  key={catIndex}
+                  className="rounded-xl border border-slate-200 bg-white shadow-sm"
                 >
+                  {/* CATEGORY */}
                   <button
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex justify-between items-center p-3 lg:p-4 text-left"
+                    onClick={() =>
+                      setOpenCategory(isCategoryOpen ? null : catIndex)
+                    }
+                    className="w-full flex justify-between items-center p-4 text-left"
                   >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`p-2 rounded-lg transition-colors ${
-                          isOpen
-                            ? "bg-dark-orange text-white"
-                            : "bg-white border border-slate-100 text-dark-orange shadow-sm"
-                        }`}
-                      >
-                        {service.icon}
-                      </div>
-
-                      <span
-                        className={`text-[13px] lg:text-base font-bold transition-colors ${
-                          isOpen ? "text-slate-900" : "text-slate-600"
-                        }`}
-                      >
-                        {service.title}
-                      </span>
-                    </div>
+                    <span className="font-bold text-sm lg:text-base">
+                      {category.category}
+                    </span>
 
                     <ChevronDown
-                      size={16}
-                      className={`transition-transform duration-300 ${
-                        isOpen
+                      size={18}
+                      className={`transition-transform ${
+                        isCategoryOpen
                           ? "rotate-180 text-dark-orange"
                           : "text-slate-300"
                       }`}
                     />
                   </button>
 
+                  {/* SERVICES */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ${
-                      isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                      isCategoryOpen
+                        ? "max-h-500 opacity-100"
+                        : "max-h-0 opacity-0"
                     }`}
                   >
-                    <div className="px-4 pb-4 ml-11">
-                      <p className="text-[11px] lg:text-sm text-slate-500 leading-relaxed border-l-2 border-orange-100 pl-3">
-                        {service.content}
-                      </p>
+                    <div className="px-3 pb-3 space-y-2">
+                      {category.services.map((service, srvIndex) => {
+                        const key = `${catIndex}-${srvIndex}`;
+                        const isServiceOpen = openService === key;
+
+                        return (
+                          <div key={key} className="rounded-lg">
+                            <button
+                              onClick={() =>
+                                setOpenService(isServiceOpen ? null : key)
+                              }
+                              className="w-full flex justify-between items-center p-3 text-left"
+                            >
+                              <span className="text-[13px] lg:text-base font-semibold text-slate-700">
+                                {srvIndex + 1}. {service.title}
+                              </span>
+
+                              <ChevronDown
+                                size={16}
+                                className={`transition-transform ${
+                                  isServiceOpen
+                                    ? "rotate-180 text-dark-orange"
+                                    : "text-slate-300"
+                                }`}
+                              />
+                            </button>
+
+                            <div
+                              className={`overflow-hidden transition-all duration-300 ${
+                                isServiceOpen
+                                  ? "max-h-125 opacity-100"
+                                  : "max-h-0 opacity-0"
+                              }`}
+                            >
+                              <div className="px-4 pb-3 text-xs lg:text-sm text-slate-700">
+                                {service.content}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
