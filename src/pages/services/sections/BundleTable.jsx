@@ -24,7 +24,7 @@ const BundleTable = ({ onOpen }) => {
                 className="hover:bg-slate-50 active:bg-orange-50 transition-colors cursor-pointer"
               >
                 {/* Bundle Name Column */}
-                <td className="p-2 align-top">
+                <td className="p-2 sm:p-4 align-top">
                   <div className="text-dark-orange font-semibold text-xs sm:text-base leading-tight wrap-break-words">
                     {b.name}
                   </div>
