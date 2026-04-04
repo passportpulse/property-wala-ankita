@@ -6,6 +6,7 @@ import Solutions from "./sections/Solutions";
 import Manifesto from "./sections/Manifesto";
 import OurResolve from "./sections/OurResolve";
 import BhaiyaWay from "./sections/BhaiyaWay";
+import AboutLegacy from "./sections/AboutLegacy";
 
 export default function About() {
   return (
@@ -15,6 +16,7 @@ export default function About() {
         <Manifesto/>
         <OurResolve/>
         <BhaiyaWay/>
+        <AboutLegacy/>
         <Comparison />
         <Solutions />
       </Container>
