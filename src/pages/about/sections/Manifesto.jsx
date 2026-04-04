@@ -2,27 +2,26 @@ import { Ban, Sparkles, ShieldCheck } from "lucide-react";
 
 const AboutManifesto = () => {
   return (
-    <section className="font-poppins py-8 md:py-12 lg:py-14">
-      <div className="bg-slate-900 rounded-2xl md:rounded-3xl lg:rounded-[3rem] 
+    <div className="my-4 py-4">
+      <div
+        className="bg-slate-900 rounded-2xl md:rounded-3xl lg:rounded-[3rem] 
                       p-5 sm:p-6 md:p-10 lg:p-12 
-                      overflow-hidden relative shadow-xl">
-
+                      overflow-hidden relative shadow-xl "
+      >
         {/* Background Glow (reduced) */}
         <div className="absolute top-0 right-0 w-40 h-40 md:w-56 md:h-56 bg-orange-500/10 blur-[80px] rounded-full" />
         <div className="absolute bottom-0 left-0 w-40 h-40 md:w-56 md:h-56 bg-blue-500/5 blur-[80px] rounded-full" />
 
         <div className="relative z-10">
-
           {/* Top Label */}
           <div className="flex items-center gap-2 mb-6 md:mb-8">
             <div className="h-px w-6 bg-orange-400" />
-            <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-orange-400">
-              The Property Wala Bhaiya Manifesto
+            <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-orange-400">
+              Manifesto
             </span>
           </div>
 
           <div className="space-y-8 md:space-y-10">
-
             {/* Headline */}
             <div className="max-w-2xl">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white leading-snug">
@@ -40,11 +39,12 @@ const AboutManifesto = () => {
 
             {/* Grid */}
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-
               {/* Point 1 */}
               <div className="flex gap-3 items-start group">
-                <div className="bg-slate-800 p-2 md:p-3 rounded-xl text-red-400 
-                                group-hover:bg-red-500/10 transition shrink-0">
+                <div
+                  className="bg-slate-800 p-2 md:p-3 rounded-xl text-red-400 
+                                group-hover:bg-red-500/10 transition shrink-0"
+                >
                   <Ban size={20} className="md:w-6 md:h-6" />
                 </div>
 
@@ -63,8 +63,10 @@ const AboutManifesto = () => {
 
               {/* Point 2 */}
               <div className="flex gap-3 items-start group">
-                <div className="bg-slate-800 p-2 md:p-3 rounded-xl text-blue-400 
-                                group-hover:bg-blue-500/10 transition shrink-0">
+                <div
+                  className="bg-slate-800 p-2 md:p-3 rounded-xl text-blue-400 
+                                group-hover:bg-blue-500/10 transition shrink-0"
+                >
                   <Sparkles size={20} className="md:w-6 md:h-6" />
                 </div>
 
@@ -84,19 +86,20 @@ const AboutManifesto = () => {
 
             {/* Bottom Badge */}
             <div className="pt-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 
-                              bg-slate-800/50 border border-slate-700 rounded-full">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1.5 
+                              bg-slate-800/50 border border-slate-700 rounded-full"
+              >
                 <ShieldCheck size={14} className="text-orange-400" />
                 <span className="text-[9px] md:text-[10px] font-bold text-slate-300 uppercase tracking-wider">
                   100% Direct Property Access
                 </span>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
