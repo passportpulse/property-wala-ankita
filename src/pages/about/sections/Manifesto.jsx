@@ -15,8 +15,8 @@ const AboutManifesto = () => {
         <div className="relative z-10">
           {/* Top Label */}
           <div className="flex items-center gap-2 mb-6 md:mb-8">
-            <div className="h-px w-6 bg-orange-400" />
-            <span className="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-orange-400">
+            
+            <span className="text-sm md:text-[16px] font-bold uppercase tracking-[0.3em] text-orange-400">
               Manifesto
             </span>
           </div>
