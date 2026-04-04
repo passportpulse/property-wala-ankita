@@ -12,45 +12,43 @@ const BhaiyaWay = () => {
   return (
     <div className="my-4 py-4 font-poppins space-y-6">
       
-      {/* THE BHAIYA WAY - LIGHT MINIMALIST CARD */}
+      {/* THE BHAIYA WAY - UNIFIED HEADER DESIGN */}
       <div className="bg-slate-50 border border-slate-200 rounded-2xl md:rounded-3xl lg:rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm relative overflow-hidden">
         <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-6">
-             <div className="h-px w-6 bg-orange-500" />
-            <span className="text-sm md:text-[16px] font-bold uppercase tracking-[0.3em] text-slate-500">
-              The "Bhaiya" Way
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
-            {/* Main Statement */}
-            <div className="lg:col-span-6">
+          
+          {/* Unified Header with Vertical Line */}
+          <div className="flex gap-4 md:gap-6 mb-10 md:mb-12">
+            <div className="w-0.5 md:w-1 bg-orange-500 rounded-full shrink-0" />
+            <div className="space-y-2">
+              <span className="text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] text-slate-500">
+                The "Bhaiya" Way
+              </span>
               <h3 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 leading-tight">
                 The bridge between <br />
-                <span className="text-slate-400 font-medium italic">"As-is" and "What-should-be."</span>
+                <span className="text-slate-400 font-medium italic e text-sm md:text-lg">"As-is" and "What-should-be."</span>
               </h3>
             </div>
+          </div>
 
-            {/* List of Points - Compact for Mobile */}
-            <div className="lg:col-span-6 grid grid-cols-1 gap-4">
-              {points.map((p, i) => (
-                <div key={i} className="flex gap-4 items-start p-3 bg-white border border-slate-100 rounded-xl shadow-sm">
-                  <span className={`${p.color} mt-0.5`}>{p.icon}</span>
-                  <p className="text-slate-600 text-xs md:text-sm font-medium leading-relaxed">
-                    {p.text}
-                  </p>
-                </div>
-              ))}
-            </div>
+          {/* Body Content - Compact Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            {points.map((p, i) => (
+              <div key={i} className="flex gap-4 items-start p-4 bg-white border border-slate-100 rounded-xl transition-all hover:shadow-md">
+                <span className={`${p.color} mt-0.5 shrink-0`}>{p.icon}</span>
+                <p className="text-slate-600 text-xs md:text-sm font-medium leading-relaxed">
+                  {p.text}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* OUR INVITATION - CLEAN SPLIT CARD */}
+      {/* OUR INVITATION - COMPACT FOOTER CARD */}
       <div className="bg-white border border-slate-200 rounded-2xl md:rounded-3xl lg:rounded-[3rem] p-6 md:p-10 lg:p-12 shadow-sm relative overflow-hidden">
         <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">
           
-          {/* Left: Branding */}
+          {/* Left Side: Branding */}
           <div className="text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-50 border border-orange-100 rounded-full mb-4">
               <Handshake size={14} className="text-orange-600" />
@@ -68,16 +66,14 @@ const BhaiyaWay = () => {
             </div>
           </div>
 
-          {/* Right: Content Section */}
-          <div className="border-l-0 md:border-l border-slate-100 md:pl-10">
-            <p className="text-slate-500 text-sm md:text-base lg:text-lg leading-relaxed">
-              Whether you are buying your first 2BHK, selling a plot, or hunting for 
-              warehouses and bank auctions—welcome to a world where a 
-              handshake still means something, even when it’s digital.
+          {/* Right Side: Message */}
+          <div className="border-l-0 md:border-l border-slate-100 md:pl-10 space-y-4">
+            <p className="text-slate-500 text-sm md:text-base leading-relaxed italic">
+              "Whether you are buying your first 2BHK, selling a plot, or hunting for warehouses and bank auctions—welcome to a world where a handshake still means something."
             </p>
-            <div className="mt-6 flex items-center gap-2 text-emerald-600 bg-emerald-50 w-fit px-3 py-1 rounded-md">
+            <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 w-fit px-3 py-1 rounded-md">
                <CheckCircle2 size={14} />
-               <span className="text-[10px] font-bold uppercase tracking-widest">Digital Trust • Human Touch</span>
+               <span className="text-[9px] font-bold uppercase tracking-widest">Digital Trust • Human Touch</span>
             </div>
           </div>
 
