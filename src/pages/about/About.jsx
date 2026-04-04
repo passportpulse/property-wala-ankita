@@ -4,6 +4,7 @@ import Hero from "./sections/Hero";
 import Comparison from "./sections/Comparison";
 import Solutions from "./sections/Solutions";
 import Manifesto from "./sections/Manifesto";
+import OurResolve from "./sections/OurResolve";
 
 export default function About() {
   return (
@@ -11,6 +12,7 @@ export default function About() {
       <Container>
         <Hero />
         <Manifesto/>
+        <OurResolve/>
         <Comparison />
         <Solutions />
       </Container>

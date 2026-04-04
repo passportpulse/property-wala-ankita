@@ -35,7 +35,7 @@ const AboutManifesto = () => {
             </div>
 
             {/* Divider */}
-            <div className="h-px w-full bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800" />
+            <div className="h-px w-full bg-linear-to-r from-slate-800 via-slate-700 to-slate-800" />
 
             {/* Grid */}
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
