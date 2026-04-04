@@ -31,9 +31,11 @@ const OurResolve = () => {
   return (
     <div className="my-6 md:my-10">
       <div className="bg-orange-50/40 border border-slate-200 rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-10 lg:p-12 shadow-sm">
-
         {/* Label */}
-        <div className="mb-6 md:mb-8">
+        <div className="mb-6 md:mb-8 flex items-center gap-3">
+          {/* Vertical Line */}
+          <div className="w-0.5 h-4 md:h-5 bg-dark-orange rounded-full" />
+
           <span className="text-sm md:text-[16px] font-bold uppercase tracking-[0.25em] text-dark-orange">
             Our Resolve
           </span>
@@ -46,18 +48,17 @@ const OurResolve = () => {
             Property Wala Bhaiya
           </span>{" "}
           to be a billboard. We built it to be a{" "}
-          <span className="text-dark-orange font-semibold">shield</span>. We believe:
+          <span className="text-dark-orange font-semibold">shield</span>. We
+          believe:
         </p>
 
         {/* Wrapper */}
         <div className="relative">
-
           {/* 🔥 Vertical Line (Desktop only) */}
           <div className="hidden md:block absolute left-5 top-0 bottom-0 w-px bg-slate-300" />
 
           {/* Grid → Mobile grid / Desktop single column */}
           <div className="grid sm:grid-cols-2 md:grid-cols-1 gap-4 md:gap-10">
-
             {resolvePoints.map((item, i) => {
               const Icon = item.icon;
 
@@ -81,7 +82,7 @@ const OurResolve = () => {
                       p-2 md:p-3 rounded-xl shrink-0 ${item.color}
 
                       /* position on line */
-                      md:relative md:left-[2px] md:z-10 md:bg-white md:border md:border-slate-200
+                      md:relative md:left-0.5 md:z-10 md:bg-white md:border md:border-slate-200
                     `}
                   >
                     <Icon size={20} className="md:w-6 md:h-6" />
@@ -103,7 +104,6 @@ const OurResolve = () => {
                 </div>
               );
             })}
-
           </div>
         </div>
       </div>
