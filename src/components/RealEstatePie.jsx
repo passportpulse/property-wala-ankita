@@ -32,44 +32,25 @@ const renderActiveShape = (props) => {
 
 // --- NEW: Function to draw Arrows and External Labels ---
 const renderCustomizedLabel = (props) => {
-  const { cx, cy, midAngle, outerRadius, fill, payload, navigate } = props;
+  const { cx, cy, midAngle, innerRadius, outerRadius, payload } = props;
   const RADIAN = Math.PI / 180;
-
-  // Coordinates for the start of the arrow (near the pie)
-  const sx = cx + (outerRadius + 5) * Math.cos(-midAngle * RADIAN);
-  const sy = cy + (outerRadius + 5) * Math.sin(-midAngle * RADIAN);
-
-  // Coordinates for the elbow of the arrow
-  const mx = cx + (outerRadius + 25) * Math.cos(-midAngle * RADIAN);
-  const my = cy + (outerRadius + 25) * Math.sin(-midAngle * RADIAN);
-
-  // Coordinates for the text position
-  const ex = mx + (Math.cos(-midAngle * RADIAN) >= 0 ? 1 : -1) * 15;
-  const ey = my;
-  const textAnchor = Math.cos(-midAngle * RADIAN) >= 0 ? 'start' : 'end';
+  
+  // Position text at 60% of the radius to stay inside the slice
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <g
-      className="cursor-pointer transition-all duration-300 hover:opacity-70"
-      onClick={() => navigate(payload.path)}
+    <text
+      x={x}
+      y={y}
+      fill="black"
+      textAnchor="middle"
+      dominantBaseline="central"
+      className="text-[12px] font-black tracking-wider uppercase pointer-events-none"
     >
-      {/* The Arrow / Connector Line */}
-      <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none" strokeWidth={1.5} />
-      <circle cx={ex} cy={ey} r={2.5} fill={fill} stroke="none" />
-
-      {/* The Label Text */}
-      <text
-        x={ex + (Math.cos(-midAngle * RADIAN) >= 0 ? 1 : -1) * 8}
-        y={ey}
-        dy={5}
-        textAnchor={textAnchor}
-        fill={fill}
-        className="text-[12px] font-bold tracking-wider uppercase"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-      >
-        {payload.name}
-      </text>
-    </g>
+      {payload.name}
+    </text>
   );
 };
 
@@ -95,13 +76,14 @@ const RealEstatePie = () => {
             cx="50%"
             cy="50%"
             innerRadius={0}
-            outerRadius={80}
+            outerRadius={110}
             dataKey="value"
             onMouseEnter={(_, index) => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
             onMouseDown={(entry) => handleNavigation(entry.path)}
             onClick={(entry) => handleNavigation(entry.path)}
-            label={(props) => renderCustomizedLabel({ ...props, navigate })}
+            label={(props) => renderCustomizedLabel({ ...props })}
+            labelLine={false}
             className="outline-none cursor-pointer"
           >
             {data.map((entry, index) => (

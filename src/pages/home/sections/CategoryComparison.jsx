@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X, BarChart3 } from "lucide-react";
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
+import Header from "../../../components/Header";
 
 export default function CategoryComparison() {
   const [open, setOpen] = useState(false);
@@ -42,26 +43,35 @@ export default function CategoryComparison() {
   return (
     <>
       {/* NEW SECTION WRAPPER */}
-      <Section className="bg-white">
-        <Container>
-          <div className="max-w-4xl mx-auto text-center space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase">
-              <span className="text-slate-900">Category</span> <span className="text-dark-orange">Comparison</span>
+      <Section className="relative bg-orange-50/40 border-y border-orange-100 overflow-hidden py-20">
+        {/* Subtle Background Pattern */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-[0.15]" 
+          style={{ 
+            backgroundImage: "radial-gradient(#dd571c 1px, transparent 1px)", 
+            backgroundSize: "32px 32px" 
+          }}
+        />
+
+        <Container className="relative z-10">
+          <div className="text-center space-y-4 mb-8">
+            <h2 className="text-lg lg:text-4xl font-bold tracking-tight">
+              <span className="text-slate-800">filters for </span> <span className="text-dark-orange">intent</span>
             </h2>
-            <p className="text-sm md:text-lg font-medium text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-slate-500 text-xs lg:text-sm max-w-2xl mx-auto leading-relaxed font-medium">
               Not every buyer is looking for the same thing—some want a bargain, while others want a trophy home
             </p>
-            
-            {/* BUTTON */}
-            <div className="flex justify-center pt-4">
-              <button
-                onClick={() => setOpen(true)}
-                className="flex items-center gap-2 bg-emerald-600 text-white px-8 py-4 rounded-2xl text-xs font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl active:scale-95"
-              >
-                <BarChart3 size={18} />
-                Category Comparison
-              </button>
-            </div>
+          </div>
+
+          {/* BUTTON */}
+          <div className="flex justify-center pt-2 pb-12">
+            <button
+              onClick={() => setOpen(true)}
+              className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl active:scale-95"
+            >
+              <BarChart3 size={18} />
+              Category Comparison
+            </button>
           </div>
         </Container>
       </Section>
@@ -70,7 +80,7 @@ export default function CategoryComparison() {
       {open && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
           <div className="bg-white w-full max-w-4xl rounded-3xl shadow-2xl overflow-hidden animate-fadeIn">
-            
+
             {/* HEADER */}
             <div className="flex justify-between items-center p-5 border-b border-slate-100">
               <h2 className="text-lg font-black text-slate-900 uppercase tracking-wide">
@@ -87,7 +97,7 @@ export default function CategoryComparison() {
             {/* TABLE */}
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
-                
+
                 {/* HEAD */}
                 <thead>
                   <tr className="bg-slate-50 text-[10px] uppercase font-black text-slate-500 tracking-widest">
