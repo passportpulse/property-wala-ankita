@@ -17,6 +17,9 @@ import {
 import ChoosePlan from "./ChoosePlan";
 // Import the location data
 import { placesInWB } from "../../data/locations";
+import DeveloperRegister from "./DeveloperRegister";
+import BuyerRegister from "./BuyerRegister";
+import SellerRegister from "./SellerRegister";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -29,6 +32,18 @@ export default function Register() {
   // Automatically derive role from URL (Partner, Buyer, etc.)
   const roleQuery = searchParams.get("role") || "Buyer Login";
   const userType = roleQuery.split(" ")[0].toLowerCase();
+
+  if (userType === "developer") {
+    return <DeveloperRegister />;
+  }
+
+  if (userType === "buyer") {
+    return <BuyerRegister />;
+  }
+
+  if (userType === "seller") {
+    return <SellerRegister />;
+  }
 
   // Form State
   const [selectedArea, setSelectedArea] = useState("");
@@ -246,45 +261,7 @@ export default function Register() {
                     </div>
                   )}
 
-                  {/* 2. DEVELOPER SECTION: Project Name & Location */}
-                  {userType === "developer" && (
-                    <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 pt-6 mt-2 border-t border-slate-100 animate-in fade-in duration-500">
-                      <div className="md:col-span-2">
-                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
-                          Development Details
-                        </h3>
-                      </div>
 
-                      <InputField
-                        label="Project Name"
-                        icon={<FileText size={16} />}
-                        placeholder="e.g. City Heights"
-                        required
-                      />
-
-                      <div className="space-y-1.5">
-                        <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">
-                          Project Location
-                        </label>
-                        <div className="relative flex items-center group">
-                          <select
-                            required
-                            className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all appearance-none cursor-pointer"
-                          >
-                            <option value="">Select Durgapur Area</option>
-                            {placesInWB.Durgapur.map((area) => (
-                              <option key={area} value={area}>
-                                {area}
-                              </option>
-                            ))}
-                          </select>
-                          <div className="absolute right-4 text-slate-300 pointer-events-none group-focus-within:text-dark-orange transition-colors">
-                            <MapPin size={16} />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
 
                 <button

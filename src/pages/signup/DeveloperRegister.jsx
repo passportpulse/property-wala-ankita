@@ -1,331 +1,394 @@
 import React, { useState } from "react";
-import { 
-  ArrowLeft, 
-  Building2, 
-  Search, 
-  ShieldCheck, 
-  BadgeCheck, 
-  Zap, 
-  Globe, 
-  Video, 
-  LayoutDashboard, 
-  LineChart,
-  FileText,
+import { useNavigate } from "react-router-dom";
+import {
+  ArrowLeft,
+  Building,
   User,
   Mail,
   Phone,
-  Hash,
   MapPin,
+  CheckCircle,
+  FileText,
+  Video,
+  BarChart,
+  ShieldCheck,
   ChevronRight,
-  MessageSquare,
-  CheckCircle2,
-  XCircle,
-  Headset
+  Headset,
+  Award,
+  CreditCard,
+  Check,
+  TrendingUp,
+  Map,
+  UploadCloud,
+  Plus
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 export default function DeveloperRegister() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
-  const [selectedPlan, setSelectedPlan] = useState("Emerging Builder");
+  const [selectedPlan, setSelectedPlan] = useState("City Giant");
+  const [uploadFiles, setUploadFiles] = useState({ rera: null, trackRecord: null, sanctionedPlans: null });
 
-  const cities = ["Delhi NCR", "Mumbai", "Bangalore", "Kolkata", "Pune", "Hyderabad", "Chennai", "Ahmedabad"];
+  const handleFileChange = (field) => (e) => {
+    setUploadFiles({ ...uploadFiles, [field]: e.target.files[0] });
+  };
 
-  const benefits = [
-    {
-      icon: <Zap className="text-amber-500" />,
-      title: "Bulk Listing Manager",
-      desc: "Upload entire townships or multiple phases in one go via CSV or API."
-    },
-    {
-      icon: <Globe className="text-blue-500" />,
-      title: "Project Microsites",
-      desc: "Every project gets a dedicated, SEO-optimized page on our portal."
-    },
-    {
-      icon: <Video className="text-purple-500" />,
-      title: "Virtual Site Visits",
-      desc: "Integrated support for Matterport 3D tours and drone footage."
-    },
-    {
-      icon: <LayoutDashboard className="text-emerald-500" />,
-      title: "Lead CRM",
-      desc: "A dedicated dashboard to track every site visit request and inquiry."
-    },
-    {
-      icon: <LineChart className="text-rose-500" />,
-      title: "Heat Map Analytics",
-      desc: "Access the 'Bhaiya Heat Map' to see where demand is highest."
-    }
-  ];
+  const handleNext = (e) => {
+    e.preventDefault();
+    setStep(2);
+  };
 
-  const verificationDocs = [
-    "RERA Certificate for each project.",
-    "Possession Track Record (History of previous projects).",
-    "Sanctioned Building Plans."
-  ];
-
-  const plans = [
-    {
-      name: "Emerging Builder",
-      projects: "Up to 2",
-      quality: "Standard",
-      microsites: false,
-      video: false,
-      manager: false
-    },
-    {
-      name: "City Giant",
-      projects: "Up to 10",
-      quality: "Verified",
-      microsites: true,
-      video: true,
-      manager: false,
-      popular: true
-    },
-    {
-      name: "National Leader",
-      projects: "Unlimited",
-      quality: "Priority Verified",
-      microsites: true,
-      video: true,
-      manager: true
-    }
-  ];
+  const cities = ["Delhi NCR", "Mumbai", "Bangalore", "Pune", "Hyderabad", "Chennai", "Kolkata", "Ahmedabad", "Durgapur"];
 
   return (
-    <div className="min-h-screen bg-[#fffcf9] font-poppins selection:bg-orange-100 selection:text-dark-orange pb-20 antialiased">
-      {/* HEADER SECTION */}
-      <div className="relative bg-white border-b border-orange-50 overflow-hidden pt-10 pb-16 lg:pb-24">
-        {/* Glow Effects */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-orange-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-50/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <button 
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 text-[10px] font-black uppercase tracking-widest hover:border-dark-orange hover:text-dark-orange transition-all mb-12 shadow-sm"
+    <div className="min-h-screen bg-slate-50 font-poppins py-10 antialiased selection:bg-orange-200">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Top Navigation */}
+        <div className="flex justify-between items-center mb-8">
+          <button
+            onClick={() => (step === 1 ? navigate(-1) : setStep(1))}
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white border border-slate-200 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] text-slate-600 hover:text-dark-orange active:scale-95 transition-all"
           >
-            <ArrowLeft size={16} /> Back to Home
+            <ArrowLeft size={18} />
           </button>
-
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-100 mb-6 animate-fade-in">
-              <Building2 size={14} className="text-dark-orange" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-dark-orange">
-                Developer Legacy Program
-              </span>
-            </div>
-
-            <h1 className="text-4xl lg:text-7xl font-black text-slate-800 tracking-tighter leading-[0.9] mb-8">
-              Build Your <span className="text-dark-orange">Legacy</span> <br className="hidden lg:block" />
-              with Property Wala Bhaiya
-            </h1>
-            
-            <p className="text-slate-500 text-lg lg:text-2xl font-medium max-w-2xl mx-auto leading-relaxed italic">
-              "From Foundation to Finish—Reach Thousands of Verified Buyers Every Day."
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <button className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-slate-900 text-white text-xs font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl shadow-slate-200">
-                <Headset size={18} /> Request a Demo
-              </button>
-              <button 
-                onClick={() => document.getElementById('signup-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-emerald-600 text-white text-xs font-black uppercase tracking-widest hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-100"
-              >
-                Join Now <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 -mt-10 relative z-20">
-        <div id="signup-form" className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* 1. SIGN UP FORM (Quick Entry) */}
-          <div className="lg:col-span-7">
-            <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-orange-100/50 p-8 lg:p-12 border border-white sticky top-10">
-              <div className="mb-10 flex items-center justify-between">
-                <div>
-                  <h2 className="text-2xl font-black text-slate-800 tracking-tight">Corporate Entry</h2>
-                  <p className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mt-1">Collect Your Legacy Identity</p>
-                </div>
-                <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-dark-orange border border-orange-100">
-                  <ShieldCheck size={24} />
-                </div>
+          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-full text-xs font-bold text-slate-700 hover:border-dark-orange hover:text-dark-orange transition-all">
+            <Headset size={16} />
+            Request Demo
+          </button>
+        </div>
+
+        {step === 1 ? (
+          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
+            {/* Header Section */}
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 border border-orange-200 mb-4 shadow-sm">
+                <Building size={12} className="text-dark-orange" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
+                  Corporate Builder Gateway
+                </span>
               </div>
-
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <EnterpriseInput label="Representative Name" icon={<User size={18} />} placeholder="e.g. Vikram Singh" />
-                  <EnterpriseInput label="Company Name" icon={<Building2 size={18} />} placeholder="e.g. Skyline Developers Pvt Ltd" />
-                  <EnterpriseInput label="RERA Registration" icon={<Hash size={18} />} placeholder="Mandatory for trust" />
-                  <div className="space-y-1.5">
-                    <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">City of Operation</label>
-                    <div className="relative flex items-center group">
-                      <select className="w-full pl-4 pr-11 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all appearance-none cursor-pointer">
-                        <option value="">Select City</option>
-                        {cities.map(c => <option key={c} value={c}>{c}</option>)}
-                      </select>
-                      <MapPin className="absolute right-4 text-slate-300 pointer-events-none group-focus-within:text-dark-orange transition-colors" size={18} />
-                    </div>
-                  </div>
-                  <EnterpriseInput label="Work Email" icon={<Mail size={18} />} placeholder="name@company.com" type="email" />
-                  <EnterpriseInput label="Mobile Number" icon={<Phone size={18} />} placeholder="+91 XXXXX XXXXX" type="tel" />
-                </div>
-
-                <div className="pt-6">
-                  <p className="text-[10px] text-slate-400 font-medium mb-6 flex gap-3 italic">
-                    <span className="shrink-0 w-2 h-2 mt-1 rounded-full bg-emerald-500" />
-                    "By signing up, I agree to provide only RERA-approved project details and to update the 'Available Units' in real-time. I understand that misrepresentation of project status will lead to the suspension of my corporate account."
-                  </p>
-
-                  <button className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl bg-dark-orange text-white text-[12px] font-black uppercase tracking-[0.2em] shadow-2xl shadow-orange-100 hover:bg-slate-900 transition-all active:scale-95 group">
-                    Create Developer Account 
-                    <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
-              </form>
+              <h1 className="text-2xl lg:text-3xl font-black text-slate-800 tracking-tight leading-none mb-4">
+                From Foundation to Finish—Reach Thousands of <span className="text-dark-orange bg-orange-100/50 px-2 rounded-lg">Verified Buyers</span> Every Day.
+              </h1>
+              <p className="text-[13px] text-slate-500 font-medium">
+                Build your legacy with Property Wala Bhaiya. Designed for enterprise developers to sell faster, track easier, and grow stronger.
+              </p>
             </div>
-          </div>
 
-          {/* RIGHT SIDE: BENEFITS & VERIFICATION */}
-          <div className="lg:col-span-5 space-y-8">
-            
-            {/* 2. DEVELOPER SUITE */}
-            <div className="bg-white rounded-[2.5rem] p-8 lg:p-10 border border-slate-50 shadow-sm">
-              <div className="mb-8">
-                <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-widest">Enterprise Perks</span>
-                <h3 className="text-xl font-black text-slate-800 mt-3 tracking-tight">The Developer Suite</h3>
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+              
+              {/* Left Column: Form */}
+              <div className="lg:col-span-7 relative z-10">
+                <div className="bg-white rounded-[2rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] p-8 lg:p-10 border border-slate-100 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 -mr-10 -mt-10 rounded-full blur-3xl opacity-60"></div>
+                  
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-black text-slate-800 tracking-tight mb-2">Create Developer Account</h2>
+                    <p className="text-sm text-slate-500 font-medium">Enter primary corporate details to initiate onboarding.</p>
+                  </div>
+
+                  <form onSubmit={handleNext} className="space-y-6 relative">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <InputField
+                        label="Representative Name"
+                        icon={<User size={18} />}
+                        placeholder="e.g. Vikram Singh"
+                        required
+                      />
+                      <InputField
+                        label="Company Name"
+                        icon={<Building size={18} />}
+                        placeholder="e.g. Skyline Developers"
+                        required
+                      />
+                      <InputField
+                        label="Work Email Address"
+                        icon={<Mail size={18} />}
+                        placeholder="Verify via OTP"
+                        type="email"
+                        required
+                      />
+                      <InputField
+                        label="Primary Mobile Number"
+                        icon={<Phone size={18} />}
+                        placeholder="WhatsApp verified"
+                        type="tel"
+                        required
+                      />
+                      <InputField
+                        label="RERA Registration Number"
+                        icon={<ShieldCheck size={18} />}
+                        placeholder="Mandatory for trust"
+                        required
+                      />
+                      <InputField
+                        label="GST Number"
+                        icon={<FileText size={18} />}
+                        placeholder="15-digit GSTIN"
+                        required
+                      />
+                      <div className="space-y-2">
+                        <label className="text-xs font-black uppercase text-slate-500 tracking-widest ml-1">
+                          City of Operation
+                        </label>
+                        <div className="relative flex items-center group">
+                          <select
+                            required
+                            className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange transition-all appearance-none cursor-pointer shadow-sm hover:border-slate-300"
+                          >
+                            <option value="">Select Primary City</option>
+                            {cities.map((city) => (
+                              <option key={city} value={city}>{city}</option>
+                            ))}
+                          </select>
+                          <div className="absolute right-4 text-slate-400 pointer-events-none group-focus-within:text-dark-orange transition-colors">
+                            <MapPin size={18} />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="md:col-span-2">
+                        <InputField
+                          label="Current / Corporate Address"
+                          icon={<MapPin size={18} />}
+                          placeholder="Office/HQ Address"
+                          required
+                        />
+                      </div>
+                      <div className="md:col-span-2">
+                        <InputField
+                          label="Permanent Address"
+                          icon={<MapPin size={18} />}
+                          placeholder="Registered Address (As per documents)"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Interested Features */}
+                    <div className="mt-8 pt-6 border-t border-slate-100">
+                      <div className="mb-4">
+                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] mb-1">
+                          Platform Features
+                        </h3>
+                        <p className="text-xs text-slate-500 font-medium">Select the developer suite tools you are interested in applying for.</p>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <CheckboxField label="Bulk Listing Manager" id="feat-bulk" />
+                        <CheckboxField label="Project Microsites" id="feat-micro" />
+                        <CheckboxField label="Virtual Site Visits (3D & Drone)" id="feat-virtual" />
+                        <CheckboxField label="Lead CRM & Heat Maps" id="feat-crm" />
+                      </div>
+                    </div>
+
+                    {/* Verification Uploads */}
+                    <div className="mt-8 pt-6 border-t border-slate-100">
+                      <div className="mb-5 flex items-center gap-2">
+                        <Award size={18} className="text-dark-orange" />
+                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
+                          Required Verification Documents
+                        </h3>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <FileUploadField 
+                          id="file-rera"
+                          label="RERA Certificate"
+                          sublabel="PDF or JPG image"
+                          file={uploadFiles.rera}
+                          onChange={handleFileChange("rera")}
+                        />
+                        <FileUploadField 
+                          id="file-track"
+                          label="Possession Track Record"
+                          sublabel="History of past projects"
+                          file={uploadFiles.trackRecord}
+                          onChange={handleFileChange("trackRecord")}
+                        />
+                        <div className="md:col-span-2">
+                          <FileUploadField 
+                            id="file-plans"
+                            label="Sanctioned Building Plans"
+                            sublabel="Approved layout & master plan"
+                            file={uploadFiles.sanctionedPlans}
+                            onChange={handleFileChange("sanctionedPlans")}
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* The Developer Promise */}
+                    <div className="mt-8 p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-4">
+                      <div className="mt-0.5 text-dark-orange shrink-0">
+                        <CheckCircle size={20} className="fill-orange-100" />
+                      </div>
+                      <p className="text-[11px] font-medium leading-relaxed text-slate-600">
+                        <span className="font-bold text-slate-800">The Developer Promise:</span> By signing up, I agree to provide only RERA-approved project details and to update the 'Available Units' in real-time. I understand that misrepresentation of project status will lead to the suspension of my corporate account.
+                      </p>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full flex items-center justify-center gap-3 py-4 mt-6 rounded-xl bg-slate-900 text-white text-xs font-black uppercase tracking-[0.15em] shadow-xl hover:bg-dark-orange hover:shadow-orange-500/20 active:scale-[0.98] transition-all"
+                    >
+                      CREATE DEVELOPER ACCOUNT <ChevronRight size={18} />
+                    </button>
+                  </form>
+                </div>
               </div>
 
-              <div className="space-y-6">
-                {benefits.map((b, i) => (
-                  <div key={i} className="flex gap-4 group">
-                    <div className="w-12 h-12 shrink-0 rounded-2xl bg-slate-50 flex items-center justify-center group-hover:bg-white group-hover:shadow-md transition-all border border-slate-100">
-                      {b.icon}
+              {/* Right Column: Benefits & Badges */}
+              <div className="lg:col-span-5 space-y-8">
+                
+                {/* Developer Suite Benefits */}
+                <div className="bg-slate-900 text-white rounded-[2rem] p-8 shadow-2xl relative overflow-hidden">
+                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-slate-800 rounded-full blur-3xl opacity-50"></div>
+                  
+                  <h3 className="text-xl font-black mb-6 tracking-tight flex items-center gap-2">
+                    The "Developer Suite"
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    <BenefitItem 
+                      icon={<UploadCloud size={20} />} 
+                      title="Bulk Listing Manager" 
+                      desc="Upload entire townships or multiple phases in one go via CSV or API." 
+                    />
+                    <BenefitItem 
+                      icon={<Map size={20} />} 
+                      title="Project Microsites" 
+                      desc="Every project gets a dedicated, SEO-optimized page on our portal." 
+                    />
+                    <BenefitItem 
+                      icon={<Video size={20} />} 
+                      title="Virtual Site Visits" 
+                      desc="Integrated support for Matterport 3D tours and drone footage." 
+                    />
+                    <BenefitItem 
+                      icon={<TrendingUp size={20} />} 
+                      title="Lead CRM & Heat Maps" 
+                      desc="Track every site visit request and see high-demand zones instantly." 
+                    />
+                  </div>
+                </div>
+
+                {/* Bhaiya Approved Badge */}
+                <div className="bg-white rounded-[2rem] p-8 border border-orange-100 shadow-xl shadow-orange-100/30">
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
+                      <Award size={24} className="text-dark-orange" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-black text-slate-800 tracking-wide uppercase">{b.title}</h4>
-                      <p className="text-xs text-slate-500 font-medium mt-1 leading-relaxed">{b.desc}</p>
+                      <h3 className="text-lg font-black text-slate-800 leading-tight">The "Bhaiya Approved Builder" Badge</h3>
+                      <p className="text-xs text-slate-500 font-medium mt-1">Stand out with elite buyer trust.</p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 3. VERIFICATION BADGE */}
-            <div className="bg-linear-to-br from-emerald-600 to-emerald-800 rounded-[2.5rem] p-8 lg:p-10 text-white relative overflow-hidden shadow-2xl shadow-emerald-100">
-              <div className="absolute top-0 right-0 p-4 opacity-10">
-                <BadgeCheck size={120} />
-              </div>
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center">
-                    <BadgeCheck size={20} />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-black tracking-tight uppercase">Bhaiya Approved Builder</h3>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-200">The Seal of Trust</p>
+                  
+                  <div className="space-y-3 pl-16">
+                    <div className="flex items-center gap-2 text-sm text-slate-700 font-semibold mb-2">
+                      <span className="text-[10px] uppercase font-black tracking-wider text-slate-400">Required verification:</span>
+                    </div>
+                    <BadgeRequirement text="RERA Certificate for each project" />
+                    <BadgeRequirement text="Possession Track Record (History)" />
+                    <BadgeRequirement text="Sanctioned Building Plans" />
                   </div>
                 </div>
 
-                <p className="text-xs font-medium text-emerald-50/80 mb-6 leading-relaxed">
-                  Join the elite group of verified builders. To earn this badge, your representative will need to provide:
-                </p>
-
-                <div className="space-y-3">
-                  {verificationDocs.map((doc, i) => (
-                    <div key={i} className="flex items-center gap-3 bg-white/10 p-3 rounded-xl border border-white/10 backdrop-blur-sm">
-                      <CheckCircle2 size={16} className="text-emerald-300 shrink-0" />
-                      <span className="text-xs font-bold text-white leading-none">{doc}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
-
           </div>
-        </div>
+        ) : (
+          /* STEP 2: Tiered Subscriptions */
+          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 mb-4 shadow-sm">
+                <ShieldCheck size={14} className="text-green-600" />
+                <span className="text-[11px] font-black uppercase tracking-[0.1em] text-slate-600">
+                  Step 2 of 2
+                </span>
+              </div>
+              <h2 className="text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">Choose Your Enterprise Plan</h2>
+              <p className="text-slate-500 mt-4 font-medium">Developers don't want "One-size-fits-all." Select the tier that matches your scale.</p>
+            </div>
 
-        {/* 4. TIERED DEVELOPER PLANS */}
-        <div className="mt-20">
-          <div className="text-center mb-12">
-            <span className="text-[10px] font-black text-orange-500 bg-orange-50 px-3 py-1 rounded-full uppercase tracking-widest">Pricing Strategy</span>
-            <h2 className="text-3xl lg:text-5xl font-black text-slate-800 mt-4 tracking-tighter">Tiered Developer Plans</h2>
-            <p className="text-slate-500 text-sm font-medium mt-2">Scale your presence from a local giant to a national leader.</p>
-          </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <TierCard 
+                name="Emerging Builder"
+                desc="For growing developers"
+                price="Standard"
+                projects="Up to 2"
+                leadQuality="Standard"
+                microsites="❌"
+                video="❌"
+                manager="❌"
+                selected={selectedPlan === "Emerging Builder"}
+                onClick={() => setSelectedPlan("Emerging Builder")}
+              />
+              <TierCard 
+                name="City Giant"
+                desc="For established builders"
+                price="Premium"
+                projects="Up to 10"
+                leadQuality="Verified"
+                microsites="✅"
+                video="✅"
+                manager="❌"
+                selected={selectedPlan === "City Giant"}
+                onClick={() => setSelectedPlan("City Giant")}
+                popular
+              />
+              <TierCard 
+                name="National Leader"
+                desc="For limitless scale"
+                price="Enterprise"
+                projects="Unlimited"
+                leadQuality="Priority Verified"
+                microsites="✅"
+                video="✅"
+                manager="✅"
+                selected={selectedPlan === "National Leader"}
+                onClick={() => setSelectedPlan("National Leader")}
+              />
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {plans.map((p, i) => (
-              <div 
-                key={i}
-                onClick={() => setSelectedPlan(p.name)}
-                className={`
-                  relative p-10 rounded-[2.5rem] border-2 transition-all cursor-pointer group
-                  ${selectedPlan === p.name ? 'border-dark-orange bg-orange-50/30' : 'border-slate-100 bg-white hover:border-slate-200 hover:shadow-xl shadow-slate-100/30'}
-                `}
+            {/* Payment Section */}
+            <div className="max-w-md mx-auto bg-white p-8 rounded-[2rem] border border-orange-100 shadow-2xl flex flex-col items-center">
+              <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-4">
+                <CreditCard size={28} className="text-dark-orange" />
+              </div>
+              <h3 className="text-xl font-black text-slate-800 mb-1">Finalize Onboarding</h3>
+              <p className="text-xs text-slate-500 text-center mb-6 font-medium">Your selected plan: <span className="font-bold text-dark-orange uppercase">{selectedPlan}</span></p>
+              
+              <button 
+                className="w-full py-4 rounded-xl bg-dark-orange text-white text-xs font-black uppercase tracking-[0.15em] shadow-xl hover:bg-black transition-all transform active:scale-95"
               >
-                {p.popular && (
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900 text-white text-[9px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full shadow-lg">
-                    Recommended Choice
-                  </div>
-                )}
-
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-xl font-black text-slate-800 uppercase tracking-tight">{p.name}</h3>
-                  <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedPlan === p.name ? 'border-dark-orange bg-dark-orange text-white' : 'border-slate-200'}`}>
-                    {selectedPlan === p.name && <CheckCircle2 size={14} strokeWidth={3} />}
-                  </div>
-                </div>
-
-                <div className="space-y-6">
-                  <PlanRow label="Active Projects" value={p.projects} />
-                  <PlanRow label="Lead Quality" value={p.quality} />
-                  <PlanFeature label="Project Microsites" active={p.microsites} />
-                  <PlanFeature label="Video Walkthroughs" active={p.video} />
-                  <PlanFeature label="Dedicated Manager" active={p.manager} />
-                </div>
-
-                <div className={`mt-10 py-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-widest transition-all ${selectedPlan === p.name ? 'bg-dark-orange text-white shadow-xl shadow-orange-100' : 'bg-slate-50 text-slate-400 group-hover:bg-slate-100'}`}>
-                  {selectedPlan === p.name ? 'Plan Selected' : 'Choose This Plan'}
-                </div>
-              </div>
-            ))}
+                Proceed to Checkout
+              </button>
+            </div>
           </div>
-
-          <div className="bg-slate-900 rounded-[2.5rem] p-10 lg:p-12 text-center text-white relative overflow-hidden">
-             <div className="relative z-10 max-w-2xl mx-auto">
-                <h3 className="text-2xl font-black mb-4 tracking-tight uppercase italic">Need a Custom Enterprise Solution?</h3>
-                <p className="text-slate-400 text-sm font-medium mb-8 leading-relaxed">
-                  Big developers often want a "Bhaiya Expert" to walk them through the bulk-upload and lead-tracking features before they commit to a high-value plan.
-                </p>
-                <button className="flex items-center gap-3 px-10 py-5 rounded-2xl bg-white text-slate-900 text-xs font-black uppercase tracking-widest hover:bg-orange-50 transition-all shadow-xl mx-auto">
-                   <MessageSquare size={18} className="text-dark-orange" /> Request a Callback from Bhaiya Expert
-                </button>
-             </div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
 }
 
-function EnterpriseInput({ label, icon, ...props }) {
+{/* Micro Components */}
+
+function InputField({ label, icon, ...props }) {
   return (
-    <div className="space-y-1.5">
-      <label className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] ml-1">
+    <div className="space-y-2">
+      <label className="text-xs font-black uppercase text-slate-500 tracking-widest ml-1">
         {label}
       </label>
       <div className="relative flex items-center group">
         <input
           {...props}
-          className="w-full pl-4 pr-12 py-4 rounded-2xl bg-slate-50 border border-slate-100 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange focus:ring-4 focus:ring-orange-50 transition-all placeholder:text-slate-300 placeholder:font-normal"
+          className="w-full pl-4 pr-11 py-3.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-bold text-slate-800 outline-none focus:bg-white focus:border-dark-orange transition-all placeholder:text-slate-400 placeholder:font-medium shadow-sm hover:border-slate-300"
         />
-        <div className="absolute right-4 text-slate-300 group-focus-within:text-dark-orange transition-colors">
+        <div className="absolute right-4 text-slate-400 group-focus-within:text-dark-orange transition-colors">
           {icon}
         </div>
       </div>
@@ -333,24 +396,111 @@ function EnterpriseInput({ label, icon, ...props }) {
   );
 }
 
-function PlanRow({ label, value }) {
+function FileUploadField({ id, label, sublabel, file, onChange }) {
   return (
-    <div className="flex items-center justify-between py-1">
-      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none">{label}</span>
-      <span className="text-xs font-black text-slate-800 uppercase leading-none">{value}</span>
+    <div className="space-y-2">
+      <label className="text-xs font-black uppercase text-slate-500 tracking-widest ml-1">
+        {label}
+      </label>
+      <input
+        type="file"
+        id={id}
+        className="hidden"
+        onChange={onChange}
+        required
+      />
+      <label
+        htmlFor={id}
+        className="flex items-center gap-4 px-5 h-16 rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 cursor-pointer hover:border-dark-orange hover:bg-orange-50 transition-all group"
+      >
+        <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm text-slate-300 group-hover:text-dark-orange transition-colors shrink-0">
+          {file ? <FileText size={20} className="text-dark-orange" /> : <Plus size={20} className="text-slate-400 group-hover:text-dark-orange" />}
+        </div>
+        <div className="flex flex-col min-w-0">
+          <span className="text-[11px] font-bold text-slate-700 uppercase truncate">
+            {file ? file.name : "Upload Document"}
+          </span>
+          <span className="text-[10px] font-semibold text-slate-400">
+            {sublabel}
+          </span>
+        </div>
+      </label>
     </div>
   );
 }
 
-function PlanFeature({ label, active }) {
+function CheckboxField({ label, id }) {
   return (
-    <div className="flex items-center justify-between py-1">
-      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest leading-none">{label}</span>
-      {active ? (
-        <CheckCircle2 size={16} className="text-emerald-500" strokeWidth={3} />
-      ) : (
-        <XCircle size={16} className="text-slate-200" />
+    <label htmlFor={id} className="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer hover:border-dark-orange hover:bg-orange-50 transition-all group">
+      <div className="relative flex items-center justify-center">
+        <input type="checkbox" id={id} className="peer appearance-none w-5 h-5 rounded border-2 border-slate-300 checked:border-dark-orange checked:bg-dark-orange transition-all cursor-pointer" />
+        <Check size={14} className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none transition-all" strokeWidth={3} />
+      </div>
+      <span className="text-xs font-bold text-slate-700 group-hover:text-slate-900 transition-colors">{label}</span>
+    </label>
+  );
+}
+
+function BenefitItem({ icon, title, desc }) {
+  return (
+    <div className="flex gap-4 group">
+      <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/5 group-hover:bg-dark-orange group-hover:border-dark-orange/50 transition-all text-white">
+        {icon}
+      </div>
+      <div>
+        <h4 className="text-sm font-bold text-white mb-1">{title}</h4>
+        <p className="text-xs text-slate-400 leading-relaxed font-medium">{desc}</p>
+      </div>
+    </div>
+  );
+}
+
+function BadgeRequirement({ text }) {
+  return (
+    <div className="flex items-center gap-3">
+      <CheckCircle size={16} className="text-green-500 shrink-0" />
+      <span className="text-sm font-bold text-slate-700">{text}</span>
+    </div>
+  );
+}
+
+function TierCard({ name, desc, projects, leadQuality, microsites, video, manager, selected, onClick, popular }) {
+  return (
+    <div 
+      onClick={onClick}
+      className={`relative pt-8 pb-8 px-6 rounded-[2rem] border-2 cursor-pointer transition-all duration-300 transform ${selected ? 'border-dark-orange bg-white shadow-2xl scale-105 z-10' : 'border-slate-200 bg-white shadow-md hover:border-slate-300'}`}
+    >
+      {popular && (
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark-orange text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg">
+          Most Popular
+        </div>
       )}
+      
+      <div className="text-center mb-8">
+        <h3 className="text-xl font-black text-slate-900">{name}</h3>
+        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">{desc}</p>
+      </div>
+
+      <div className="space-y-4">
+        <TierFeature label="Active Projects" value={projects} />
+        <TierFeature label="Lead Quality" value={leadQuality} highlight={leadQuality.includes("Verified")} />
+        <TierFeature label="Microsites" value={microsites} />
+        <TierFeature label="Video Walkthroughs" value={video} />
+        <TierFeature label="Dedicated Manager" value={manager} />
+      </div>
+
+      <div className={`mt-8 py-3 rounded-xl text-center text-[11px] font-black uppercase tracking-widest transition-all ${selected ? 'bg-dark-orange text-white shadow-lg' : 'bg-slate-50 text-slate-500 border border-slate-200 group-hover:bg-slate-100'}`}>
+        {selected ? "Selected Plan" : "Select Tier"}
+      </div>
+    </div>
+  );
+}
+
+function TierFeature({ label, value, highlight }) {
+  return (
+    <div className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0">
+      <span className="text-xs font-bold text-slate-500">{label}</span>
+      <span className={`text-xs font-black ${highlight ? 'text-dark-orange' : 'text-slate-800'}`}>{value}</span>
     </div>
   );
 }
