@@ -60,9 +60,9 @@ export default function SellerRegister() {
             {step === 1 && (
               <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 max-w-xl">
                 <div className="mb-10">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 border border-orange-200 mb-4 shadow-sm">
-                    <Key size={12} className="text-dark-orange" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
+                  <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-[1.5rem] bg-orange-50 border border-orange-100 mb-6 shadow-md hover:shadow-orange-200/50 transform hover:-translate-y-0.5 transition-all cursor-default">
+                    <Key size={16} className="text-dark-orange" />
+                    <span className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-dark-orange">
                       List Your Property. Get Real Buyers.
                     </span>
                   </div>
@@ -438,6 +438,17 @@ export default function SellerRegister() {
         {step === 3 && (
           <OnboardingModal onClose={() => navigate("/dashboard")} name={formData.name} />
         )}
+
+        {/* Request Demo Section */}
+        <div className="mt-24 pt-12 border-t border-slate-200">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-black text-slate-800 mb-2 tracking-tight uppercase px-4">Request a Demo</h2>
+            <p className="text-[13px] text-slate-500 font-medium mb-8">Ready to see the full potential? Get a personalized walkthrough of the Bhaiya Seller Suite.</p>
+            <button className="px-10 py-4 bg-slate-900 text-dark-orange text-[11px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-black transition-all shadow-2xl shadow-slate-300 active:scale-95">
+              Schedule My Demo Now
+            </button>
+          </div>
+        </div>
 
       </div>
     </div>

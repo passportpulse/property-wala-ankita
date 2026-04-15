@@ -51,25 +51,26 @@ export default function DeveloperRegister() {
           >
             <ArrowLeft size={18} />
           </button>
-          
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-full text-xs font-bold text-slate-700 hover:border-dark-orange hover:text-dark-orange transition-all">
+
+          {/* <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 shadow-sm rounded-full text-xs font-bold text-slate-700 hover:border-dark-orange hover:text-dark-orange transition-all">
             <Headset size={16} />
             Request Demo
-          </button>
+          </button> */}
         </div>
 
         {step === 1 ? (
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
             {/* Header Section */}
             <div className="text-center max-w-3xl mx-auto mb-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/80 border border-orange-200 mb-4 shadow-sm">
-                <Building size={12} className="text-dark-orange" />
-                <span className="text-[10px] font-black uppercase tracking-widest text-dark-orange">
+              <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-[1.5rem] bg-orange-50 border border-orange-100 mb-6 shadow-md hover:shadow-orange-200/50 transform hover:-translate-y-0.5 transition-all cursor-default">
+                <Building size={16} className="text-dark-orange" />
+                <span className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-dark-orange">
                   Corporate Builder Gateway
                 </span>
               </div>
-              <h1 className="text-2xl lg:text-3xl font-black text-slate-800 tracking-tight leading-none mb-4">
-                From Foundation to Finish—Reach Thousands of <span className="text-dark-orange bg-orange-100/50 px-2 rounded-lg">Verified Buyers</span> Every Day.
+              <h1 className="text-xl lg:text-[1.75rem] font-black text-slate-800 tracking-tight leading-tight mb-4 max-w-2xl mx-auto">
+                From Foundation to Finish—<br className="hidden lg:block" />
+                Reach Thousands of <span className="text-dark-orange bg-orange-100/50 px-2 rounded-lg inline-block py-0.5">Verified Buyers</span> <br className="hidden lg:block" /> Every Day.
               </h1>
               <p className="text-[13px] text-slate-500 font-medium">
                 Build your legacy with Property Wala Bhaiya. Designed for enterprise developers to sell faster, track easier, and grow stronger.
@@ -78,12 +79,12 @@ export default function DeveloperRegister() {
 
             {/* Main Content Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-              
+
               {/* Left Column: Form */}
               <div className="lg:col-span-7 relative z-10">
                 <div className="bg-white rounded-[2rem] shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] p-8 lg:p-10 border border-slate-100 relative overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-orange-50 -mr-10 -mt-10 rounded-full blur-3xl opacity-60"></div>
-                  
+
                   <div className="mb-8">
                     <h2 className="text-2xl font-black text-slate-800 tracking-tight mb-2">Create Developer Account</h2>
                     <p className="text-sm text-slate-500 font-medium">Enter primary corporate details to initiate onboarding.</p>
@@ -167,15 +168,29 @@ export default function DeveloperRegister() {
                       </div>
                     </div>
 
+                    {/* Developer Suite Benefits Relocated */}
+                    <div className="mt-10 mb-8 bg-slate-900 text-white rounded-[2rem] p-8 shadow-2xl relative overflow-hidden">
+                      <div className="absolute -top-24 -right-24 w-64 h-64 bg-slate-800 rounded-full blur-3xl opacity-50"></div>
+                      <h3 className="text-xl font-black mb-6 tracking-tight flex items-center gap-2 text-white">
+                        The "Developer Suite"
+                      </h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 pb-2">
+                        <BenefitItem icon={<UploadCloud size={20} />} title="Bulk Listing Manager" desc="Upload entire townships or multiple phases in one go via CSV or API." />
+                        <BenefitItem icon={<Map size={20} />} title="Project Microsites" desc="Every project gets a dedicated, SEO-optimized page on our portal." />
+                        <BenefitItem icon={<Video size={20} />} title="Virtual Site Visits" desc="Integrated support for Matterport 3D tours and drone footage." />
+                        <BenefitItem icon={<TrendingUp size={20} />} title="Lead CRM & Heat Maps" desc="Track every site visit request and see high-demand zones instantly." />
+                      </div>
+                    </div>
+
                     {/* Interested Features */}
                     <div className="mt-8 pt-6 border-t border-slate-100">
                       <div className="mb-4">
-                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em] mb-1">
+                        <h3 className="text-[11px] font-black uppercase text-dark-orange tracking-[0.2em] mb-1">
                           Platform Features
                         </h3>
                         <p className="text-xs text-slate-500 font-medium">Select the developer suite tools you are interested in applying for.</p>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <CheckboxField label="Bulk Listing Manager" id="feat-bulk" />
                         <CheckboxField label="Project Microsites" id="feat-micro" />
@@ -188,20 +203,20 @@ export default function DeveloperRegister() {
                     <div className="mt-8 pt-6 border-t border-slate-100">
                       <div className="mb-5 flex items-center gap-2">
                         <Award size={18} className="text-dark-orange" />
-                        <h3 className="text-[11px] font-black uppercase text-slate-400 tracking-[0.2em]">
+                        <h3 className="text-[11px] font-black uppercase text-dark-orange tracking-[0.2em]">
                           Required Verification Documents
                         </h3>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                        <FileUploadField 
+                        <FileUploadField
                           id="file-rera"
                           label="RERA Certificate"
                           sublabel="PDF or JPG image"
                           file={uploadFiles.rera}
                           onChange={handleFileChange("rera")}
                         />
-                        <FileUploadField 
+                        <FileUploadField
                           id="file-track"
                           label="Possession Track Record"
                           sublabel="History of past projects"
@@ -209,7 +224,7 @@ export default function DeveloperRegister() {
                           onChange={handleFileChange("trackRecord")}
                         />
                         <div className="md:col-span-2">
-                          <FileUploadField 
+                          <FileUploadField
                             id="file-plans"
                             label="Sanctioned Building Plans"
                             sublabel="Approved layout & master plan"
@@ -242,39 +257,6 @@ export default function DeveloperRegister() {
 
               {/* Right Column: Benefits & Badges */}
               <div className="lg:col-span-5 space-y-8">
-                
-                {/* Developer Suite Benefits */}
-                <div className="bg-slate-900 text-white rounded-[2rem] p-8 shadow-2xl relative overflow-hidden">
-                  <div className="absolute -top-24 -right-24 w-64 h-64 bg-slate-800 rounded-full blur-3xl opacity-50"></div>
-                  
-                  <h3 className="text-xl font-black mb-6 tracking-tight flex items-center gap-2">
-                    The "Developer Suite"
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    <BenefitItem 
-                      icon={<UploadCloud size={20} />} 
-                      title="Bulk Listing Manager" 
-                      desc="Upload entire townships or multiple phases in one go via CSV or API." 
-                    />
-                    <BenefitItem 
-                      icon={<Map size={20} />} 
-                      title="Project Microsites" 
-                      desc="Every project gets a dedicated, SEO-optimized page on our portal." 
-                    />
-                    <BenefitItem 
-                      icon={<Video size={20} />} 
-                      title="Virtual Site Visits" 
-                      desc="Integrated support for Matterport 3D tours and drone footage." 
-                    />
-                    <BenefitItem 
-                      icon={<TrendingUp size={20} />} 
-                      title="Lead CRM & Heat Maps" 
-                      desc="Track every site visit request and see high-demand zones instantly." 
-                    />
-                  </div>
-                </div>
-
                 {/* Bhaiya Approved Badge */}
                 <div className="bg-white rounded-[2rem] p-8 border border-orange-100 shadow-xl shadow-orange-100/30">
                   <div className="flex items-start gap-4 mb-5">
@@ -286,7 +268,7 @@ export default function DeveloperRegister() {
                       <p className="text-xs text-slate-500 font-medium mt-1">Stand out with elite buyer trust.</p>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-3 pl-16">
                     <div className="flex items-center gap-2 text-sm text-slate-700 font-semibold mb-2">
                       <span className="text-[10px] uppercase font-black tracking-wider text-slate-400">Required verification:</span>
@@ -304,7 +286,7 @@ export default function DeveloperRegister() {
           /* STEP 2: Tiered Subscriptions */
           <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 max-w-5xl mx-auto">
             <div className="text-center mb-12">
-               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 mb-4 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-slate-200 mb-4 shadow-sm">
                 <ShieldCheck size={14} className="text-green-600" />
                 <span className="text-[11px] font-black uppercase tracking-[0.1em] text-slate-600">
                   Step 2 of 2
@@ -315,7 +297,7 @@ export default function DeveloperRegister() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              <TierCard 
+              <TierCard
                 name="Emerging Builder"
                 desc="For growing developers"
                 price="Standard"
@@ -327,7 +309,7 @@ export default function DeveloperRegister() {
                 selected={selectedPlan === "Emerging Builder"}
                 onClick={() => setSelectedPlan("Emerging Builder")}
               />
-              <TierCard 
+              <TierCard
                 name="City Giant"
                 desc="For established builders"
                 price="Premium"
@@ -340,7 +322,7 @@ export default function DeveloperRegister() {
                 onClick={() => setSelectedPlan("City Giant")}
                 popular
               />
-              <TierCard 
+              <TierCard
                 name="National Leader"
                 desc="For limitless scale"
                 price="Enterprise"
@@ -361,8 +343,8 @@ export default function DeveloperRegister() {
               </div>
               <h3 className="text-xl font-black text-slate-800 mb-1">Finalize Onboarding</h3>
               <p className="text-xs text-slate-500 text-center mb-6 font-medium">Your selected plan: <span className="font-bold text-dark-orange uppercase">{selectedPlan}</span></p>
-              
-              <button 
+
+              <button
                 className="w-full py-4 rounded-xl bg-dark-orange text-white text-xs font-black uppercase tracking-[0.15em] shadow-xl hover:bg-black transition-all transform active:scale-95"
               >
                 Proceed to Checkout
@@ -370,12 +352,23 @@ export default function DeveloperRegister() {
             </div>
           </div>
         )}
+
+        {/* Request Demo Section */}
+        <div className="mt-24 pt-12 border-t border-slate-200">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-black text-slate-800 mb-2 tracking-tight uppercase px-4">Request a Demo</h2>
+            <p className="text-[13px] text-slate-500 font-medium mb-8">Ready to see the full potential? Get a personalized walkthrough of the Bhaiya Developer Suite.</p>
+            <button className="px-10 py-4 bg-slate-900 text-dark-orange text-[11px] font-black uppercase tracking-[0.2em] rounded-2xl hover:bg-black transition-all shadow-2xl shadow-slate-300 active:scale-95">
+              Schedule My Demo Now
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-{/* Micro Components */}
+{/* Micro Components */ }
 
 function InputField({ label, icon, ...props }) {
   return (
@@ -466,7 +459,7 @@ function BadgeRequirement({ text }) {
 
 function TierCard({ name, desc, projects, leadQuality, microsites, video, manager, selected, onClick, popular }) {
   return (
-    <div 
+    <div
       onClick={onClick}
       className={`relative pt-8 pb-8 px-6 rounded-[2rem] border-2 cursor-pointer transition-all duration-300 transform ${selected ? 'border-dark-orange bg-white shadow-2xl scale-105 z-10' : 'border-slate-200 bg-white shadow-md hover:border-slate-300'}`}
     >
@@ -475,7 +468,7 @@ function TierCard({ name, desc, projects, leadQuality, microsites, video, manage
           Most Popular
         </div>
       )}
-      
+
       <div className="text-center mb-8">
         <h3 className="text-xl font-black text-slate-900">{name}</h3>
         <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">{desc}</p>
