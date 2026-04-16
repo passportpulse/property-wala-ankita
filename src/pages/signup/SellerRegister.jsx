@@ -528,7 +528,7 @@ function BenefitItem({ icon, title, desc }) {
   return (
     <div className="flex gap-4 group">
       <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/5 group-hover:bg-dark-orange group-hover:border-dark-orange/50 transition-all text-white">
-        {icon}
+        {icon && React.isValidElement(icon) ? React.cloneElement(icon, { size: 20 }) : null}
       </div>
       <div>
         <h4 className="text-sm font-bold text-white mb-1">{title}</h4>

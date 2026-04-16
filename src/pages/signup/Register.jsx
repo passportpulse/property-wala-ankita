@@ -14,21 +14,27 @@ export default function Register() {
   // Normalize userType (extract first word and lowercase it)
   const userType = roleQuery.split(" ")[0].toLowerCase();
 
-  // Route to the specialized portal based on userType
-  if (userType === "developer") {
-    return <DeveloperRegister />;
-  }
+  console.log("Register Portal Debug:", { roleQuery, userType });
 
-  if (userType === "buyer") {
-    return <BuyerRegister />;
-  }
+  try {
+    // Route to the specialized portal based on userType
+    if (userType === "developer") {
+      return <DeveloperRegister />;
+    }
 
-  if (userType === "seller") {
-    return <SellerRegister />;
-  }
+    if (userType === "buyer") {
+      return <BuyerRegister />;
+    }
 
-  if (userType === "partner" || userType === "agent") {
-    return <AgentRegister />;
+    if (userType === "seller") {
+      return <SellerRegister />;
+    }
+
+    if (userType === "partner" || userType === "agent") {
+      return <AgentRegister />;
+    }
+  } catch (error) {
+    console.error("Portal Rendering Error:", error);
   }
 
   // Fallback to Buyer Portal if no role matches

@@ -4,7 +4,7 @@ import {
   ArrowLeft, Phone, User, Check, Building, ShieldCheck, Mail, Hash, MapPin, Map,
   Calendar, TrendingUp, Lock, Zap, Clock, ChevronRight, X, ArrowRight,
   FileText, Upload, Award, Star, Bell, LayoutDashboard, Briefcase, CheckCircle,
-  Fingerprint, Plus, Info, Headset, Target, PartyPopper, IdCard
+  Shield, Box, Plus, Info, Headset, Target, PartyPopper
 } from "lucide-react";
 
 export default function AgentRegister() {
@@ -155,7 +155,7 @@ export default function AgentRegister() {
                         </div>
                         <InputField label="PAN Card Number" icon={<FileText size={18} />} placeholder="10-digit PAN" value={formData.panNumber} onChange={(e) => setFormData({...formData, panNumber: e.target.value})} required />
                         <InputField label="GST Number" icon={<FileText size={18} />} placeholder="15-digit GST (Optional)" value={formData.gstNumber} onChange={(e) => setFormData({...formData, gstNumber: e.target.value})} />
-                        <InputField label="Aadhaar Card Number" icon={<IdCard size={18} />} placeholder="12-digit Aadhaar" value={formData.aadhaarNumber} onChange={(e) => setFormData({...formData, aadhaarNumber: e.target.value})} required />
+                        <InputField label="Aadhaar Card Number" icon={<User size={18} />} placeholder="12-digit Aadhaar" value={formData.aadhaarNumber} onChange={(e) => setFormData({...formData, aadhaarNumber: e.target.value})} required />
                         <InputField label="Years of Experience" icon={<Clock size={18} />} placeholder="e.g. 5 Years" value={formData.experience} onChange={(e) => setFormData({...formData, experience: e.target.value})} required />
                       </div>
                     </div>
@@ -471,7 +471,7 @@ function BenefitItem({ icon, title, desc }) {
   return (
     <div className="flex gap-5 group">
       <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center shrink-0 group-hover:bg-dark-orange group-hover:border-dark-orange/20 transition-all text-dark-orange">
-        {React.cloneElement(icon, { size: 20, className: "text-white" })}
+        {icon && React.isValidElement(icon) ? React.cloneElement(icon, { size: 20, className: "text-white" }) : null}
       </div>
       <div>
         <h4 className="text-sm font-black text-white group-hover:text-dark-orange transition-colors">{title}</h4>
