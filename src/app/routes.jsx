@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage /> },
       { path: "/schedule-site-visit", element: <ScheduleVisit/> },
       { path: "/join-us", element: <JoinUs /> },
-      { path: "/dashboard", element: <Dashboard /> },
+      { path: "/dashboard/*", element: <Dashboard /> },
       { path: "/login", element: <Login /> },
       { path: "/verify-otp", element: <VerifyOtp /> },
       { path: "/partner-application-form", element: <PartnerApplicationForm /> },

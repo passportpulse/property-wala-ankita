@@ -59,10 +59,12 @@ export default function Dashboard() {
   }, []);
 
   // Return specialized dashboard if role is set
-  if (role === "seller") return <SellerDashboard />;
-  if (role === "buyer") return <BuyerDashboard />;
-  if (role === "developer") return <DeveloperDashboard />;
-  if (role === "expert") return <PartnerDashboard />;
+  const subPath = window.location.pathname.replace("/dashboard", "").replace("/", "");
+
+  if (role === "seller") return <SellerDashboard subPath={subPath} />;
+  if (role === "buyer") return <BuyerDashboard subPath={subPath} />;
+  if (role === "developer") return <DeveloperDashboard subPath={subPath} />;
+  if (role === "expert") return <PartnerDashboard subPath={subPath} />;
 
   // Default Portal Landing Page
   return (

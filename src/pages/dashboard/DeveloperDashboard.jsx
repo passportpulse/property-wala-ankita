@@ -1,201 +1,101 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardLayout from "./DashboardLayout";
 import { 
   BarChart3, 
-  Building, 
+  TrendingUp, 
+  MapPin, 
   Users, 
-  Search, 
+  Target, 
+  Calendar, 
+  Layers, 
   ChevronRight, 
-  Zap,
-  ArrowUpRight,
-  TrendingUp,
-  LayoutGrid,
-  MapPin,
-  Calendar,
-  Layers,
-  Sparkles,
-  PieChart,
-  Target,
-  ArrowRight,
+  Plus, 
+  UploadCloud, 
+  FileText, 
   ShieldCheck,
-  MousePointer2,
-  FileText,
-  Clock
+  Zap,
+  Filter,
+  MoreVertical,
+  Activity,
+  ArrowUpRight,
+  TrendingDown,
+  Building,
+  CheckCircle2,
+  Clock,
+  Download,
+  AlertTriangle,
+  User,
+  Phone,
+  Mail,
+  MoreHorizontal,
+  Search
 } from "lucide-react";
-import { motion } from "framer-motion";
 
-export default function DeveloperDashboard() {
+export default function DeveloperDashboard({ subPath }) {
+  // RENDER SUB-PAGES
+  if (subPath === "projects") return <ProjectsPage />;
+  if (subPath === "sales") return <SalesHubPage />;
+  if (subPath === "bulk") return <BulkPage />;
+  if (subPath === "crm") return <CRMPage />;
+
   return (
-    <DashboardLayout role="developer" userName="Skyline Devs HQ">
-      <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-        
-        {/* Enterprise Header */}
-        <div className="relative bg-slate-900 rounded-[3rem] p-8 lg:p-12 mb-8 overflow-hidden shadow-2xl group">
-           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-dark-orange/15 rounded-full blur-[100px] -mr-32 -mt-32"></div>
-           <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/5 rounded-full blur-[80px] -ml-20 -mb-20"></div>
-           
-           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              <div className="lg:col-span-7">
-                 <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 mb-8 font-black text-[10px] uppercase tracking-[0.3em] text-white">
-                    <Sparkles size={16} className="text-dark-orange" /> Enterprise Command Center
-                 </div>
-                 <h1 className="text-4xl lg:text-7xl font-black text-white mb-6 tracking-tighter leading-none uppercase">
-                    Dominate <span className="text-dark-orange italic">The Sky.</span>
-                 </h1>
-                 <p className="text-slate-400 text-sm lg:text-lg font-medium max-w-md mb-10 leading-relaxed">
-                    Your projects are reaching <span className="text-white font-black underline decoration-dark-orange decoration-4 underline-offset-[10px]">14.2k active buyers</span> this month.
-                 </p>
-                 <div className="flex flex-wrap gap-4">
-                    <button className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-dark-orange text-white text-xs font-black uppercase tracking-widest hover:bg-white hover:text-slate-900 transition-all active:scale-95 shadow-xl shadow-orange-500/20 group">
-                       Add New Project <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <button className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-black uppercase tracking-widest hover:bg-white/10 transition-all active:scale-95">
-                       Bulk Upload (CSV)
-                    </button>
-                 </div>
+    <DashboardLayout role="developer" userName="Emaar Properties">
+      {/* Welcome Banner */}
+      <div className="relative bg-slate-900 rounded-[3rem] p-8 lg:p-14 mb-8 overflow-hidden shadow-2xl group">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-dark-orange/10 rounded-full blur-[120px] -mr-40 -mt-20 group-hover:bg-dark-orange/20 transition-all duration-1000"></div>
+        <div className="relative z-10 lg:grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 border border-white/10 mb-6 backdrop-blur-md">
+              <ShieldCheck size={16} className="text-dark-orange" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-dark-orange">Enterprise Command</span>
+            </div>
+            <h1 className="text-4xl lg:text-6xl font-black text-white leading-tight tracking-tighter mb-6 uppercase">
+              DOMINATE <br /> <span className="text-dark-orange">THE SKY.</span>
+            </h1>
+            <p className="text-slate-400 text-lg font-medium max-w-md leading-relaxed mb-10">
+              Your townships are reaching <span className="text-white font-black underline decoration-dark-orange decoration-4">14.2k active buyers</span> this month.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <button className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-dark-orange text-white text-[11px] font-black uppercase tracking-widest shadow-xl shadow-orange-500/20 hover:scale-105 transition-all">
+                Launch Project <Plus size={16} />
+              </button>
+              <button className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-white/5 text-white border border-white/10 text-[11px] font-black uppercase tracking-widest hover:bg-white/10 transition-all">
+                System Audit
+              </button>
+            </div>
+          </div>
+          <div className="hidden lg:grid grid-cols-2 gap-6">
+            <StatCard icon={<Users />} label="Portal Reach" value="14.2k" color="orange" />
+            <StatCard icon={<TrendingUp />} label="Lead Quality" value="8.4/10" color="white" />
+            <StatCard icon={<Layers />} label="Inventory" value="68%" color="white" />
+            <StatCard icon={<Activity />} label="Velocity" value="+12%" color="orange" />
+          </div>
+        </div>
+      </div>
+
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-8 space-y-8">
+           <div className="bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-xl shadow-slate-200/50">
+              <div className="flex justify-between items-center mb-8">
+                <h2 className="text-xl font-black text-slate-900 uppercase tracking-tight">Project Snapshot</h2>
+                <Filter size={20} className="text-slate-400 cursor-pointer" />
               </div>
-              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-                 <HeaderMetric label="Portal Reach" value="14.2k" icon={<TrendingUp size={20} />} />
-                 <HeaderMetric label="Avg. Lead Quality" value="8.4/10" icon={<Zap size={20} />} />
-                 <HeaderMetric label="Inventory Status" value="68%" icon={<Layers size={20} />} />
-                 <HeaderMetric label="Sales Velocity" value="+12%" icon={<TrendingUp size={20} />} />
+              <div className="space-y-6">
+                 <ProjectRow name="Skyline Elegance" location="Bidhannagar" sales="82%" revenue="₹12.4 Cr" status="Operational" />
+                 <ProjectRow name="The Grand Plaza" location="City Center" sales="45%" revenue="₹8.1 Cr" status="On-Going" />
+                 <ProjectRow name="River Side View" location="Durgapur" sales="12%" revenue="₹2.2 Cr" status="Pre-Launch" />
               </div>
            </div>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-           {/* Left Section: Project Portfolio */}
-           <div className="lg:col-span-8 space-y-8">
-              
-              {/* Filter & Search Bar */}
-              <div className="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white p-4 rounded-[2rem] border border-slate-100 shadow-sm">
-                 <div className="relative flex-1 w-full">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                    <input 
-                       type="text" 
-                       placeholder="Search your portfolio..." 
-                       className="w-full pl-12 pr-4 py-3 rounded-xl bg-slate-50 border-none text-sm font-bold text-slate-800 outline-none focus:bg-white transition-all shadow-inner"
-                    />
-                 </div>
-                 <div className="flex gap-2 w-full sm:w-auto">
-                    <button className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-slate-900 text-white text-[10px] font-black uppercase tracking-widest">Ongoing</button>
-                    <button className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-white border border-slate-200 text-slate-400 text-[10px] font-black uppercase tracking-widest hover:bg-slate-50">Completed</button>
-                 </div>
+        <div className="lg:col-span-4 space-y-8">
+           <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white">
+              <h2 className="text-lg font-black uppercase tracking-widest mb-8 text-orange-400">Notifications</h2>
+              <div className="space-y-6">
+                 <AlertItem text="Bulk Update: 12 Units launched" time="2h ago" />
+                 <AlertItem text="Lead: Sandeep Roy requested visit" time="4h ago" />
+                 <AlertItem text="Compliance: RERA Audit passed" time="1d ago" />
               </div>
-
-              {/* Project Cards */}
-              <div className="bg-white rounded-[3rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/50">
-                 <div className="flex justify-between items-center mb-10">
-                    <div>
-                       <h3 className="text-2xl font-black text-slate-900 leading-none">Your Projects</h3>
-                       <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest mt-3">Portfolio Performance</p>
-                    </div>
-                    <div className="flex gap-2">
-                       <button className="p-3 rounded-xl bg-slate-900 text-white shadow-lg shadow-slate-200">
-                          <LayoutGrid size={20} />
-                       </button>
-                    </div>
-                 </div>
-                 
-                 <div className="space-y-6">
-                    <ProjectCard 
-                      name="Skyline Horizon Phase 1" 
-                      location="New Town, Durgapur" 
-                      units="142/200 Sold" 
-                      reach="8.5k" 
-                      roi="+12.4%" 
-                      image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
-                      status="Operational"
-                    />
-                    <ProjectCard 
-                      name="The Emerald Greens" 
-                      location="Ukhra Road" 
-                      units="32/80 Sold" 
-                      reach="12.2k" 
-                      roi="+18.2%" 
-                      image="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2574&auto=format&fit=crop"
-                      status="Pre-Launch"
-                      special
-                    />
-                 </div>
-              </div>
-
-              {/* Performance Analytics Chart Snippet */}
-              <div className="bg-white rounded-[3rem] p-10 border border-slate-100 shadow-xl">
-                 <div className="flex justify-between items-center mb-10">
-                    <div>
-                       <h3 className="text-xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-2">
-                         <BarChart3 className="text-dark-orange" /> Reach Analytics
-                       </h3>
-                       <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mt-1">Global Portal Visibility</p>
-                    </div>
-                    <select className="bg-slate-50 border-none text-[10px] font-black uppercase tracking-widest rounded-lg px-4 py-2 outline-none">
-                       <option>Last 30 Days</option>
-                       <option>Last 90 Days</option>
-                    </select>
-                 </div>
-                 <div className="h-64 bg-slate-50 rounded-[2rem] border-2 border-dashed border-slate-200 flex items-center justify-center group cursor-pointer hover:bg-orange-50 transition-all">
-                    <div className="text-center">
-                       <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-4 shadow-md text-dark-orange group-hover:scale-110 transition-transform">
-                          <PieChart size={24} />
-                       </div>
-                       <p className="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">View Detailed Analytics Map</p>
-                    </div>
-                 </div>
-              </div>
-           </div>
-
-           {/* Right Sidebar: Tools & Insights */}
-           <div className="lg:col-span-4 space-y-8">
-              
-              {/* Quick Actions Card */}
-              <div className="bg-slate-900 rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-dark-orange/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                 <h3 className="text-sm font-black uppercase tracking-widest mb-8 flex items-center gap-2">
-                    <Zap size={18} className="text-dark-orange" /> Rapid Tools
-                 </h3>
-                 <div className="grid grid-cols-1 gap-3">
-                    <QuickActionButton icon={<MousePointer2 size={16}/>} label="Create Campaign" />
-                    <QuickActionButton icon={<Building size={16}/>} label="New Microsite" />
-                    <QuickActionButton icon={<Search size={16}/>} label="Audit Listings" />
-                    <QuickActionButton icon={<FileText size={16}/>} label="Export Leads" />
-                 </div>
-              </div>
-
-              {/* Lead Pipeline */}
-              <div className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl shadow-slate-200/50">
-                 <div className="flex justify-between items-center mb-8">
-                    <h3 className="text-sm font-black text-slate-900 uppercase tracking-tight flex items-center gap-2">
-                       <Users size={18} className="text-dark-orange" /> Active Leads
-                    </h3>
-                    <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-600 text-[8px] font-black uppercase">Real-Time</span>
-                 </div>
-                 <div className="space-y-6">
-                    <LeadItem name="Indranil Sen" project="Horizon P1" status="Hot" budget="₹1.2 Cr" time="12m ago" />
-                    <LeadItem name="Deblina Roy" project="Emerald" status="Warm" budget="₹65.0 L" time="45m ago" />
-                    <LeadItem name="Joydeep Das" project="Horizon P1" status="Cold" budget="₹88.5 L" time="2h ago" />
-                    <LeadItem name="Anita Ray" project="Emerald" status="Hot" budget="₹92.0 L" time="3h ago" />
-                 </div>
-                 <button className="w-full mt-10 py-4 rounded-2xl bg-slate-50 text-slate-400 text-[10px] font-black uppercase tracking-widest hover:bg-slate-900 hover:text-white transition-all shadow-sm">
-                    Open CRM Dashboard
-                 </button>
-              </div>
-
-              {/* Premium Support */}
-              <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-[2.5rem] p-8 text-white shadow-2xl relative overflow-hidden flex flex-col items-center text-center">
-                 <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                 <div className="w-20 h-20 rounded-3xl bg-white/10 backdrop-blur-xl flex items-center justify-center mb-6 border border-white/20 shadow-inner">
-                    <ShieldCheck size={40} className="text-white" />
-                 </div>
-                 <h4 className="text-lg font-black tracking-tight mb-2">Dedicated Account Manager</h4>
-                 <p className="text-[11px] font-medium text-indigo-100 leading-relaxed max-w-[200px] mb-8">
-                    Need help scaling your projects? Contact Vikram, your enterprise partner.
-                 </p>
-                 <button className="w-full py-4 rounded-xl bg-white text-indigo-600 text-[11px] font-black uppercase tracking-widest hover:bg-indigo-50 transition-all flex items-center justify-center gap-2">
-                    Connect Now <ArrowRight size={16} />
-                 </button>
-              </div>
-
            </div>
         </div>
       </div>
@@ -203,93 +103,421 @@ export default function DeveloperDashboard() {
   );
 }
 
-// --- SUB COMPONENTS ---
+// --- SUB PAGES (DETAILED) ---
 
-function HeaderMetric({ label, value, icon }) {
+function ProjectsPage() {
   return (
-    <div className="p-4 lg:p-6 rounded-3xl bg-white/5 border border-white/5 backdrop-blur-md flex items-center gap-4 hover:bg-white/10 transition-all cursor-default group">
-       <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-white/10 flex items-center justify-center text-dark-orange group-hover:scale-110 transition-transform">
-          {icon}
-       </div>
-       <div>
-          <p className="text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-white/40 mb-1">{label}</p>
-          <p className="text-xl lg:text-2xl font-black text-white leading-none">{value}</p>
+    <DashboardLayout role="developer" userName="Emaar Properties">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+         <div>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase">Project Ecosystem</h2>
+            <p className="text-slate-500 font-medium text-sm mt-2">Manage lifecycle, inventory, and pricing for all active developments.</p>
+         </div>
+         <button className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest shadow-2xl hover:bg-dark-orange transition-all">
+            <Plus size={18} /> Add New Township
+         </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+         <ProjectSummaryCard label="Total Inventory" value="482 Units" color="slate" />
+         <ProjectSummaryCard label="Units Sold" value="312 Units" color="orange" />
+         <ProjectSummaryCard label="Escrow Balance" value="₹42.8 Cr" color="slate" />
+      </div>
+
+      <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl overflow-hidden">
+         <div className="p-8 border-b border-slate-50 flex items-center justify-between">
+            <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Active Townships</h3>
+            <div className="flex gap-4">
+               <div className="h-10 w-64 bg-slate-50 border border-slate-100 rounded-xl flex items-center px-4">
+                  <Search size={14} className="text-slate-400" />
+                  <input type="text" placeholder="Search projects..." className="bg-transparent border-none outline-none ml-2 text-xs font-bold w-full" />
+               </div>
+            </div>
+         </div>
+         <table className="w-full text-left">
+            <thead className="bg-slate-50/50">
+               <tr className="border-b border-slate-50">
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Project Name</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Inventory Status</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Construction</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Bookings</th>
+                  <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Action</th>
+               </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-50">
+               <ProjectTableRow name="Skyline Grande" rera="WBRERA-2023-001" sold={42} total={80} stage="Finishing" trends="up" />
+               <ProjectTableRow name="The Park Avenue" rera="WBRERA-2023-042" sold={12} total={120} stage="Foundation" trends="stable" />
+               <ProjectTableRow name="Regency Plaza" rera="WBRERA-2024-009" sold={78} total={80} stage="Full Occupancy" trends="up" />
+               <ProjectTableRow name="Eco Smart Township" rera="WBRERA-2024-015" sold={0} total={240} stage="Pre-Launch" trends="up" />
+            </tbody>
+         </table>
+      </div>
+    </DashboardLayout>
+  );
+}
+
+function SalesHubPage() {
+  return (
+    <DashboardLayout role="developer" userName="Emaar Properties">
+      <div className="mb-12">
+        <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4">Sales & Revenue <span className="text-dark-orange">Hub</span></h2>
+        <div className="flex gap-4">
+           <FilterBadge label="Last 30 Days" active />
+           <FilterBadge label="Q3 Performance" />
+           <FilterBadge label="Annual Recap" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+         <SalesProgressCard title="Revenue Growth" value="₹12.4 Cr" trend="+14.2%" />
+         <SalesProgressCard title="Avg. Ticket Size" value="₹85.2 L" trend="+2.1%" />
+         <SalesProgressCard title="Booking Velocity" value="4.2 Units/Day" trend="-0.4%" negative />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+         <div className="lg:col-span-8 bg-white rounded-[2.5rem] p-10 border border-slate-100 shadow-xl">
+            <div className="flex items-center justify-between mb-10">
+               <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight">Booking Pipeline</h3>
+               <Download size={20} className="text-slate-400 cursor-pointer" />
+            </div>
+            {/* Mock Chart Area */}
+            <div className="aspect-[2/1] bg-slate-50 rounded-3xl flex items-end justify-between p-8 gap-4">
+               {[40, 70, 45, 90, 65, 80, 55, 95, 60, 85].map((h, i) => (
+                  <div key={i} className="flex-1 bg-dark-orange rounded-full opacity-20 hover:opacity-100 transition-all cursor-pointer" style={{ height: `${h}%` }}></div>
+               ))}
+            </div>
+         </div>
+         <div className="lg:col-span-4 bg-slate-900 rounded-[2.5rem] p-10 text-white">
+            <h3 className="text-lg font-black uppercase tracking-widest text-orange-400 mb-8 font-poppins">Top Channels</h3>
+            <div className="space-y-8">
+               <ChannelItem name="Bhaiya Direct" share="62%" leads={420} />
+               <ChannelItem name="Partner Network" share="24%" leads={180} />
+               <ChannelItem name="Social Ads" share="14%" leads={92} />
+            </div>
+         </div>
+      </div>
+    </DashboardLayout>
+  );
+}
+
+function BulkPage() {
+  return (
+    <DashboardLayout role="developer" userName="Emaar Properties">
+      <div className="max-w-4xl mx-auto py-10">
+         <div className="text-center mb-16">
+            <div className="w-24 h-24 rounded-3xl bg-slate-900 flex items-center justify-center text-white mb-8 mx-auto shadow-2xl">
+               <UploadCloud size={40} />
+            </div>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4">Master Inventory Ingestion</h2>
+            <p className="text-slate-500 font-medium max-w-lg mx-auto">Upload thousands of units, images, and floor plans in a single operation. The "Bhaiya" AI will auto-verify RERA status.</p>
+         </div>
+
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="p-10 bg-white rounded-[2.5rem] border-2 border-dashed border-slate-200 hover:border-dark-orange hover:bg-orange-50/20 transition-all cursor-pointer text-center group">
+               <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 mx-auto mb-6 group-hover:text-dark-orange transition-colors">
+                  <FileText size={32} />
+               </div>
+               <h4 className="text-lg font-black text-slate-900 uppercase mb-2">Inventory Sheet</h4>
+               <p className="text-xs text-slate-400 uppercase tracking-widest">Excel / CSV Support</p>
+            </div>
+            <div className="p-10 bg-white rounded-[2.5rem] border-2 border-dashed border-slate-200 hover:border-dark-orange hover:bg-orange-50/20 transition-all cursor-pointer text-center group">
+               <div className="w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 mx-auto mb-6 group-hover:text-dark-orange transition-colors">
+                  <Layers size={32} />
+               </div>
+               <h4 className="text-lg font-black text-slate-900 uppercase mb-2">Asset Package</h4>
+               <p className="text-xs text-slate-400 uppercase tracking-widest">ZIP (Images & PDFs)</p>
+            </div>
+         </div>
+
+         <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white">
+            <div className="flex items-center gap-4 mb-8">
+               <AlertTriangle className="text-dark-orange" />
+               <h3 className="text-lg font-black uppercase tracking-tight">Recent Upload Errors</h3>
+            </div>
+            <div className="space-y-4">
+               <ErrorLogItem file="township_phase_2.csv" error="RERA ID Mismatch on Row 42" status="Fixed" />
+               <ErrorLogItem file="gallery_assets.zip" error="Corrupt image at sky_view_01.jpg" status="Pending" red />
+            </div>
+         </div>
+      </div>
+    </DashboardLayout>
+  );
+}
+
+function CRMPage() {
+  return (
+    <DashboardLayout role="developer" userName="Emaar Properties">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+         <div>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase">Customer Lifecycle</h2>
+            <p className="text-slate-500 font-medium text-sm mt-2">Nurture leads from discovery to possession with real-time tracking.</p>
+         </div>
+         <div className="flex gap-3">
+            <button className="h-14 px-8 rounded-2xl bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest shadow-xl">New Lead</button>
+            <button className="h-14 w-14 rounded-2xl border border-slate-200 flex items-center justify-center text-slate-500"><Download size={20} /></button>
+         </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+         <CRMStatCard label="Total Leads" value="1,248" dot="orange" />
+         <CRMStatCard label="Site Visits" value="82" dot="green" />
+         <CRMStatCard label="Follow Ups" value="24" dot="blue" />
+         <CRMStatCard label="Converted" value="15" dot="orange" />
+      </div>
+
+      <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-xl overflow-hidden">
+         <div className="p-8 bg-slate-50/50 border-b border-slate-50 flex items-center justify-between">
+            <div className="flex gap-8">
+               <button className="text-[11px] font-black uppercase tracking-widest text-dark-orange border-b-2 border-dark-orange pb-1">All Leads</button>
+               <button className="text-[11px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-colors">Hot Pipeline</button>
+               <button className="text-[11px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-600 transition-colors">Post-Sale</button>
+            </div>
+            <MoreHorizontal size={20} className="text-slate-400" />
+         </div>
+         <div className="p-8 space-y-4">
+            <CRMLeadRow name="Vikram Chhetri" project="Skyline Elegance" status="Hot" budget="₹85 L" lastAct="2h ago" />
+            <CRMLeadRow name="Anjali Sharma" project="The Grand Plaza" status="Warm" budget="₹1.2 Cr" lastAct="5h ago" />
+            <CRMLeadRow name="Sourav Ganguly" project="River Side View" status="Cold" budget="₹45 L" lastAct="1d ago" />
+            <CRMLeadRow name="Rishabh Pant" project="Skyline Elegance" status="Converted" budget="₹92 L" lastAct="3d ago" />
+         </div>
+      </div>
+    </DashboardLayout>
+  );
+}
+
+// --- HELPER COMPONENTS ---
+
+function StatCard({ icon, label, value, color }) {
+  return (
+    <div className={`p-8 rounded-[2rem] border transition-all ${
+      color === 'orange' ? 'bg-dark-orange/10 border-dark-orange/20 text-white' : 'bg-white/5 border-white/10 text-white'
+    }`}>
+      <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-6 text-dark-orange`}>{icon}</div>
+      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-1">{label}</p>
+      <h3 className="text-3xl font-black">{value}</h3>
+    </div>
+  );
+}
+
+function ProjectRow({ name, location, sales, revenue, status }) {
+  return (
+    <div className="flex items-center justify-between p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-dark-orange transition-all group cursor-pointer">
+      <div className="flex items-center gap-4">
+         <div className="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-slate-900 group-hover:bg-dark-orange group-hover:text-white transition-all">
+            <Building size={20} />
+         </div>
+         <div>
+            <h4 className="font-black text-slate-900 text-sm uppercase">{name}</h4>
+            <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1">
+               <MapPin size={10} /> {location}
+            </p>
+         </div>
+      </div>
+      <div className="text-right hidden sm:block">
+         <p className="text-[10px] font-black uppercase text-slate-400 mb-1">Sales Velocity</p>
+         <div className="w-32 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+            <div className="h-full bg-dark-orange" style={{ width: sales }}></div>
+         </div>
+      </div>
+      <div className="text-right">
+         <h4 className="font-black text-slate-900 text-sm">{revenue}</h4>
+         <p className={`text-[9px] font-black uppercase tracking-widest ${status === 'Operational' ? 'text-green-500' : 'text-dark-orange'}`}>{status}</p>
+      </div>
+    </div>
+  );
+}
+
+function ProjectTableRow({ name, rera, sold, total, stage, trends }) {
+  const progress = (sold / total) * 100;
+  return (
+    <tr className="hover:bg-slate-50/80 transition-all group">
+       <td className="px-8 py-6">
+          <div className="flex items-center gap-3">
+             <div className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-white shrink-0 group-hover:bg-dark-orange transition-colors">
+                <Building size={16} />
+             </div>
+             <div>
+                <p className="text-sm font-black text-slate-800 uppercase leading-none mb-1">{name}</p>
+                <p className="text-[9px] font-bold text-slate-400">{rera}</p>
+             </div>
+          </div>
+       </td>
+       <td className="px-8 py-6">
+          <div className="w-32">
+             <div className="flex justify-between items-center mb-1 text-[9px] font-black uppercase text-slate-400">
+                <span>{progress.toFixed(0)}%</span>
+                <span>{sold}/{total} Units</span>
+             </div>
+             <div className="h-1 bg-slate-200 rounded-full overflow-hidden">
+                <div className="h-full bg-dark-orange" style={{ width: `${progress}%` }}></div>
+             </div>
+          </div>
+       </td>
+       <td className="px-8 py-6">
+          <span className="px-3 py-1.5 rounded-lg bg-orange-100/50 text-dark-orange text-[9px] font-black uppercase tracking-widest">{stage}</span>
+       </td>
+       <td className="px-8 py-6">
+          <div className="flex items-center gap-2">
+             {trends === 'up' ? <ArrowUpRight size={14} className="text-green-500" /> : <TrendingDown size={14} className="text-slate-400" />}
+             <span className="text-sm font-bold text-slate-700">{trends === 'up' ? '+12' : '0'}</span>
+          </div>
+       </td>
+       <td className="px-8 py-6 text-right">
+          <button className="p-2 hover:bg-white rounded-lg transition-colors"><MoreVertical size={16} className="text-slate-300" /></button>
+       </td>
+    </tr>
+  );
+}
+
+function ProjectSummaryCard({ label, value, color }) {
+  return (
+    <div className={`p-10 rounded-[2.5rem] border ${color === 'orange' ? 'bg-slate-900 text-white border-slate-900 border-none' : 'bg-white text-slate-900 border-slate-100'}`}>
+       <p className={`text-[11px] font-black uppercase tracking-[0.3em] mb-4 ${color === 'orange' ? 'text-orange-400' : 'text-slate-400'}`}>{label}</p>
+       <h3 className="text-4xl font-black">{value}</h3>
+    </div>
+  );
+}
+
+function SalesProgressCard({ title, value, trend, negative }) {
+  return (
+    <div className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50">
+       <p className="text-[11px] font-black text-slate-400 uppercase tracking-widest mb-4">{title}</p>
+       <div className="flex items-end gap-3">
+          <h3 className="text-4xl font-black text-slate-900">{value}</h3>
+          <span className={`text-xs font-black mb-1.5 ${negative ? 'text-red-500' : 'text-green-500'}`}>{trend}</span>
        </div>
     </div>
   );
 }
 
-function ProjectCard({ name, location, units, reach, roi, image, status, special }) {
+function CRMLeadRow({ name, project, status, budget, lastAct }) {
   return (
-    <div className={`p-6 rounded-[2.5rem] bg-slate-50 border hover:border-slate-200 hover:bg-white hover:shadow-2xl transition-all duration-700 flex flex-col md:flex-row items-center gap-8 ${special ? "border-orange-100 shadow-xl shadow-orange-100/50" : "border-slate-100"}`}>
-       <div className="w-full md:w-32 h-32 rounded-[2rem] overflow-hidden shrink-0 shadow-lg relative">
-          <img src={image} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000" />
-          <div className="absolute inset-0 bg-black/20"></div>
+    <div className="flex items-center justify-between p-6 rounded-2xl bg-white border border-slate-100 hover:border-dark-orange transition-all cursor-pointer group">
+       <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-dark-orange group-hover:text-white transition-all">
+             <User size={20} />
+          </div>
+          <div>
+             <h4 className="text-sm font-black text-slate-800 uppercase leading-none mb-1">{name}</h4>
+             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{project}</p>
+          </div>
        </div>
-       <div className="flex-1 min-w-0 text-center md:text-left">
-          <div className="flex flex-col md:flex-row md:items-center gap-3 mb-2">
-             <h4 className="text-xl font-black text-slate-800 tracking-tight leading-none uppercase">{name}</h4>
-             <span className={`w-fit mx-auto md:mx-0 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest ${
-                status === "Operational" ? "bg-blue-100 text-blue-600" : "bg-dark-orange text-white animate-bounce"
+       <div className="flex gap-16 items-center">
+          <div className="text-right hidden md:block">
+             <p className="text-[9px] font-black text-slate-300 uppercase leading-none mb-1">Budget</p>
+             <p className="text-sm font-black text-slate-800">{budget}</p>
+          </div>
+          <div className="text-right">
+             <span className={`px-4 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-widest ${
+                status === 'Hot' ? 'bg-orange-600 text-white shadow-lg shadow-orange-500/30' : 
+                status === 'Warm' ? 'bg-orange-100 text-dark-orange' : 
+                status === 'Converted' ? 'bg-green-500 text-white' : 'bg-slate-100 text-slate-400'
              }`}>{status}</span>
           </div>
-          <p className="text-xs font-bold text-slate-400 flex items-center justify-center md:justify-start gap-1">
-             <MapPin size={12} /> {location}
-          </p>
-
-          <div className="grid grid-cols-3 gap-6 mt-6">
-             <div>
-                <p className="text-[14px] font-black text-slate-800 leading-none">{units}</p>
-                <p className="text-[8px] font-black uppercase text-slate-400 tracking-widest mt-1">Inventory</p>
-             </div>
-             <div>
-                <p className="text-[14px] font-black text-slate-800 leading-none">{reach}</p>
-                <p className="text-[8px] font-black uppercase text-slate-400 tracking-widest mt-1">Portal Reach</p>
-             </div>
-             <div>
-                <p className="text-[14px] font-black text-green-600 leading-none">{roi}</p>
-                <p className="text-[8px] font-black uppercase text-slate-400 tracking-widest mt-1">Appreciation</p>
-             </div>
-          </div>
-       </div>
-       <button className="w-full md:w-14 h-14 rounded-3xl bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-dark-orange hover:border-dark-orange transition-all shadow-sm">
-          <ChevronRight size={24} />
-       </button>
-    </div>
-  );
-}
-
-function LeadItem({ name, project, status, budget, time }) {
-  return (
-    <div className="flex items-center justify-between group cursor-default">
-       <div className="flex flex-col">
-          <h5 className="text-[11px] font-black text-slate-800 uppercase tracking-tight leading-none">{name}</h5>
-          <p className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-widest leading-none flex items-center gap-1">
-             Interested in <span className="text-slate-600">{project}</span>
-             <span className="w-1 h-1 rounded-full bg-slate-300 mx-1"></span>
-             <Clock size={10} /> {time}
-          </p>
-       </div>
-       <div className="text-right flex items-center gap-4">
-          <div className="hidden sm:block">
-             <p className="text-[11px] font-black text-slate-900 leading-none">{budget}</p>
-             <p className="text-[8px] font-black uppercase text-slate-400 tracking-widest mt-1">Budget</p>
-          </div>
-          <span className={`px-2 py-1 rounded-lg text-[8px] font-black uppercase tracking-widest ${
-             status === "Hot" ? "bg-red-100 text-red-600" : status === "Warm" ? "bg-orange-100 text-dark-orange" : "bg-slate-100 text-slate-400"
-          }`}>{status}</span>
        </div>
     </div>
   );
 }
 
-function QuickActionButton({ icon, label }) {
+function CRMStatCard({ label, value, dot }) {
+   const dotColor = {
+      orange: "bg-dark-orange",
+      green: "bg-green-500",
+      blue: "bg-blue-500"
+   }[dot];
+   return (
+      <div className="bg-white p-8 rounded-[2rem] border border-slate-100 flex items-center justify-between">
+         <div>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{label}</p>
+            <h4 className="text-2xl font-black text-slate-900">{value}</h4>
+         </div>
+         <div className={`w-2 h-2 rounded-full ${dotColor}`}></div>
+      </div>
+   )
+}
+
+function ChannelItem({ name, share, leads }) {
+   return (
+      <div className="flex items-center justify-between">
+         <div className="flex items-center gap-4">
+            <div className={`w-2 h-2 rounded-full ${name === 'Bhaiya Direct' ? 'bg-dark-orange shadow-[0_0_10px_rgba(255,107,0,0.5)]' : 'bg-slate-600'}`}></div>
+            <div>
+               <p className="text-sm font-black uppercase text-slate-200">{name}</p>
+               <p className="text-[10px] font-black text-slate-500 uppercase">{leads} Leads</p>
+            </div>
+         </div>
+         <span className="text-lg font-black text-slate-200">{share}</span>
+      </div>
+   )
+}
+
+function FilterBadge({ label, active }) {
+   return (
+      <button className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+         active ? 'bg-dark-orange text-white' : 'bg-white text-slate-400 border border-slate-100'
+      }`}>{label}</button>
+   )
+}
+
+function ErrorLogItem({ file, error, status, red }) {
+   return (
+      <div className="flex items-center justify-between p-5 rounded-2xl bg-white/5 border border-white/5">
+         <div className="flex items-center gap-4">
+            <div className={`w-2 h-2 rounded-full ${red ? 'bg-red-500 animate-pulse' : 'bg-green-500'}`}></div>
+            <div>
+               <p className="text-sm font-bold text-white uppercase tracking-tight">{file}</p>
+               <p className="text-[10px] text-slate-400">{error}</p>
+            </div>
+         </div>
+         <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-lg ${red ? 'text-red-400' : 'text-green-400'}`}>{status}</span>
+      </div>
+   )
+}
+
+function AlertItem({ text, time }) {
+   return (
+      <div className="flex items-start gap-4">
+         <div className="w-1.5 h-1.5 rounded-full bg-dark-orange mt-2 shrink-0"></div>
+         <div>
+            <p className="text-sm font-medium text-slate-300">{text}</p>
+            <p className="text-[10px] font-black uppercase text-slate-600 tracking-widest mt-1">{time}</p>
+         </div>
+      </div>
+   )
+}
+
+function QuickBtn({ icon, text, primary }) {
   return (
-    <button className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all text-left group">
-       <div className="w-10 h-10 rounded-lg bg-dark-orange flex items-center justify-center text-white group-hover:scale-110 transition-transform">
-          {icon}
-       </div>
-       <span className="text-[10px] font-black uppercase tracking-widest text-slate-300 group-hover:text-white">{label}</span>
+    <button className={`flex items-center gap-2 px-6 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
+      primary ? 'bg-slate-900 text-white hover:bg-dark-orange shadow-lg shadow-slate-500/20' : 'bg-white text-slate-400 border border-slate-200 hover:border-dark-orange hover:text-dark-orange'
+    }`}>
+      {icon} {text}
     </button>
+  );
+}
+
+function MetricBox({ label, value, trend }) {
+  return (
+    <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10">
+      <p className="text-[10px] font-black uppercase text-orange-400 tracking-widest mb-4">{label}</p>
+      <h3 className="text-4xl font-black mb-1">{value}</h3>
+      <p className="text-[10px] font-black uppercase text-slate-500">{trend} vs Last Month</p>
+    </div>
+  );
+}
+
+function ProjectCard({ name, status, sales }) {
+  return (
+    <div className="p-8 rounded-[2.5rem] bg-slate-50 border border-slate-100 group hover:border-dark-orange transition-all">
+      <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-slate-900 group-hover:bg-dark-orange group-hover:text-white transition-all shadow-sm mb-8">
+        <Building size={24} />
+      </div>
+      <h3 className="text-xl font-black text-slate-900 uppercase tracking-tight mb-2">{name}</h3>
+      <p className="text-[10px] font-black uppercase text-slate-400 tracking-widest mb-6">{status}</p>
+      <div className="flex justify-between items-center pt-6 border-t border-slate-200">
+         <span className="text-[10px] font-black text-slate-400 uppercase">Booked</span>
+         <span className="text-sm font-black text-slate-900">{sales}</span>
+      </div>
+    </div>
   );
 }
