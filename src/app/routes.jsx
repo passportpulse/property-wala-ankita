@@ -22,6 +22,7 @@ import RedFlagsGuide from "../pages/resources/RedFlagsGuide";
 import PartnerApplicationForm from "../pages/partner-application-form/PartnerApplicationForm";
 import ExpertAdvice from "../pages/expert-advice/ExpertAdvice";
 import AuctionTab from "../pages/auction-tab/AuctionTab";
+import LocalityLanding from "../pages/localities/LocalityLanding";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,7 @@ export const router = createBrowserRouter([
       { path: "/agent-signup", element: <AgentSignUp /> },
       { path: "/vip-suite", element: <VIPSuite /> },
       { path: "/red-flags-guide", element: <RedFlagsGuide /> },
+      { path: "/locality/:id", element: <LocalityLanding /> },
     ],
   },
 ]);

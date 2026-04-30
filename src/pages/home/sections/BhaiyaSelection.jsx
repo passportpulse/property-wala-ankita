@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Star, TrendingDown, Diamond, Clock, ShieldCheck, Zap, ChevronRight } from "lucide-react";
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
@@ -124,9 +125,12 @@ export default function BhaiyaSelection() {
                 </div>
 
                 <div className="pt-2 md:pt-4 mt-auto">
-                  <button className="flex items-center gap-2 text-slate-900 font-black text-[10px] md:text-xs uppercase tracking-wider group-hover:text-orange-500 transition-colors">
+                  <Link 
+                    to={`/locality/${cat.id === 'best-buy' ? 'bidhannagar' : 'city-center'}`}
+                    className="flex items-center gap-2 text-slate-900 font-black text-[10px] md:text-xs uppercase tracking-wider group-hover:text-orange-500 transition-colors"
+                  >
                     View Listings <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
