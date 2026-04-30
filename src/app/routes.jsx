@@ -19,6 +19,9 @@ import BhaiyaTools from "../pages/dashboard/BhaiyaTools";
 import AgentSignUp from "../pages/joinus/AgentSignUp";
 import VIPSuite from "../pages/founder/VIPSuite";
 import RedFlagsGuide from "../pages/resources/RedFlagsGuide";
+import PartnerApplicationForm from "../pages/partner-application-form/PartnerApplicationForm";
+import ExpertAdvice from "../pages/expert-advice/ExpertAdvice";
+import AuctionTab from "../pages/auction-tab/AuctionTab";
 
 
 export const router = createBrowserRouter([

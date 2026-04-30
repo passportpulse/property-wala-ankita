@@ -16,7 +16,8 @@ import {
   Share2,
   Info,
   Clock,
-  MessageSquare
+  MessageSquare,
+  FileWarning
 } from "lucide-react";
 import Container from "../../components/layout/Container";
 

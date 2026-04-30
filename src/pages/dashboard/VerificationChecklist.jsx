@@ -1,5 +1,5 @@
 import React from "react";
-import { ShieldCheck, Building2, Truck, Scale, Camera, CheckCircle2, AlertTriangle, FileText } from "lucide-react";
+import { ShieldCheck, Building2, Truck, Scale, Camera, CheckCircle2, AlertTriangle, FileText, DollarSign } from "lucide-react";
 
 export default function VerificationChecklist() {
   const categories = [
@@ -32,6 +32,12 @@ export default function VerificationChecklist() {
       icon: <Scale className="text-emerald-500" />
     },
     {
+      title: "4. Visual & Digital Presence (The '2026' Lens) 📱",
+      items: [
+        "4K Virtual Tour: Has the 360° scan been completed for the virtual walkthrough?",
+        "Drone Footage: (For Plots/Factories) High-angle shots showing the perimeter and surrounding infrastructure.",
+        "Authentic Photos: Minimum of 8 high-res photos (no stock images) including the entry, main area, and washrooms."
+      ],
       icon: <Camera className="text-purple-500" />
     },
     {
