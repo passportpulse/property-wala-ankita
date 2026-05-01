@@ -22,40 +22,40 @@ export default function PriceHeatMap() {
 
       <Container>
         <div className="grid lg:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div className="space-y-6 md:space-y-8 relative z-10 text-center lg:text-left">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-[10px] font-black uppercase tracking-wider border border-orange-500/20">
+          <div className="space-y-8 md:space-y-12 relative z-10 text-left border-l-4 border-orange-500 pl-6 md:pl-8 py-2">
+            <div className="space-y-4 md:space-y-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 text-orange-500 text-[10px] font-black uppercase tracking-wider border border-orange-500/20 w-fit">
                 <TrendingUp className="w-3 h-3" /> Market Intelligence
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-white leading-tight">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight tracking-tight max-w-2xl">
                 Don't Just Search. <br className="hidden sm:block" />
                 <span className="text-orange-500">Invest Smart</span> with Bhaiya’s Heat Map.
               </h2>
-              <p className="text-slate-400 font-medium text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-slate-400 font-medium text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl">
                 See which neighborhoods are heating up and where the best deals are hidden. Our real-time data visualizes the market so you don't have to guess.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left">
-                <div className="w-8 h-8 rounded-full bg-red-500 mb-3" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left transition-all hover:bg-white/10 group">
+                <div className="w-8 h-8 rounded-full bg-red-500 mb-3 shadow-[0_0_15px_rgba(239,68,68,0.3)] group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-sm">Red Zones</p>
                 <p className="text-slate-500 text-[10px] mt-1 uppercase font-black tracking-widest">High-Demand</p>
               </div>
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left">
-                <div className="w-8 h-8 rounded-full bg-yellow-500 mb-3" />
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left transition-all hover:bg-white/10 group">
+                <div className="w-8 h-8 rounded-full bg-yellow-500 mb-3 shadow-[0_0_15px_rgba(234,179,8,0.3)] group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-sm">Yellow Zones</p>
                 <p className="text-slate-500 text-[10px] mt-1 uppercase font-black tracking-widest">Stable Growth</p>
               </div>
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left">
-                <div className="w-8 h-8 rounded-full bg-emerald-500 mb-3" />
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-left transition-all hover:bg-white/10 group">
+                <div className="w-8 h-8 rounded-full bg-emerald-500 mb-3 shadow-[0_0_15px_rgba(16,185,129,0.3)] group-hover:scale-110 transition-transform" />
                 <p className="text-white font-bold text-sm">Green Zones</p>
                 <p className="text-slate-500 text-[10px] mt-1 uppercase font-black tracking-widest">Best Value</p>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="flex items-center justify-center gap-3 bg-orange-500 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-orange-600 transition-all active:scale-95 shadow-xl shadow-orange-500/20 text-xs">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button className="flex items-center justify-center gap-3 bg-orange-500 text-white px-8 py-4 rounded-2xl font-black uppercase tracking-widest hover:bg-orange-600 transition-all active:scale-95 shadow-xl shadow-orange-500/20 text-[10px] sm:text-xs">
                 <MapIcon className="w-4 h-4" /> Open Full Interactive Map
               </button>
             </div>
