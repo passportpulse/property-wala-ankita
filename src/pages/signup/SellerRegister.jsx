@@ -43,7 +43,7 @@ export default function SellerRegister() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-poppins py-10 antialiased relative">
+    <div className="min-h-screen bg-slate-50 font-sans py-10 antialiased relative">
       <OnboardingModal isOpen={showOnboarding} onClose={() => navigate("/dashboard")} role="seller" />
       <div className="max-w-6xl mx-auto px-6">
         

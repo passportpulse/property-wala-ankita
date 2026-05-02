@@ -56,7 +56,7 @@ export default function HotDeals() {
   }, []);
 
   return (
-    <Section className="bg-white font-poppins py-8 lg:py-20">
+    <Section className="bg-white font-sans py-8 lg:py-20">
       <Container>
         {/* UPDATED HEADER */}
         <Header
@@ -213,7 +213,7 @@ export default function HotDeals() {
                       <p className="text-white/50 text-[10px] font-black uppercase tracking-widest mb-1">
                         Exclusive Price
                       </p>
-                      <p className="text-4xl lg:text-6xl font-black text-white tracking-tighter">
+                      <p className="text-3xl lg:text-4xl font-black text-white tracking-tighter">
                         {deals[active].price}
                       </p>
                     </div>

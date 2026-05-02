@@ -192,7 +192,7 @@ function SalesHubPage() {
             </div>
          </div>
          <div className="lg:col-span-4 bg-slate-900 rounded-[2.5rem] p-10 text-white">
-            <h3 className="text-lg font-black uppercase tracking-widest text-orange-400 mb-8 font-poppins">Top Channels</h3>
+            <h3 className="text-lg font-black uppercase tracking-widest text-orange-400 mb-8 font-sans">Top Channels</h3>
             <div className="space-y-8">
                <ChannelItem name="Bhaiya Direct" share="62%" leads={420} />
                <ChannelItem name="Partner Network" share="24%" leads={180} />

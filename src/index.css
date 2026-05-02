@@ -1,15 +1,15 @@
 /* 1. Import the font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Tangerine:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 
 /* 2. Import Tailwind */
 @import "tailwindcss";
 
 /* 3. Map the font to a Tailwind utility */
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
 }
 @theme {
   --color-dark-orange: #dd571c;

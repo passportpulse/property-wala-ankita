@@ -38,14 +38,14 @@ export default function ScheduleVisit() {
                 </span>
               </div>
 
-              <h3 className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-none uppercase">
+              <h3 className="text-3xl lg:text-4xl font-black text-slate-900 tracking-tighter leading-none uppercase">
                 Schedule Your{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange to-lighter-orange">
                   Walkthrough
                 </span>
               </h3>
 
-              <p className="text-slate-500 font-medium text-base lg:text-lg max-w-md leading-relaxed">
+              <p className="text-slate-500 font-medium text-sm lg:text-base max-w-md leading-relaxed">
                 Book a personal property visit at your convenience.
                 Experience the home before making your decision.
               </p>

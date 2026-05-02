@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 font-poppins flex flex-col lg:items-center lg:justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-orange-50 font-sans flex flex-col lg:items-center lg:justify-center relative overflow-hidden">
       {/* Decorative Blur Background */}
       <div className="hidden lg:block absolute top-0 left-0 w-96 h-96 bg-orange-200/30 blur-3xl rounded-full -z-10"></div>
       <div className="hidden lg:block absolute bottom-0 right-0 w-96 h-96 bg-orange-100/40 blur-3xl rounded-full -z-10"></div>

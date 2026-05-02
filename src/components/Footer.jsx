@@ -16,7 +16,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-50 text-slate-700 font-poppins border-t border-slate-200">
+    <footer className="bg-slate-50 text-slate-700 font-sans border-t border-slate-200">
       <Container className="py-8 sm:py-16">
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-y-10 lg:gap-y-12 gap-x-4 lg:gap-8 text-left">
           {/* ================= ROW 1 ================= */}
@@ -230,7 +230,7 @@ export default function Footer() {
       </Container>
 
       {/* Bottom */}
-      <div className="bg-white py-4 border-t border-slate-100">
+      <div className="bg-white py-4 pb-24 lg:pb-4 border-t border-slate-100">
         <Container className="text-center">
           <p className="text-[10px] sm:text-xs text-slate-400">
             © {currentYear}{" "}

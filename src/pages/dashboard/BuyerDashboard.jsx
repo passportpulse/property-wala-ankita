@@ -141,7 +141,7 @@ function WatchlistSubPage() {
     <DashboardLayout role="buyer" userName="Aman Verma">
        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-             <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-poppins">Saved <span className="text-dark-orange">Collection</span></h2>
+             <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-sans">Saved <span className="text-dark-orange">Collection</span></h2>
              <p className="text-slate-500 font-medium text-sm mt-2">Track price history and schedule visits for your favorited properties.</p>
           </div>
           <div className="flex gap-4">
@@ -175,7 +175,7 @@ function SearchHistoryPage() {
   return (
     <DashboardLayout role="buyer" userName="Aman Verma">
        <div className="max-w-4xl">
-          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4 font-poppins">Search <span className="text-dark-orange">Vault</span></h2>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4 font-sans">Search <span className="text-dark-orange">Vault</span></h2>
           <p className="text-slate-500 font-medium mb-12">Resume your previous property hunts and manage automated alerts.</p>
           
           <div className="bg-white rounded-[3rem] border border-slate-100 shadow-xl overflow-hidden">
@@ -199,7 +199,7 @@ function SiteVisitsPage() {
   return (
     <DashboardLayout role="buyer" userName="Aman Verma">
        <div className="mb-12">
-          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4 font-poppins">Site Visit <span className="text-dark-orange">Agenda</span></h2>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase mb-4 font-sans">Site Visit <span className="text-dark-orange">Agenda</span></h2>
           <p className="text-slate-500 font-medium ml-1">Coordinate with builders and experts for physical property inspections.</p>
        </div>
 

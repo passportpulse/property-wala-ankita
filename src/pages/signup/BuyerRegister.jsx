@@ -53,7 +53,7 @@ export default function BuyerRegister() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-poppins py-10 antialiased">
+    <div className="min-h-screen bg-slate-50 font-sans py-10 antialiased">
       <OnboardingModal isOpen={showOnboarding} onClose={() => navigate("/dashboard")} role="buyer" />
       <div className="max-w-6xl mx-auto px-6">
         

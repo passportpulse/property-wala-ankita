@@ -59,7 +59,7 @@ export default function LocalityLanding() {
   const area = neighborhoodData[id] || neighborhoodData["city-center"];
 
   return (
-    <div className="min-h-screen bg-white font-poppins">
+    <div className="min-h-screen bg-white font-sans">
       {/* SEO Optimized Hero */}
       <section className="relative pt-32 pb-48 bg-slate-900 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(255,102,0,0.05),transparent)]" />
@@ -68,7 +68,7 @@ export default function LocalityLanding() {
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-dark-orange text-[10px] font-black uppercase tracking-[0.4em]">
                <MapPin size={16} /> Durgapur Neighborhood Guide
             </div>
-            <h1 className="text-5xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-[0.9]">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black text-white uppercase tracking-tighter leading-[0.9]">
                Explore <br />
                <span className="text-dark-orange">{area.name}</span>
             </h1>

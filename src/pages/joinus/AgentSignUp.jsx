@@ -41,7 +41,7 @@ export default function AgentSignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-poppins">
+    <div className="min-h-screen bg-white font-sans">
       {/* Hero Section */}
       <section className="relative pt-20 pb-32 overflow-hidden bg-slate-900">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-dark-orange/10 blur-[120px] rounded-full -mr-40" />

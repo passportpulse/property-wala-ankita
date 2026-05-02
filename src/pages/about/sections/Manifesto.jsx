@@ -7,7 +7,7 @@ const AboutManifesto = () => {
   return (
     <Section>
       <Container>
-        <div className="my-3 py-3 font-poppins">
+        <div className="my-3 py-3 font-sans">
           <div
             className="bg-slate-900 rounded-xl md:rounded-2xl lg:rounded-[3rem] 
                    p-4 sm:p-5 md:p-8 lg:p-12 

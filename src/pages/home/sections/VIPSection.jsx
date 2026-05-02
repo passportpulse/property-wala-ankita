@@ -17,18 +17,18 @@ export default function VIPSection() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black uppercase tracking-wider border border-blue-500/20">
                 <Briefcase className="w-3 h-3" /> The VIP Executive Suite
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black text-white leading-tight tracking-tighter uppercase">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight tracking-tighter uppercase">
                 Direct Access for <br className="hidden sm:block" />
                 <span className="text-blue-400 italic">High-Impact</span> Decisions.
               </h2>
-              <p className="text-slate-400 font-medium text-base md:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-slate-400 font-medium text-xs sm:text-sm lg:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Leveraging 16 years of expertise in Steel, Logistics, and Real Estate to power your next big venture. Skip the queue and consult directly with our Founder’s Office.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
               <div className="space-y-3">
-                <h4 className="text-white font-black uppercase tracking-tight flex items-center gap-2">
+                <h4 className="text-white font-black uppercase tracking-tight text-xs sm:text-sm flex items-center gap-2">
                   <div className="w-1.5 h-6 bg-blue-500 rounded-full" /> Industrial DNA
                 </h4>
                 <p className="text-slate-500 text-xs font-bold leading-relaxed">
@@ -36,7 +36,7 @@ export default function VIPSection() {
                 </p>
               </div>
               <div className="space-y-3">
-                <h4 className="text-white font-black uppercase tracking-tight flex items-center gap-2">
+                <h4 className="text-white font-black uppercase tracking-tight text-xs sm:text-sm flex items-center gap-2">
                   <div className="w-1.5 h-6 bg-emerald-500 rounded-full" /> Strategic JVs
                 </h4>
                 <p className="text-slate-500 text-xs font-bold leading-relaxed">
@@ -44,7 +44,7 @@ export default function VIPSection() {
                 </p>
               </div>
               <div className="space-y-3">
-                <h4 className="text-white font-black uppercase tracking-tight flex items-center gap-2">
+                <h4 className="text-white font-black uppercase tracking-tight text-xs sm:text-sm flex items-center gap-2">
                   <div className="w-1.5 h-6 bg-orange-500 rounded-full" /> Regulatory Shield
                 </h4>
                 <p className="text-slate-500 text-xs font-bold leading-relaxed">
@@ -52,7 +52,7 @@ export default function VIPSection() {
                 </p>
               </div>
               <div className="space-y-3">
-                <h4 className="text-white font-black uppercase tracking-tight flex items-center gap-2">
+                <h4 className="text-white font-black uppercase tracking-tight text-xs sm:text-sm flex items-center gap-2">
                   <div className="w-1.5 h-6 bg-purple-500 rounded-full" /> Total Confidentiality
                 </h4>
                 <p className="text-slate-500 text-xs font-bold leading-relaxed">

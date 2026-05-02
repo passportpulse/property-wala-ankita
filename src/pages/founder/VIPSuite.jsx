@@ -40,7 +40,7 @@ export default function VIPSuite() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 font-poppins text-white overflow-hidden">
+    <div className="min-h-screen bg-slate-900 font-sans text-white overflow-hidden">
       {/* Premium Hero Section */}
       <section className="relative pt-32 pb-48 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(255,102,0,0.1),transparent)]" />
@@ -284,7 +284,7 @@ function SuccessMessage({ name }) {
           <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 text-left space-y-6 mb-12">
              <div className="flex items-center gap-4">
                 <div className="w-2 h-2 rounded-full bg-dark-orange animate-pulse" />
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-900 font-poppins italic">Founder's Office Status</p>
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-900 font-sans italic">Founder's Office Status</p>
              </div>
              <p className="text-xs text-slate-500 font-medium leading-relaxed">
                 A senior executive from the Founder’s Office will contact you within **4 working hours** to coordinate a private briefing.

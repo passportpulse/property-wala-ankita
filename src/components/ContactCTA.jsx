@@ -6,7 +6,7 @@ import { MessageCircle, Phone } from "lucide-react";
 
 export default function ContactCTA() {
   return (
-    <Section className="bg-white font-poppins py-10 md:py-20">
+    <Section className="bg-white font-sans py-10 md:py-20">
       <Container>
         {/* COMPACT CTA CARD */}
         <div className="
@@ -34,7 +34,7 @@ export default function ContactCTA() {
             </div>
 
             {/* HEADING: Tighter leading and font-size for mobile */}
-            <h2 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight md:leading-[1.1]">
+            <h2 className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tighter leading-tight md:leading-[1.1]">
               Ready to find your <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-dark-orange via-lighter-orange to-soft-orange">
                 place in Durgapur?
@@ -55,7 +55,7 @@ export default function ContactCTA() {
                 className="
                   flex items-center justify-center gap-2
                   bg-[#25D366] text-white
-                  px-4 py-1 rounded-l-lg
+                  px-8 py-4 rounded-l-lg
                   font-black text-[10px] uppercase tracking-widest
                   hover:bg-dark-orange transition-all duration-300
                   active:scale-95 shadow-lg hover:shadow-dark-orange/20

@@ -49,7 +49,7 @@ export default function DeveloperRegister() {
   const cities = ["Delhi NCR", "Mumbai", "Bangalore", "Pune", "Hyderabad", "Chennai", "Kolkata", "Ahmedabad", "Durgapur"];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-poppins py-10 antialiased selection:bg-orange-200">
+    <div className="min-h-screen bg-slate-50 font-sans py-10 antialiased selection:bg-orange-200">
       <OnboardingModal isOpen={showOnboarding} onClose={() => navigate("/dashboard")} role="developer" />
       <div className="max-w-6xl mx-auto px-6">
         {/* Top Navigation */}

@@ -195,7 +195,7 @@ export default function Navbar({ promoVisible }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const headerStyle = `sticky z-50 transition-all duration-300 font-poppins ${
+  const headerStyle = `sticky z-50 transition-all duration-300 ${
     scrolled
       ? "bg-white/95 backdrop-blur-md shadow-sm py-2"
       : "bg-linear-to-r from-dark-orange via-lighter-orange to-warm-yellow py-4"

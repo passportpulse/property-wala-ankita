@@ -184,8 +184,8 @@ function TokenContent() {
 
        <div className="p-10 bg-slate-50 rounded-[2.5rem] border-2 border-dashed border-slate-200 font-serif text-slate-700 space-y-8">
           <div className="text-center space-y-2 pb-6 border-b border-slate-200">
-             <h4 className="text-xl font-black uppercase tracking-tighter text-slate-900 font-poppins">TOKEN MONEY RECEIPT</h4>
-             <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-poppins">Bhaiya Standard MOU Template</p>
+             <h4 className="text-xl font-black uppercase tracking-tighter text-slate-900 font-sans">TOKEN MONEY RECEIPT</h4>
+             <p className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-sans">Bhaiya Standard MOU Template</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 text-xs leading-relaxed">

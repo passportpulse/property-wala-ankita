@@ -106,7 +106,7 @@ export default function AddProperty() {
   if (isSuccess) return <SuccessAnimation onDashboard={() => navigate("/dashboard")} />;
 
   return (
-    <div className="min-h-screen bg-slate-50 font-poppins">
+    <div className="min-h-screen bg-slate-50 font-sans">
       {/* Header */}
       <header className="bg-white border-b border-slate-100 py-6 sticky top-0 z-50 shadow-sm">
         <Container>

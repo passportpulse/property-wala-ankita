@@ -12,7 +12,7 @@ const Services = () => {
 
   return (
     <Section
-      className="bg-[#f8fafc] font-poppins text-slate-800 py-10"
+      className="bg-[#f8fafc] font-sans text-slate-800 py-10"
       size="small"
     >
       <Container>

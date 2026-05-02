@@ -28,7 +28,7 @@ export default function RedFlagsGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 font-poppins">
+    <div className="min-h-screen bg-slate-50 font-sans">
       {/* Hero / Squeeze Header */}
       <section className="bg-slate-900 pt-24 pb-48 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-linear-to-l from-dark-orange/10 to-transparent" />

@@ -40,7 +40,7 @@ export default function VerifyOtp() {
   };
 
   return (
-    <div className="min-h-screen bg-orange-50 font-poppins flex flex-col lg:items-center lg:justify-center">
+    <div className="min-h-screen bg-orange-50 font-sans flex flex-col lg:items-center lg:justify-center">
       
       {/* Background decoration for desktop */}
       <div className="hidden lg:block absolute top-0 left-0 w-96 h-96 bg-orange-200/30 blur-3xl rounded-full -z-10"></div>

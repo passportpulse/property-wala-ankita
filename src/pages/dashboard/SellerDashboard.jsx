@@ -118,7 +118,7 @@ function ListingsPage() {
     <DashboardLayout role="seller" userName="Rajesh Kumar">
        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-             <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-poppins">Inventory <span className="text-dark-orange">Manager</span></h2>
+             <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-sans">Inventory <span className="text-dark-orange">Manager</span></h2>
              <p className="text-slate-500 font-medium text-sm mt-2">Update pricing, upload photos, and track search performance for your properties.</p>
           </div>
           <button className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest">
@@ -139,7 +139,7 @@ function LeadsPage() {
   return (
     <DashboardLayout role="seller" userName="Rajesh Kumar">
        <div className="mb-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-poppins">Buyer <span className="text-dark-orange">Leads</span></h2>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-sans">Buyer <span className="text-dark-orange">Leads</span></h2>
           <div className="flex gap-4">
              <TabBtn label="Active Leads" active />
              <TabBtn label="Connected" />
@@ -194,7 +194,7 @@ function DocumentsPage() {
   return (
     <DashboardLayout role="seller" userName="Rajesh Kumar">
        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-poppins">Safe <span className="text-dark-orange">Vault</span></h2>
+          <h2 className="text-4xl font-black text-slate-900 tracking-tighter uppercase font-sans">Safe <span className="text-dark-orange">Vault</span></h2>
           <button className="flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 text-white text-[11px] font-black uppercase tracking-widest shadow-xl">
              <Plus size={16} /> Upload Doc
           </button>

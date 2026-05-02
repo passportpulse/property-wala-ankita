@@ -79,7 +79,7 @@ export default function BhaiyaSelection() {
               <Star className="w-3 h-3" />
               Bhaiya's Selection
             </div>
-            <h2 className="text-3xl lg:text-5xl font-black text-slate-900 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
               Filters for <span className="text-orange-500 italic">Intent</span>
             </h2>
             <p className="text-slate-500 text-sm lg:text-base max-w-xl font-medium">
@@ -113,7 +113,7 @@ export default function BhaiyaSelection() {
                 </div>
 
                 <div className="space-y-1.5 md:space-y-2">
-                  <h3 className="text-lg md:text-xl font-black text-slate-900">
+                  <h3 className="text-lg font-black text-slate-900">
                     {cat.title}
                   </h3>
                   <p className="text-orange-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">

@@ -103,7 +103,7 @@ export default function DashboardLayout({ children, role = "buyer", userName = "
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F8FAFC] font-poppins antialiased">
+    <div className="flex min-h-screen bg-[#F8FAFC] font-sans antialiased">
       {/* Sidebar Desktop - Standard Fixed Sidebar */}
       <aside className="hidden lg:flex flex-col w-[280px] bg-white border-r border-slate-100 h-screen sticky top-0 overflow-y-auto z-50">
         <div className="p-8 pb-10">
