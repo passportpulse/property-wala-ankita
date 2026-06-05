@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -10,7 +11,7 @@ const featureRoutes = require('./routes/featureRoutes');
 const userRoutes = require('./routes/userRoutes');
 const heatmapRoutes = require('./routes/heatmapRoutes');
 
-dotenv.config({ path: './server/.env' });
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 connectDB();
 

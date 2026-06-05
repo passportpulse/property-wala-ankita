@@ -1,3 +1,4 @@
+const path = require('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const Property = require('./models/propertyModel');
@@ -11,7 +12,7 @@ const PartnerApplication = require('./models/partnerModel');
 const Auction = require('./models/auctionModel');
 const connectDB = require('./config/db');
 
-dotenv.config({ path: './server/.env' });
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const properties = [
   {
