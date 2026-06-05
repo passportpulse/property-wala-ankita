@@ -77,7 +77,7 @@ export default function Sell() {
         }
       };
 
-      await axios.post("http://localhost:5000/api/properties", payload);
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/properties`, payload);
       
       // Clear draft since it is successfully posted!
       localStorage.removeItem('property_listing_draft_v3');

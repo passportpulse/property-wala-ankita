@@ -31,7 +31,7 @@ export default function VerifyOtp() {
     const roleQuery = searchParams.get("role") || "Buyer Login";
 
     try {
-      const response = await fetch("http://localhost:5000/api/users/verify-otp", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/users/verify-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: mobile, otp, role: roleQuery }),

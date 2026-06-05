@@ -18,7 +18,7 @@ export default function BuyResults({ formData, onBack }) {
     const fetchProperties = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get('http://localhost:5000/api/properties', {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/properties`, {
           params: {
             city: formData.city,
             location: formData.loc,

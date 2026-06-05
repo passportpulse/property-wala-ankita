@@ -67,7 +67,7 @@ export default function ScheduleVisitHero() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/features/visits', formData);
+      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/features/visits`, formData);
       
       // Still allow WhatsApp redirect as a convenience
       const phoneNumber = "917699988876";

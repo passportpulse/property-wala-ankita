@@ -161,7 +161,7 @@ export default function PartnerApplicationForm() {
                       return;
                     }
                     try {
-                      await axios.post('http://localhost:5000/api/features/partners', {
+                      await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}/features/partners`, {
                         name: formData.fullName,
                         email: formData.email,
                         phone: formData.phone,

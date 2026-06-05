@@ -4,7 +4,7 @@ import { Map as MapIcon, Info, TrendingUp, Zap, MousePointer2 } from "lucide-rea
 import Container from "../../../components/layout/Container";
 import Section from "../../../components/layout/Section";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = `${import.meta.env.VITE_API_URL || 'http://localhost:5000/api'}`;
 
 export default function PriceHeatMap() {
   const [hoveredArea, setHoveredArea] = useState(null);
